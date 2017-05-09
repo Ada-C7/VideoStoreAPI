@@ -4,7 +4,7 @@ describe MoviesController do
 
   describe "Movies#Index" do
 
-    FIELDS = %w(release_date title)
+    INDEX_FIELDS = %w(release_date title)
 
     before do
       get movies_path
@@ -31,7 +31,7 @@ describe MoviesController do
     it "returns the correct fields" do
       body = JSON.parse(response.body)
       body.each do | movie |
-        movie.keys.sort.must_equal FIELDS
+        movie.keys.sort.must_equal INDEX_FIELDS
       end
     end
 
@@ -39,7 +39,7 @@ describe MoviesController do
 
   describe "Movies#Show" do
 
-    FIELDS = %w(inventory overview release_date title)
+    SHOW_FIELDS = %w(inventory overview release_date title)
 
     before do
       get movie_path(movies(:nemo).title)
@@ -60,10 +60,10 @@ describe MoviesController do
 
     it "displays the correct fields" do
       body = JSON.parse(response.body)
-      body.keys.sort.must_equal FIELDS
+      body.keys.sort.must_equal SHOW_FIELDS
     end
 
-    FIELDS.each do | field |
+    SHOW_FIELDS.each do | field |
       it "displays the correct #{field}" do
         body = JSON.parse(response.body)
         body[field].must_equal movies(:nemo)[field]
