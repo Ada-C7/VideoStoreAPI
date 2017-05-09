@@ -27,4 +27,9 @@ describe Customer do
     end
   end
 
+  it "Customer account_credit must be a number" do
+    new_customer.account_credit = "zero"
+    new_customer.valid?.must_equal false
+    new_customer.errors.messages.must_include :account_credit
+  end
 end
