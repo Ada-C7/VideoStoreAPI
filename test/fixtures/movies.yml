@@ -4,8 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  title: "Hedwig and the Angry Inch"
+  overview: "Six inches forward and five inches back."
+  release_date: "2001-01-19"
+  inventory: 10
+
+two:
+  title: "The Graduate"
+  overview: "One word: plastics."
+  release_date: "1967-12-22"
+  inventory: 6
+
+three:
+  title: "Bye Bye Birdie"
+  overview: "Bye, bye, Birdie. I'm gonna miss you so. Bye, bye, Birdie. Why'd ya have to go?"
+  release_date: "1963-04-04"
+  inventory: 7
