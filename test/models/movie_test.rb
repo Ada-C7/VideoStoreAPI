@@ -13,7 +13,6 @@ describe Movie do
 
     it "can create a movie with valid parameters" do
       movies(:star_wars).valid?.must_equal true
-
     end
   end
 end
