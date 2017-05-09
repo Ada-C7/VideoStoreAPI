@@ -1,9 +1,10 @@
 require "test_helper"
 
 describe Customer do
-  let(:customer) { Customer.new }
-
-  it "must be valid" do
-    value(customer).must_be :valid?
+  describe "associations/relation" do
+    it "has many movies" do
+      ar = Customer.reflect_on_association(:movies)
+      ar.macro.must_equal :has_and_belongs_to_many
+    end
   end
 end
