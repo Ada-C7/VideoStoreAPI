@@ -4,8 +4,15 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
 #
-two: {}
-# column: value
+flashdance:
+  title: "flashdance"
+  overview: "Lots of rainwater from out of nowhere"
+  release_date: "1983-04-15"
+  inventory: 2
+
+no_title:
+  title: no_title
+  overview: "Lots of rainwater from out of nowhere"
+  release_date: "1983-04-15"
+  inventory: 2
