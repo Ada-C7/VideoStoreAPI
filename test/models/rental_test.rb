@@ -5,7 +5,10 @@ describe Rental do
   let(:sample_customer) {customers(:good_data)}
   let(:sample_movie) {movies(:psycho)}
 
-  it "can be created with an associated movie and customer" do skip
+  it "can be created with an associated movie and customer" do
+    rental.movie = Movie.first
+    rental.customer = Customer.last
+    rental.save.must_equal true
 
   end
 
@@ -15,9 +18,13 @@ describe Rental do
     rental.due_date = Date.current
     rental.save.must_equal false
     rental.errors.messages.must_include :movie
+
   end
 
   it "also cannot be created without a customer" do
+    rental.movie = Movie.first
+    rental.customer = nil
+    rental.save.must_equal false
 
   end
 
@@ -26,10 +33,13 @@ describe Rental do
     rental.movie_id = sample_movie.id
     rental.save.must_equal true
     rental.checkout_date.must_equal Date.today
+
   end
 
   it "should be assigned a default due date of two weeks from today" do
-
+    rental.movie = Movie.first
+    rental.customer = Customer.last
+    rental.due_date.must_be Chronic.parse('two weeks from today')
   end
 
   it "cannot be created without a due date or checkout date" do
