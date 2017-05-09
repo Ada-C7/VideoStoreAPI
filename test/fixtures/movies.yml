@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  overview: MyString
-  release_date: MyString
-  inventory: 1
+  title: Hook
+  overview: An exciting spin off on Peter Pan
+  release_date: "1991-12-11"
+  inventory: 5
 
 two:
-  title: MyString
-  overview: MyString
-  release_date: MyString
-  inventory: 1
+  title: Big Fish
+  overview: Story about a father with an incredible imagination
+  release_date: "2003-12-25"
+  inventory: 3
+
+three:
+  title: Jaws
+  overview: An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.
+  release_date: "1975-06-19"
+  inventory: 6
