@@ -42,5 +42,22 @@ describe CustomersController do
       body.must_be_instance_of Hash
       body.keys.sort.must_equal KEYS
     end
+
+    it "responds correctly when customer not found" do
+      get customer_url(Customer.last.id + 1)
+      must_respond_with :not_found
+
+      body = JSON.parse(response.body)
+      body.must_equal "nothing" => true
+    end
+
+    it "when gets a customer has the right info" do
+      get customer_path(customers(:one).id)
+      body = JSON.parse(response.body)
+
+      KEYS.each do |key|
+        body[key].must_equal customers(:one)[key]
+      end
+    end
   end
 end
