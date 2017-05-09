@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# require 'json'
+raw_data = File.read( Rails.root.join('db', 'seeds', 'customers.json'))
+customers = JSON.parse(raw_data)
+
+customers.each do |customer|
+  p customer
+  customer.delete('account_credit')
+  Customer.create(customer)
+end
