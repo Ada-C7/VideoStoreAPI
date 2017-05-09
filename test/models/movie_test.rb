@@ -2,10 +2,10 @@ require "test_helper"
 
 describe Movie do
   let (:movie) { Movie.new(
-    title: "Finding Nemo",
+    title: "Nemo",
     overview: "Just keep swimming",
     release_date: "2010",
-    inventory: "25"
+    inventory: 25
     )
   }
 
@@ -24,14 +24,19 @@ describe Movie do
   end
 
   it "Must have a unique title" do
-    movie.valid?.must_equal true
-    movie.save
+    original_movie = Movie.new(
+      title: "Lion King",
+      overview: "Lifechanging.",
+      release_date: "1993",
+      inventory: "12"
+    )
+    original_movie.valid?.must_equal true
 
     duplicate_movie = Movie.new(
-      title: "Finding Nemo",
-      overview: "Just keep swimming",
-      release_date: "2010",
-      inventory: "25"
+      title: "Lion King",
+      overview: "Lifechanging.",
+      release_date: "1993",
+      inventory: "12"
     )
     duplicate_movie.valid?.must_equal false
     duplicate_movie.errors.messages.must_include :title
