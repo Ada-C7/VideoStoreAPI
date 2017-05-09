@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 good_data:
-  name: Ann D
+  name: John
   registered_at: 2017-05-09 13:28:44
   address: 1111 19th Ave South
   city: Seattle
@@ -11,7 +11,17 @@ good_data:
   account_credit: 100.00
 
 good_data_dupe:
-  name: Ann D
+  name: John
+  registered_at: 2017-05-09 13:28:44
+  address: 1111 19th Ave South
+  city: Seattle
+  state: WA
+  postal_code: "98122"
+  phone: 701-306-7504
+  account_credit: 100.00
+
+good_data_unique:
+  name: Amy
   registered_at: 2017-05-09 13:28:44
   address: 1111 19th Ave South
   city: Seattle
@@ -22,7 +32,7 @@ good_data_dupe:
 
 
 bad_data:
-  name: Ann A D
+  name: Bob
   registered_at: 2017-05-09 13:28:44
   address: 1759 19th Ave
   # city: Seattle
@@ -32,7 +42,7 @@ bad_data:
   account_credit: 100.00
 
 negative_account:
-  name: Ann D
+  name: Ann
   registered_at: 2017-05-09 13:28:44
   address: 1111 19th Ave South
   city: Seattle
