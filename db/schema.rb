@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509214638) do
+ActiveRecord::Schema.define(version: 20170509234825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20170509214638) do
     t.string   "phone"
     t.float    "account_credit"
     t.integer  "movie_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "movies_checkout_out_count"
     t.index ["movie_id"], name: "index_customers_on_movie_id", using: :btree
   end
 

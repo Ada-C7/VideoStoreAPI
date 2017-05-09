@@ -26,9 +26,8 @@ describe CustomersController do
     end
 
     it 'returns customers with all required fields' do
-      skip
-      keys = %w(id name registered_at postal_code phone movies_checkout_out_count)
-      gets customers_url
+      keys = %w(id movies_checkout_out_count name phone postal_code registered_at)
+      get customers_url
 
       body = JSON.parse(response.body)
       body.each do |customer|
