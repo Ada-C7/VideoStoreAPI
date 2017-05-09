@@ -25,10 +25,11 @@ describe MoviesController do
     end
 
     it "returns required fields" do
+      keys = %w(release_date title)
       get movies_url
       body = JSON.parse(response.body)
       body.each do |movie|
-        movie.keys.sort.must_equal MOVIE_KEYS
+        movie.keys.sort.must_equal keys
       end
     end
   end
