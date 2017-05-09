@@ -4,8 +4,12 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  title: "American Beauty"
+  release_date: "12/12/05"
+  overview: "A movie"
+  inventory: 5
 # column: value
 #
-two: {}
+# two: {}
 # column: value
