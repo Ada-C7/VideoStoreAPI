@@ -23,7 +23,7 @@ describe MoviesController do
 
     it "returns a json" do
       get movies_path
-      repsonse.header['Content-Type'].must_include 'json'
+      response.header['Content-Type'].must_include 'json'
     end
 
     it "returns movies with exactly the required fields" do
