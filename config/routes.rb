@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get '/zomg', to: 'application#index', as: 'zomg'
   resources :customers, only: [:index]
   resources :movies, only: [:index, :show]
-  
+
 
   # post /rentals/:title/checkout
   # post /rentals/:title/checkin
