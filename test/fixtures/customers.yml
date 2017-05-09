@@ -9,3 +9,80 @@ one: {}
 #
 two: {}
 # column: value
+
+good_customer:
+  name: natalia kuleniuk
+  registered_at: May 21 2017
+  address: 123 Fake street
+  city: Redmond
+  state: Washington
+  postal_code: 12345
+  phone: (234) 837-2886
+
+bad_customer1:
+  registered_at: August 11 2014
+  address: 123 Fake street
+  city: Bellevue
+  state: Washington
+  postal_code: 12124
+  phone: (234) 837-2886
+
+bad_customer2:
+  name: natalia kuleniuk
+  registered_at: August 11 2014
+  address: 123 Fake street
+  city: Bellevue
+  postal_code: 12124
+  phone: (234) 837-2886
+
+bad_customer3:
+  name: natalia kuleniuk
+  registered_at: August 11 2014
+  address: 123 Fake street
+  city: Bellevue
+  state: Washington
+  postal_code: 12124
+
+bad_customer4:
+  name: natalia kuleniuk
+  registered_at: August 11 2014
+  city: Bellevue
+  state: Washington
+  postal_code: 12124
+  phone: (234) 837-2886
+
+customer_bad_city:
+  name: natalia kuleniuk
+  registered_at: May 21 2017
+  address: 123 Fake street
+  city: 323223
+  state: Washington
+  postal_code: 12345
+  phone: (234) 837-2886
+
+customer_bad_state:
+  name: natalia kuleniuk
+  registered_at: May 21 2017
+  address: 123 Fake street
+  city: Redmond
+  state: 32232
+  postal_code: 12345
+  phone: (234) 837-2886
+
+customer_bad_zip:
+  name: natalia kuleniuk
+  registered_at: May 21 2017
+  address: 123 Fake street
+  city: Redmond
+  state: 32232
+  postal_code: 1234543
+  phone: (234) 837-2886
+
+customer_bad_phone:
+  name: natalia kuleniuk
+  registered_at: May 21 2017
+  address: 123 Fake street
+  city: Redmond
+  state: 32232
+  postal_code: 1234543
+  phone: (2344343-)837-2886       
