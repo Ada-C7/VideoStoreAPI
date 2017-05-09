@@ -13,51 +13,18 @@ describe Customer do
     )
   }
 
-  REQUIRED_FIELDS = %w(name registered_at address city state postal_code phone account_credit)
-
   it "Can create a valid customer" do
     new_customer.must_be :valid?
   end
 
-  it "Customer must have required fields" do
-    REQUIRED_FIELDS.each do | field |
-      proc {
-        customers(:kelsey)[field] = nil
-        Customer.new(customers(:kelsey))
-      }
+  REQUIRED_FIELDS = %w(name registered_at address city state postal_code phone account_credit)
+
+  REQUIRED_FIELDS.each do | field |
+    it "Customer must have a #{field}" do
+      new_customer[field] = nil
+      new_customer.valid?.must_equal false
+      new_customer.errors.messages.must_include field.to_sym
     end
   end
-
-  # it "Customer is requred to have a name" do
-  #
-  # end
-  #
-  # it "Customer is requred to have a registered_at" do
-  #
-  # end
-  #
-  # it "Customer is required to have an address" do
-  #
-  # end
-  #
-  # it "Customer is required to have a city" do
-  #
-  # end
-  #
-  # it "Customer is required to have a state" do
-  #
-  # end
-  #
-  # it "Customer is required to have a postal_code" do
-  #
-  # end
-  #
-  # it "Customer is requried to have a phone" do
-  #
-  # end
-  #
-  # it "Customer is required to have account_credit" do
-  #
-  # end
 
 end
