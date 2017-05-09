@@ -46,7 +46,7 @@ describe Customer do
         customer.valid?.must_equal true
     end
 
-    it "returns an array of movie rentals" do
+    it "returns an array of rentals" do
         customer.rentals.each do |rental|
             rental.must_be_instance_of Rental
             rental.customer.must_equal customer
@@ -56,6 +56,18 @@ describe Customer do
     it "returns an empty array if they have not rented a movie yet" do
         customer = Customer.create(name:"Gem", registered_at: "2017-05-09", phone: 111-111-1111)
         customer.rentals.must_equal []
+    end
+
+    it "returns an array of movies" do
+        customer.movies.each do |movie|
+            movie.must_be_instance_of Movie
+            movie.customer.must_equal customer
+        end
+    end
+
+    it "returns an empty array if they have not rented a movie yet" do
+        customer = Customer.create(name:"Gem", registered_at: "2017-05-09", phone: 111-111-1111)
+        customer.movies.must_equal []
     end
 
 end
