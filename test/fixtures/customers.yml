@@ -1,23 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  registered_at: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+kelsey:
+  name: "Kelsey"
+  registered_at: "11-27-2012"
+  address: "1111 My Street"
+  city: "Omaha"
+  state: "NE"
+  postal_code: "68116"
+  phone: "555-555-5555"
   account_credit: 9.99
 
-two:
-  name: MyString
-  registered_at: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+janice:
+  name: "Janice"
+  registered_at: "02-04-15"
+  address: "222 Your Street"
+  city: "Seattle"
+  state: "WA"
+  postal_code: "98011"
+  phone: "333-333-3333"
   account_credit: 9.99
