@@ -23,4 +23,11 @@ describe Customer do
       customer_2.errors.messages.must_include :phone
     end
   end
+
+  describe "movies_checked_out_count" do
+    # TODO: Create movie checkout relationship and write method
+    it "returns 0" do
+      customers(:aj).movies_checked_out_count.must_equal 0
+    end
+  end
 end
