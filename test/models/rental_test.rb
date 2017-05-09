@@ -39,10 +39,7 @@ describe Rental do
   it "should be assigned a default due date of two weeks from today" do
     rental.movie = Movie.first
     rental.customer = Customer.last
-    rental.due_date.must_be Chronic.parse('two weeks from today')
+    rental.due_date.must_equal Chronic.parse('two weeks from today')
   end
 
-  it "cannot be created without a due date or checkout date" do
-
-  end
 end
