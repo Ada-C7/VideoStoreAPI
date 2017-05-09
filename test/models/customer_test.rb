@@ -6,12 +6,19 @@ describe Customer do
   # it "must be valid" do
   #   value(customer).must_be :valid?
   # end
-
+describe "validations" do
   it "must have a name" do
     customer = Customer.new(address: "234 flower street", phone: "000-768-6252", registered_at: "some time")
     customer.valid?.must_equal false
     customer.errors.messages.must_include :name
 
+  end
+
+  it "name must be a string" do
+    customer = Customer.new(name: 212, address: "234 flower street", phone: "000-768-6252", registered_at: "some time")
+    customer.valid?.must_equal false
+    customer.errors.messages.must_include :name
+    
   end
 
   it "must have a street address" do
@@ -32,4 +39,6 @@ it "must have a registered_at " do
   customer.valid?.must_equal false
   customer.errors.messages.must_include :registered_at
 end
+end # END of describe "validations"
+
 end
