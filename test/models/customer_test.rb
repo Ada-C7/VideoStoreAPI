@@ -12,6 +12,15 @@ describe Customer do
         phone: "(322) 510-8695",
       }
     end
+    it "Cannot be created even if one attributes is not presented" do
+      @input.keys.each do |key|
+        @input.delete(key)
+        customer = Customer.new(@input)
+        result = customer.valid?
+        result.must_equal false
+      end
+    end
+
     it "Can be created with all attributes" do
       customer = Customer.new(@input)
       result = customer.valid?
@@ -19,6 +28,12 @@ describe Customer do
     end
     it "Cannot be created without attributes" do
       customer = Customer.new
+      result = customer.valid?
+      result.must_equal false
+    end
+    it "cannot be created with invalid address" do
+      @input[:address] = "on"
+      customer = Customer.new(@input)
       result = customer.valid?
       result.must_equal false
     end
@@ -52,15 +67,8 @@ describe Customer do
       result = customer.valid?
       result.must_equal false
     end
-    it "Cannot be created even if one attributes is not presented" do
-      @input.keys.each do |key|
-        @input.delete(key)
-        customer = Customer.new(@input)
-        result = customer.valid?
-        result.must_equal false
-      end
 
-    end
+
   end
 
 

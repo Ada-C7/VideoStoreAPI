@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
 
   validates :registered_at,presence: true
 
-  validates :address,presence: true
+  validates :address, presence: true, length: {minimum: 3}
 
   validates :city,presence: true, format: { with: /\A[a-zA-Z]+\z/ }
 
