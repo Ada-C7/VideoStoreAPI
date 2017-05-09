@@ -8,3 +8,9 @@ rental_two:
   customer: two
   movie: mermaid
   due_date: June 1, 2017
+
+
+rental_three:
+  customer: one
+  movie: mermaid
+  due_date: June 1, 2017
