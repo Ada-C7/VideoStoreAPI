@@ -4,8 +4,21 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+bare_minimum:
+  name: "Jou-Jou"
+  registered_at: "June 10th, 2015"
+  postal_code: 98136
+  phone: "555-555-5555"
+  movies_checked_out_count: 0
+
+has_all:
+  name: "Jou-Jou"
+  registered_at: "June 10th, 2015"
+  address: "555 Some Street"
+  city: "Seattle"
+  state: "WA"
+  postal_code: 98136
+  phone: "555-555-5555"
+  movies_checked_out_count: 0
+
+  
