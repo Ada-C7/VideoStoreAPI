@@ -5,7 +5,7 @@ describe CustomersController do
   describe "Customers#Index" do
 
     # need to add movies_checked_out_count
-    FIELDS = %w(name registered_at postal_code phone)
+    FIELDS = %w(name phone postal_code registered_at)
 
     before do
       get customers_path
