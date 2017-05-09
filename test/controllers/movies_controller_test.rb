@@ -4,7 +4,7 @@ describe MoviesController do
 
   describe "Movies#Index" do
 
-    FIELDS = %w(title release_date)
+    FIELDS = %w(release_date title)
 
     before do
       get movies_path
