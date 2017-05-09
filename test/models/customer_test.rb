@@ -5,7 +5,7 @@ describe Customer do
   # let(:customer) { Customer.new }
 
     it "you can create a customer" do
-      customer = Customer.new
+      customer = customers(:bare_minimum)
       customer.valid?.must_equal true
     end
 
