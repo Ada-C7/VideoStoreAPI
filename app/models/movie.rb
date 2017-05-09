@@ -11,4 +11,16 @@ class Movie < ApplicationRecord
   validates :inventory, presence:true
   validates :inventory, numericality:true
 
+
+
+  def valid_date?( str, format="%Y/%m/%d/" )
+    format_ok = str.match(/\d{4}-\d{2}-\d{2}/)
+    # parseable = Date.strptime(str, '%Y-%m-%d') rescue false
+
+    if str == format_ok #&& parseable
+      return true
+    else
+      return false
+    end
+  end
 end
