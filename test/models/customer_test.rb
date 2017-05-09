@@ -18,6 +18,7 @@ describe Customer do
         customer = Customer.new(@input)
         result = customer.valid?
         result.must_equal false
+        customer.errors.must_include key
       end
     end
 
@@ -49,8 +50,14 @@ describe Customer do
       result = customer.valid?
       result.must_equal false
     end
-    it "cannot be created if postal_code length != 5" do
+    it "cannot be created if postal_code length > 5" do
       @input[:postal_code] = 3232903
+      customer = Customer.new(@input)
+      result = customer.valid?
+      result.must_equal false
+    end
+    it "cannot be created if postal_code length < 5" do
+      @input[:postal_code] = 903
       customer = Customer.new(@input)
       result = customer.valid?
       result.must_equal false
@@ -67,13 +74,7 @@ describe Customer do
       result = customer.valid?
       result.must_equal false
     end
-
-
   end
-
-
-
-
 
 
 end
