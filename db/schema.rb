@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20170509212209) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "customers_movies", id: false, force: :cascade do |t|
+    t.integer  "customer_id", null: false
+    t.integer  "movie_id",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_customers_movies_on_customer_id", using: :btree
+    t.index ["movie_id"], name: "index_customers_movies_on_movie_id", using: :btree
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.string   "overview"
@@ -34,15 +43,6 @@ ActiveRecord::Schema.define(version: 20170509212209) do
     t.integer  "inventory"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "movies_customers_joins", force: :cascade do |t|
-    t.integer  "movie_id"
-    t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["customer_id"], name: "index_movies_customers_joins_on_customer_id", using: :btree
-    t.index ["movie_id"], name: "index_movies_customers_joins_on_movie_id", using: :btree
   end
 
 end
