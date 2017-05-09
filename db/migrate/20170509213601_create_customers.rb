@@ -8,6 +8,7 @@ class CreateCustomers < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :postal_code
       t.string :phone
+      t.float :account_credit
       t.timestamps
     end
   end

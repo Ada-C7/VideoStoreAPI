@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20170509213752) do
     t.string   "state"
     t.string   "postal_code"
     t.string   "phone"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "account_credit"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "movies", force: :cascade do |t|
