@@ -22,4 +22,24 @@ describe Movie do
       movie.errors.messages.must_include field.to_sym
     end
   end
+
+  it "Must have a unique title" do
+    movie.valid?.must_equal true
+    movie.save
+
+    duplicate_movie = Movie.new(
+      title: "Finding Nemo",
+      overview: "Just keep swimming",
+      release_date: "2010",
+      inventory: "25"
+    )
+    duplicate_movie.valid?.must_equal false
+    duplicate_movie.errors.messages.must_include :title
+  end
+
+  it "Inventory must be a number" do
+    movie.inventory = "zero"
+    movie.valid?.must_equal false
+    movie.errors.messages.must_include :inventory
+  end
 end
