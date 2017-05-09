@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20170509212649) do
     t.string   "postal_code"
     t.string   "phone"
     t.string   "registered_at"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "movies_checked_out_count", default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "movies", force: :cascade do |t|
@@ -32,8 +33,9 @@ ActiveRecord::Schema.define(version: 20170509212649) do
     t.string   "overview"
     t.string   "release_date"
     t.integer  "inventory"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "available_invetory", default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end

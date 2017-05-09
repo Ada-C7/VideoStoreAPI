@@ -8,6 +8,7 @@ class CreateCustomers < ActiveRecord::Migration[5.0]
       t.string :postal_code
       t.string :phone
       t.string :registered_at
+      t.integer :movies_checked_out_count, default: 0
       t.timestamps
     end
   end
