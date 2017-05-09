@@ -11,7 +11,7 @@ describe Customer do
     it "is invalid without a name" do
         customer = Customer.create(registered_at: "2017-05-09", phone: 111-111-1111)
         customer.valid?.must_equal false
-        customer.errors.message.must_include :name
+        customer.errors.messages.must_include :name
     end
 
     it "must have a phone number" do
@@ -22,7 +22,7 @@ describe Customer do
     it "is invalid without a phone number" do
         customer = Customer.create(name: "Ben Smith", registered_at: "2017-05-09")
         customer.valid?.must_equal false
-        customer.errors.message.must_include :phone
+        customer.errors.messages.must_include :phone
     end
 
     it "must have a registered_at date" do
@@ -33,7 +33,7 @@ describe Customer do
     it "is invalid without a reqistered_at date" do
         customer = Customer.create(name: "Ben Smith", phone: 111-111-1111)
         customer.valid?.must_equal false
-        customer.errors.message.must_include :registered_at
+        customer.errors.messages.must_include :registered_at
     end
 
 
@@ -47,7 +47,6 @@ describe Customer do
     end
 
     it "returns an array of movie rentals" do
-        customer.rentals.must_be Array
         customer.rentals.each do |rental|
             rental.must_be_instance_of Rental
             rental.customer.must_equal customer
