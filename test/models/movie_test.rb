@@ -37,6 +37,10 @@ describe Movie do
       movie.errors.messages.must_include :inventory
   end
 
+  it "has to have a positive inventory number" do
+
+  end
+
   it "is invalid with non-integer inventory" do
     movie = Movie.create(title: "Guardians of the Galaxy, Vol 2", release_date: "2000-12-12", inventory: "two", available_inventory: 5)
     movie.valid?.must_equal false
