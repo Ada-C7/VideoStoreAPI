@@ -49,10 +49,14 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
+    debug_inspector (0.0.2)
+    docile (1.1.5)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -63,6 +67,7 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
+    json (2.0.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -127,6 +132,11 @@ GEM
       ffi (>= 0.5.0)
     ruby-progressbar (1.8.1)
     sass (3.4.23)
+    simplecov (0.13.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -158,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   better_errors
+  binding_of_caller
   byebug
   foundation-rails
   listen (~> 3.0.5)
@@ -167,6 +178,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.2)
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
