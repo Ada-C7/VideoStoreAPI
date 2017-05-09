@@ -19,7 +19,7 @@ three:
   due_date: 2017-05-09
 
 four:
-  movie: exorcist:
+  movie: exorcist
   customer: curran
   checked_out: false
   due_date: 2017-05-09
