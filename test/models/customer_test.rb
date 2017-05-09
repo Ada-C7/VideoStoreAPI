@@ -1,9 +1,15 @@
 require "test_helper"
 
 describe Customer do
-  let(:customer) { Customer.new }
+  describe "validations" do
+    it "can call movies from customers" do
+      customer = Customer.create
 
-  it "must be valid" do
-    value(customer).must_be :valid?
+    end
+
+    it "can call rentals from customers" do
+
+    end
+
   end
 end
