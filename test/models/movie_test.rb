@@ -5,8 +5,8 @@ describe Movie do
 
   it "you can create a new movie" do
     movie.title = "Title"
-    movie.release_date = ""
-    movie.overview = ""
+    movie.release_date = "1983-04-15"
+    movie.overview = "What"
     movie.inventory = 2
     movie.valid?.must_equal true
   end
