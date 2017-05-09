@@ -33,29 +33,8 @@ describe Movie do
         @input.delete(attribute)
         movie = Movie.new(@input)
         movie.valid?.must_equal false
-        movie.errors.must_include key
+        movie.errors.must_include attribute
       end
-    end
-
-    it 'has to include an overview' do
-      @input.delete(:overview)
-      movie_no_overview = Movie.new(@input)
-      movie_no_overview.valid?.must_equal false
-      movie_no_overview.errors.must_include :overview
-    end
-
-    it 'has to include a release data' do
-      @input.delete(:release_date)
-      movie_no_date = Movie.new(@input)
-      movie_no_date.valid?.must_equal false
-      movie_no_date.errors.must_include :release_date
-    end
-
-    it 'has to include inventory integer' do
-      @input.delete(:inventory)
-      movie_no_inv = Movie.new(@input)
-      movie_no_inv.valid?.must_equal false
-      movie_no_inv.errors.must_include :inventory
     end
 
     it "can't include a negative inventory" do

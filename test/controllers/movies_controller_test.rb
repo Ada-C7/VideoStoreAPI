@@ -43,7 +43,7 @@ describe MoviesController do
       Movie.destroy_all
       get movies_path
       response.status.must_equal 500
-      response.parsed_body.must_include "error"
+      response.parsed_body.must_include "errors"
     end
   end
 end
