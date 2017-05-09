@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+raw_data = File.read(Rails.root.join("db", "seeds", "movies.json"))
+movies = JSON.parse(raw_data)
+
+movies.each do |movie|
+  Movie.create(movie)
+end
