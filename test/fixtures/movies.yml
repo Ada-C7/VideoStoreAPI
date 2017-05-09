@@ -5,19 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 psycho:
-  title: "Psycho",
-  overview: "When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother. The place seems quirky, but fine… until Marion decides to take a shower.",
+  title: "Psycho"
+  overview: "When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother. The place seems quirky, but fine… until Marion decides to take a shower."
   release_date: 1960-06-16
   inventory: 8
-
-bad_data1:
-  overview: "Nothing happens."
-  release_date: 1960-06-16
-  inventory: 4
-
-bad_data2:
-  overview: "Even more of nothing happens."
-  release_date: 1970-04-22
-
-bad_data3:
-  title: "Whatevs."
