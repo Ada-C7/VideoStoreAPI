@@ -49,6 +49,36 @@ describe Customer do
       customer.errors.messages.must_include :movies_checked_out_count
     end
 
+    it "movies_checked_out_count must be integer" do
+      customer = customers(:bare_minimum)
+      customer.movies_checked_out_count = "three"
+
+      customer.valid?.must_equal false
+      customer.errors.messages.must_include :movies_checked_out_count
+    end
+
+    it "movies_checked_out_count can't be lt 0" do
+      customer = customers(:bare_minimum)
+      customer.movies_checked_out_count = -1
+
+      customer.valid?.must_equal false
+      customer.errors.messages.must_include :movies_checked_out_count
+    end
+
+    it "movies_checked_out_count can be 0" do
+      customer = customers(:bare_minimum)
+      customer.movies_checked_out_count = 0
+
+      customer.valid?.must_equal true
+    end
+
+    it "movies_checked_out_count can be >= 0" do
+      customer = customers(:bare_minimum)
+      customer.movies_checked_out_count = 1
+
+      customer.valid?.must_equal true
+    end
+
     it "creates customer without address" do
       customer = customers("has_all")
       customer.address = ""
