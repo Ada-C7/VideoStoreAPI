@@ -2,7 +2,9 @@ require "test_helper"
 
 describe Movie do
   let(:movie) { Movie.new }
-  let(:psycho) {movies(:psycho)}
+  let(:psycho) { movies(:psycho) }
+  let(:sample_rental) { rentals(:one) }
+  let(:sample_customer) { customers(:one) }
 
   #at least one positive and one neg case
   # for each relation
@@ -64,8 +66,9 @@ describe Movie do
   end
 
   describe "relations" do
-    it "may have zero or more rentals" do skip
-
+    it "may have zero or more rentals" do
+      psycho.rentals.must_include sample_rental
     end
+
   end
 end
