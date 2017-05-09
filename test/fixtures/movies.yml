@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  release_date: MyString
-  overview: MyString
+  title: Tofu the Fluffer
+  release_date: 2016-01-05
+  overview: What will happen when alien Tofu's come down to earth and enslave the human race with 100% pure fluff
   inventory: 1
   available_inventory: 1
 
 two:
-  title: MyString
-  release_date: MyString
-  overview: MyString
-  inventory: 1
+  title: Tofu the Fluffanator II Revenge of the Fluff
+  release_date: 2017-01-05
+  overview: She's back, and she's FLUFFIER
+  inventory: 5
   available_inventory: 1
