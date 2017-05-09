@@ -14,5 +14,13 @@ describe Customer do
     it "can create a customer with valid parameters" do
       customers(:aj).valid?.must_equal true
     end
+
+    it "can't create a customer with phone number that's already in database" do
+      customer_1 = customers(:aj)
+      customer_2 = customer_1.dup
+
+      customer_2.valid?.must_equal false
+      customer_2.errors.messages.must_include :phone
+    end
   end
 end
