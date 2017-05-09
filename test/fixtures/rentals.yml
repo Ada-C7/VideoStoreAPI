@@ -1,11 +1,10 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+rental_one:
+  customer: one
+  movie: tusk
+  due_date: May 20, 2017
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+rental_two:
+  customer: two
+  movie: mermaid
+  due_date: June 1, 2017
