@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-09T15:52:44-07:00">2017-05-09T15:52:44-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-09T16:07:40-07:00">2017-05-09T16:07:40-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.08%</span></span>
+    (<span class="covered_percent"><span class="green">95.45%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.08
+         2.04
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>9</b> files in total.
-    <b>109</b> relevant lines. 
-    <span class="green"><b>108</b> lines covered</span> and
-    <span class="red"><b>1</b> lines missed </span>
+    <b>110</b> relevant lines. 
+    <span class="green"><b>105</b> lines covered</span> and
+    <span class="red"><b>5</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -112,12 +112,12 @@
       
       <tr>
         <td class="strong"><a href="#f5fd6fcaa7e8ade2a2c6323bf71c8f67cd701d89" class="src_link" title="test/controllers/movies_controller_test.rb">test/controllers/movies_controller_test.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>81</td>
-        <td>43</td>
-        <td>43</td>
-        <td>0</td>
-        <td>1.5</td>
+        <td class="green strong">90.91 %</td>
+        <td>82</td>
+        <td>44</td>
+        <td>40</td>
+        <td>4</td>
+        <td>1.4</td>
       </tr>
       
       <tr>
@@ -329,7 +329,7 @@
         <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
-          <code class="ruby">      render json: { nothing: true }, status: :not_found</code>
+          <code class="ruby">      render json: { errors: errors[] }, status: :not_found</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
@@ -525,11 +525,11 @@
         <div class="source_table" id="f5fd6fcaa7e8ade2a2c6323bf71c8f67cd701d89">
   <div class="header">
     <h3>test/controllers/movies_controller_test.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="green">90.91 %</span> covered</h4>
     <div>
-      <b>43</b> relevant lines. 
-      <span class="green"><b>43</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>44</b> relevant lines. 
+      <span class="green"><b>40</b> lines covered</span> and
+      <span class="red"><b>4</b> lines missed.</span>
     </div>
   </div>
   
@@ -977,46 +977,52 @@
         <li class="covered" data-hits="1" data-linenumber="74">
           <span class="hits">1</span>
           
-          <code class="ruby">      get movie_path(Movie.all.last.id + 1)</code>
+          <code class="ruby">      get movie_path(&quot;Not A Real Movie&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="75">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="75">
+          
           
           <code class="ruby">      must_respond_with :not_found</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="76">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="76">
+          
           
           <code class="ruby">      body = JSON.parse(response.body)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="77">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="77">
           
-          <code class="ruby">      body.must_equal &quot;nothing&quot; =&gt; true</code>
+          
+          <code class="ruby">      body.must_include &quot;errors&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="missed" data-hits="0" data-linenumber="78">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      body[&quot;errors&quot;].must_include &quot;title&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="80">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby">end</code>
