@@ -4,7 +4,7 @@ get "/movies", to: "movies#index", as: "movies"
 
 get "/customers", to: "customers#index", as: "customers"
 
-get "/movies/:title", to: "movies#show"
+get "/movies/:title", to: "movies#show", as: "movie"
 
 get "/customers/:id", to: "customers#show", as: "customer"
 
