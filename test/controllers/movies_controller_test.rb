@@ -70,8 +70,8 @@ describe MoviesController do
       end
     end
 
-    it "responds correctly when the pet is not found" do
-      get movie_path(Movie.all.last.id + 1) # could also do Pet.all.last.id + 1
+    it "responds correctly when the movie is not found" do
+      get movie_path(Movie.all.last.id + 1)
       must_respond_with :not_found
       body = JSON.parse(response.body)
       body.must_equal "nothing" => true
