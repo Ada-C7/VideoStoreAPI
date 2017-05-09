@@ -28,6 +28,15 @@ describe Movie do
       repeat.errors.must_include :title
     end
 
+    it 'wont create instance if any attrivbute is missing' do
+      @input.keys.each do |attribute|
+        @input.delete(attribute)
+        movie = Movie.new(@input)
+        movie.valid?.must_equal false
+        movie.errors.must_include key
+      end
+    end
+
     it 'has to include an overview' do
       @input.delete(:overview)
       movie_no_overview = Movie.new(@input)
