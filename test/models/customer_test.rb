@@ -35,13 +35,13 @@ describe Customer do
     customer.account_credit.must_equal customer.account_credit
   end
 
-  it "returns an array of movie rentals" do
-
-  end
-
-  it "can have multiple movie rentals" do
-
-  end
+  # it "returns an array of movie rentals" do
+  #
+  # end
+  #
+  # it "can have multiple movie rentals" do
+  #
+  # end
 
 
 end
