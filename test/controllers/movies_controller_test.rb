@@ -34,5 +34,12 @@ describe MoviesController do
       body = JSON.parse(response.body)
       body.keys.sort.must_equal fields.sort
     end
+
+    it "responds appropriately when the movie is not found" do
+      get movie_url("This is a fake title okay")
+      body = JSON.parse(response.body)
+      body.must_equal "nothing" => true
+      must_respond_with :not_found
+    end
   end
 end
