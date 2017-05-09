@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
 # GET /rentals/overdue
 
+# get "/zomg", to: "movies#zomg"
+
 end
