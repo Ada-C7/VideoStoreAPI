@@ -71,10 +71,11 @@ describe MoviesController do
     end
 
     it "responds correctly when the movie is not found" do
-      get movie_path(Movie.all.last.id + 1)
+      get movie_path("Not A Real Movie")
       must_respond_with :not_found
       body = JSON.parse(response.body)
-      body.must_equal "nothing" => true
+      body.must_include "errors"
+      body["errors"].must_include "title"
     end
 
   end
