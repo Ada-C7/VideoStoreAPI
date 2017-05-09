@@ -31,7 +31,7 @@ describe Movie do
     end
 
     it "must permit a unique combination of title and release date" do
-      movie.title = "Psycho"
+      movie.title = psycho.title
       movie.overview = "The animated children's version of the Hitchcock classic"
       movie.release_date = "2015-09-01"
       movie.inventory = 3
@@ -46,8 +46,20 @@ describe Movie do
       movie.errors.messages.must_include :title
     end
 
-    it "must have an inventory greater than or equal to zero" do skip
+    it "must have an inventory that is an integer" do
+      movie.title = "North by Northwest"
+      movie.inventory = "cheezits"
+      movie.release_date = "1959-07-17"
+      movie.save.must_equal false
+      movie.errors.messages.must_include :inventory
+    end
 
+    it "must have an inventory greater than or equal to zero" do
+      movie.title = "North by Northwest"
+      movie.inventory = -7
+      movie.release_date = "1959-07-17"
+      movie.save.must_equal false
+      movie.errors.messages.must_include :inventory
     end
   end
 

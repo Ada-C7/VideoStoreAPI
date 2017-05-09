@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  movie: one
+  movie: psycho
   customer: one
   checkout_date: 2017-05-09 13:34:33
 
 two:
-  movie: two
+  movie: psycho
   customer: two
   checkout_date: 2017-05-09 13:34:33
