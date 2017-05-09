@@ -4,8 +4,21 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+mary:
+  name: Mary
+  address: 1234 Oak Street
+  city: Las Vegas
+  state: NV
+  phone: 702-123-4567
+  registered_at: Wed, 29 Apr 2015 07:54:14 -0700
 # column: value
 #
-two: {}
+jane:
+  name: Jane
+  address: 1234 Pine Street
+  city: Seattle
+  state: WA
+  phone: 206-123-4567
+  registered_at: Wed, 30 Apr 2015 08:00:15 -0800
+
 # column: value
