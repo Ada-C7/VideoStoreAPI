@@ -22,9 +22,8 @@ describe Customer do
     customer.errors.messages.must_include :phone
   end
 
-  it "can have many movies associated with it" do
+  it "can access rentals" do
     danielle = customers(:one)
-    danielle.movies = [movies(:one)]
-    danielle.save.must_equal true
+    danielle.rentals.must_include rentals(:one)
   end
 end

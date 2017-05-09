@@ -20,10 +20,9 @@ describe Movie do
     movie.valid?.must_equal true
   end
 
-  it "can have many customers associated with it" do
+  it "can access rentals" do
     test_movie = movies(:one)
-    test_movie.customer_ids = [customers(:one).id]
-    test_movie.save.must_equal true
+    test_movie.rentals.must_include rentals(:one)
   end
 
 end
