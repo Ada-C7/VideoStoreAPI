@@ -39,10 +39,10 @@ describe MoviesController do
 
   describe "Movies#Show" do
 
-    FIELDS = %w()
+    FIELDS = %w(inventory overview release_date title)
 
     before do
-      get movie_path(movies(:nemo).id)
+      get movie_path(movies(:nemo).title)
     end
 
     it "can get a movie" do
@@ -63,10 +63,10 @@ describe MoviesController do
       body.keys.sort.must_equal FIELDS
     end
 
-    it "displays the correct information" do
-      body = JSON.parse(response.body)
-      FIELDS.each do | field |
-        body[field].must_equal movies(:nemo)[name]
+    FIELDS.each do | field |
+      it "displays the correct #{field}" do
+        body = JSON.parse(response.body)
+        body[field].must_equal movies(:nemo)[field]
       end
     end
 
