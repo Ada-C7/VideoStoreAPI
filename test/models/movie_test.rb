@@ -5,10 +5,10 @@ describe Movie do
   describe 'validations' do
     before do
       @input = { title: "Harry Potter",
-                      overview: "Boy learns he is a wizard",
-                      release_date: "11-23-2001",
-                      inventory: 10
-                     }
+                 overview: "Boy learns he is a wizard",
+                 release_date: "11-23-2001",
+                 inventory: 10
+               }
     end
 
     # is this more dry?
