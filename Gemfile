@@ -48,6 +48,8 @@ end
 
 gem 'awesome_print'
 gem 'foundation-rails'
+gem 'chronic'
+
 group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'

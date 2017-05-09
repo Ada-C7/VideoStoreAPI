@@ -22,7 +22,10 @@ describe Rental do
   end
 
   it "should be assigned today's date as default for checkout_date" do
-
+    rental.customer_id = sample_customer.id
+    rental.movie_id = sample_movie.id
+    rental.save.must_equal true
+    rental.checkout_date.must_equal Date.today
   end
 
   it "should be assigned a default due date of two weeks from today" do
