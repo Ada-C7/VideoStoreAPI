@@ -42,12 +42,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry-rails'
 end
 
 group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
+  gem 'simplecov'
 end
 
 gem 'awesome_print'
