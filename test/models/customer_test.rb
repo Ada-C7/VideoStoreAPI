@@ -9,8 +9,9 @@ describe Customer do
     end
 
     it "can call rentals from customers" do
-
+      customer = customers(:shelley)
+      customer.must_respond_to :rentals
+      customer.rentals.first.must_be_kind_of Rental
     end
-
   end
 end
