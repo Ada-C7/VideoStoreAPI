@@ -22,7 +22,7 @@ describe Customer do
 
   it "postal_code must be five digits" do
     customer = customers(:mary)
-    # customer.postal_code.valid?.must_equal true
+    customer.valid?.must_equal true
 
     customer2 = Customer.new
     customer2.name = "Bob"
