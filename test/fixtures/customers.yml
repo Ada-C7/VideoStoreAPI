@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  registered_at: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+alison:
+  name: Alison Zerbe
+  registered_at: "2017-05-09"
+  address: 111 Alison St
+  city: Seattle
+  state: WA
+  postal_code: "99999"
+  phone: 999-999-9999
 
-two:
-  name: MyString
-  registered_at: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+brenna:
+  name: Brenna Darroch
+  registered_at: "2017-05-09"
+  address: 1234 My Town
+  city: Seattle
+  state: WA
+  postal_code: "11111"
+  phone: 111-111-1111

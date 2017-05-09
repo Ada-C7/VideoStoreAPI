@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  overview: MyString
-  release_date: MyString
+firewalk:
+  title: Firewalk with Me
+  overview: David Lynch's prequel to Twin Peaks. Did you know next week there is a scavenger hunt in real Twin Peaks?!?!?!
+  release_date: "2017-05-14"
   inventory: 1
   available_inventory: 1
 
-two:
-  title: MyString
-  overview: MyString
-  release_date: MyString
-  inventory: 1
-  available_inventory: 1
+strange:
+  title: Doctor Strange
+  overview: Benedict Cumberbatch goes to Nepal to hang with Tilda Swinton, magic ensues.
+  release_date: "2016-10-20"
+  inventory: 50
+  available_inventory: 50
