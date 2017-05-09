@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-get "/zomg"
+get "/zomg", to: 'movies#zomg'
 
 get "/movies", to: "movies#index", as: "movies"
 
