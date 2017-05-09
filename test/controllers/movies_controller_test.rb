@@ -21,4 +21,11 @@ describe MoviesController do
       end
     end
   end
+
+  describe "show" do
+    it "routes successfully with valid id" do
+      get movie_path(Movie.all.first.id)
+      must_respond_with :success
+    end
+  end
 end

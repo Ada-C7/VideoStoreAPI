@@ -30,4 +30,12 @@ describe Movie do
       movie_2.errors.messages.must_include :title
     end
   end
+
+  describe "available_inventory" do
+    it "returns the inventory" do
+      # TODO create relationships :) and re-write method :) :)
+      movie = Movie.all.first
+      movie.available_inventory.must_equal movie.inventory
+    end
+  end
 end
