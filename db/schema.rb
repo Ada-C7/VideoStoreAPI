@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509204032) do
+ActiveRecord::Schema.define(version: 20170509212209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20170509204032) do
     t.integer  "inventory"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "movies_customers_joins", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_movies_customers_joins_on_customer_id", using: :btree
+    t.index ["movie_id"], name: "index_movies_customers_joins_on_movie_id", using: :btree
   end
 
 end
