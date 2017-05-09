@@ -1,0 +1,73 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/controllers/customers_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/controllers/application_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/controllers/movies_controller.rb": [
+        1,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/models/customer.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/models/movie.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/models/rental.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/elpd/Documents/Ada/VideoStoreAPI/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1494372003
+  }
+}
