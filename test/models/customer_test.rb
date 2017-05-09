@@ -16,9 +16,8 @@ describe Customer do
 
   describe "Validations" do
     it "can create a customer" do
-      customer = new_customer
-      customer.must_be :valid?
-      customer.save.must_equal true
+      new_customer.must_be :valid?
+      new_customer.save.must_equal true
     end
 
     REQUIRED_FIELDS.each do |field|
