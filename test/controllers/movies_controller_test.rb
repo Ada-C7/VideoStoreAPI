@@ -39,11 +39,43 @@ describe MoviesController do
 
   describe "Movies#Show" do
 
-    it "should get show" do
-      get movies_show_url
-      value(response).must_be :success?
+    FIELDS = %w()
+
+    before do
+      get movie_path(movies(:nemo).id)
+    end
+
+    it "can get a movie" do
+      must_respond_with :success
+    end
+
+    it "will return json" do
+      response.header['Content-Type'].must_include 'json'
+    end
+
+    it "returns a hash" do
+      body = JSON.parse(response.body)
+      body.must_be_instance_of Hash
+    end
+
+    it "displays the correct fields" do
+      body = JSON.parse(response.body)
+      body.keys.sort.must_equal FIELDS
+    end
+
+    it "displays the correct information" do
+      body = JSON.parse(response.body)
+      FIELDS.each do | field |
+        body[field].must_equal movies(:nemo)[name]
+      end
+    end
+
+    it "responds correctly when the pet is not found" do
+      get movie_path(Movie.all.last.id + 1) # could also do Pet.all.last.id + 1
+      must_respond_with :not_found
+      body = JSON.parse(response.body)
+      body.must_equal "nothing" => true
     end
 
   end
-
 end

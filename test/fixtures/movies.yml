@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  overview: MyString
-  release_date: MyString
-  inventory: 1
+nemo:
+  title: "Finding Nemo"
+  overview: "A Great Movie"
+  release_date: "12-03-17"
+  inventory: 5
 
 two:
   title: MyString
