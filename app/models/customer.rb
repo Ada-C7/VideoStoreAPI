@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :phone, presence: true
   validates :account_credit, presence: true
+  validates_numericality_of :account_credit
 end

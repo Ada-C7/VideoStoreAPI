@@ -28,5 +28,10 @@ describe Customer do
         new_customer.errors.messages.must_include field.to_sym
       end
     end
+
+    it "account_credit must be a number" do
+      new_customer.account_credit = "number"
+      new_customer.valid?.must_equal false
+    end
   end
 end
