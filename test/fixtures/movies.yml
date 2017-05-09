@@ -4,7 +4,7 @@ one:
   title: MyString
   overview: MyString
   release_date: MyString
-  inventory: 1
+  inventory: 5
 
 two:
   title: MyString
