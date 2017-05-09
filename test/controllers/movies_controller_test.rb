@@ -24,8 +24,15 @@ describe MoviesController do
 
   describe "show" do
     it "routes successfully with valid id" do
-      get movie_path(Movie.all.first.id)
+      get movie_path(movies(:star_wars).title)
       must_respond_with :success
+    end
+
+    it "returns the appropriate fields" do
+      fields = %w(title overview release_date inventory available_inventory)
+      get movie_url(movies(:star_wars).title)
+      body = JSON.parse(response.body)
+      body.keys.sort.must_equal fields.sort
     end
   end
 end

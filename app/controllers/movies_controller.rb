@@ -5,6 +5,13 @@ class MoviesController < ApplicationController
   end
 
   def show
-    
+    movie = Movie.find_by(title: params[:title])
+
+    movie_json = movie.as_json(
+      only: [:title, :overview, :release_date, :inventory]
+    )
+      movie_json["available_inventory"] = movie.available_inventory
+
+    render json: movie_json, status: :ok
   end
 end
