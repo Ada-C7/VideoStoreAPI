@@ -75,6 +75,4 @@ describe Customer do
       result.must_equal false
     end
   end
-
-
 end
