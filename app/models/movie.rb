@@ -5,4 +5,5 @@ class Movie < ApplicationRecord
   validates :release_date, presence: true
 
   has_many :rentals
+
 end

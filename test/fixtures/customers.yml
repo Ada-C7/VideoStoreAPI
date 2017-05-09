@@ -1,19 +1,52 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+good_data:
+  name: John
   registered_at: 2017-05-09 13:28:44
-  address: MyString
-  city: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+  address: 1111 19th Ave South
+  city: Seattle
+  state: WA
+  postal_code: "98122"
+  phone: 701-306-7504
+  account_credit: 100.00
 
-two:
-  name: MyString
+good_data_dupe:
+  name: John
   registered_at: 2017-05-09 13:28:44
-  address: MyString
-  city: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+  address: 1111 19th Ave South
+  city: Seattle
+  state: WA
+  postal_code: "98122"
+  phone: 701-306-7504
+  account_credit: 100.00
+
+good_data_unique:
+  name: Amy
+  registered_at: 2017-05-09 13:28:44
+  address: 1111 19th Ave South
+  city: Seattle
+  state: WA
+  postal_code: "98122"
+  phone: 701-306-7504
+  account_credit: 100.00
+
+
+bad_data:
+  name: Bob
+  registered_at: 2017-05-09 13:28:44
+  address: 1759 19th Ave
+  # city: Seattle
+  state: WA
+  postal_code: "98144"
+  phone: 701-306-7504
+  account_credit: 100.00
+
+negative_account:
+  name: Ann
+  registered_at: 2017-05-09 13:28:44
+  address: 1111 19th Ave South
+  city: Seattle
+  state: WA
+  postal_code: "98122"
+  phone: 701-306-7504
+  account_credit: -100.00
