@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 # GET /customers, #index
 
+
+get 'movies', to:'movies#index', as: 'movies'
 # GET /movies, #index
+
 
 # GET /movies/:title #show
 # params: title
