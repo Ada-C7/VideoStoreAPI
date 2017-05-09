@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Customer do
-  REQUIRED_FIELDS = %w(name registered_at address city state postal_code phone account_credit)
+  REQUIRED_FIELDS = %w(name registered_at address city state postal_code phone account_credit movies_checked_out_count)
 
   let(:new_customer) { Customer.new(
     name: "Orange",
@@ -32,6 +32,22 @@ describe Customer do
     it "account_credit must be a number" do
       new_customer.account_credit = "number"
       new_customer.valid?.must_equal false
+    end
+
+    it "movies_checked_out_count must be a non-negative integer" do
+      new_customer.movies_checked_out_count = "number"
+      new_customer.valid?.must_equal false
+
+      new_customer.movies_checked_out_count = 3.4
+      new_customer.valid?.must_equal false
+
+      new_customer.movies_checked_out_count = -5
+      new_customer.valid?.must_equal false
+    end
+
+    it "movies_checked_out_count defaults to 0" do
+      new_customer.save
+      new_customer.movies_checked_out_count.must_equal 0
     end
   end
 end
