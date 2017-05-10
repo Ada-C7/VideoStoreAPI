@@ -6,13 +6,12 @@ class MoviesController < ApplicationController
 
   def show
     movie = Movie.find_by(title: params[:title])
-    if movie
-      movie_json = movie.as_json(
-      only: [:title, :overview, :release_date, :inventory]
-      )
-      movie_json["available_inventory"] = movie.available_inventory
 
-      render json: movie_json, status: :ok
+    if movie
+      render json: movie.as_json(
+        only: [:title, :overview, :release_date, :inventory],
+        methods: :available_inventory
+      ), status: :ok
     else
       render json: { errors: { title: ["Movie '#{params[:title]}' not found"]} }, status: :not_found
     end
