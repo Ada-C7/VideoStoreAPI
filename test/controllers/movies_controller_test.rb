@@ -46,4 +46,22 @@ describe MoviesController do
       response.parsed_body.must_include "errors"
     end
   end
+
+  describe "show" do
+    it "can get a movie" do
+      get movie_path(movies(:two).title)
+      must_respond_with :success
+    end
+    it "respond with 404 error if cannot get a movie that doesnt exist" do
+      title = "Title that DNE"
+      get movie_path(title)
+      must_respond_with :not_found
+      body = JSON.parse(response.body)
+
+      error_hash = {"errors" => "Cannot find a movie with title #{title}"}
+      body.must_equal error_hash
+    end
+  end
+
+
 end
