@@ -4,4 +4,10 @@ Rails.application.routes.draw do
 
   get '/movies', to: 'movies#index'
   get '/movies/:title', to: 'movies#show', as: 'movie'
+
+  post '/rentals/:title/check-out', to: 'rentals#check_out', as: 'check_out'
+
+  post '/rentals/:title/check-in', to: 'rentals#check_in', as: 'check_in'
+
+  get '/rentals/overdue', to: 'rentals#overdue', as: 'overdue'
 end
