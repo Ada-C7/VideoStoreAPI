@@ -1,19 +1,41 @@
 require "test_helper"
 
 describe RentalController do
-  it "should get overdue" do
-    get rental_overdue_url
-    value(response).must_be :success?
+
+  describe "rentals#overdue" do
+
+    before do
+      get overdue_path
+    end
+
+    it "should get overdue" do
+      value(response).must_be :success?
+    end
+
   end
 
-  it "should get check_out" do
-    get rental_check_out_url
-    value(response).must_be :success?
+  describe "rentals#checkout" do
+
+    before do
+      get checkout_path(title: "Lion King")
+    end
+
+    it "should get checkout" do
+      value(response).must_be :success?
+    end
+
   end
 
-  it "should get check_in" do
-    get rental_check_in_url
-    value(response).must_be :success?
+  describe "rentals#checkin" do
+
+    before do
+      get checkin_path
+    end
+
+    it "should get checkin" do
+      value(response).must_be :success?
+    end
+
   end
 
 end
