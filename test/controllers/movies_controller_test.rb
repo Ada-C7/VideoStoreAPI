@@ -27,7 +27,7 @@ describe MoviesController do
         get movies_url
 
         body = JSON.parse(response.body)
-        body.length.must_equal Pet.count
+        body.length.must_equal Movie.count
       end
 
       it "returns movies with exactly the required fields" do
@@ -70,7 +70,7 @@ describe MoviesController do
 
       KEYS.each do |key|
         body[key].must_equal movies(:three)[key]
-        #body["human"].must_equal pets(:two).human
+        #body["title"].must_equal movies(:two).title
       end
     end
 
@@ -102,7 +102,7 @@ describe MoviesController do
 
         proc {
           post movie_path, params: {movie: bad_data}
-        }.must_change 'Movie.count', 0 #also works wont_change "Pet.title"
+        }.must_change 'Movie.count', 0 #also works wont_change "Movie.title"
 
         must_respond_with :bad_request
 
