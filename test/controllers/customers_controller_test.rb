@@ -35,7 +35,14 @@ describe CustomersController do
           customer.keys.sort.must_equal KEYS
         end
     end
+
+    it "returns an understandable error message if customers were not found" do
+      customers= Customer.destroy_all
+      get customers_url
+      body = JSON.parse(response.body)
+      body.must_equal "no_customers" => "customers were not found"
+      Customer.count.must_equal 0
+      must_respond_with :not_found
+    end
   end
-
-
 end
