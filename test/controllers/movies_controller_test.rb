@@ -56,10 +56,10 @@ describe MoviesController do
     end
 
     it "Responds correctly when the movie is not found" do
-      get movie_path( Movie.all.last.id + 1 )
+      get movie_path("wrong")
 
       body = JSON.parse(response.body)
-      body["nothing"].must_equal true
+      body["errors"].must_equal "title" => ["Movie 'wrong' not found"]
 
       must_respond_with :not_found
     end
@@ -71,6 +71,13 @@ describe MoviesController do
       ONE_MOVIE.each do |key|
         body[key].must_equal movies(:one)[key]
       end
+    end
+
+    it "returns an understandable error message if customers were not found" do
+      get movie_path("wrong")
+      body = JSON.parse(response.body)
+      body.must_equal "errors" => { "title" => ["Movie 'wrong' not found"] }
+      must_respond_with :not_found
     end
   end
 end

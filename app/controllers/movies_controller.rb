@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     if movie
       render json:movie.as_json(except: [:created_at,:updated_at]),status: :ok
     else
-      render json: {nothing: true}, status: :not_found
+      render json: {errors: {title: ["Movie '#{params[:title]}' not found"]} }, status: :not_found
     end
   end
 end
