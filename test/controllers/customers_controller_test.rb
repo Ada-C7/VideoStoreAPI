@@ -28,16 +28,16 @@ describe CustomersController do
       end
     end
 
-    describe "show" do
-      it "can get a customer" do
-        get customer_path(customers(:two).id)
-        must_respond_with :success
-      end
-
-      it "does not get a customer that does not exist" do
-        get customer_path(Customer.last.id+1)
-        must_respond_with :not_found
-      end
-    end
+    # describe "show" do
+    #   it "can get a customer" do
+    #     get customer_path(customers(:two).id)
+    #     must_respond_with :success
+    #   end
+    #
+    #   it "does not get a customer that does not exist" do
+    #     get customer_path(Customer.last.id+1)
+    #     must_respond_with :not_found
+    #   end
+    # end
   end
 end
