@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get "movies", to: "movies#index", as: "movies"
 
+  get "movie/:id", to: "movies#show", as: "movie"
+
   get 'movies/show'
 
   get 'customers/index'

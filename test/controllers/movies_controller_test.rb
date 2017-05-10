@@ -41,5 +41,10 @@ describe MoviesController do
       get movie_path(movies(:two).id)
       must_respond_with :success
     end
+
+    it "does not get a movie that does not exist" do
+      get movie_path(Movie.last.id+1)
+      must_respond_with :not_found
+    end
   end
 end
