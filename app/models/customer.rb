@@ -8,4 +8,7 @@ class Customer < ApplicationRecord
   validates :phone, presence: true
   validates :account_credit, presence: true, numericality: true
   validates :movies_checked_out, presence: true, numericality: true
+
+  has_many :rentals
+  has_many :movies, :through => :rentals
 end
