@@ -56,6 +56,17 @@ describe "validates type" do
   end
 end
 
+describe "associations" do
+  it "has many rentals" do
+    active_record = Movie.reflect_on_association(:rentals)
+    active_record.macro.must_equal :has_many
+  end
 
+
+  it "has many customers" do
+    active_record = Movie.reflect_on_association(:rentals)
+    active_record.macro.must_equal :has_many
+  end
+end
 
 end

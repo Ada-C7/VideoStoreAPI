@@ -60,4 +60,19 @@ describe Customer do
     end
   end
 
+  describe "associations" do
+
+    it "has many rentals" do
+      active_record = Customer.reflect_on_association(:rentals)
+      active_record.macro.must_equal :has_many
+    end
+
+
+    it "has many customers" do
+      active_record = Customer.reflect_on_association(:movies)
+      active_record.macro.must_equal :has_many
+    end
+
+  end
+
 end
