@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 kelsey:
+  id: 1
   name: "Kelsey"
   registered_at: "11-27-2012"
   address: "1111 My Street"
@@ -11,6 +12,7 @@ kelsey:
   account_credit: 9.99
 
 janice:
+  id: 2
   name: "Janice"
   registered_at: "02-04-15"
   address: "222 Your Street"
