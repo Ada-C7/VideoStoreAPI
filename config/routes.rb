@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 #create a route that responds to /zomg that serves a json-encoded "it works!"
-get "customers", to: "customers#index", as: "customers"
+  get "customers", to: "customers#index", as: "customers"
 
 #routes for customers
 
@@ -10,6 +10,7 @@ get "customers", to: "customers#index", as: "customers"
 
 
 #routes for movies
+  get "movies", to: "movies#index", as: "movies"
 
 #route for get/movies - returns list of movies with fields
 
