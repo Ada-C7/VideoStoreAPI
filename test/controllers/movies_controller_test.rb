@@ -44,13 +44,31 @@ describe MoviesController do
   end
 
   describe "create" do
-    let(:movie_data) {
+    before do
+      movie_data =
       {
         title: "Troy",
         overview: "Prince Paris steals Agamemnon's wife bloodbath ensues",
         release_date: "2012",
         inventory: 30
       }
-    }
+
+
+    it"sends status ok after a successful create" do
+      test_movie = Movie.new(movie_data)
+      post movies_url, params: { movie: test_movie}
+    end
+
+    it"sends status :bad_request after a failed call" do
+
+    end
+
+    it "it successfully creates a movie in the database" do
+
+    end
+
+    it "returns movie details upon creation" do
+
+    end
   end
 end
