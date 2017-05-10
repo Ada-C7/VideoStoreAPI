@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     if movie == nil
       render status: :not_found, json:{
         "404 error": { "title": ["Movie #{params[:title]} not found"]  }
-      }
+                                      }
     else
       render json: movie, status: :ok
     end
