@@ -8,4 +8,6 @@ get "movie/:title", to: "movies#show", as: "movie"
 
  post "/movies", to: 'movies#create'
 
-  end
+ get '/customers', to: 'customers#index', as: 'customers'
+
+end

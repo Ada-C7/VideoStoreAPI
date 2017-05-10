@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  registered_at: MyString
-  address: MyString
-  city: MyString
-  state: MyString
-  postal_code: MyString
-  phone: MyString
+  name: Shelley Rocha
+  registered_at: Wed, 29 Apr 2015 07:54:14 -0700
+  address: Ap 292-5216 Ipsum Rd.
+  city: Hillsboro
+  state: OR
+  postal_code: x24309
+  phone: (322) 510-8695
+  account_credit: 13.15
 
 two:
   name: MyString
