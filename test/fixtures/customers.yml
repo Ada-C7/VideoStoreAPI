@@ -4,8 +4,24 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  name: Fannie Mae
+  registered_at: Fri, 29 Apr 2013 07:74:14 -0700
+  address: 5216 Ipsum St.
+  city: Seattle
+  state: WA
+  postal_code: string
+  phone: (425) 240 9511
+  account_credit: 2.10
+  movies_checked_out_count: 1
+
+two:
+  name: Freddie Mac
+  registered_at: Sat, 29 Apr 2013 07:74:14 -0700
+  address: 292-5216 Ipsum Rd.
+  city: Waterloo
+  state: OR
+  postal_code: string
+  phone: (425) 240 9511
+  account_credit: 54.64
+  movies_checked_out_count: 0
