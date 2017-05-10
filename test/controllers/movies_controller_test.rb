@@ -2,7 +2,7 @@ require "test_helper"
 
 describe MoviesController do
   MOVIE_INDEX_KEYS = %w(release_date title)
-  MOVIE_SHOW_KEYS = %w(inventory overview release_date title)
+  MOVIE_SHOW_KEYS = %w(available_inventory inventory overview release_date title)
 
   describe "index" do
     it "is a real working route" do
@@ -58,7 +58,7 @@ describe MoviesController do
       get movie_path(movies(:one).title)
       body = JSON.parse(response.body)
 
-      MOVIE_SHOW_KEYS.each do |key|
+      MOVIE_SHOW_KEYS[1..-1].each do |key|
         body[key].must_equal movies(:one)[key]
       end
     end
