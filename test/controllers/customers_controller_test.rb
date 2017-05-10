@@ -1,9 +1,7 @@
 require "test_helper"
 
 describe CustomersController do
-  KEYS = %w(id name registered_at address city state postal_code phone account_credit)
-
-  [:id, :name, :registered_at, :postal_code, :phone, :movies_checked_out_count]
+  KEYS = %w(id name phone postal_code registered_at)
 
   describe "index" do
     it "is a real working route" do
