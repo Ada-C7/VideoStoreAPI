@@ -10,4 +10,13 @@ class MoviesController < ApplicationController
     end
   end
 
+  def show
+    movie = Movie.find_by(title: params[:title])
+
+    if movie
+      render :json => movie, status: :ok
+    else
+      render :json => movie, status: :no_content
+    end
+  end
 end

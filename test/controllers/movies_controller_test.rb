@@ -37,11 +37,23 @@ describe MoviesController do
     end
 
     it "Renders 204 for when no movies in data base" do
-      Movies.destroy_all
+      Movie.destroy_all
 
       get movies_url
       assert_response :no_content
     end
+  end
 
+  describe 'Show' do
+    it 'can get a movie' do
+      get movie_path(movies(:one).title)
+      must_respond_with :success
+      movies(:one).title.must_equal "MyString"
+    end
+
+    it 'returns 204 if movies does not exist' do
+      get movie_path(Movie.last.title + "random_bug")
+      must_respond_with :no_content
+    end
   end
 end
