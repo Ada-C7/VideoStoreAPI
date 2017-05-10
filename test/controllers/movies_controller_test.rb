@@ -38,7 +38,28 @@ describe MoviesController do
   end
 
   describe "show" do
+    it "can get a movie that exists" do
+      get movie_path('psycho')
+      must_respond_with :success
 
+    end
+
+    it "returns json" do
+      get movie_path('psycho')
+      response.header['Content-Type'].must_include 'json'
+    end
+
+
+    # it "gives an approriate error message and status not found for a movie that does not exist" do
+    #   id= Movie.last.id + 1
+    #   get movie_path(id)
+    #   must_respond_with :not_found
+    #
+    #   body = JSON.parse(response.body)
+    #
+    #   error_hash = { "error" => "Could not find a movie with title #{title}"}
+    #   body.must_equal error_hash
+    # end
 
   end
 

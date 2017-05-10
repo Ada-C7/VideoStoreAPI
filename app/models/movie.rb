@@ -6,4 +6,5 @@ class Movie < ApplicationRecord
     inventory
   end
 
+
 end
