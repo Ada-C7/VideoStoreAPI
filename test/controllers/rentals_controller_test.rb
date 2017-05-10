@@ -104,13 +104,29 @@ describe RentalsController do
       updated_rental.status.must_equal "Returned"
     end
 
-    it "if Movie not found, return error and should not update database" do
+    it "if Movie not found, return appropriate error & message" do
       post checkin_path("Bad Title"), params: {rental: rental_data}
 
       must_respond_with :not_found
+
+      body = JSON.parse(response.body)
+      body.must_equal "message" => "Movie not found"
     end
 
-    it "if Rental not found, return error and should not update database" do skip
+    it "if Rental not found, return error and should not update database" do
+      #there is no rental fixture with movie two.
+      movie = movies(:two)
+      title = movie.title
+
+      post checkin_path(title), params: {rental: rental_data}
+
+      must_respond_with :not_found
+
+      body = JSON.parse(response.body)
+      body.must_equal "message" => "Rental not found"
+
+      not_updated = Movie.find_by_title(title)
+      not_updated.available_inv.must_equal movies(:two).available_inv
     end
   end
 end
