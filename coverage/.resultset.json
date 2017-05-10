@@ -1,0 +1,39 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/Users/brenna/ada/week14/VideoStoreAPI/app/models/movie.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/brenna/ada/week14/VideoStoreAPI/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/brenna/ada/week14/VideoStoreAPI/app/models/customer.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/brenna/ada/week14/VideoStoreAPI/app/models/rental.rb": [
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1494439168
+  }
+}

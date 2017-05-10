@@ -37,8 +37,10 @@ describe Movie do
       movie.errors.messages.must_include :inventory
   end
 
-  it "has to have a positive inventory number" do
-
+  it "invalid if negative inventory number" do
+    movie = Movie.create(title: "Guardians of the Galaxy, Vol 2", release_date: "2000-12-12", inventory: -5, available_inventory: -5)
+    movie.valid?.must_equal false
+    movie.errors.messages.must_include :inventory
   end
 
   it "is invalid with non-integer inventory" do
@@ -70,6 +72,12 @@ describe Movie do
     movie.valid?.must_equal true
   end
 
+  it "invalid if negative available_inventory number" do
+    movie = Movie.create(title: "Guardians of the Galaxy, Vol 2", release_date: "2000-12-12", inventory: -5, available_inventory: -5)
+    movie.valid?.must_equal false
+    movie.errors.messages.must_include :available_inventory
+  end
+
   it "available inventory is invalid if greater than inventory" do
     movie = Movie.create(title: "Guardians of the Galaxy, Vol 2", release_date: "2000-12-12", inventory: 5, available_inventory: 50)
     movie.valid?.must_equal false
@@ -82,6 +90,7 @@ describe Movie do
   end
 
   it "returns an array of rentals" do
+      # puts movie.rentals
       movie.rentals.each do |rental|
           rental.must_be_instance_of Rental
           rental.movie.must_equal movie
@@ -94,6 +103,7 @@ describe Movie do
   end
 
   it "returns an array of customers" do
+      # puts movie.customers
       movie.customers.each do |customer|
           customer.must_be_instance_of Customer
           customer.movie.must_equal movie
