@@ -1,13 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  overview: MyString
-  release_date: MyString
+all_fields:
+  title: Best Movie
+  overview: best movie
+  release_date: "01-01-2000"
   inventory: 1
 
-two:
-  title: MyString
-  overview: MyString
-  release_date: MyString
+missing_title:
+  overview: great movie
+  release_date: "01-01-2000"
+  inventory: 1
+
+same_title:
+  title: Same Title
+  overview: great movie
+  release_date: "01-01-2000"
   inventory: 1
