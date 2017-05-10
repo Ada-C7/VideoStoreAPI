@@ -55,7 +55,7 @@ describe MoviesController do
       body = JSON.parse(response.body)
 
       MOVIE_SHOW_KEYS.each do |key|
-          next if key == "available_inventory"
+        next if key == "available_inventory"
         body[key].must_equal arabia[key]
       end
     end
