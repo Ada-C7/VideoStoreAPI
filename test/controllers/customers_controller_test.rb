@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe "CustomersController" do
-KEYS = %w(id name phone postal_code registered_at)
+KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
 # need to eventually include movies_checked_out_count
 
   describe "index" do
