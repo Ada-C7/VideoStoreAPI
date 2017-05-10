@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   # get '/zomg', to: 'application#index', as: 'zomg'
   resources :customers, only: [:index]
-  resources :movies, only: [:index, :show]
-
+  resources :movies, only: [:index]
+  get '/movies/:title', to: 'movies#show', as: 'movie' 
 
   # post /rentals/:title/checkout
   # post /rentals/:title/checkin
