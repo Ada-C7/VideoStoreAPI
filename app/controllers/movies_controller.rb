@@ -27,11 +27,11 @@ class MoviesController < ApplicationController
   end
 
   def checkin
-    # movie = Movie.find_by(title: params[:title].capitalize)
+    movie = Movie.find_by(title: params[:title].capitalize)
     rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id])
     if rental
       rental.returned_date = Time.now
-      render json: rental, status: ok
+      render json: rental, status: :ok
     else
       render json: rental, status: :not_found
     end
