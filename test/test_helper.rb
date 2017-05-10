@@ -3,6 +3,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
 require "minitest/reporters"  # for Colorized output
+require 'simplecov'
+SimpleCov.start
 
 #  For colorful output!
 Minitest::Reporters.use!(
