@@ -7,4 +7,9 @@ describe MoviesController do
           must_respond_with :ok
      end
 
+     it "should get show" do
+          get movie_path(movies(:one).title) 
+          must_respond_with :ok
+     end
+
 end
