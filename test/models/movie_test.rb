@@ -5,7 +5,8 @@ describe Movie do
     title: "Nemo",
     overview: "Just keep swimming",
     release_date: "2010",
-    inventory: 25
+    inventory: 25,
+    available_inventory: 12
     )
   }
 
@@ -13,7 +14,7 @@ describe Movie do
     movie.must_be :valid?
   end
 
-  REQUIRED_FIELDS = %w(title overview release_date inventory)
+  REQUIRED_FIELDS = %w(title overview release_date inventory available_inventory)
 
   REQUIRED_FIELDS.each do | field |
     it "Movie must have a #{field}" do
@@ -42,9 +43,14 @@ describe Movie do
     duplicate_movie.errors.messages.must_include :title
   end
 
-  it "Inventory must be a number" do
-    movie.inventory = "zero"
-    movie.valid?.must_equal false
-    movie.errors.messages.must_include :inventory
+  NUMERICALITY_FIELDS = %w(inventory available_inventory)
+
+  NUMERICALITY_FIELDS.each do | field |
+    it "Movie's #{field} must be a number" do
+      movie[field] = "zero"
+      movie.valid?.must_equal false
+      movie.errors.messages.must_include field.to_sym
+    end
   end
+
 end
