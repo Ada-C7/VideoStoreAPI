@@ -48,7 +48,7 @@ describe CustomersController do
       must_respond_with :not_found
 
       body = JSON.parse(response.body)
-      body.must_include "errors"
+      body["errors"].must_include "customer"
     end
 
     it "when gets a customer has the right info" do
