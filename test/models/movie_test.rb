@@ -1,9 +1,15 @@
 require "test_helper"
 
 describe Movie do
-  let(:movie) { Movie.new }
 
-  it "must be valid" do
-    value(movie).must_be :valid?
-  end
+     describe "purpose" do
+
+          before do
+               @movie = Movie.create
+          end
+
+          it "creates a movie" do
+               @movie.must_be_kind_of Movie
+          end
+     end
 end

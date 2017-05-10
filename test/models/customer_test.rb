@@ -1,9 +1,15 @@
 require "test_helper"
 
 describe Customer do
-  let(:customer) { Customer.new }
 
-  it "must be valid" do
-    value(customer).must_be :valid?
-  end
+     describe "purpose" do
+
+          before do
+               @customer = Customer.create
+          end
+
+          it "creates a customer" do
+               @customer.must_be_kind_of Customer
+          end
+     end
 end
