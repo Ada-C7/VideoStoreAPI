@@ -34,6 +34,15 @@ describe MoviesController do
         movie.keys.sort.must_equal ALL_MOVIES
       end
     end
+
+    it "returns an understanable error message if movies were not found" do
+      movies = Movie.destroy_all
+      get movies_url
+      body = JSON.parse(response.body)
+      body.must_equal "no_movies" => "Movies were not found"
+      Movie.count.must_equal 0
+      must_respond_with :not_found
+    end
   end
 
   describe "show" do

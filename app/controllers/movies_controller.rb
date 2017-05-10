@@ -5,7 +5,11 @@ class MoviesController < ApplicationController
 
   def index
     movies = Movie.all
-    render json: movies.as_json(only: [:title, :release_date])
+    if movies.length > 1
+      render json: movies.as_json(only: [:title, :release_date]), status: :ok
+    else
+      render json: { no_movies: "Movies were not found" }, status: :not_found
+    end
   end
 
   def show
