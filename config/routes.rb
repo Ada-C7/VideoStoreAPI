@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get 'movies/:title', to: 'movies#show', as: 'movie'
 
 
-  post "/rentals/:title/check-out", to: "rentals#create"
+  post "/rentals/:title/check-out", to: "rentals#create", as: 'rental'
   patch "/rentals/:title/check-in", to: "rentals#update"
 end

@@ -49,7 +49,7 @@ describe MoviesController do
 
   describe "show" do
     it "can get a movie" do
-      get movie_path(movies(:two).title)
+      get movie_path(movies(:movie2).title)
       must_respond_with :success
     end
     it "respond with 404 error if cannot get a movie that doesnt exist" do
