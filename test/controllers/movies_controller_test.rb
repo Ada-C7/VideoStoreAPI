@@ -36,4 +36,14 @@ describe MoviesController do
       body.must_equal error_hash
     end
   end
+
+  describe "show" do
+
+
+  end
+
+
+
+
+
 end
