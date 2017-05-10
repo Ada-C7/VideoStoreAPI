@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
   validates :overview, presence: true
   validates :release_date, presence: true
   validates :inventory, presence: true
+  has_many :rentals
 
   def available_inventory
     inventory

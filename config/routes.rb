@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/customers', to: 'customers#index'
   get '/movies', to: 'movies#index'
   get '/movies/:title', to: 'movies#show', as: 'movie'
+  post '/rentals/:title/check-out', to: 'rentals#check_out', as: 'check_out'
 end

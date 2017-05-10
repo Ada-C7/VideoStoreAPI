@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
   validates :state, presence: true
   validates :postal_code, presence: true
   validates :phone, presence: true, uniqueness: true
+  has_many :rentals
 
   def movies_checked_out_count
     0
