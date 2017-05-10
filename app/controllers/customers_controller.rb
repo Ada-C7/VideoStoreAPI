@@ -8,6 +8,12 @@ class CustomersController < ApplicationController
 
   def show
     customer = Customer.find_by(id: params[:id])
-    render json: customer.as_json(only: [:id, :name, :registered_at, :postal_code, :phone]), status: :ok
+    if customer
+      render json: customer.as_json(only: [:id, :name, :registered_at, :postal_code, :phone]), status: :ok
+    else
+      render json: {}, status: :not_found
+    end
   end
+
+
 end
