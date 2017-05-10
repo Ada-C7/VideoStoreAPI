@@ -2,9 +2,7 @@
 
 class RentalsController < ApplicationController
 
-  def index
-    rentals = Rental.all
-  end
+
   def create
     # example of params
     # {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
@@ -40,6 +38,12 @@ class RentalsController < ApplicationController
     else
       render status: :bad_request, json: { errors: rental.errors.messages }
     end
+  end
+
+
+  def get_overdue
+    overdue_rentals = Rental.overdue_movies
+    render status: :ok, json: overdue_rentals
   end
 
   private

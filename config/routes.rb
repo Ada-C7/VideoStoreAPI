@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   post "/rentals/:title/check-out", to: "rentals#create"
   patch "/rentals/:title/check-in", to: "rentals#update"
+
+  get "/rentals/overdue", to: "rentals#get_overdue"
 end

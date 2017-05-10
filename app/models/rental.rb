@@ -25,7 +25,7 @@ class Rental < ApplicationRecord
   def self.get_overdue
     array_of_overdue = []
     Rental.all.each do |rental|
-      if #due_date before today
+      if rental.due_date < Date.today
         rental.status = "overdue"
         rental.save
         array_of_overdue << rental
