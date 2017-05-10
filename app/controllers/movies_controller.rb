@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
 
   def show
     movie = Movie.find_by(title: params[:title])
-
+    # raise
     if movie
       render json:movie.as_json(except: [:created_at,:updated_at]),status: :ok
     else
