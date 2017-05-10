@@ -10,7 +10,7 @@ describe Movie do
 
   REQUIRED_FIELDS = %w(title release_date inventory)
 
-  describe "validations" do
+  describe "validations ===========" do
     it "can create a movie" do
       new_movie.must_be :valid?
       new_movie.save.must_equal true
@@ -35,19 +35,19 @@ describe Movie do
       new_movie.valid?.must_equal false
     end
 
-    it "available_inventory must be an integer between 0 and inventory" do
-      new_movie.available_inventory = "number"
-      new_movie.valid?.must_equal false
-
-      new_movie.available_inventory = 1.5
-      new_movie.valid?.must_equal false
-
-      new_movie.available_inventory = -4
-      new_movie.valid?.must_equal false
-
-      new_movie.available_inventory = new_movie.inventory + 1
-      new_movie.valid?.must_equal false
-    end
+    # it "available_inventory must be an integer between 0 and inventory" do
+    #   new_movie.available_inventory = "number"
+    #   new_movie.valid?.must_equal false
+    #
+    #   new_movie.available_inventory = 1.5
+    #   new_movie.valid?.must_equal false
+    #
+    #   new_movie.available_inventory = -4
+    #   new_movie.valid?.must_equal false
+    #
+    #   new_movie.available_inventory = new_movie.inventory + 1
+    #   new_movie.valid?.must_equal false
+    # end
 
     it "title must be unique" do
       new_movie.title = movies(:one).title
@@ -56,9 +56,9 @@ describe Movie do
   end
 
   describe "custom methods" do
-    it "available_inventory gets set to inventory by default" do
-      new_movie.save
-      new_movie.available_inventory.must_equal new_movie.inventory
-    end
+    # it "available_inventory gets set to inventory by default" do
+    #   new_movie.save
+    #   new_movie.available_inventory.must_equal new_movie.inventory
+    # end
   end
 end
