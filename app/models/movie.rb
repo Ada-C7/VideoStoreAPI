@@ -9,7 +9,7 @@ class Movie < ApplicationRecord
 
   def available_inventory
     # TODO Fix this
-    rentals = Rental.checked_out(id)
+    rentals = Rental.checked_out_by_movie(id)
     whats_left = inventory - rentals.length
     return whats_left
   end

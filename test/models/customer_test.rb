@@ -12,26 +12,42 @@ describe Customer do
     postal_code: "22222",
     phone: "555-555-5556",
     account_credit: 1.23
-  ) }
+    ) }
 
-  describe "Validations" do
-    it "can create a customer" do
-      new_customer.must_be :valid?
-      new_customer.save.must_equal true
-    end
-
-    REQUIRED_FIELDS.each do |field|
-      it "#{field} is required" do
-        new_customer[field] = nil
-        new_customer.valid?.must_equal false
-        new_customer.errors.messages.must_include field.to_sym
+    describe "Validations" do
+      it "can create a customer" do
+        new_customer.must_be :valid?
+        new_customer.save.must_equal true
       end
+
+      REQUIRED_FIELDS.each do |field|
+        it "#{field} is required" do
+          new_customer[field] = nil
+          new_customer.valid?.must_equal false
+          new_customer.errors.messages.must_include field.to_sym
+        end
+      end
+
+      it " Account_credit must be a number" do
+        new_customer.account_credit = "number"
+        new_customer.valid?.must_equal false
+      end
+
     end
 
-    it "account_credit must be a number" do
-      new_customer.account_credit = "number"
-      new_customer.valid?.must_equal false
-    end
+    describe " Custom Methods" do
 
+      it " Returns number of movies checked out by customer instance" do
+        customers(:one).movie_checked_out_count.must_equal 2
+      end
+
+      it " Returns 0 if customer has not checked out any movies" do
+        customers(:three).movie_checked_out_count.must_equal 0
+      end
+
+      it " Retuns correct number when customer has checked in rentals " do
+        customers(:two).movie_checked_out_count.must_equal 1
+      end
+
+    end
   end
-end
