@@ -41,8 +41,9 @@ ActiveRecord::Schema.define(version: 20170509213752) do
     t.integer  "customer_id"
     t.integer  "movie_id"
     t.string   "due_date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "returned_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["customer_id"], name: "index_rentals_on_customer_id", using: :btree
     t.index ["movie_id"], name: "index_rentals_on_movie_id", using: :btree
   end

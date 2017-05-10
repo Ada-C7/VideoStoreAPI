@@ -1,3 +1,3 @@
 class CustomerSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :name, :movies_checked_out_count, :phone
 end
