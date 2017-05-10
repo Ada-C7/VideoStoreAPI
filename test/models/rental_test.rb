@@ -68,5 +68,20 @@ describe Rental do
 
       Rental.checked_out_by_movie(Movie.last.id + 1).must_equal nil
     end
+
+    it ' Returns list of checked out movies based on customer id ' do
+    Rental.checked_out_by_customer(customers(:one).id).length.must_equal 2
+    Rental.checked_out_by_customer(customers(:one).id).must_include rentals(:one)
+    end
+
+    it ' Returns empty array when no moives(s) is/are checked out match the customer id that was passed ' do
+
+      Rental.checked_out_by_customer(customers(:three).id).must_equal []
+    end
+
+    it 'returns nil when no id matches ' do
+
+      Rental.checked_out_by_customer(Customer.last.id + 1).must_equal nil
+    end
    end
 end
