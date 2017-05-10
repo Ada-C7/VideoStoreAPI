@@ -21,5 +21,22 @@ describe Movie do
     end
 
   end
+  describe "model methods" do
+    it "returns the correct amount of available inventory" do
+      psycho = movies(:psycho)
+      psycho.must_respond_to :available_inventory
+      psycho.available_inventory.must_equal 7
+      psycho.inventory.must_equal 8
+    end
 
+    it "changes when I check out a new movie" do
+      rental = rentals(:three)
+      psycho = movies(:psycho)
+      psycho.available_inventory.must_equal 7
+      rental.checked_out = true
+      rental.save
+      psycho.reload
+      psycho.available_inventory.must_equal 6
+    end
+  end
 end

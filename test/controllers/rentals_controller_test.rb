@@ -1,7 +1,16 @@
 require "test_helper"
 
 describe RentalsController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  describe "checkout method" do
+    it "can check out a movie" do
+    end
+
+    it "won't check out a movie that doesn't exist" do
+
+    end
+    it "won't check out a movie if a customer doesn't exist" do
+
+    end
+
+  end
 end

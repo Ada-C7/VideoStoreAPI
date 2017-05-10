@@ -3,7 +3,7 @@
 one:
   movie: psycho
   customer: shelley
-  checked_out: false
+  checked_out: true
   due_date: 2017-05-09
 
 two:
