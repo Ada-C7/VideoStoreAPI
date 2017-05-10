@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
     validates :registered_at, presence: true
     validates :phone, presence: true
 
-    def checked_out_movies
+    def movies_checked_out_count
         movies.length
     end
 
