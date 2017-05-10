@@ -1,4 +1,7 @@
 class Movie < ApplicationRecord
+  has_many :rentals
+  has_many :customers, through: :rentals
+
   validates :title, presence:true
   # validates :title, format:{ with: /\A[a-z +A-Z0-9+ -:.,\n-&!]+\z/,
     # message: "incorrect title format" }
@@ -10,6 +13,8 @@ class Movie < ApplicationRecord
 
   validates :inventory, presence:true
   validates :inventory, numericality:true
+
+
 
 
 
