@@ -6,14 +6,13 @@ class Customer < ApplicationRecord
 
 
   def movies_checked_out_count
-
-    self.rentals
-    if rentals.due_date 
-    # if @rentals.nil?
-    #   rentals_count = 0
-    # else
-    #   rentals_count = rentals.count
-    # end
-    # return rentals.count
+    count = 0
+    self.rentals.each do |rental|
+      if rental.returned_date.nil?
+        count += 1
+      end
+    end
+    return count
   end
+
 end
