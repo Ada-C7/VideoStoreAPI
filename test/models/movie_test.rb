@@ -1,11 +1,14 @@
 require "test_helper"
 
 describe Movie do
-  let(:movie) { movies(:firewalk, :strange).sample }
+  let(:movie) { movies(:firewalk) }
+
+  it "is a valid object with title, release_date, inventory, and available_inventory" do
+    movie.valid?.must_equal true
+  end
 
   it "must have a title" do
-      movie.title.must_equal movie.title
-      movie.valid?.must_equal true
+      movie.title.must_equal "Firewalk with Me"
   end
 
   it "is invalid without a title" do
@@ -15,8 +18,7 @@ describe Movie do
   end
 
   it "must have a release date" do
-      movie.release_date.must_equal movie.release_date
-      movie.valid?.must_equal true
+      movie.release_date.must_equal "2017-05-14"
   end
 
   it "is invalid without a release date" do
@@ -26,9 +28,8 @@ describe Movie do
   end
 
   it "must have integer inventory" do
-      movie.inventory.must_equal movie.inventory
+      movie.inventory.must_equal 1
       movie.inventory.class.must_equal Integer
-      movie.valid?.must_equal true
   end
 
   it "is invalid without inventory" do
@@ -50,9 +51,8 @@ describe Movie do
   end
 
   it "is valid with available_inventory" do
-    movie.available_inventory.must_equal movie.available_inventory
+    movie.available_inventory.must_equal 1
     movie.available_inventory.class.must_equal Integer
-    movie.valid?.must_equal true
   end
 
   it "is invalid without available_inventory" do
@@ -85,8 +85,7 @@ describe Movie do
   end
 
   it "can have overview" do
-      movie.overview.must_equal movie.overview
-      movie.valid?.must_equal true
+      movie.overview.must_equal "David Lynch's prequel to Twin Peaks. Did you know next week there is a scavenger hunt in real Twin Peaks?!?!?!"
   end
 
   it "returns an array of rentals" do
@@ -106,7 +105,7 @@ describe Movie do
       # puts movie.customers
       movie.customers.each do |customer|
           customer.must_be_instance_of Customer
-          customer.movie.must_equal movie
+          customer.movies.must_include movie
       end
   end
 

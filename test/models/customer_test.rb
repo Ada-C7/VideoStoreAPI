@@ -1,11 +1,14 @@
 require "test_helper"
 
 describe Customer do
-    let(:customer) { customers(:alison, :brenna).sample }
+    let(:customer) { customers(:alison) }
+
+    it "is a valid object with name, registered_at, and phone" do
+      customer.valid?.must_equal true
+    end
 
     it "must have a name" do
-        customer.name.must_equal customer.name
-        customer.valid?.must_equal true
+      customer.name.must_equal "Alison Zerbe"
     end
 
     it "is invalid without a name" do
@@ -15,8 +18,7 @@ describe Customer do
     end
 
     it "must have a phone number" do
-        customer.phone.must_equal customer.phone
-        customer.valid?.must_equal true
+        customer.phone.must_equal "999-999-9999"
     end
 
     it "is invalid without a phone number" do
@@ -26,8 +28,7 @@ describe Customer do
     end
 
     it "must have a registered_at date" do
-        customer.registered_at.must_equal customer.registered_at
-        customer.valid?.must_equal true
+        customer.registered_at.must_equal "2017-05-09"
     end
 
     it "is invalid without a reqistered_at date" do
@@ -39,11 +40,10 @@ describe Customer do
 
     it "can have address, city, state, postal_code, account_credit" do
         customer.address.must_equal customer.address
-        customer.city.must_equal customer.city
-        customer.state.must_equal customer.state
-        customer.postal_code.must_equal customer.postal_code
-        customer.account_credit.must_equal customer.account_credit
-        customer.valid?.must_equal true
+        customer.city.must_equal "Seattle"
+        customer.state.must_equal "WA"
+        customer.postal_code.must_equal "99999"
+        customer.account_credit.must_equal 1.0
     end
 
     it "returns an array of rentals" do
@@ -61,7 +61,7 @@ describe Customer do
     it "returns an array of movies" do
         customer.movies.each do |movie|
             movie.must_be_instance_of Movie
-            movie.customer.must_equal customer
+            movie.customers.must_include customer
         end
     end
 

@@ -5,13 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-    customer_id: brenna
-    movie_id: strange
+    customer_id: 1
+    movie_id: 1
     checkout_date: 2017-05-02
     due_date: 2017-05-09
 
 two:
-    customer_id: alison
-    movie_id: firewalk
+    customer_id: 2
+    movie_id: 2
     checkout_date: 2017-05-01
     due_date: 2017-05-08

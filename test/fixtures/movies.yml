@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 firewalk:
+  id: 1
   title: Firewalk with Me
   overview: David Lynch's prequel to Twin Peaks. Did you know next week there is a scavenger hunt in real Twin Peaks?!?!?!
   release_date: "2017-05-14"
@@ -8,6 +9,7 @@ firewalk:
   available_inventory: 1
 
 strange:
+  id: 2
   title: Doctor Strange
   overview: Benedict Cumberbatch goes to Nepal to hang with Tilda Swinton, magic ensues.
   release_date: "2016-10-20"
