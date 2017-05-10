@@ -57,8 +57,9 @@ describe MoviesController do
       get movie_path(title)
       must_respond_with :not_found
       body = JSON.parse(response.body)
-
-      error_hash = {"errors" => "Cannot find a movie with title #{title}"}
+      error_hash = {
+        "errors" => { "title"=> ["Movie #{title} not found"]  }
+      }
       body.must_equal error_hash
     end
   end
