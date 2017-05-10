@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509213301) do
+ActiveRecord::Schema.define(version: 20170510201715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20170509213301) do
     t.string   "state"
     t.string   "postal_code"
     t.string   "phone"
-    t.integer  "movies_checked_out_count", default: 0
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.float    "account_credit"
+    t.integer  "rentals_count",  default: 0
   end
 
   create_table "movies", force: :cascade do |t|
@@ -34,9 +34,21 @@ ActiveRecord::Schema.define(version: 20170509213301) do
     t.string   "overview"
     t.string   "release_date"
     t.integer  "inventory"
-    t.integer  "available_inventory", default: 0
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "available_inventory"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.date     "duedate"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "customer_id"
+    t.integer  "movie_id"
+    t.index ["customer_id"], name: "index_rentals_on_customer_id", using: :btree
+    t.index ["movie_id"], name: "index_rentals_on_movie_id", using: :btree
+  end
+
+  add_foreign_key "rentals", "customers"
+  add_foreign_key "rentals", "movies"
 end
