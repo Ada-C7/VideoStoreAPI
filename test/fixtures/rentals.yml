@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  due_date: 2017-05-14
+  returned: false
+  customer: one
+  movie: one
+
+two:
+  due_date: 2017-05-17
+  returned: false
+  customer: two
+  movie: two
