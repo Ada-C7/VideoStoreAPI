@@ -13,3 +13,8 @@ rental_two:
   customer: bare_minimum
   movie: heat
   duedate: 2017-08-13
+
+rental_overdue:
+  customer: has_all
+  movie: heat
+  duedate: 2017-03-26

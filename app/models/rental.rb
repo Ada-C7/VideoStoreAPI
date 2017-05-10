@@ -3,4 +3,8 @@ class Rental < ApplicationRecord
   belongs_to :customer, counter_cache: true
 
   validates :duedate, presence: true
+
+  def overdue?
+    Date.parse(self.duedate) < Date.today
+  end
 end
