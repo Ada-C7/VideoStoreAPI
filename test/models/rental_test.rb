@@ -35,4 +35,30 @@ describe Rental do
     end
   end
 
+
+  describe "overdue" do
+    it "returns an array of rentals" do
+      rentals = Rental.overdue
+      rentals.must_be_kind_of Array
+
+      rentals.each do |rental|
+        rental.must_be_kind_of Rental
+      end
+    end
+
+    it "returns an empty array if no rentals are overdue" do
+
+      all_rentals = Rental.all
+      all_rentals.each do |rental|
+        rental.checked_out = false
+        rental.save
+      end
+
+      rentals = Rental.overdue
+      rentals.must_be_kind_of Array
+      rentals.empty?.must_equal true
+    end
+  end
+
+
 end
