@@ -10,4 +10,6 @@ get "movie/:title", to: "movies#show", as: "movie"
 
  get '/customers', to: 'customers#index', as: 'customers'
 
+
+
 end
