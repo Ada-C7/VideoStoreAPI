@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  registered_at: MyString
-  postal_code: MyString
-  phone: MyString
-  movies_checked_out_count: 1
-  address: MyString
-  city: MyString
-  state: MyString
+  name: Tofu
+  registered_at: Wed, 29 Apr 2015 07:54:14 -0700
+  postal_code: 55555
+  phone: 485-529-9385
+  movies_checked_out_count: 0
+  address: 837 Fluff Fluff Lane
+  city: Seattle
+  state: WA
 
 two:
-  name: MyString
-  registered_at: MyString
-  postal_code: MyString
-  phone: MyString
-  movies_checked_out_count: 1
-  address: MyString
-  city: MyString
-  state: MyString
+  name: Toffee
+  registered_at: Wed, 29 Apr 2015 07:54:14 -0700
+  postal_code: 99373
+  phone: 927-836-9163
+  movies_checked_out_count: 0
+  address: 937 Bark Bark Aveneue
+  city: Freeport
+  state: NY

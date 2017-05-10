@@ -47,12 +47,10 @@ ActiveRecord::Schema.define(version: 20170509235238) do
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.string   "title"
+    t.string   "movie_id"
     t.integer  "customer_id"
-    t.string   "name"
-    t.string   "postal_code"
-    t.string   "checkout_date"
-    t.string   "due_date"
+    t.datetime "checkout_date"
+    t.datetime "due_date"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
