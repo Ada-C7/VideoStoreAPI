@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   get 'movies', to: 'movies#index', as: 'movies'
   get 'movies/:title', to: 'movies#show', as: 'movie'
 
+
+  post "/rentals/:title/check-out", to: "rentals#create"
+  patch "/rentals/:title/check-in", to: "rentals#update"
 end
