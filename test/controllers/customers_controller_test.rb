@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe CustomersController do
-  CUSTOMER_KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
+  CUSTOMER_KEYS = %w(id name phone postal_code registered_at)
 
   describe "index" do
     it "is a real working route" do
