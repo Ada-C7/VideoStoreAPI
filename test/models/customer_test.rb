@@ -1,8 +1,6 @@
 require "test_helper"
 
 describe Customer do
-
-
   describe 'validations for Customer' do
     it 'requires a name' do
       ada = customers(:one)
@@ -31,7 +29,14 @@ describe Customer do
       jane.valid?.must_equal false
       jane.errors.messages.must_include :phone
     end
+  end
 
+  describe "custom methods" do
+    #need to update when we add rentals
+    it "movies_checked_out_count returns the number of rentals belonging to the customer" do
+      customer = customers(:one)
+      customer.movies_checked_out_count.must_equal 0
 
+    end
   end
 end
