@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
       render json: { errors: "Something is wrong with the database" },
       status: :internal_server_error
     else
-      render json: movies.as_json(only: [:title, :release_date]), status: :ok
+      render json: movies, each_serializer: MovieListSerializer, status: :ok
     end
   end
 
@@ -17,8 +17,7 @@ class MoviesController < ApplicationController
         "404 error": { "title": ["Movie #{params[:title]} not found"]  }
       }
     else
-      render json: movie.as_json(only: [ :title, :overview, :release_date, :inventory, :available_inventory ]), status: :ok
+      render json: movie, status: :ok
     end
-
   end
 end
