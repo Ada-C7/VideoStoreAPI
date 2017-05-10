@@ -1,13 +1,13 @@
 require "test_helper"
 
 describe Movie do
-  let(:movie) { Movie.new(hash) }
+  let(:movie) { Movie.new }
 
   it "must be valid" do
     value(movie).must_be :valid?
   end
 
-  describe "initialize" do
+  describe "Make a new movie" do
 
     hash = {
       title: "test_title",
@@ -15,11 +15,6 @@ describe Movie do
       release_date: "1975-06-19",
       inventory: 8
     }
-
-    it "takes a hash" do
-      movie = Movie.new(hash)
-      movie.must_be_kind_of Movie
-    end
 
     it "takes a title" do
       movie = Movie.new(hash)
