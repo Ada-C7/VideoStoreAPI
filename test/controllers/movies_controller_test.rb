@@ -36,9 +36,12 @@ describe MoviesController do
     end
 
     it "responds appropriately when the movie is not found" do
-      get movie_url("This is a fake title okay")
+      fake_title = "This is a fake title okay"
+      expected_error_message = {"errors"=>{"title"=>["Movie '#{fake_title}' not found"]}}
+
+      get movie_url(fake_title)
       body = JSON.parse(response.body)
-      body.must_equal "nothing" => true
+      body.must_equal expected_error_message
       must_respond_with :not_found
     end
   end
