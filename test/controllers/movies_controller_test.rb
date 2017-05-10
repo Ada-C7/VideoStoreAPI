@@ -2,7 +2,8 @@ require "test_helper"
 
 describe MoviesController do
 
-  KEYS = %w(release_date title) #if we loop through this, we can see whether the keys and values work/exist
+  MOVIE_INDEX_KEYS = %w(release_date title) #if we loop through this, we can see whether the keys and values work/exist
+  MOVIE_SHOW_KEYS = %w(available_inventory inventory overview release_date title)
 
   describe 'index' do
     it "is a real wokring route" do
@@ -33,8 +34,32 @@ describe MoviesController do
       get movies_url
       body = JSON.parse(response.body)
       body.each do |movie|
-        movie.keys.sort.must_equal KEYS
+        movie.keys.sort.must_equal MOVIE_INDEX_KEYS
       end
+    end
+  end
+
+  describe "show" do
+    let(:arabia) { movies(:arabia) }
+
+    before do
+      get movie_path(arabia.title)
+    end
+
+    it "should find a movie given a title" do
+      must_respond_with :success
+
+      body = JSON.parse(response.body)
+      body.must_be_instance_of Hash
+      body.keys.sort.must_equal MOVIE_SHOW_KEYS
+    end
+
+    it "should return a movie with the right information" do skip
+
+    end
+
+    it "should return not found if the movie is not found" do skip
+
     end
   end
 
