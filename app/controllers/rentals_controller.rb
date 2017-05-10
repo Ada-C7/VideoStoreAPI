@@ -2,17 +2,20 @@ class RentalsController < ApplicationController
 
   def create
     if Movie.find_by_title(params[:title]).nil?
-      id = Movie.find_by_title(params[:title]).id
-    else
       id = 0
+    else
+      id = Movie.find_by_title(params[:title]).id
     end
 
-    rental = Rental.new(movie_id: id, customer_id: rental_params[:customer_id], due_date: rental_params[:due_date] )
+    @rental = Rental.new(movie_id: id, customer_id: rental_params[:customer_id], due_date: rental_params[:due_date] )
 
-    if rental.save
-      render status: :ok, json: rental.as_json
+    if @rental.save
+      render status: :ok, json: @rental.as_json
     else
-      render status: :error, json: { error: true }
+      # @rental.errors.full_messages.each do |message|
+      #   puts message
+      # end
+      render status: :error, json: { error: @rental.errors.full_messages }
     end
 
 
