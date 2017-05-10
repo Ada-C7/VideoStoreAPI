@@ -23,7 +23,7 @@ describe MoviesController do
   end
 
   describe "show" do
-    it "routes successfully with valid id" do
+    it "routes successfully with valid title" do
       get movie_path(movies(:star_wars).title)
       must_respond_with :success
     end
