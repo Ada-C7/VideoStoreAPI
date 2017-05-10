@@ -9,7 +9,7 @@ bare_minimum:
   registered_at: "June 10th, 2015"
   postal_code: 98136
   phone: "555-555-5555"
-  movies_checked_out_count: 0
+  rentals_count: 0
 
 has_all:
   name: "Jou-Jou"
@@ -19,6 +19,4 @@ has_all:
   state: "WA"
   postal_code: 98136
   phone: "555-555-5555"
-  movies_checked_out_count: 0
-
-  
+  rentals_count: 0
