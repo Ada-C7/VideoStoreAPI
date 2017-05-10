@@ -19,7 +19,9 @@ describe RentalsController do
       body.must_be_kind_of Hash
       body.must_include "id"
 
-      Rental.find(body["id"]).due_date.must_equal rental_data[:due_date]
+      new_rental = Rental.find(body["id"])
+      new_rental.due_date.must_equal rental_data[:due_date]
+      new_rental.is_current.must_equal true
     end
 
     it "does not create a new rental if data is missing" do
