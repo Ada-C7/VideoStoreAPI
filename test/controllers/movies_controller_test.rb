@@ -49,6 +49,8 @@ describe MoviesController do
       get movie_path(movies(:one).title)
       must_respond_with :success
       movies(:one).title.must_equal "MyString"
+      movies(:one).title.must_equal "MyString"
+
     end
 
     it 'returns 204 if movies does not exist' do
