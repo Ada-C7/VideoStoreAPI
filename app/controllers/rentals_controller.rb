@@ -1,4 +1,4 @@
-require 'date'
+# require 'date'
 
 class RentalsController < ApplicationController
 
@@ -6,23 +6,24 @@ class RentalsController < ApplicationController
     rentals = Rental.all
   end
   def create
-    rental = Rental.new
+    # example of params
+    # {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
+
     movie = Movie.find_by(title: params[:title])
-    rental.movie_id = movie.id
-    rental.check_out_date = Date.today
-    # rental.return_date = nil
-    rental.due_date = check_out_date + 3
-    rental.status = "checked out"
-
-    rental.customer_id = params[:customer_id]
-    customer = Customer.find(params[:customer_id])
-
-    customer.movies_checked_out_count += 1
-    # movie.available_inventory = inventory - 1 # ??????????
-    if rental.save
-      render status: :ok, json: { id: rental.id }
+    if movie
+      rental_info = {
+                      customer_id: params["rental"]["customer_id"],
+                      movie_id: movie.id
+                    }
+      rental = Rental.create_rental(rental_info)
+      if rental.save
+        render status: :ok, json: { id: rental.id }
+      else
+        render status: :bad_request, json: { errors: rental.errors.messages }
+      end
     else
-      render status: :bad_request, json: { errors: rental.errors.messages }
+      # should we add a check if customer also DNE
+      render status: :bad_request, json: { error: "movie does not exist" }
     end
   end
 
@@ -40,11 +41,6 @@ class RentalsController < ApplicationController
       render status: :bad_request, json: { errors: rental.errors.messages }
     end
   end
-
-
-
-
-
 
   private
   def rental_params
