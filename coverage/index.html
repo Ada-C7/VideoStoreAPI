@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-10T15:32:25-07:00">2017-05-10T15:32:25-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-10T15:38:11-07:00">2017-05-10T15:38:11-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -83,7 +83,7 @@
       <tr>
         <td class="strong"><a href="#c20bdad6f77d6eb606357eb5a4aca57dcff40658" class="src_link" title="app/controllers/rentals_controller.rb">app/controllers/rentals_controller.rb</a></td>
         <td class="green strong">91.18 %</td>
-        <td>72</td>
+        <td>73</td>
         <td>34</td>
         <td>31</td>
         <td>3</td>
@@ -143,7 +143,7 @@
       <tr>
         <td class="strong"><a href="#de5eb12849f0fd32faa55c42d160c4c9af2e438d" class="src_link" title="test/controllers/rentals_controller_test.rb">test/controllers/rentals_controller_test.rb</a></td>
         <td class="green strong">98.57 %</td>
-        <td>156</td>
+        <td>155</td>
         <td>70</td>
         <td>69</td>
         <td>1</td>
@@ -519,7 +519,7 @@
         <li class="never" data-hits="" data-linenumber="2">
           
           
-          <code class="ruby">  </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="3">
@@ -681,262 +681,268 @@
         <li class="covered" data-hits="2" data-linenumber="29">
           <span class="hits">2</span>
           
-          <code class="ruby">      render status: :not_acceptable, json: { message: &quot;movie not available&quot; }</code>
+          <code class="ruby">      render status: :not_acceptable, json: {errors: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        movie: [&quot;The Movie #{movie.title} is not available&quot;] }}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
           <code class="ruby">  def checkin</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="35">
+        <li class="covered" data-hits="5" data-linenumber="36">
           <span class="hits">5</span>
           
           <code class="ruby">    movie = Movie.find_by(title: params[:title])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="37">
+        <li class="covered" data-hits="5" data-linenumber="38">
           <span class="hits">5</span>
           
           <code class="ruby">    if !movie</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="39">
           <span class="hits">1</span>
           
-          <code class="ruby">      render status: :not_found, json: { message: &quot;Movie not found&quot; }</code>
+          <code class="ruby">      render status: :not_found, json: {errors: {movie: [&quot;#{params[:title]} not found&quot; ]}}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="40">
+        <li class="covered" data-hits="4" data-linenumber="41">
           <span class="hits">4</span>
           
           <code class="ruby">      rental = Rental.find_by(customer_id: rental_params[:customer_id], movie_id: movie.id)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="41">
+        <li class="covered" data-hits="4" data-linenumber="42">
           <span class="hits">4</span>
           
           <code class="ruby">      if !rental</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
+        <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
-          <code class="ruby">        render status: :not_found, json: { message: &quot;Rental not found&quot; }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="43">
-          
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">        render status: :not_found, json: {errors: {rental: [&quot;Rental not found&quot; ]}}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="46">
+        <li class="covered" data-hits="5" data-linenumber="47">
           <span class="hits">5</span>
           
           <code class="ruby">    if movie &amp;&amp; rental</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="47">
+        <li class="covered" data-hits="3" data-linenumber="48">
           <span class="hits">3</span>
           
           <code class="ruby">      movie.available_inv += 1</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="48">
+        <li class="covered" data-hits="3" data-linenumber="49">
           <span class="hits">3</span>
           
           <code class="ruby">      movie.save</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="50">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="50">
-          <span class="hits">3</span>
-          
-          <code class="ruby">      rental.status = &quot;Returned&quot;</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="51">
           <span class="hits">3</span>
           
+          <code class="ruby">      rental.status = &quot;Returned&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="52">
+          <span class="hits">3</span>
+          
           <code class="ruby">      rental.save</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="53">
+        <li class="covered" data-hits="3" data-linenumber="54">
           <span class="hits">3</span>
           
           <code class="ruby">      render status: :ok, json: { message: &quot;Your movie has been returned.&quot;}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="58">
+        <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
           <code class="ruby">  def overdue</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby">    # if due date is 31 days ago</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="60">
+        <li class="missed" data-hits="0" data-linenumber="61">
           
           
           <code class="ruby">    if rental.due_date.past?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
           <code class="ruby">      # change status to &quot;overdue&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="62">
+        <li class="missed" data-hits="0" data-linenumber="63">
           
           
           <code class="ruby">      rental.status = &quot;overdue&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="66">
+        <li class="covered" data-hits="1" data-linenumber="67">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="68">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="68">
+        <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
           <code class="ruby">  def rental_params</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="69">
+        <li class="covered" data-hits="11" data-linenumber="70">
           <span class="hits">11</span>
           
           <code class="ruby">    params.require(:rental).permit(:customer_id)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="71">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="73">
           
           
           <code class="ruby">end</code>
@@ -1881,7 +1887,7 @@
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">      body.must_equal  &quot;message&quot; =&gt; &quot;movie not available&quot;</code>
+          <code class="ruby">      body[&quot;errors&quot;].must_include &quot;movie&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
@@ -1890,28 +1896,28 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
           <code class="ruby">    post checkout_path(movies(:two).title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="62">
+        <li class="covered" data-hits="1" data-linenumber="61">
           <span class="hits">1</span>
           
           <code class="ruby">      must_respond_with :not_acceptable</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
@@ -1923,511 +1929,511 @@
         <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="65">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="66">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="67">
+        <li class="covered" data-hits="1" data-linenumber="66">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;won&#39;t change the database if movie isn&#39;t available&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="67">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="69">
+        <li class="covered" data-hits="1" data-linenumber="68">
           <span class="hits">1</span>
           
           <code class="ruby">      post checkout_path(movies(:one).title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="69">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
+        <li class="covered" data-hits="1" data-linenumber="70">
           <span class="hits">1</span>
           
           <code class="ruby">      movie = Movie.last</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="72">
+        <li class="covered" data-hits="1" data-linenumber="71">
           <span class="hits">1</span>
           
           <code class="ruby">      movie.available_inv.must_equal 99</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="never" data-hits="" data-linenumber="72">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="74">
+        <li class="covered" data-hits="1" data-linenumber="73">
           <span class="hits">1</span>
           
           <code class="ruby">      must_respond_with :success</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="75">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="77">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="78">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="79">
+        <li class="covered" data-hits="1" data-linenumber="78">
           <span class="hits">1</span>
           
           <code class="ruby">  describe &quot;Checkin&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="80">
+        <li class="covered" data-hits="1" data-linenumber="79">
           <span class="hits">1</span>
           
           <code class="ruby">    let(:rental_data) {</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="81">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
           <code class="ruby">      {</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="never" data-hits="" data-linenumber="81">
           
           
           <code class="ruby">        customer_id: customers(:one).id,</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="83">
+        <li class="covered" data-hits="5" data-linenumber="82">
           <span class="hits">5</span>
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="never" data-hits="" data-linenumber="83">
           
           
           <code class="ruby">    }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="never" data-hits="" data-linenumber="84">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="86">
+        <li class="covered" data-hits="1" data-linenumber="85">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;should successfully check in the rental&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="87">
+        <li class="covered" data-hits="1" data-linenumber="86">
           <span class="hits">1</span>
           
           <code class="ruby">      post checkin_path(movies(:one).title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="88">
+        <li class="never" data-hits="" data-linenumber="87">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="89">
+        <li class="covered" data-hits="1" data-linenumber="88">
           <span class="hits">1</span>
           
           <code class="ruby">      must_respond_with :success</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="89">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="90">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="92">
+        <li class="covered" data-hits="1" data-linenumber="91">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;should update the available inventory for that movie&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="93">
+        <li class="covered" data-hits="1" data-linenumber="92">
           <span class="hits">1</span>
           
           <code class="ruby">      checkedout = movies(:one)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="94">
+        <li class="covered" data-hits="1" data-linenumber="93">
           <span class="hits">1</span>
           
           <code class="ruby">      title = checkedout.title</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="95">
+        <li class="never" data-hits="" data-linenumber="94">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="96">
+        <li class="covered" data-hits="1" data-linenumber="95">
           <span class="hits">1</span>
           
           <code class="ruby">      post checkin_path(title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="97">
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="98">
+        <li class="covered" data-hits="1" data-linenumber="97">
           <span class="hits">1</span>
           
           <code class="ruby">      updated = Movie.find_by_title(title)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="99">
+        <li class="covered" data-hits="1" data-linenumber="98">
           <span class="hits">1</span>
           
           <code class="ruby">      updated.available_inv.must_equal (checkedout.available_inv + 1)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="100">
+        <li class="never" data-hits="" data-linenumber="99">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="never" data-hits="" data-linenumber="100">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="102">
+        <li class="covered" data-hits="1" data-linenumber="101">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;should update the status of that rental&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="103">
+        <li class="covered" data-hits="1" data-linenumber="102">
           <span class="hits">1</span>
           
           <code class="ruby">      post checkin_path(movies(:one).title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="104">
+        <li class="never" data-hits="" data-linenumber="103">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="105">
+        <li class="never" data-hits="" data-linenumber="104">
           
           
           <code class="ruby">      #gets last updated rental from test db?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="106">
+        <li class="covered" data-hits="1" data-linenumber="105">
           <span class="hits">1</span>
           
           <code class="ruby">      updated_rental = Rental.last</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="107">
+        <li class="never" data-hits="" data-linenumber="106">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="108">
+        <li class="covered" data-hits="1" data-linenumber="107">
           <span class="hits">1</span>
           
           <code class="ruby">      updated_rental.status.must_equal &quot;Returned&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="109">
+        <li class="never" data-hits="" data-linenumber="108">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="110">
+        <li class="never" data-hits="" data-linenumber="109">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="111">
+        <li class="covered" data-hits="1" data-linenumber="110">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;if Movie not found, return appropriate error &amp; message&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="112">
+        <li class="covered" data-hits="1" data-linenumber="111">
           <span class="hits">1</span>
           
           <code class="ruby">      post checkin_path(&quot;Bad Title&quot;), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="113">
+        <li class="never" data-hits="" data-linenumber="112">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="114">
+        <li class="covered" data-hits="1" data-linenumber="113">
           <span class="hits">1</span>
           
           <code class="ruby">      must_respond_with :not_found</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="115">
+        <li class="never" data-hits="" data-linenumber="114">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="115">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      body = JSON.parse(response.body)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="116">
           <span class="hits">1</span>
           
-          <code class="ruby">      body = JSON.parse(response.body)</code>
+          <code class="ruby">      body[&quot;errors&quot;].must_include &quot;movie&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="117">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="117">
           
-          <code class="ruby">      body.must_equal &quot;message&quot; =&gt; &quot;Movie not found&quot;</code>
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="118">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="119">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="120">
+        <li class="covered" data-hits="1" data-linenumber="119">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;if Rental not found, return error and should not update database&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="121">
+        <li class="never" data-hits="" data-linenumber="120">
           
           
           <code class="ruby">      #there is no rental fixture with movie two.</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="122">
+        <li class="covered" data-hits="1" data-linenumber="121">
           <span class="hits">1</span>
           
           <code class="ruby">      movie = movies(:two)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="123">
+        <li class="covered" data-hits="1" data-linenumber="122">
           <span class="hits">1</span>
           
           <code class="ruby">      title = movie.title</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="never" data-hits="" data-linenumber="123">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="125">
+        <li class="covered" data-hits="1" data-linenumber="124">
           <span class="hits">1</span>
           
           <code class="ruby">      post checkin_path(title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="126">
+        <li class="never" data-hits="" data-linenumber="125">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="127">
+        <li class="covered" data-hits="1" data-linenumber="126">
           <span class="hits">1</span>
           
           <code class="ruby">      must_respond_with :not_found</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="128">
+        <li class="never" data-hits="" data-linenumber="127">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="129">
+        <li class="covered" data-hits="1" data-linenumber="128">
           <span class="hits">1</span>
           
           <code class="ruby">      body = JSON.parse(response.body)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="130">
+        <li class="covered" data-hits="1" data-linenumber="129">
           <span class="hits">1</span>
           
-          <code class="ruby">      body.must_equal &quot;message&quot; =&gt; &quot;Rental not found&quot;</code>
+          <code class="ruby">      body[&quot;errors&quot;].must_include &quot;rental&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="131">
+        <li class="never" data-hits="" data-linenumber="130">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="132">
+        <li class="covered" data-hits="1" data-linenumber="131">
           <span class="hits">1</span>
           
           <code class="ruby">      not_updated = Movie.find_by_title(title)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="133">
+        <li class="covered" data-hits="1" data-linenumber="132">
           <span class="hits">1</span>
           
           <code class="ruby">      not_updated.available_inv.must_equal movies(:two).available_inv</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="134">
+        <li class="never" data-hits="" data-linenumber="133">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="135">
+        <li class="never" data-hits="" data-linenumber="134">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="136">
+        <li class="never" data-hits="" data-linenumber="135">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="137">
+        <li class="covered" data-hits="1" data-linenumber="136">
           <span class="hits">1</span>
           
           <code class="ruby">  describe &quot;overdue&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="138">
+        <li class="never" data-hits="" data-linenumber="137">
           
           
           <code class="ruby">    # let(:rental_data) {</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="139">
+        <li class="never" data-hits="" data-linenumber="138">
           
           
           <code class="ruby">    #   {</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="140">
+        <li class="never" data-hits="" data-linenumber="139">
           
           
           <code class="ruby">    #     customer_id: customers(:one).id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="141">
+        <li class="never" data-hits="" data-linenumber="140">
           
           
           <code class="ruby">    #   }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="142">
+        <li class="never" data-hits="" data-linenumber="141">
           
           
           <code class="ruby">    # }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="143">
+        <li class="never" data-hits="" data-linenumber="142">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="144">
+        <li class="covered" data-hits="1" data-linenumber="143">
           <span class="hits">1</span>
           
           <code class="ruby">    it &quot;changes the status of a rental if the due date has passed&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="145">
+        <li class="never" data-hits="" data-linenumber="144">
           
           
           <code class="ruby">      # post checkout_path(movies(:one).title), params: {rental: rental_data}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="146">
+        <li class="never" data-hits="" data-linenumber="145">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="147">
+        <li class="covered" data-hits="1" data-linenumber="146">
           <span class="hits">1</span>
           
           <code class="ruby">      rental = Rental.last</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="148">
+        <li class="covered" data-hits="1" data-linenumber="147">
           <span class="hits">1</span>
           
           <code class="ruby">      rental.status.must_equal &quot;overdue&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="148">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="149">
@@ -2436,43 +2442,37 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="150">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="151">
+        <li class="missed" data-hits="0" data-linenumber="150">
           
           
           <code class="ruby">      must_respond_with :success</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="152">
+        <li class="never" data-hits="" data-linenumber="151">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="153">
+        <li class="never" data-hits="" data-linenumber="152">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="154">
+        <li class="never" data-hits="" data-linenumber="153">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="155">
+        <li class="never" data-hits="" data-linenumber="154">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="156">
+        <li class="never" data-hits="" data-linenumber="155">
           
           
           <code class="ruby">end</code>

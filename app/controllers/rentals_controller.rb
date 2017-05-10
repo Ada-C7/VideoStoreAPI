@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  
+
   def checkout
 
     movie = Movie.find_by(title: params[:title])
@@ -26,7 +26,8 @@ class RentalsController < ApplicationController
       # else
     else
       # give error message that movie isn't available
-      render status: :not_acceptable, json: { message: "movie not available" }
+      render status: :not_acceptable, json: {errors: {
+        movie: ["The Movie #{movie.title} is not available"] }}
     end
 
   end
@@ -35,11 +36,11 @@ class RentalsController < ApplicationController
     movie = Movie.find_by(title: params[:title])
 
     if !movie
-      render status: :not_found, json: { message: "Movie not found" }
+      render status: :not_found, json: {errors: {movie: ["#{params[:title]} not found" ]}}
     else
       rental = Rental.find_by(customer_id: rental_params[:customer_id], movie_id: movie.id)
       if !rental
-        render status: :not_found, json: { message: "Rental not found" }
+        render status: :not_found, json: {errors: {rental: ["Rental not found" ]}}
       end
     end
 

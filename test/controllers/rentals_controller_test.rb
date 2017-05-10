@@ -54,8 +54,7 @@ describe RentalsController do
       # movie.save
 
       body = JSON.parse(response.body)
-      body.must_equal  "message" => "movie not available"
-
+      body["errors"].must_include "movie"
 
     post checkout_path(movies(:two).title), params: {rental: rental_data}
 
@@ -114,7 +113,7 @@ describe RentalsController do
       must_respond_with :not_found
 
       body = JSON.parse(response.body)
-      body.must_equal "message" => "Movie not found"
+      body["errors"].must_include "movie"
     end
 
     it "if Rental not found, return error and should not update database" do
@@ -127,7 +126,7 @@ describe RentalsController do
       must_respond_with :not_found
 
       body = JSON.parse(response.body)
-      body.must_equal "message" => "Rental not found"
+      body["errors"].must_include "rental"
 
       not_updated = Movie.find_by_title(title)
       not_updated.available_inv.must_equal movies(:two).available_inv
