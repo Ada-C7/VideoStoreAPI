@@ -30,8 +30,9 @@ describe Movie do
 
     it 'wont create instance if any attrivbute is missing' do
       @input.keys.each do |attribute|
-        @input.delete(attribute)
-        movie = Movie.new(@input)
+        input = @input.dup
+        input.delete(attribute)
+        movie = Movie.new(input)
         movie.valid?.must_equal false
         movie.errors.must_include attribute
       end

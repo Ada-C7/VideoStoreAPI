@@ -4,11 +4,6 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
 
 good_customer:
   name: natalia kuleniuk
@@ -85,4 +80,4 @@ customer_bad_phone:
   city: Redmond
   state: 32232
   postal_code: 1234543
-  phone: (2344343-)837-2886       
+  phone: (2344343-)837-2886
