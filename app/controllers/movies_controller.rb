@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     movie = Movie.find_by( title: params[:title])
     if movie == nil
       render status: :not_found, json:{
-        "errors": { "title": ["Movie #{params[:title]} not found"]  }
+        "404 error": { "title": ["Movie #{params[:title]} not found"]  }
       }
     else
       render json: movie.as_json(only: [ :title, :overview, :release_date, :inventory, :available_inventory ]), status: :ok
