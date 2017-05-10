@@ -1,7 +1,12 @@
 require "test_helper"
 
 describe TestsController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  it "gets zomg" do
+    get zomg_url
+    must_respond_with :success
+  end
+
 end
+
+
+#we built a test for your bloody test

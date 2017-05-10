@@ -6,7 +6,7 @@ describe CustomersController do
   #   flunk "Need real tests"
   # end
 
-  KEYS = %w(id name phone postal_code registered_at)
+  CUSTOMER_KEYS = %w(id name phone postal_code registered_at)
 
 
   describe "index" do
@@ -45,7 +45,7 @@ describe CustomersController do
 
       body.each do |customer|
 
-        customer.keys.sort.must_equal KEYS
+        customer.keys.sort.must_equal CUSTOMER_KEYS
       end
     end
   end
@@ -75,7 +75,7 @@ describe CustomersController do
 
       body = JSON.parse(response.body)
 
-      KEYS.each do |key|
+      CUSTOMER_KEYS.each do |key|
         body[key].must_equal customers(:mary)[key]
       end
     end
