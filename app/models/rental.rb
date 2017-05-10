@@ -7,4 +7,5 @@ class Rental < ApplicationRecord
     self.checkout_date ||= Date.today
     self.due_date ||= Chronic.parse('two weeks from today')
   end
+
 end

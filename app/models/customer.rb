@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  # attr_reader :movies_checked_out_count
 
   # has_many :movies
 
@@ -13,5 +14,9 @@ class Customer < ApplicationRecord
 
 
   validates :name, uniqueness: { scope: [:address, :city, :state, :postal_code, :phone] }
+
+  # def movies_checked_out
+  #   @movies_checked_out_count = 0
+  # end
 
 end
