@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
-  validates :name, presence: true #, format: { with: /\A[a-zA-Z]+\z/, message: "letters only"}
+  validates :name, format: { with: /\A[a-zA-Z +]+\z/, message: "letters only" }
+  validates :phone, format: { with: /\([0-9][0-9][0-9]\) [0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/, message: "phone number must be of the  NANP number format  (xxx) xxx-xxxx "}
   validates :address, presence: true
-  validates :phone, presence: true
   validates :registered_at, presence: true
 end

@@ -1,12 +1,12 @@
 class Movie < ApplicationRecord
   validates :title, presence:true
-  validates :title, format:{ with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters" }
+  # validates :title, format:{ with: /\A[a-z +A-Z0-9+ -:.,\n-&!]+\z/,
+    # message: "incorrect title format" }
   validates :release_date, presence:true
   # Write in the format validation
   validates :overview, presence:true
-  validates :overview, format:{ with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters" }
+  # validates :overview, format:{ with: /\A[a-zA-Z + [0-9]]+\z/,
+    # message: "only allows letters" }
 
   validates :inventory, presence:true
   validates :inventory, numericality:true
