@@ -5,9 +5,11 @@ nemo:
   overview: "A Great Movie"
   release_date: "12-03-17"
   inventory: 5
+  available_inventory: 2
 
 two:
   title: MyString
   overview: MyString
   release_date: MyString
   inventory: 1
+  available_inventory: 1
