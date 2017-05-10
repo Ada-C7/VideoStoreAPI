@@ -1,5 +1,5 @@
 class RentalSerializer < ActiveModel::Serializer
-  attributes :other_items, :customer_id, :checkout_date, :due_date
+  attributes :other_items, :customer_id, :checkout_date, :due_date, :movie_id
 
   def other_items
     rentals = Rental.where('due_date <= ?', Time.now)
