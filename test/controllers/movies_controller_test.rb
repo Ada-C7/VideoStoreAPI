@@ -44,30 +44,41 @@ describe MoviesController do
   end
 
   describe "create" do
-    before do
-      movie_data =
-      {
-        title: "Troy",
+    def setup
+      @movie_data =
+      {  "title"=> "Troy",
+        "overview"=> "Prince Paris steals Agamemnon's wife bloodbath ensues",
+        "release_date"=> "2012",
+        "inventory"=> 30
+      }
+      @bad_data =
+      {  title: "",
         overview: "Prince Paris steals Agamemnon's wife bloodbath ensues",
         release_date: "2012",
         inventory: 30
       }
-
+    end
 
     it"sends status ok after a successful create" do
-      test_movie = Movie.new(movie_data)
-      post movies_url, params: { movie: test_movie}
+      count = Movie.count
+      post movies_url, params:{"movie":@movie_data}
+      must_respond_with :success
+      new_count = Movie.count
+      new_count.must_equal count + 1
     end
 
     it"sends status :bad_request after a failed call" do
-
+      count = Movie.count
+      post movies_url, params:{"movie":@bad_data}
+      must_respond_with :bad_request
+      new_count = Movie.count
+      new_count.must_equal count
     end
 
-    it "it successfully creates a movie in the database" do
-
-    end
 
     it "returns movie details upon creation" do
+      post movies_url, params:{"movie":@movie_data}
+      response.body[@movie_data["title"]].present?.wont_equal false
 
     end
   end

@@ -17,19 +17,19 @@ class MoviesController < ApplicationController
 
 
   def create
+
     movie = Movie.new(
-    title: params[:title],
-    overview: params[:overview],
-    release_date:params[:release_date],
+    title: params[:movie][:title],
+    overview: params[:movie][:overview],
+    release_date:params[:movie][:release_date],
     inventory:
-    params[:inventory]
+    params[:movie][:inventory]
     )
 
     if movie.save
-      render :json => movie.to_json, :callback => params['callback'],
-      :status => :ok
+      render :json => movie.to_json,  :status => :ok
     else
-      render :json => [], :callback => params['callback'], :status => :no_content
+      render :json => {errors: movie.errors.messages}, :callback => params['callback'], :status => :bad_request
     end
   end
 end
