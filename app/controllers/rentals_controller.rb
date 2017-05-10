@@ -33,7 +33,7 @@ class RentalsController < ApplicationController
 
   end
 
-  def check_in
+  def checkin
     # +1 to available inventory
     # change rental status to "previously rented"
   end

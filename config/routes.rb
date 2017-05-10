@@ -10,5 +10,7 @@ get "/customers/:id", to: "customers#show", as: "customer"
 
 post "/rentals/:title/checkout", to: "rentals#checkout", as: "checkout"
 
+post "/rentals/:title/checkin", to: "rentals#checkin", as: "checkin"
+
 
 end
