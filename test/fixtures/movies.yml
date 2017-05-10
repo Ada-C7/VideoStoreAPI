@@ -8,9 +8,8 @@ one:
   title: "American Beauty"
   release_date: "12/12/05"
   overview: "A movie"
-  inventory: 100
+  inventory: 101
   available_inv: 100
-
 
 two:
   title: "Psycho"

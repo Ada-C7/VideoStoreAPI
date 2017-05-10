@@ -2,7 +2,7 @@ require "test_helper"
 
 describe MoviesController do
 
-  MOVIE_KEYS = %w(id inventory overview release_date title)
+  MOVIE_KEYS = %w(available_inv id inventory overview release_date title)
 
   describe "index" do
     it "is a real working route" do
