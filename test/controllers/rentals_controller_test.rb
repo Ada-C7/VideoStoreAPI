@@ -48,10 +48,6 @@ describe RentalsController do
   it "gives error message if movie isn't available" do
 
     post checkout_path(movies(:two).title), params: {rental: rental_data}
-    #
-    # movie = Movie.last
-    # movie.available_inv = 0
-    # movie.save
 
     body = JSON.parse(response.body)
     body.must_equal  "message" => "movie not available"
@@ -70,6 +66,25 @@ describe RentalsController do
     must_respond_with :success
 
   end
+end
+
+describe "overdue" do
+  # let(:rental_data) {
+  #   {
+  #     customer_id: customers(:one).id
+  #   }
+  # }
+
+  it "changes the status of a rental if the due date has passed" do
+    # post checkout_path(movies(:one).title), params: {rental: rental_data}
+
+    rental = Rental.last
+    rental.status.must_equal "overdue"
+    
+
+    must_respond_with :success
+  end
+
 end
 
 end

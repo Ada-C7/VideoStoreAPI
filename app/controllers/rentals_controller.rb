@@ -1,7 +1,5 @@
 class RentalsController < ApplicationController
-
-
-
+  
   def checkout
 
     movie = Movie.find_by(title: params[:title])

@@ -14,5 +14,11 @@ one:
   phone: "206-123-4567"
 # column: value
 #
-two: {}
-# column: value
+two:
+  name: "Joe"
+  registered_at: "2/2/15"
+  address: "124 South Ave"
+  city: "Seattle"
+  state: "WA"
+  postal_code: "98125"
+  phone: "206-123-6789"
