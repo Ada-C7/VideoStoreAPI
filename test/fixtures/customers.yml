@@ -1,5 +1,25 @@
+perfect:
+  name: "Ada"
+  registered_at: "12894567"
+  address: "237055"
+  city: "dnfjkd"
+  state: "AF"
+  postal_code: "24895"
+  phone: "234-689-2345"
+  account_credit: 13.7
+
 sahana:
   name:
+  registered_at: "05/10/17"
+  address: "1234 Blah Rd"
+  city: "Blahvue"
+  state: "WAH"
+  postal_code: "98008"
+  phone: "707-238-3894"
+  account_credit: 0
+
+sahana1:
+  name: Sahana
   registered_at: "05/10/17"
   address: "1234 Blah Rd"
   city: "Blahvue"
@@ -15,5 +35,95 @@ tamiko:
   city: "Yemen City"
   state: "YE"
   postal_code: "74849"
-  phone: 
+  phone:
+  account_credit: 0
+
+tamiko1:
+  name: "Tamiko"
+  registered_at: "05/09/2017"
+  address: "1 Yemen Street"
+  city: "Yemen City"
+  state: "YE"
+  postal_code: "74849"
+  phone: "238-439-2348"
+  account_credit: 0
+
+bahana:
+  name: "Bahana"
+  registered_at:
+  address: "sfkhjdlfkjdlkg"
+  city: "dkfjdl"
+  state: "fkg"
+  postal_code: "17593"
+  phone: "2738249304"
+  account_credit: 13
+
+no_postal:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code:
+  phone: "1324398546"
+  account_credit: 12
+
+four:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code: "1728"
+  phone: "1324398546"
+  account_credit: 12
+
+six:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code: "172890"
+  phone: "1324398546"
+  account_credit: 12
+
+no_credit:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code: "17290"
+  phone: "1324398546"
+  account_credit:
+
+string_credit:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code: "17290"
+  phone: "1324398546"
+  account_credit: gjhgjh
+
+negative_credit:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code: "17290"
+  phone: "1324398546"
+  account_credit: -1
+
+zero_credit:
+  name: "Seahorse"
+  registered_at: "12894457"
+  address: "The great sea"
+  city: "Seaville"
+  state: "SE"
+  postal_code: "17280"
+  phone: "1324398546"
   account_credit: 0
