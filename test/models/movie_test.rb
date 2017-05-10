@@ -1,9 +1,10 @@
 require "test_helper"
 
 describe Movie do
-  let(:movie) { Movie.new }
-
-  it "must be valid" do
-    value(movie).must_be :valid?
+  describe "index" do
+    it "is a real working route" do
+      get movies_url
+      must_respond_with :success
+    end
   end
 end
