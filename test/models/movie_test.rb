@@ -25,19 +25,14 @@ describe Movie do
   end
 
   it "Must have a unique title" do
-    original_movie = Movie.new(
-      title: "Lion King",
-      overview: "Lifechanging.",
-      release_date: "1993",
-      inventory: "12"
-    )
-    original_movie.valid?.must_equal true
+    movie.must_be :valid
 
     duplicate_movie = Movie.new(
       title: "Lion King",
       overview: "Lifechanging.",
       release_date: "1993",
-      inventory: "12"
+      inventory: 12,
+      available_inventory: 2
     )
     duplicate_movie.valid?.must_equal false
     duplicate_movie.errors.messages.must_include :title
