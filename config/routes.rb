@@ -7,7 +7,7 @@ get "/customers", to: "customers#index"
 get 'movies', to:'movies#index', as: 'movies'
 # GET /movies, #index
 
-
+get 'movies/:title', to:'movies#show', as: 'movie'
 # GET /movies/:title #show
 # params: title
 
