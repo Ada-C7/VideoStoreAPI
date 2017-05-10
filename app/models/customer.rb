@@ -5,15 +5,15 @@ class Customer < ApplicationRecord
   validates :phone, presence: true
 
 
-  def movies_checked_out_count
-
-    self.rentals
-    if rentals.due_date 
+  # def movies_checked_out_count
+  #
+  #   self.rentals
+    # if rentals.due_date 
     # if @rentals.nil?
     #   rentals_count = 0
     # else
     #   rentals_count = rentals.count
     # end
     # return rentals.count
-  end
+  # end
 end

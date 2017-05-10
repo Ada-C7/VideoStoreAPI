@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
     else
       render json: customers, status: :not_found
     end
-  
+
   end
 
   def overdue
