@@ -60,11 +60,11 @@ describe MoviesController do
       end
     end
 
-    it "should return status not found if the movie is not found" do skip
+    it "should return status not found if the movie is not found" do
       get movie_path("xqrt99")
       must_respond_with :not_found
       body = JSON.parse(response.body)
-      body.must_equal {}
+      body.must_equal "nothing" => true
     end
   end
 
