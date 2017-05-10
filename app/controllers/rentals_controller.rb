@@ -2,6 +2,9 @@ require 'date'
 
 class RentalsController < ApplicationController
 
+  def index
+    rentals = Rental.all
+  end
   def create
     rental = Rental.new
     movie = Movie.find_by(title: params[:title])
