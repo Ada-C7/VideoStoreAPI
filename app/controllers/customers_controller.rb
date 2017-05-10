@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
       # zomg rendering !
       # render :text => "IT WORKS!", status: :ok
     else
-      render :json => customers.as_json, status: :ok
+      render :json => customers , status: :ok
     end
   end
 
