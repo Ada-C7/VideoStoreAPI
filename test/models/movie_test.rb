@@ -2,6 +2,9 @@ require "test_helper"
 
 describe Movie do
 
+  describe "validations"  do
+
+
     it "requires a title" do
       titanic = movies(:one)
       titanic.valid?.must_equal true
@@ -73,5 +76,15 @@ describe Movie do
       movie2.valid?.must_equal false
       movie2.errors.messages.must_include :inventory
     end
+  end
+
+  describe "custom methods" do
+    #need to update when we add rentals
+    it "available_inventory returns inventory" do
+      movie = movies(:one)
+      movie.available_inventory.must_equal movie.inventory
+
+    end
+  end
 
 end
