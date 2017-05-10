@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
   def show
     movie = Movie.find_by(title: params[:title])
     if movie
-      render json: movie.as_json(only: [:title, :overview, :release_date, :inventory]), status: :ok
+    render :json => movie, status: :ok
       # add available _inventory
     else
       #render :not_found = 404
