@@ -23,7 +23,7 @@ describe Movie do
     movie.release_date = "1987-07-06"
     movie.save
     movie.valid?.must_equal false
-    movie.errors.messages.must_include :inventory
+    movie.errors.messages.must_include :inventory    
   end
 
   describe "Movie available?" do
@@ -36,7 +36,8 @@ describe Movie do
       movie.inventory = 10
       movie.available?.must_equal true
     end
-    
   end
+
+
 
 end

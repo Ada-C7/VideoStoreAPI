@@ -16,3 +16,9 @@ no_title:
   overview: "Lots of rainwater from out of nowhere"
   release_date: "1983-04-15"
   inventory: 2
+
+princess_bride:
+  title: "Princess Bride"
+  overview: "That word. I do not think it means what you think it means."
+  release_date: "1987-07-06"
+  inventory: 0
