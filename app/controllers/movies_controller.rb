@@ -3,14 +3,14 @@ class MoviesController < ApplicationController
   def index
     movies = Movie.all
     render json: #only - this is the safe list for return keys
-    movies.as_json(only: [:id, :title, :release_date, :overview, :inventory])
+    movies.as_json(only: [:title, :release_date, :overview, :inventory])
   end
 
   def show
     #movies = Movie.find_by(:id params[:id])
-    movie = Movie.find_by_id(params[:id])
+    movie = Movie.find_by(title: params[:title])
     if movie #except - this is a block list, block these items
-      render json: movie.as_json(except: [:updated_at, :created_at],
+      render json: movie.as_json(except: [:id, :updated_at, :created_at],
       ), status: :ok #in parens (after created at) add any special methods like `methods: :calculate_age`
 
     else #return this status hash so the other machine doesn't send freak out
@@ -32,6 +32,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :release_date, :overview)
+    params.require(:movie).permit(:id, :title, :release_date, :overview, :inventory)
   end
 end
