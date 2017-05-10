@@ -32,10 +32,14 @@ describe Movie do
   end
 
   describe "available_inventory" do
-    it "returns the inventory" do
-      # TODO create relationships :) and re-write method :) :)
-      movie = Movie.all.first
-      movie.available_inventory.must_equal movie.inventory
+    it "returns the correct available inventory when there are copies checked out" do
+      # We expect 19 available because there is a total inventory of 20
+      # and there is one copy checked out in the rentals fixtures
+      movies(:star_wars).available_inventory.must_equal 19
+    end
+
+    it "returns the inventory when no copies are checked out" do
+      movies(:no_rentals).available_inventory.must_equal movies(:no_rentals).inventory
     end
   end
 end

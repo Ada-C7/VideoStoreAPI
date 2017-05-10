@@ -6,6 +6,6 @@ class Movie < ApplicationRecord
   has_many :rentals
 
   def available_inventory
-    inventory
+    inventory - rentals.count
   end
 end

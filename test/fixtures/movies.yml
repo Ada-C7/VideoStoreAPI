@@ -9,3 +9,9 @@ star_wars:
   overview: "The greatest movie of all time or whatever"
   release_date: "1977"
   inventory: 20
+
+no_rentals:
+  title: "Thar be no rentals of me"
+  overview: "This is so great"
+  release_date: "2017"
+  inventory: 10
