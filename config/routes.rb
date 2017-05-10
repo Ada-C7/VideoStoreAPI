@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   get "movie/:id", to: "movies#show", as: "movie"
 
-  get 'movies/show'
-
-  get 'customers/index'
+  get "customers", to: "customers#index", as: "customers"
 
   get 'customers/show'
 
