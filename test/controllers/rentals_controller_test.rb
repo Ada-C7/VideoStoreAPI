@@ -5,21 +5,26 @@ describe RentalsController do
   #   flunk "Need real tests"
   # end
 
+
   describe "check_in" do
-    before do
-      sample_rental = Rental.create({ movie: Movie.first, customer: Customer.first })
+    let(:rental) { rentals(:one) }
+    let(:customer) { customers(:good_data) }
+    let(:movie) { movies(:psycho) }
 
-      post checkin_path(Movie.first.title), params: { customer_id: Customer.first.id }
-    end
+    # before do
+    #
+    #   # post checkin_path(Movie.first.title), params: { customer_id: Customer.first.id }
+    # end
 
-    it "succeeds for valid title and customer id" do 
+    it "succeeds for valid title and customer id" do
       #valid means: rental exists [and therefore movie and customer exist]
-
+      post checkin_path(movie.title), params: { customer_id: customer.id }
       must_respond_with :success
     end
 
-    it "modifies the db with today's date as checkin date" do skip
-      sample_rental.checkin_date.must_equal Date.today
+    it "modifies the db with today's date as checkin date" do
+      post checkin_path(movie.title), params: { customer_id: customer.id }
+      rental.checkin_date.must_equal Date.today
     end
 
     it "renders bad request for invalid customer id data" do skip
