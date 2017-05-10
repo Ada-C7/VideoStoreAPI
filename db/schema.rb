@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20170509212649) do
     t.string   "overview"
     t.string   "release_date"
     t.integer  "inventory"
-    t.integer  "available_invetory", default: 0
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "available_inventory", default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end
