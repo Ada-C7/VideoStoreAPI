@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
 
   def index
     customers = Customer.all
-    render json: customers.as_json(except: [:created_at, :updated_at])
+    render json: customers.as_json(except: [:created_at, :updated_at]), status: :ok
   end
 
   def show
@@ -11,7 +11,8 @@ class CustomersController < ApplicationController
     if customer
       render json: customer.as_json(except: [:created_at, :updated_at]), status: :ok
     else
-      render json: {nothing: true}, status: :not_found
+      render json: {errors: {
+        customer: ["Customer with id #{params[:id]} not found"] }}, status: :not_found
     end
   end
 

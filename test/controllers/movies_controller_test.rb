@@ -49,7 +49,7 @@ describe MoviesController do
       must_respond_with :not_found
 
       body = JSON.parse(response.body)
-      body.must_equal "nothing" => true
+      body.must_include "errors"
     end
 
     it "when gets a movie has the right info" do

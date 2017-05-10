@@ -19,6 +19,7 @@
         null,
         null,
         null,
+        null,
         null
       ],
       "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/controllers/application_controller.rb": [
@@ -107,6 +108,7 @@
         2,
         null,
         1,
+        null,
         null,
         null,
         null,
@@ -452,6 +454,6 @@
         null
       ]
     },
-    "timestamp": 1494454344
+    "timestamp": 1494455405
   }
 }

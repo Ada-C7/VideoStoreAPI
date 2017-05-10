@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-10T15:12:24-07:00">2017-05-10T15:12:24-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-05-10T15:30:05-07:00">2017-05-10T15:30:05-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -63,7 +63,7 @@
       <tr>
         <td class="strong"><a href="#1240367ba558a79129d990d18ebe5b0ddc3470cb" class="src_link" title="app/controllers/customers_controller.rb">app/controllers/customers_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>18</td>
+        <td>19</td>
         <td>9</td>
         <td>9</td>
         <td>0</td>
@@ -73,7 +73,7 @@
       <tr>
         <td class="strong"><a href="#89668079794bffdbaa388a3bff741ea4f74e2529" class="src_link" title="app/controllers/movies_controller.rb">app/controllers/movies_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>19</td>
+        <td>20</td>
         <td>9</td>
         <td>9</td>
         <td>0</td>
@@ -267,7 +267,7 @@
         <li class="covered" data-hits="4" data-linenumber="5">
           <span class="hits">4</span>
           
-          <code class="ruby">    render json: customers.as_json(except: [:created_at, :updated_at])</code>
+          <code class="ruby">    render json: customers.as_json(except: [:created_at, :updated_at]), status: :ok</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
@@ -321,28 +321,34 @@
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">      render json: {nothing: true}, status: :not_found</code>
+          <code class="ruby">      render json: {errors: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        customer: [&quot;Customer with id #{params[:id]} not found&quot;] }}, status: :not_found</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">end</code>
@@ -399,7 +405,7 @@
         <li class="covered" data-hits="4" data-linenumber="6">
           <span class="hits">4</span>
           
-          <code class="ruby">    render json: movies.as_json(only: [:title, :release_date])</code>
+          <code class="ruby">    render json: movies.as_json(only: [:title, :release_date]), status: :ok</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -453,28 +459,34 @@
         <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
-          <code class="ruby">      render json: {nothing: true}, status: :not_found</code>
+          <code class="ruby">      render json: {errors: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        title: [&quot;Movie #{params[:title]} not found&quot;] }}, status: :not_found</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">end</code>
@@ -1437,7 +1449,7 @@
         <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
-          <code class="ruby">      body.must_equal &quot;nothing&quot; =&gt; true</code>
+          <code class="ruby">      body.must_include &quot;errors&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
