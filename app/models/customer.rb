@@ -9,6 +9,6 @@ class Customer < ApplicationRecord
   has_many :rentals
 
   def movies_checked_out_count
-    0
+    rentals.select { |rental| rental.is_current }.count
   end
 end

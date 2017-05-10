@@ -25,9 +25,12 @@ describe Customer do
   end
 
   describe "movies_checked_out_count" do
-    # TODO: Create movie checkout relationship and write method
-    it "returns 0" do
-      customers(:aj).movies_checked_out_count.must_equal 0
+    it "returns the number of movies checked out" do
+      customers(:aj).movies_checked_out_count.must_equal 1
+    end
+
+    it "returns 0 if the customer has no movies checked out" do
+      customers(:no_rentals).movies_checked_out_count.must_equal 0
     end
   end
 end

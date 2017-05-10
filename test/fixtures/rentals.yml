@@ -9,3 +9,4 @@ one:
   customer: aj
   movie: star_wars
   due_date: "2017-05-22"
+  is_current: true
