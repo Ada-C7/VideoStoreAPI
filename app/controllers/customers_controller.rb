@@ -12,7 +12,9 @@ class CustomersController < ApplicationController
   def show
     customer = Customer.find_by(id: params[:id])
     if customer == nil
-      render status: :not_found, json: { errors: "Cannot find a customer with id #{params[:id]}" }
+      render status: :not_found, json: {
+        "errors": { "id": ["Customer #{params[:id]} not found"]}
+      }
     else
       render json: customer, status: :ok
     end
