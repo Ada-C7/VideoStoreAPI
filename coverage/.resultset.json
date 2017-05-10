@@ -380,7 +380,6 @@
         1,
         1,
         1,
-        1,
         null
       ],
       "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/models/application_record.rb": [
@@ -422,7 +421,6 @@
         1,
         1,
         1,
-        1,
         null
       ],
       "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/test/models/rental_test.rb": [
@@ -454,6 +452,6 @@
         null
       ]
     },
-    "timestamp": 1494454069
+    "timestamp": 1494454344
   }
 }
