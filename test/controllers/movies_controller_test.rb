@@ -38,7 +38,7 @@ describe MoviesController do
       Movie.delete_all
       get movies_path
       body = JSON.parse(response.body)
-      body.must_equal []
+      body.must_equal "count" => 0
     end
   end
 

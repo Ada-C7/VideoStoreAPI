@@ -1,8 +1,23 @@
 class MoviesController < ApplicationController
 
   def index
+    # movies = Movie.all
+    # count = Movie.count
+    # response = {}
+    # response["movies"] = movies
+    # response["count"] = count
+    # if !movies.empty?
+    #   render json: response.as_json(except: [:created_at, :updated_at, :id]), status: :ok
+    # else
+    #   render json: {count: Movie.count}
+    # end
+
     movies = Movie.all
-    render json: movies.as_json(except: [:created_at, :updated_at, :id]), status: :ok
+    if !movies.empty?
+      render json: movies.as_json(except: [:created_at, :updated_at, :id]), status: :ok
+    else
+      render json: {count: Movie.count}
+    end
   end
 
   def show
