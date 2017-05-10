@@ -28,7 +28,6 @@ class RentalsController < ApplicationController
       render status: :ok, json: { id: rental.id }
       end
     end
-
   end
 
 
