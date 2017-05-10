@@ -8,8 +8,13 @@ one:
   title: "American Beauty"
   release_date: "12/12/05"
   overview: "A movie"
-  inventory: 5
-# column: value
-#
-# two: {}
-# column: value
+  inventory: 100
+  available_inv: 100
+
+
+two:
+  title: "Psycho"
+  release_date: "12/12/05"
+  overview: "A movie"
+  inventory: 100
+  available_inv: 0

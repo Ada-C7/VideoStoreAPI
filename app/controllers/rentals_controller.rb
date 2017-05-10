@@ -1,10 +1,5 @@
 class RentalsController < ApplicationController
 
-  def check_in
-    # +1 to available inventory
-    # change rental status to "previously rented"
-  end
-
 
 
   def checkout
@@ -33,21 +28,28 @@ class RentalsController < ApplicationController
       # else
     else
       # give error message that movie isn't available
-      render status: :bad_request, json: { errors: rental.errors.messages }
+      render status: :not_acceptable, json: { message: "movie not available" }
     end
 
   end
 
-  def overdue
-    # if due date is 31 days ago
-    # change status to "overdue"
+  def check_in
+    # +1 to available inventory
+    # change rental status to "previously rented"
   end
 
-private
+  def overdue
+    # if due date is 31 days ago
+    if rental.due_date.past?
+      # change status to "overdue"
+      rental.status = "overdue"
+    end
+  end
 
-def rental_params
-  params.require(:rental).permit(:customer_id)
-end
+  private
 
+  def rental_params
+    params.require(:rental).permit(:customer_id)
+  end
 
 end

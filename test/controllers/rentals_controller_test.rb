@@ -2,62 +2,74 @@ require "test_helper"
 
 describe RentalsController do
   describe "Checkout" do
-    let(:rental) {
+    let(:rental_data) {
       {
-        movie: movies(:one).title,
-        customer: customers(:one)
+        customer_id: customers(:one).id
       }
     }
 
   it "creates a new rental" do
     proc {
-      post rental_path(movies(:one).title)
+      post checkout_path(movies(:one).title), params: {rental: rental_data}
     }.must_change 'Rental.count', 1
 
     must_respond_with :success
   end
 
-  it "changes status code for rental" do
-    proc {
-      post rental_path(movies(:one).title)
-    }.must_change 'Rental.status', "checked out"
+  it "changes status for rental" do
+    post checkout_path(movies(:one).title), params: {rental: rental_data}
+
+    rental = Rental.last
+    rental.status.must_equal "checked out"
 
     must_respond_with :success
   end
 
   it "changes available inventory" do
-    proc {
-      post rental_path(movies(:one).title)
-    }.must_change 'Rental.inventory', 0
+    post checkout_path(movies(:one).title), params: {rental: rental_data}
+
+    movie = Movie.last
+    movie.available_inv.must_equal 99
 
     must_respond_with :success
   end
 
   it "sets a due date of 30 days after" do
-    proc {
-      post rental_path(movies(:one).title)
-    }.must_change 'Rental.due_date', check_out_date + 30.days
+
+    post checkout_path(movies(:one).title), params: {rental: rental_data}
+
+    rental = Rental.last
+    rental.due_date.must_equal "#{Time.now + 30.days}"
 
     must_respond_with :success
+
   end
 
   it "gives error message if movie isn't available" do
-    proc {
-        post movies_path, params: {movie: { title: "Foo", available_inv: 0 }}
-      }.wont_change "Movie.available_inv", 0
+
+    post checkout_path(movies(:two).title), params: {rental: rental_data}
+    #
+    # movie = Movie.last
+    # movie.available_inv = 0
+    # movie.save
 
     body = JSON.parse(response.body)
-    body.must_equal "errors" => {"name" => ["movie not available"]}
+    body.must_equal  "message" => "movie not available"
+
+    must_respond_with :not_acceptable
+
   end
 
   it "won't change the database if movie isn't available" do
-    proc {
-        post movies_path, params: {movie: { title: "Foo", available_inv: 0 }}
-      }.wont_change "Movie.available_inv", 0
 
-      must_respond_with :bad_request
+    post checkout_path(movies(:one).title), params: {rental: rental_data}
+
+    movie = Movie.last
+    movie.available_inv.must_equal 99
+
+    must_respond_with :success
+
   end
 end
-
 
 end
