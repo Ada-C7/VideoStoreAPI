@@ -1,11 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+sahana:
+  name:
+  registered_at: "05/10/17"
+  address: "1234 Blah Rd"
+  city: "Blahvue"
+  state: "WAH"
+  postal_code: "98008"
+  phone: "707-238-3894"
+  account_credit: 0
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+tamiko:
+  name: "Tamiko"
+  registered_at: "05/09/2017"
+  address: "1 Yemen Street"
+  city: "Yemen City"
+  state: "YE"
+  postal_code: "74849"
+  phone: 
+  account_credit: 0
