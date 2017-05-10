@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
       end
     else
       # should we add a check if customer also DNE
-      render status: :bad_request, json: { error: "movie does not exist" }
+      render status: :bad_request, json: { errors: "movie does not exist" }
     end
   end
 

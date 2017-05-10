@@ -4,6 +4,7 @@ describe RentalsController do
   describe 'create' do
 
     before do
+      @bad_customer_id = Customer.all.last.id + 1
       @customer = customers(:good_customer)
       @movie = movies(:movie1)
     end
@@ -17,6 +18,16 @@ describe RentalsController do
       Rental.find(response.parsed_body["id"]).movie_id.must_equal @movie.id
       Rental.find(response.parsed_body["id"]).customer_id.must_equal @customer.id
     end
+
+    it 'returns bad request if given customer id DNE' do
+      post rental_path(@movie.title), params: { rental: { customer_id: @bad_customer_id } }
+      must_respond_with :bad_request
+      response.parsed_body.must_include "errors"
+    end
+
+    # it 'returns bad request if given movie title DNE' do
+
+    # end
 
 
   end
