@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe "CustomersController" do
-KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
+CUSTOMER_KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
 # need to eventually include movies_checked_out_count
 
   describe "index" do
@@ -26,7 +26,7 @@ KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
     it "returns customers with exactly the required fields" do
       body = JSON.parse(response.body)
       body.each do |customer|
-        customer.keys.sort.must_equal KEYS
+        customer.keys.sort.must_equal CUSTOMER_KEYS
       end
 
     end
