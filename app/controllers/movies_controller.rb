@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
     movies = Movie.all
 
     if movies.length > 0
-      render json: movies.as_json(only: [:title, :release_date]), status: :ok
+      render json: movies, fields: [:title, :release_date], status: :ok
     else
       render json: {error: "We have no movies at this time"}, status: 404
     end
