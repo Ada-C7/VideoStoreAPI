@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe Movie do
+
   let (:movie) { Movie.new(
     title: "Nemo",
     overview: "Just keep swimming",
@@ -11,7 +12,7 @@ describe Movie do
   }
 
   it "Can create a valid movie" do
-    movie.must_be :valid?
+    movie.valid?.must_equal true
   end
 
   REQUIRED_FIELDS = %w(title overview release_date inventory available_inventory)
@@ -25,10 +26,11 @@ describe Movie do
   end
 
   it "Must have a unique title" do
-    movie.must_be :valid
+    movie.valid?.must_equal true
+    movie.save
 
     duplicate_movie = Movie.new(
-      title: "Lion King",
+      title: "Nemo",
       overview: "Lifechanging.",
       release_date: "1993",
       inventory: 12,
