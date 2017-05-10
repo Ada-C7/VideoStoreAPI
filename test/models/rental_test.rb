@@ -3,7 +3,7 @@ require "test_helper"
 describe Rental do
   describe "validations" do
     it "cannot create rental without parameters" do
-      required_attributes = [:customer, :movie]
+      required_attributes = [:due_date, :customer, :movie]
       rental = Rental.new
       rental.valid?.must_equal false
       required_attributes.each do |attribute|
@@ -14,12 +14,11 @@ describe Rental do
     it "can create a rental with valid parameters" do
       rentals(:one).valid?.must_equal true
     end
-  end
 
-  describe "due_date" do
-    it "calculates the appropriate due date on initialization as 3 days after" do
-      expected_due_date = Date.today.+(3).strftime("%F")
-      rentals(:one).due_date.must_equal expected_due_date
+    it "does not allow a due date with an inappropriate format" do
+      invalid_rental = Rental.new(due_date: "05-22-2016", customer: customers(:aj), movie: movies(:star_wars))
+      invalid_rental.valid?.must_equal false
+      invalid_rental.errors.messages.must_include :due_date
     end
   end
 
