@@ -21,6 +21,7 @@ patch 'rentals/:title/check_in', to: 'rentals#checkin', as: 'check_in_rental'
 # params: title
 # request_body: customer_id
 
+get 'rentals/overdue', to: 'rentals#overdue', as: 'overdue'
 # GET /rentals/overdue
 
 # get "/zomg", to: "movies#zomg"

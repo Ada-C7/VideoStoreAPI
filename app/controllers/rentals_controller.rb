@@ -23,12 +23,24 @@ class RentalsController < ApplicationController
       if rental.checked_out == false
         render status: :bad_request, json: { errors: "Your movie was already checked in." }
       else
-      rental.checked_out = false
-      rental.save
-      render status: :ok, json: { id: rental.id }
+        rental.checked_out = false
+        rental.save
+        render status: :ok, json: { id: rental.id }
       end
     end
   end
+
+  def overdue
+    overdue_rentals = Rental.overdue
+
+    if overdue_rentals.length > 0
+      render :json => overdue_rentals, status: :ok
+    else
+      render :json => {no_overdue_rentals: "There are no overdue rentals."}, status: :not_found
+    end
+
+  end
+
 
 
   private
