@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe CustomersController do
+describe MoviesController do
 
      it "should get index" do
-          get customers_path
+          get movies_path
           must_respond_with :ok
      end
 
