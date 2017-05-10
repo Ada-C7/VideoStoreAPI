@@ -50,7 +50,23 @@ describe Rental do
       rental2.movie.title.present?.must_equal true
       rental2.movie.title.must_equal movies(:one).title
     end
-
   end
 
+  describe "custom methods" do
+
+    it ' Returns list of checked out movies based on movie id ' do
+    Rental.checked_out(movies(:one).id).length.must_equal 2
+    Rental.checked_out(movies(:one).id).must_include rentals(:one)
+    end
+
+    it ' Returns empty array when no movie(s) is/are checked out match the id that was passed ' do
+
+      Rental.checked_out(movies(:three).id).must_equal []
+    end
+
+    it 'returns nil when no id matches ' do
+
+      Rental.checked_out(Movie.last.id + 1).must_equal nil
+    end
+   end
 end

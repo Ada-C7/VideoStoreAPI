@@ -10,7 +10,7 @@ describe Movie do
 
   REQUIRED_FIELDS = %w(title release_date inventory)
 
-  describe "validations ===========" do
+  describe " Validations" do
     it "can create a movie" do
       new_movie.must_be :valid?
       new_movie.save.must_equal true
@@ -35,19 +35,6 @@ describe Movie do
       new_movie.valid?.must_equal false
     end
 
-    # it "available_inventory must be an integer between 0 and inventory" do
-    #   new_movie.available_inventory = "number"
-    #   new_movie.valid?.must_equal false
-    #
-    #   new_movie.available_inventory = 1.5
-    #   new_movie.valid?.must_equal false
-    #
-    #   new_movie.available_inventory = -4
-    #   new_movie.valid?.must_equal false
-    #
-    #   new_movie.available_inventory = new_movie.inventory + 1
-    #   new_movie.valid?.must_equal false
-    # end
 
     it "title must be unique" do
       new_movie.title = movies(:one).title
@@ -55,10 +42,23 @@ describe Movie do
     end
   end
 
-  describe "custom methods" do
-    # it "available_inventory gets set to inventory by default" do
-    #   new_movie.save
-    #   new_movie.available_inventory.must_equal new_movie.inventory
-    # end
+  describe " Custom methods" do
+
+    it " Returns number of available movies for rent" do
+      movies(:one).available_inventory.must_equal 8
+
+    end
+
+    it " Returns total inventory count when the movie has yet to be checked out" do
+
+      movies(:three).available_inventory.must_equal movies(:three).inventory
+    end
+
+    it " Returns correct number of available_inventory when movie has check outs that have been returned." do
+      
+      movies(:two).available_inventory.must_equal 5
+
+    end
+
   end
 end
