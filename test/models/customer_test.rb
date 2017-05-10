@@ -18,7 +18,7 @@ describe "validations" do
     customer = Customer.new(name: 212, address: "234 flower street", phone: "000-768-6252", registered_at: "some time")
     customer.valid?.must_equal false
     customer.errors.messages.must_include :name
-    
+
   end
 
   it "must have a street address" do
