@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movie = Movie.find_by(title: params[:title])
+    movie = Movie.find_by(title: params[:title].capitalize)
     if movie
     render :json => movie, status: :ok
       # add available _inventory
