@@ -40,7 +40,7 @@ describe CustomersController do
       customers= Customer.destroy_all
       get customers_url
       body = JSON.parse(response.body)
-      body.must_equal "no_customers" => "customers were not found"
+      body.must_equal "no_customers" => "Customers were not found"
       Customer.count.must_equal 0
       must_respond_with :not_found
     end
