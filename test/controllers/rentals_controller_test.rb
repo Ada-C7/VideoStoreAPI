@@ -76,12 +76,41 @@ describe RentalsController do
     let(:rental_data) {
       {
         customer_id: customers(:one).id,
-        movie_title: movies(:one).title
       }
     }
 
     it "should successfully check in the rental" do
+      post checkin_path(movies(:one).title), params: {rental: rental_data}
 
+      must_respond_with :success
+    end
+
+    it "should update the available inventory for that movie" do
+      checkedout = movies(:one)
+      title = checkedout.title
+
+      post checkin_path(title), params: {rental: rental_data}
+
+      updated = Movie.find_by_title(title)
+      updated.available_inv.must_equal (checkedout.available_inv + 1)
+    end
+
+    it "should update the status of that rental" do
+      post checkin_path(movies(:one).title), params: {rental: rental_data}
+
+      #gets last updated rental from test db?
+      updated_rental = Rental.last
+
+      updated_rental.status.must_equal "Returned"
+    end
+
+    it "if Movie not found, return error and should not update database" do
+      post checkin_path("Bad Title"), params: {rental: rental_data}
+
+      must_respond_with :not_found
+    end
+
+    it "if Rental not found, return error and should not update database" do skip
     end
   end
 end

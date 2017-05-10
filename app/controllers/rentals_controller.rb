@@ -34,8 +34,27 @@ class RentalsController < ApplicationController
   end
 
   def checkin
-    # +1 to available inventory
-    # change rental status to "previously rented"
+    movie = Movie.find_by(title: params[:title])
+
+    if !movie
+      render status: :not_found, json: { message: "Movie not found" }
+    else
+      rental = Rental.find_by(customer_id: rental_params[:customer_id], movie_id: movie.id)
+      if !rental
+        render status: :not_found, json: { message: "Rental not found" }
+      end
+    end
+
+    if movie && rental
+      movie.available_inv += 1
+      movie.save
+
+      rental.status = "Returned"
+      rental.save
+
+      render status: :ok, json: { message: "Your movie has been returned."}
+    end
+
   end
 
   def overdue

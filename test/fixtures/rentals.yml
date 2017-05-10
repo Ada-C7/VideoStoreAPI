@@ -9,3 +9,9 @@ one:
   customer: one
   due_date: "12/11/17"
   status: ""
+
+checkedout:
+  movie: one
+  customer: one
+  due_date: "1/1/11"
+  status: "checked out"
