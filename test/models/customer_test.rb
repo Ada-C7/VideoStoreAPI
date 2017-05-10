@@ -6,7 +6,7 @@ describe Customer do
   describe "relationships" do
     it "can have many rentals" do
       customer = customers(:one)
-      customer.rentals.count.must_equal 1
+      customer.rentals.count.must_equal 2
     end
 
     it "returns an empty array if there are no rentals created under this customer" do
@@ -23,7 +23,7 @@ describe Customer do
 
     it "can have many movies" do
       customer = customers(:one)
-      customer.movies.count.must_equal 1
+      customer.movies.count.must_equal 2
     end
 
     it "can access movies" do

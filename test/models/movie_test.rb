@@ -1,7 +1,7 @@
 
 require "test_helper"
 
-gid describe Movie do
+describe Movie do
   describe "validations" do
     it "creates product with title" do
       movie = Movie.create(title: "The Color Purple")
