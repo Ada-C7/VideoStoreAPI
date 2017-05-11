@@ -5,9 +5,13 @@ class RentalsController < ApplicationController
      customer = Customer.find_by_id(params[:customer_id])
      due_date = params[:due_date]
 
-     rental = Rental.new(due_date: due_date, customer: customer.id, movie: movie.id, is_current: true)
-    #  checkout_date = rental.created_at
-     render json: rental.as_json(only: :created_at)
+     rental = Rental.new(due_date: due_date, customer_id: customer.id, movie_id: movie.id, returned: false)
+
+    if rental.save
+      render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
+    else
+      render status: :bad_request, json: { errors: "mmm" }
+    end
 
 
 
