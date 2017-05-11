@@ -2,7 +2,6 @@
 
 class RentalsController < ApplicationController
 
-
   def create
     # example of params
     # {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
@@ -31,7 +30,7 @@ class RentalsController < ApplicationController
     rental.return_date = Date.today
     rental.status = "checked in"
 
-    # rental.customer.movies_checked_out_count += 1
+    rental.customer.movies_checked_out_count -= 1
     # rental.movie.available_inventory += 1 # ??????????
     if rental.save
       render status: :ok, json: { status: rental.status }
@@ -43,11 +42,7 @@ class RentalsController < ApplicationController
 
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
-    # if overdue_rentals.empty?
-    #   render status: :no_content, json:{"204 error": " Cannot find overdue rentals"}
-    # else
-       render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
-    # end
+    render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
   end
 
   private
@@ -55,4 +50,7 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:customer_id, :title, :check_out_date,
     :return_date, :due_date, :status)
   end
+
+
+
 end
