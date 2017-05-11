@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
   end
 
   def checkin
-    movie =  Movie.find_by(title: params[:title].capitalize)
+    movie =  Movie.find_by(title: params[:title])
     customer_id = rental_params[:customer_id]
     rentals = Rental.where(movie_id: movie.id, customer_id: customer_id)
     rental = rentals[0]

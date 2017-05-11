@@ -9,9 +9,4 @@ class Rental < ApplicationRecord
     self.all.select {|rental| (rental.checked_out == true) &&  (rental.due_date.past?)}
   end
 
-
-  # def title
-  #
-  # end
-
 end
