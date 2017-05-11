@@ -16,10 +16,10 @@ three:
   movie: psycho
   customer: curran
   checked_out: false
-  due_date: 2017-05-09
+  due_date: 2016-05-09
 
 four:
   movie: exorcist
   customer: curran
   checked_out: false
-  due_date: 2017-05-09
+  due_date: 2016-05-09
