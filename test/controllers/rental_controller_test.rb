@@ -32,6 +32,20 @@ describe RentalController do
       value(response).must_be :success?
     end
 
+    it "should create a new rental instance" do
+      affect Rental model, change by 1
+    end
+
+    it "should render the correct output if checkout was successful" do
+      status: :ok
+      render_json display customer_id due_date movie_id
+    end
+
+    it "should render the correct output if checkut was unsuccessful" do
+      status: :bad_request
+      json: errors
+    end
+
   end
 
   describe "rentals#checkin" do

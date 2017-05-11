@@ -5,11 +5,11 @@ class RentalController < ApplicationController
   end
 
   def checkout
-    movie_id = Movie.find(title: (params: title))
     rental = Rental.new(rental_params)
+    rental.movie_id = Movie.find_by(title: params[:title]).id
 
     if rental.save
-      render json: variable.as_json(only: ["customer_id", "due_date", "movie_id"]),
+      render json: rental.as_json(only: ["customer_id", "due_date", "movie_id"]),
       status: :ok
     else
       render status: :bad_request, json: { errors: rental.errors.messages }

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "customers", to: "customers#index"
   get "movies", to: "movies#index"
   get "movies/:title", to: "movies#show", as: 'movie'
-  post "rentals/:title/checkout", to: "rental#checkout", as: 'checkout'
-  post "rentals/:title/checkin", to: "rental#checkin", as: 'checkin'
+  post "rentals/:title/check-out", to: "rental#checkout", as: 'checkout'
+  post "rentals/:title/check-in", to: "rental#checkin", as: 'checkin'
   get "rentals/overdue", to: "rental#overdue", as: 'overdue'
 end

@@ -20,7 +20,7 @@ describe Rental do
 
   describe "required fields" do
 
-    REQUIRED_FIELDS = %w(due_date created_at movie_id customer_id)
+    REQUIRED_FIELDS = %w(due_date movie_id customer_id)
 
     REQUIRED_FIELDS.each do | field |
 
