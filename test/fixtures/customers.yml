@@ -10,8 +10,8 @@ one:
   address: 5216 Ipsum St.
   city: Seattle
   state: WA
-  postal_code: string
-  phone: (425) 240 9511
+  postal_code: "12323"
+  phone: "4252409511"
   account_credit: 2.10
   movies_checked_out_count: 1
 
