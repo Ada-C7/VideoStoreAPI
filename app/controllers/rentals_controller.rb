@@ -1,8 +1,9 @@
 class RentalsController < ApplicationController
 
+
   def checkout
     rental = Rental.new(rental_params)
-    rental.movie =  Movie.find_by(title: params[:title].capitalize)
+    rental.movie =  Movie.find_by(title: params[:title])
     rental.checked_out = true
     if rental.save
       render status: :ok, json: { id: rental.id }
