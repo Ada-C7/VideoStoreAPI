@@ -9,10 +9,12 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movie = Movie.find(params[:title])
-
-    render :json => movie.to_json, :callback => params['callback'],
-    :status => :ok
+    @movie = Movie.find_by(title: params[:title])
+    if @movie
+      render :json=> @movie.as_json(only: [:title, :release_date,:overview, :inventory]), status: :ok
+    else
+      render :json=>@movie.as_json, status: :not_found
+    end
   end
 
 
