@@ -8,9 +8,9 @@ class RentalsController < ApplicationController
     movie = Movie.find_by(title: params[:title])
     if movie
       rental_info = {
-                      customer_id: params["rental"]["customer_id"],
-                      movie_id: movie.id
-                    }
+        customer_id: params["rental"]["customer_id"],
+        movie_id: movie.id
+      }
       rental = Rental.create_rental(rental_info)
       if rental.save
         render status: :ok, json: { id: rental.id }
@@ -41,11 +41,10 @@ class RentalsController < ApplicationController
 
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
-    # puts overdue_rentals
     if !overdue_rentals.empty?
-      render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
-    else
       render json: {error:  "No overdue rentals was found" }, status: :ok
+    else
+      render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
     end
   end
 

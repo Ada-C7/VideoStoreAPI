@@ -78,7 +78,7 @@ describe RentalsController do
       end
     end
 
-    it 'returns json message if there are no overdue movies' do
+    it 'returns error message if there are no overdue movies' do
       Rental.destroy_all
       get overdue_rentals_path
       response.status.must_equal 200
