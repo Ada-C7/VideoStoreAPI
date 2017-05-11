@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'movies/:title', to: 'movies#show', as: 'movie'
 
 
-  post "/rentals/:title/check-out", to: "rentals#create"
-  patch "/rentals/:title/check-in", to: "rentals#update"
+  post "/rentals/:title/check-out", to: "rentals#create", as: "create_rental"
+  patch "/rentals/:title/check-in", to: "rentals#update", as: "update_rental"
 
-  get "/rentals/overdue", to: "rentals#overdue_rentals"
+  get "/rentals/overdue", to: "rentals#overdue_rentals", as: "overdue_rentals"
 end

@@ -27,6 +27,7 @@ class RentalsController < ApplicationController
   def update
     movie = Movie.find_by(title: params[:title])
     rental = Rental.find_by(movie_id: movie.id, customer_id: params["rental"]["customer_id"])
+
     rental.return_date = Date.today
     rental.status = "checked in"
 
@@ -42,7 +43,11 @@ class RentalsController < ApplicationController
 
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
-    render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
+    # if overdue_rentals.empty?
+    #   render status: :no_content, json:{"204 error": " Cannot find overdue rentals"}
+    # else
+       render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
+    # end
   end
 
   private
