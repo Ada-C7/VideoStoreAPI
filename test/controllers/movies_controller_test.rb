@@ -39,7 +39,7 @@ describe MoviesController do
 
   describe "Movies#Show" do
 
-    SHOW_FIELDS = %w(available_inventory inventory overview release_date title)
+    SHOW_FIELDS = %w(inventory overview release_date title)
 
     before do
       get movie_path(movies(:nemo).title)
