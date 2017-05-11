@@ -50,3 +50,13 @@ negative_account:
   postal_code: "98122"
   phone: 701-306-7504
   account_credit: -100.00
+
+no_rentals:
+  name: Ethelbert
+  registered_at: 2017-05-09 13:28:44
+  address: 1111 19th Ave South
+  city: Seattle
+  state: WA
+  postal_code: "98122"
+  phone: 701-306-7504
+  account_credit: 0
