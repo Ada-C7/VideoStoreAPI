@@ -38,19 +38,21 @@ describe MoviesController do
   describe "show" do
     # This bit is up to you!
     it "can get a movie" do
-      get movie_path(movies(:tusk).id)
+      get movie_path(movies(:tusk).title)
       must_respond_with :success
     end
 
-    it "returns a 404 for a non-existant movie" do
-      get movie_path((Movie.count + 1))
-      must_respond_with :no_content
+    it "returns a 404 for a non-existant movie and gives detailed error message" do
+      get movie_path(title: "aserabr" )
+      must_respond_with :not_found
+      movie = JSON.parse(response.body)["errors"]
+      movie.keys.must_include "title"
     end
 
     it "returns a movie with exactly the required fields" do
       keys = %w(title overview release_date inventory)
       get movie_path(title: "Little Mermaid" )
-      movie = JSON.parse(response.body)
+      movie = JSON.parse(response.body).first
       movie.keys.sort.must_equal keys.sort
     end
   end
