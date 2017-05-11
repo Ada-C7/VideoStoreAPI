@@ -7,8 +7,8 @@ class Rental < ApplicationRecord
     validate :valid_due_date?, if: [ :due_date, :checkout_date ]
 
     def valid_due_date?
-      checkout_day = Date._parse(checkout_date)[:mday]
-      due_day = Date._parse(due_date)[:mday]
+      checkout_day = Date.strptime(checkout_date, "%Y-%m-%d")
+      due_day = Date.strptime(due_date, "%Y-%m-%d")
       if due_day == checkout_day + 7
         return true
       else
