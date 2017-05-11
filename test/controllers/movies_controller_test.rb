@@ -27,17 +27,6 @@ describe MoviesController do
     end
   end
 
-  INDEX_FIELDS.each do | field |
-    it "index displays the correct #{ field }" do
-      skip
-      get movies_url
-      body = JSON.parse(response.body)
-      # puts body[field]
-      # puts movie[field]
-      body[field].must_equal movie[field]
-    end
-  end
-
   it "gets show" do
     get movie_path(movie.title)
     must_respond_with :success
