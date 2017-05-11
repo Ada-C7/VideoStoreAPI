@@ -10,8 +10,4 @@ class Rental < ApplicationRecord
   end
 
 
-  # def title
-  #
-  # end
-
 end

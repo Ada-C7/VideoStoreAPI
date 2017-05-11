@@ -1,8 +1,9 @@
 class RentalsController < ApplicationController
 
+
   def checkout
     rental = Rental.new(rental_params)
-    rental.movie =  Movie.find_by(title: params[:title].capitalize)
+    rental.movie =  Movie.find_by(title: params[:title])
     rental.checked_out = true
     if rental.save
       render status: :ok, json: { id: rental.id }
@@ -12,7 +13,7 @@ class RentalsController < ApplicationController
   end
 
   def checkin
-    movie =  Movie.find_by(title: params[:title].capitalize)
+    movie =  Movie.find_by(title: params[:title])
     customer_id = rental_params[:customer_id]
     rentals = Rental.where(movie_id: movie.id, customer_id: customer_id)
     rental = rentals[0]
