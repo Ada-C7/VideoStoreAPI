@@ -2,6 +2,7 @@ require "test_helper"
 
 describe CustomersController do
   describe "index" do
+
     it "route is working" do
       get customers_path
       must_respond_with :success
@@ -32,13 +33,12 @@ describe CustomersController do
     end
 
     it "returns customers with exactly the required fields" do
-      keys = %w(id movies_checked_out_count name phone postal_code registered_at   )
+      keys = %w(id movies_checked_out_count name phone postal_code registered_at )
       get customers_path
       body = JSON.parse(response.body)
       body.each do |customer|
         customer.keys.sort.must_equal keys
       end
     end
-
   end
 end

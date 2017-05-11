@@ -14,8 +14,9 @@ describe Customer do
     end
     it "Cannot be created even if one attributes is not presented" do
       @input.keys.each do |key|
-        @input.delete(key)
-        customer = Customer.new(@input)
+        input = @input.dup
+        input.delete(key)
+        customer = Customer.new(input)
         result = customer.valid?
         result.must_equal false
         customer.errors.must_include key

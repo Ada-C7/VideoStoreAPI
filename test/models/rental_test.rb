@@ -12,8 +12,6 @@ describe Rental do
                       due_date: Date.today + 3,
                       status: "checked out"
                    }
-
-
   end
 
   it "requires all attributes to create instance" do
@@ -23,8 +21,7 @@ describe Rental do
     Rental.find_by(customer_id: @customer_id ).wont_be_nil
   end
 
-  it "wont create a rental if missing an needed attribute" do
-    # rental = @rental_info.dup
+  it "wont create a rental if missing a needed attribute" do
     @rental_info.keys.each do |attribute|
       rental_info = @rental_info.dup
       rental_info.delete(attribute)
