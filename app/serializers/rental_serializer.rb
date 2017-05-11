@@ -1,6 +1,20 @@
 class RentalSerializer < ActiveModel::Serializer
-  attributes :customer_id, :due_date, :checkout_date
-  has_one :movie
-  has_one :customer, only: [:postal_code]
+  attributes :title, :customer_id, :name, :postal_code, :due_date, :checkout_date
 
+
+  def title
+    object.movie.title
+  end
+
+  def name
+    object.customer.name
+  end
+
+  def postal_code
+    object.customer.postal_code
+  end
+
+  def checkout_date
+    object.created_at.strftime("%Y-%m-%d")
+  end
 end
