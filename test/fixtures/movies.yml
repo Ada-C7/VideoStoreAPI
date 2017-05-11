@@ -4,8 +4,20 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+rambo:
+  title: First Blood
+  overview: Long Synopsis
+  release_date: "1982-06-19"
+  inventory: 8
+
+up:
+  title: Up
+  overview: Story about an older man looking for adventure.
+  release_date: "2009-06-19"
+  inventory: 5
+
+jane:
+  title: Jane Eyre
+  overview: A young governess takes at post at the home of Mr. Rochester.
+  release_date: "1943-06-19"
+  inventory: 50

@@ -16,12 +16,12 @@ get "customers/:id", to: "customers#show", as: "customer"
 #route for get /customers returns list of all customers with fields of info
 
 #routes for movies
-  get "movies", to: "movies#index", as: "movies"
 
 #route for get/movies - returns list of movies with fields
+  get "movies", to: "movies#index", as: "movies"
 
 #route for getting a single movie - parameter is a movie title, returns single moveiwith fields of info
-
+  get "movies/:title", to: "movies#show", as: "movie"
 #routes for rentals?
 
 end
