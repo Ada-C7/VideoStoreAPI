@@ -31,9 +31,6 @@ describe Rental do
     end
   end
 
-
-
-
   describe "self.overdue_movies" do
     it "returns instance of Array" do
       rental1 = Rental.new(@rental_info)
@@ -56,8 +53,5 @@ describe Rental do
         movie.due_date.must_be :<, Date.today
       end
     end
-
-
-
   end
 end

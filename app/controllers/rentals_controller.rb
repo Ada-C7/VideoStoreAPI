@@ -38,7 +38,6 @@ class RentalsController < ApplicationController
     end
   end
 
-
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
     render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok

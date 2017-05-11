@@ -5,15 +5,15 @@
 # below each fixture, per the syntax in the comments below
 #
 rental1:
-  customer_id: good_customer
-  movie_id: movie1
+  customer: good_customer
+  movie: movie1
   check_out_date: 2017-05-08
   due_date: 2017-05-11
   status: checked out
 
 rental2:
-  customer_id:
-  movie_id: movie2
+  customer: good_customer
+  movie: movie2
   check_out_date: 2017-05-07
   due_date: 2017-05-10
   status: checked out
