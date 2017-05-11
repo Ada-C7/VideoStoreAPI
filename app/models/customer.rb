@@ -1,7 +1,7 @@
 class Customer < ApplicationRecord
   has_many :rentals
-  has_many :movies, through: :rentals
-  validates :name, format: { with: /\A[a-zA-Z +]+\z/, message: "letters only" }
+  has_many :movies, through: rentals
+  validates :name, format: { with: /\A[a-zA-Z + ]+\z/, message: "letters only" }
   validates :phone, format: { with: /\([0-9][0-9][0-9]\) [0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/, message: "phone number must be of the  NANP number format  (xxx) xxx-xxxx "}
   validates :address, presence: true
   validates :registered_at, presence: true
