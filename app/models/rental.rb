@@ -8,6 +8,13 @@ class Rental < ApplicationRecord
   def initialize rental_params
     converted_date = convert_date(rental_params[:due_date])
     rental_params[:due_date] = converted_date
+    movie =  Movie.find_by(title: rental_params[:title])
+    if movie
+      rental_params[:movie_id] = movie.id
+    end
+
+    rental_params.delete(:title)
+    puts rental_params.keys
     super(rental_params)
   end
 
