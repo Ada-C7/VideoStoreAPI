@@ -35,6 +35,18 @@ describe MoviesController do
       end
     end
 
+  end
 
+  describe "show" do
+    it "can get a movie" do
+      get movie_path(movies(:up).title)
+      must_respond_with :success
+    end
+
+    it "returns 204 no_content if movie does not exist" do
+      ng_title = "dkjfsdkj7765%$"
+      get movie_path(ng_title)
+      must_respond_with :no_content
+    end
   end
 end
