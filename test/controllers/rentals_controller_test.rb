@@ -55,6 +55,10 @@ describe RentalsController do
       # what should this look like?
     end
 
+    it "failure to checkout movie returns an appropriate error" do
+      # what should this be?
+    end
+
   end
 
   describe "update" do
@@ -70,7 +74,17 @@ describe RentalsController do
       # what should this look like?
     end
 
-    it "resets duedate to nil"
+    it "returned is now true" do
+
+    end
+
+    it "updates the movie's available_inventory" do
+      # use a proc to check the change of the number?
+    end
+
+    it "if checking fails returns an error message" do
+      # what should it be?
+    end
 
   end
 
