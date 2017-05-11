@@ -12,4 +12,18 @@ class RentalsController < ApplicationController
       render status: :bad_request, json: { errors: rental.errors.messages }
     end
   end
+
+  def check_in
+    movie = Movie.find_by(title: params[:title])
+    customer = Customer.find_by_id(params[:customer_id])
+
+    rental = Rental.find_by(customer: customer, movie: movie)
+
+    if rental
+      rental.update(is_current: false)
+      render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
+    else
+      render json: { errors: ["Rental not found"] }, status: :not_found
+    end
+  end
 end
