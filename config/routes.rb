@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   post "/movies", to: 'movies#create'
 
-  get '/customers', to: 'customers#index', as: 'customers' #do
+  get '/customers', to: 'customers#index', as: 'customers' do
 
-    # post '/rentals/:title/check-out', to: 'rentals#create', as: 'check-out'
-
+    post '/rentals/:title/check-out', to: 'rentals#check-out', as: 'check-out'
+  end
 
 end
