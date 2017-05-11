@@ -10,6 +10,12 @@ star_wars:
   release_date: "1977"
   inventory: 20
 
+war_stores:
+  title: "War Stores: Episode IV A New Gun"
+  overview: "The greatest movie of all time or whatever. But like, different."
+  release_date: "1978"
+  inventory: 20
+
 no_rentals:
   title: "Thar be no rentals of me"
   overview: "This is so great"

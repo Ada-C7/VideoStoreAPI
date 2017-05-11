@@ -8,5 +8,11 @@
 one:
   customer: aj
   movie: star_wars
-  due_date: "2017-05-22"
+  due_date: "2020-05-22"
+  is_current: true
+
+overdue:
+  customer: overdue_stu
+  movie: war_stores
+  due_date: "2017-05-01"
   is_current: true

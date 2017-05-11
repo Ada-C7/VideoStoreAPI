@@ -7,4 +7,10 @@ class Rental < ApplicationRecord
     created_at.strftime("%F")
   end
 
+  def self.overdue
+    all.map { |rental|
+      rental.customer if Date.parse(rental.due_date).past? && rental.is_current
+    }.compact
+  end
+
 end

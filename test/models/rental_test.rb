@@ -28,4 +28,16 @@ describe Rental do
     end
   end
 
+  describe "self.overdue" do
+    it "returns an array of customers with movies that are overdue" do
+      Rental.overdue.count.must_equal 1
+      Rental.overdue.first.name.must_equal customers(:overdue_stu).name
+    end
+
+    it "returns an empty array when there are no rentals overdue" do
+      rentals(:overdue).delete
+      Rental.overdue.must_be :empty?
+    end
+  end
+
 end
