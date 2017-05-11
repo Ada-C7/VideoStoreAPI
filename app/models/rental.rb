@@ -28,5 +28,4 @@ class Rental < ApplicationRecord
     self.due_date ||= Chronic.parse('two weeks from today')
   end
 
-
 end

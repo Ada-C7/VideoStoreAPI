@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 
   get "/movies", to: "movies#index"
   #
-  # get "/movies/:title", to: "movies#show"
+  get "/movies/:title", to: "movies#show", as: "movie"
   #
   post "/rentals/:title/check-out", to: "rentals#create", as: "checkout"
   # [post customer_id and due_date]
   #
-  # post "/rentals/:title/check-in", to: "rentals#update"
+  post "/rentals/:title/check-in", to: "rentals#update", as: "checkin"
   # [post customer_id]
   #
   # get "/rentals/overdue", to: "rentals#overdue"

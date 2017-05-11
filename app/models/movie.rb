@@ -6,4 +6,8 @@ class Movie < ApplicationRecord
 
   has_many :rentals
 
+  def available_inventory
+    return 0
+  end
+  
 end
