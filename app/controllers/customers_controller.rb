@@ -7,5 +7,4 @@ class CustomersController < ApplicationController
     rentals = Rental.where('due_date <= ?', Time.now)
     render :json => rentals, status: :ok
   end
-
 end
