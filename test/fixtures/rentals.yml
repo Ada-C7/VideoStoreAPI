@@ -7,17 +7,17 @@
 one:
   movie: one
   customer: one
-  due_date: "12/11/17"
+  due_date: <%= Date.today %>
   status: ""
 
 two:
   movie: one
   customer: two
-  due_date: "4/11/17"
+  due_date: <%= 5.day.ago %>
   status: ""
 
 checkedout:
   movie: one
   customer: one
-  due_date: "1/1/11"
+  due_date: <%= 5.day.ago %>
   status: "checked out"
