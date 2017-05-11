@@ -23,17 +23,18 @@ describe Rental do
     end
 
     it "due date must be a Date object" do
+          rental = Rental.new(customer: customers(:one), movie: movies(:one), due_date: "2017-04")
+          rental.valid?.must_equal false
+          rental.errors.messages[:due_date].must_include "can't be blank"
+        end
 
+       it "returned is set as a default value to false" do
+          rental = rentals(:two)
+          rental.valid?.must_equal true
+          rental.returned.must_equal false
+        end
     end
 
-    it "requires a returned field" do
-
-    end
-
-    it "returned is set to false" do
-
-    end
-end
 
     describe "relationships" do
       it "requires a customer" do
