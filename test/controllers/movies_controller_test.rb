@@ -3,10 +3,6 @@ require "test_helper"
 describe MoviesController do
   describe 'Index' do
 
-    # before do
-    #   @movies_count = Movie.count
-    # end
-
     it 'is a real working api route' do
       get movies_path
       must_respond_with :success
@@ -38,7 +34,6 @@ describe MoviesController do
       end
     end
 
-    # wait do we need this ...
     it 'returns 500 if there are no movies in db' do
       Movie.destroy_all
       get movies_path
@@ -48,11 +43,19 @@ describe MoviesController do
   end
 
   describe "show" do
+
     it "can get a movie" do
       get movie_path(movies(:movie2).title)
       must_respond_with :success
+      response.parsed_body["title"].must_include "Psycho"
     end
-    it "respond with 404 error if cannot get a movie that doesnt exist" do
+
+    it 'returns json' do
+      get movie_path(movies(:movie1).title)
+      response.header['Content-Type'].must_include 'json'
+    end
+
+    it "respond with 404 error if given movie id that doesnt exist" do
       title = "Title that DNE"
       get movie_path(title)
       must_respond_with :not_found
@@ -60,6 +63,4 @@ describe MoviesController do
       body.must_include "404 error"
     end
   end
-
-
 end

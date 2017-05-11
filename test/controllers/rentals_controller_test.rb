@@ -25,10 +25,10 @@ describe RentalsController do
       response.parsed_body.must_include "errors"
     end
 
-    # it 'returns bad request if given movie title DNE' do
-
-    # end
-
-
+    it 'returns bad request if given movie title DNE' do
+      post rental_path("Harry Potter"), params: { rental: rental_data }
+      must_respond_with :bad_request
+      response.parsed_body.must_include "errors"
+    end
   end
 end

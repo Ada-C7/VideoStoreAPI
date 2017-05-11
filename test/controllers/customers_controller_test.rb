@@ -7,7 +7,7 @@ describe CustomersController do
       must_respond_with :success
     end
 
-    it " response with internal_server_error if there are no customers in database" do
+    it "returns internal_server_error if there are no customers in db" do
       Customer.destroy_all
       get customers_path
       must_respond_with :internal_server_error
