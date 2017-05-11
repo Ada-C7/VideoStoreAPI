@@ -2,10 +2,10 @@
 
 one:
   movie: psycho
-  customer: one
+  customer: good_data
   checkout_date: 2017-05-09 13:34:33
 
 two:
-  movie: psycho
-  customer: two
+  movie: arabia
+  customer: good_data
   checkout_date: 2017-05-09 13:34:33
