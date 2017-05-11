@@ -7,8 +7,8 @@ class Rental < ApplicationRecord
   validates :due_date, presence: true
   validates :status , presence: true, inclusion: { in: [ "checked out", "checked in", "overdue"] }
 
-# {"rental"=>{"customer_id"=>1, "date"=>"2017-05-10"}, "title"=>"Psycho"}
- # {customer_id => 1, movie_id => #}
+  # {"rental"=>{"customer_id"=>1, "date"=>"2017-05-10"}, "title"=>"Psycho"}
+  # {customer_id => 1, movie_id => #}
   def self.create_rental(info)
     rental = Rental.new
     # find_movie ? bad design to call Movie.find_by in Rental class
@@ -22,16 +22,16 @@ class Rental < ApplicationRecord
   end
 
 
-  def self.get_overdue
-    array_of_overdue = []
+  def self.overdue_movies
+    array_of_overdues = []
     Rental.all.each do |rental|
       if rental.due_date < Date.today
         rental.status = "overdue"
         rental.save
-        array_of_overdue << rental
+        array_of_overdues << rental
+      end
     end
-  end
-  return array_of_overdue
+    return array_of_overdues
   end
 
 
