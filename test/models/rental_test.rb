@@ -18,4 +18,24 @@ describe Rental do
 
   end
 
+  describe "required fields" do
+
+    REQUIRED_FIELDS = %w(due_date created_at movie_id customer_id)
+
+    REQUIRED_FIELDS.each do | field |
+
+      it "a rentals must have a #{field}" do
+
+      end
+
+    end
+
+  end
+
+  describe "numericality fields" do
+
+    NUMERICALITY_FIELDS = %w(movie_id customer_id)
+
+  end
+
 end

@@ -2,6 +2,13 @@ require "test_helper"
 
 describe RentalController do
 
+  let (:rental) { Rental.new(
+    due_date: "12/03/12",
+    movie_id: 2,
+    customer_id: 2,
+    )
+  }
+
   describe "rentals#overdue" do
 
     before do
@@ -12,12 +19,13 @@ describe RentalController do
       value(response).must_be :success?
     end
 
+
   end
 
   describe "rentals#checkout" do
 
     before do
-      get checkout_path(title: "Lion King")
+      post checkout_path()
     end
 
     it "should get checkout" do
@@ -29,12 +37,14 @@ describe RentalController do
   describe "rentals#checkin" do
 
     before do
-      get checkin_path
+      post checkin_path
     end
 
     it "should get checkin" do
       value(response).must_be :success?
     end
+
+    it "should change the "
 
   end
 
