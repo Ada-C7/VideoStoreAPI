@@ -15,4 +15,9 @@ class Customer < ApplicationRecord
     return count
   end
 
+  def overdue_date
+    puts self.overdue
+
+ end
+
 end

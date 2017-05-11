@@ -31,6 +31,7 @@ class MoviesController < ApplicationController
     rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id])
     if rental
       rental.returned_date = Time.now
+      rental.save
       render json: rental, status: :ok
     else
       render json: rental, status: :not_found
