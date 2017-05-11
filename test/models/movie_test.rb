@@ -4,6 +4,6 @@ describe Movie do
   let(:movie) { Movie.new }
 
   it "must be valid" do
-    value(movie).must_be :valid?
+    movie.valid?.must_equal true
   end
 end
