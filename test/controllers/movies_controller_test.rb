@@ -46,23 +46,11 @@ describe MoviesController do
   end
 
   it "responds correctly if movie not found" do
-    skip
     get movie_path(1)
     must_respond_with :not_found
 
     body = JSON.parse(response.body)
-    body.must_equal "errors" => messages.errors
+    body.must_equal "errors" => { "title" => ["Movie '1' not found"] }  
   end
 
-  SHOW_FIELDS.each do | field |
-    it "displays the correct #{field}" do
-      skip
-      body = JSON.parse(response.body)
-      body[field].must_equal movie[field]
-    end
-  end
-
-  # A basic test with no parameters, if applicable
-  # Positive and negative tests for any URI parameters (user ID, movie title)
-  # Testing around any data in the request body
 end
