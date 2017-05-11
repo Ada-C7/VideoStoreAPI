@@ -48,7 +48,7 @@ describe RentalsController do
       end
     end
 
-    # it 'returns no_content 204 error if there are no overdue movies' do
+    # it 'returns json message if there are no overdue movies' do
     #   Rental.destroy_all
     #   get overdue_rentals_path
     #   response.status.must_equal :no_content
@@ -57,10 +57,10 @@ describe RentalsController do
   end
 
   describe "update" do
-    it "updates existing rental" do
-      rental_data = {"customer_id"=>1}
-      patch update_rental_path(movies(:one).title), params: {rental: rental_data }
-    end
+    # it "updates existing rental" do
+    #   rental_data = {"customer_id"=>1}
+    #   patch update_rental_path(movies(:one).title), params: {rental: rental_data }
+    # end
     it "changes rental status" do
 
     end
