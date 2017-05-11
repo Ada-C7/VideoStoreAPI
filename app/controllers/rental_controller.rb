@@ -1,19 +1,27 @@
 class RentalController < ApplicationController
+
   def overdue
+
   end
 
-  def check_out
-    # set checkout_date to today's date
-    # set due_date to a week from today's date
-    
+  def checkout
+    rental = Rental.new(rental_params)
+
+    if rental.save
+      render json: variable.as_json(only: ["customer_id", "due_date", "movie_id"]),
+      status: :ok
+    else
+      render status: :bad_request, json: { errors: rental.errors.messages }
+    end
+
   end
 
-  def check_in
+  def checkin
   end
 
   private
 
   def rental_params
-    params.require(:rental).permit(:customer_id, :movie_id)
+    params.require(:rental).permit(:customer_id, :due_date)
   end
 end
