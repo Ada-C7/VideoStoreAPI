@@ -35,4 +35,11 @@ describe Rental do
 
     end
   end
+
+  describe "overdue?" do
+    it "returns true if rental is overdue" do
+      rental = rentals(:rental_overdue)
+      rental.overdue?.must_equal true
+    end
+  end
 end

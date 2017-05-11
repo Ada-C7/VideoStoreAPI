@@ -5,6 +5,6 @@ class Rental < ApplicationRecord
   validates :duedate, presence: true
 
   def overdue?
-    Date.parse(self.duedate) < Date.today
+    Date.parse(self.duedate.to_s) < Date.today
   end
 end

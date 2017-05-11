@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe CustomersController do
-  CUSTOMER_KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
+  CUSTOMER_KEYS = %w(id name phone postal_code registered_at rentals_count)
 
   describe "index" do
     it "is a real working route" do
@@ -36,11 +36,12 @@ describe CustomersController do
     end
 
     it "returns an empty array if no customers" do
-      Customer.delete_all
-      get customers_path
-      must_respond_with :success
-      body = JSON.parse(response.body)
-      body.must_equal []
+      proc {
+        Customer.delete_all
+        get customers_path
+        must_respond_with :success
+        body = JSON.parse(response.body)
+        body.must_equal [] }
     end
   end
 end

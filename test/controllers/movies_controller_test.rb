@@ -34,11 +34,12 @@ describe MoviesController do
       end
     end
 
-    it "returns an empty array if no movies" do
-      Movie.delete_all
-      get movies_path
-      body = JSON.parse(response.body)
-      body.must_equal "count" => 0
+    it "returns a json with count 0 if no movies" do
+      proc {
+        Movie.delete_all
+        get movies_path
+        body = JSON.parse(response.body)
+        body.must_equal "count" => 0 }
     end
   end
 

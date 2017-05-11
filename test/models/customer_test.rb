@@ -41,40 +41,40 @@ describe Customer do
       customer.errors.messages.must_include :phone
     end
 
-    it "won't create customer without movies_checked_out_count" do
+    it "won't create customer without rentals_count" do
       customer = customers(:bare_minimum)
-      customer.movies_checked_out_count = nil
+      customer.rentals_count = nil
 
       customer.valid?.must_equal false
-      customer.errors.messages.must_include :movies_checked_out_count
+      customer.errors.messages.must_include :rentals_count
     end
 
-    it "movies_checked_out_count must be integer" do
+    it "rentals_count must be integer" do
       customer = customers(:bare_minimum)
-      customer.movies_checked_out_count = "three"
+      customer.rentals_count = "three"
 
       customer.valid?.must_equal false
-      customer.errors.messages.must_include :movies_checked_out_count
+      customer.errors.messages.must_include :rentals_count
     end
 
-    it "movies_checked_out_count can't be lt 0" do
+    it "rentals_count can't be lt 0" do
       customer = customers(:bare_minimum)
-      customer.movies_checked_out_count = -1
+      customer.rentals_count = -1
 
       customer.valid?.must_equal false
-      customer.errors.messages.must_include :movies_checked_out_count
+      customer.errors.messages.must_include :rentals_count
     end
 
-    it "movies_checked_out_count can be 0" do
+    it "rentals_count can be 0" do
       customer = customers(:bare_minimum)
-      customer.movies_checked_out_count = 0
+      customer.rentals_count = 0
 
       customer.valid?.must_equal true
     end
 
-    it "movies_checked_out_count can be >= 0" do
+    it "rentals_count can be >= 0" do
       customer = customers(:bare_minimum)
-      customer.movies_checked_out_count = 1
+      customer.rentals_count = 1
 
       customer.valid?.must_equal true
     end
