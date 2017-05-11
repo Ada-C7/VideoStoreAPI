@@ -1,10 +1,15 @@
 class RentalsController < ApplicationController
 
   def create
-    if Movie.find_by_title(params[:title]).nil?
+    movie = Movie.find_by_title(params[:title])
+    # if movie.inventory < 1
+    #   render status: :error, json: { error: "not enough inventory"}
+    # end
+
+    if movie.nil? || movie.inventory < 1
       id = 0
     else
-      id = Movie.find_by_title(params[:title]).id
+      id = movie.id
     end
 
     @rental = Rental.new(movie_id: id, customer_id: rental_params[:customer_id], due_date: rental_params[:due_date] )

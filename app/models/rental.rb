@@ -5,6 +5,8 @@ class Rental < ApplicationRecord
 
   validates :due_date, presence: true
   validate :due_date_not_in_past
+  # validate :enough_inventory
+
   validates :customer_id, presence: true
 
 
@@ -13,6 +15,13 @@ class Rental < ApplicationRecord
       errors.add(:due_date, "can't be in the past")
     end
   end
+
+  # def enough_inventory
+  #   inventory = movie.inventory
+  #   if inventory < 1
+  #     errors.add(:inventory, "not enough inventory")
+  #   end
+  # end
 
   def set_defaults
     self.checkout_date ||= Date.today
