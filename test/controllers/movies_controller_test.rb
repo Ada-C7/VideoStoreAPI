@@ -11,6 +11,12 @@ describe MoviesController do
     must_respond_with :success
   end
 
+  it "gets index with no movies" do
+    Movie.all.each { |movie| movie.destroy }
+    get movies_url
+    must_respond_with :success
+  end
+
   it "index returns JSON" do
     get movies_url
     response.header['Content-Type'].must_include 'json'
@@ -50,7 +56,7 @@ describe MoviesController do
     must_respond_with :not_found
 
     body = JSON.parse(response.body)
-    body.must_equal "errors" => { "title" => ["Movie '1' not found"] }  
+    body.must_equal "errors" => { "title" => ["Movie '1' not found"] }
   end
 
 end
