@@ -89,7 +89,6 @@ describe Movie do
   end
 
   it "returns an array of rentals" do
-      # puts movie.rentals
       movie.rentals.each do |rental|
           rental.must_be_instance_of Rental
           rental.movie.must_equal movie
@@ -102,7 +101,6 @@ describe Movie do
   end
 
   it "returns an array of customers" do
-      # puts movie.customers
       movie.customers.each do |customer|
           customer.must_be_instance_of Customer
           customer.movies.must_include movie
