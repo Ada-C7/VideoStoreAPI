@@ -58,9 +58,12 @@ class RentalsController < ApplicationController
 
   def overdue
     # if due date is 31 days ago
-    if rental.due_date.past?
-      # change status to "overdue"
-      rental.status = "overdue"
+    overdues = Rental.overdue
+
+    if overdues == []
+      render status: :not_found, json: {errors: {rentals: ["No Overdue Rentals" ]}}
+    else
+      render json: overdues.as_json(only: [:title, :release_date]), status: :ok
     end
   end
 
