@@ -16,24 +16,36 @@ describe Rental do
   end
 
   describe "Rental#Overdue" do
+    let(:overdues) {Rental.overdue}
+
     it "should return an array of rentals" do
-      rentals = Rental.overdue
-      rentals.must_be_instance_of Array
-      rentals.each do |rental|
+      overdues.must_be_instance_of Array
+      overdues.each do |rental|
         rental.must_be_instance_of Rental
       end
     end
 
-    it "Each rental's due date should be past today's date" do
-      skip
+    it "Each rental's due date should be before today's date" do
+      overdues.each do |rental|
+        due = Date.parse (rental.due_date)
+        due.past?.must_equal true
+      end
     end
 
     it "If there are no overdue rentals, should return an empty array" do
-      skip
+      #deleted all from test database
+      Rental.destroy_all
+
+      #created one future due rental
+      rental_hash = {customer_id: 1, movie_id: 1, due_date: (Time.now + 5.days)}
+      Rental.create(rental_hash)
+
+      #check that none show up
+      Rental.overdue.must_equal []
     end
 
     it "If a rental's due date is today, should not be returned" do
-      skip
+      overdues.wont_include (rentals(:one))
     end
   end
 end
