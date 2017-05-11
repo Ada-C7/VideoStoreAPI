@@ -29,7 +29,6 @@ class RentalsController < ApplicationController
       render status: :not_acceptable, json: {errors: {
         movie: ["The Movie #{movie.title} is not available"] }}
     end
-
   end
 
   def checkin
@@ -63,7 +62,7 @@ class RentalsController < ApplicationController
     if overdues == []
       render status: :not_found, json: {errors: {rentals: ["No Overdue Rentals" ]}}
     else
-      render json: overdues.as_json(only: [:title, :release_date]), status: :ok
+      render json: overdues.as_json(only:[:customer_id, :created_at, :due_date], methods: :info_for_overdues), status: :ok
     end
   end
 

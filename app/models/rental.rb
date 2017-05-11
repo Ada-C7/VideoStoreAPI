@@ -20,4 +20,14 @@ class Rental < ApplicationRecord
     #returns an array of rental objects that are overdue.
     return overdues
   end
+
+  def info_for_overdues
+    info = {
+    "title" => movie.title,
+    "name" => customer.name,
+    "postal_code" => customer.postal_code,
+    "checkout_date" => created_at
+  }
+   info
+  end
 end
