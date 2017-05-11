@@ -16,8 +16,14 @@ class Customer < ApplicationRecord
   end
 
   def overdue_date
-    puts self.overdue
+    overdue = []
+    self.rentals.each do |rental|
+      if rental.due_date < Time.now
+        overdue << rental
+      end
+    end
+    overdue
 
- end
+  end
 
 end

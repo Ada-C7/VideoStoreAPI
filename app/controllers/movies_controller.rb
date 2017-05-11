@@ -1,28 +1,17 @@
 class MoviesController < ApplicationController
-
   def index
     movies = Movie.all
     render json: movies, status: :ok
   end
 
   def show
-    movie = Movie.find_by(title: params[:title])
+    movie = Movie.where(title: params[:title])
 
-    if movie
-      render json: movie, status: :ok, serializer: DetailedMovieSerializer
+    if movie.empty?
+      error = "Movie '#{params[:title]}' not found"
+      render json: { errors: {title: "Movie '#{params[:title]}'' not found"}}.to_json, status: :not_found
     else
-      render json: movie,  status: :no_content
-    end
-  end
-
-  def checkout
-    movie = Movie.find_by(title: params[:title].capitalize)
-    due_date = Time.now + 3.days
-    rental = Rental.create(customer_id: params[:customer_id], movie_id: movie.id, due_date: due_date)
-    if rental
-      render json: rental, status: :ok
-    else
-      render json: rental, status: :bad_request
+      render json: movie, status: :ok, each_serializer: DetailedMovieSerializer
     end
   end
 
@@ -43,4 +32,5 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:name, :age, :human)
   end
+
 end
