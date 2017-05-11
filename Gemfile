@@ -49,3 +49,5 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
 end
+
+gem 'active_model_serializers', '~> 0.10.0'
