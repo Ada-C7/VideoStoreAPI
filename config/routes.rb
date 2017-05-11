@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'rentals/create'
-
-  get 'rentals/update'
-
-  get 'rentals/overdue'
 
   get '/movies', to: 'movies#index', as: 'movies'
 
