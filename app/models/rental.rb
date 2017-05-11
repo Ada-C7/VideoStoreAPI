@@ -16,13 +16,10 @@ class Rental < ApplicationRecord
       return Date.parse(date)
     else
       date
-      #not raising an error; if the date can't be converted our validations will let the user know, then
-      # raise ArgumentError.new("date must be in format YYYY-MM-DD")
     end
   end
 
   def valid_due_date
-    puts due_date
     if due_date.class != Date
       errors.add(:due_date, "date must be in YYYY-MM-DD format")
     elsif due_date <= Date.current
