@@ -30,11 +30,17 @@ describe RentalsController do
     end
 
     it "renders bad request for invalid customer id data" do
-      #customer id not found
       post checkin_path(movie.title), params: { customer_id: (Customer.last.id + 1)}
       must_respond_with :bad_request
       body = JSON.parse(response.body)
       body["error"].must_include "customer"
+    end
+
+    it "renders bad request if movie not found" do
+      post checkin_path("totally made up title"), params: { customer_id: customer.id }
+      must_respond_with :bad_request
+      body = JSON.parse(response.body)
+      body["error"].must_include "movie"
     end
 
     it "renders a different message if rental does not exist" do
@@ -45,8 +51,6 @@ describe RentalsController do
       body["error"].must_include "not checked out"
     end
 
-    it "returns status not found if movie not found" do skip
-      #movie title does not return movie
-    end
+
   end
 end
