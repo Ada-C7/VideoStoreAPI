@@ -17,12 +17,32 @@ class Customer < ApplicationRecord
 
   def overdue_date
     overdue = []
-    self.rentals.each do |rental|
-      if rental.due_date < Time.now
-        overdue << rental
+    if self.rentals != nil
+      self.rentals.each do |rental|
+
+        if rental.due_date < Time.now
+          overdue << rental
+          puts ">>>>>>>>"
+          puts rental.due_date
+          puts ">>>>>>>>"
+
+        end
+        # puts ">>>>>>>>"
+        # puts overdue
+        # puts ">>>>>>>>"
       end
     end
-    overdue
+    if overdue != []
+      puts overdue
+      oldest = Time.now
+      overdue.each do |over|
+        if over.due_date < oldest
+          oldest = over.due_date
+        end
+      end
+
+      return oldest
+    end
 
   end
 

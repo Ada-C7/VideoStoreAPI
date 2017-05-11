@@ -16,10 +16,18 @@ class CustomersController < ApplicationController
     rentals.each do |rental|
       overdue_rentals << rental if rental.due_date < Time.now
     end
+    puts ">>>>>>>>>>>>>"
+    puts overdue_rentals
+    puts ">>>>>>>>>>>>>"
+
     customers = []
     overdue_rentals.each do |overdue|
       customers << Customer.find_by(id: overdue.customer_id)
     end
+    puts ">>>>>>>>>>>>>"
+    puts customers
+    puts ">>>>>>>>>>>>>"
+
 
     if customers.nil?
       render json: customers, status: :not_found
