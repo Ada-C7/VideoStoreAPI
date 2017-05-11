@@ -28,4 +28,10 @@ class Movie < ApplicationRecord
       return false
     end
   end
+
+
+  def available_inventory
+    return self.inventory
+  end
+
 end
