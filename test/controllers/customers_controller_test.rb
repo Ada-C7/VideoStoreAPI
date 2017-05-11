@@ -32,4 +32,22 @@ CUSTOMER_KEYS = %w(id movies_checked_out_count name phone postal_code registered
     end
 
   end
+
+  describe "index with sort parameter" do
+    it "sorts customers by name" do
+        get customers_path(sort: name)
+    end
+
+    it "sorts customers by date registered" do
+
+    end
+
+    it "sorts customers by postal code" do
+
+    end
+
+    it "reverts to rails default if sort value is not valid" do
+
+    end
+  end
 end
