@@ -23,7 +23,7 @@ describe Rental do
     end
 
     it "due date must be a Date object" do
-      
+
     end
 
     it "requires a returned field" do
@@ -37,18 +37,25 @@ end
 
     describe "relationships" do
       it "requires a customer" do
-
+        rental = Rental.new(movie: movies(:one), due_date: "2017-8-13")
+        rental.valid?.must_equal false
+        rental.errors.messages.must_include :customer
       end
 
       it "requires a movie" do
-
+        rental = Rental.new(customer: customers(:one), due_date: "2017-08-13")
+        rental.valid?.must_equal false
+        rental.errors.messages.must_include :movie
       end
 
       it "can get the customer" do
+        rental = rentals(:one)
+        rental.customer.must_be_kind_of Customer
       end
 
       it "can get the movie" do
-
+        rental = rentals(:one)
+        rental.movie.must_be_kind_of Movie
       end
 
     end
