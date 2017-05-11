@@ -8,13 +8,16 @@ rental_one:
   customer: has_all
   movie: dumbo
   duedate: 2017-07-12
+  returned: false
 
 rental_two:
   customer: bare_minimum
   movie: heat
   duedate: 2017-08-13
+  returned: false
 
 rental_overdue:
   customer: has_all
   movie: heat
   duedate: 2017-03-26
+  returned: false

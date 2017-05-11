@@ -7,6 +7,7 @@ class RentalsController < ApplicationController
   def create
     # must be given title, customer_id, duedate
     # returns confirmation
+    # returned is false
     # set the duedate
     # updates movies available inventory
   end
@@ -14,7 +15,7 @@ class RentalsController < ApplicationController
   def update
     # must be give customer_id, title
     # returns confirmation
-    # rest duedate to nil
+    # returned updates to true
     # updates movies available inventory
   end
 end
