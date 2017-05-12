@@ -4,10 +4,8 @@ rental_one:
   movie_id: 1
   customer_id: 1
   due_date: "02/04/12"
-  checkout_date: "02/04/12"
 
 rental_two:
   movie_id: 2
   customer_id: 2
   due_date: "02/04/12"
-  checkout_date: "02/04/12"

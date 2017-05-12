@@ -18,23 +18,37 @@ describe Rental do
 
   end
 
-  describe "required fields" do
+  describe "Validations" do
+
+    let (:new_rental) { Rental.new(
+      due_date: "12/12/14",
+      movie_id: 2,
+      customer_id: 2
+      )
+    }
 
     REQUIRED_FIELDS = %w(due_date movie_id customer_id)
+    NUMERICALITY_FIELDS = %w(movie_id customer_id)
 
     REQUIRED_FIELDS.each do | field |
-
       it "a rentals must have a #{field}" do
-
+        new_rental[field] = nil
+        new_rental.valid?.must_equal false
+        new_rental.errors.messages.must_include field.to_sym
       end
-
     end
 
-  end
+    NUMERICALITY_FIELDS.each do | field |
+      it "#{field} must be a number" do
+        new_rental[field] = "zero"
+        new_rental.valid?.must_equal false
+        new_rental.errors.messages.must_include field.to_sym
+      end
+    end
 
-  describe "numericality fields" do
-
-    NUMERICALITY_FIELDS = %w(movie_id customer_id)
+    it "False is the default value for a new Rental's returned status" do
+      new_rental.returned.must_equal false
+    end
 
   end
 
