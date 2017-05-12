@@ -26,7 +26,14 @@ class RentalsController < ApplicationController
   end
 
   def overdue
-    rentals = Rental.all
+
+    #what is the syntax for a conditional for due date?
+    rentals = Rental.where("returned = ? AND due_date <= ?", false, Date.current-1)
+
+
+
+    rentals.group_by { |rental| rental.customer_id }
+
     render json: rentals.as_json
   end
 
