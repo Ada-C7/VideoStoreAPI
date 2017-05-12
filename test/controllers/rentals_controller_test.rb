@@ -134,36 +134,36 @@ describe RentalsController do
   end
 
   describe "overdue" do
-    # let(:rental_data) {
-    #   {
-    #     customer_id: customers(:one).id
-    #   }
-    # }
+
     it "is a working route" do
-      
+      get overdue_url
+      must_respond_with :success
     end
 
     it "returns an array of JSON objects" do
+      get overdue_url
+      response.header['Content-Type'].must_include 'json'
 
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Array
     end
 
     it "returns all movies that are overdue" do
-
+      get overdue_url
+      body = JSON.parse(response.body)
+      body.length.must_equal Rental.overdue.count
     end
 
     it "returns required fields" do
+      required_keys = %w(customer_id due_date info_for_overdues)
+
+      get overdue_url
+      body = JSON.parse(response.body)
+
+      body.each do |rental|
+        rental.keys.sort.must_equal required_keys
+      end
 
     end
-    # it "changes the status of a rental if the due date has passed" do
-    #   # post checkout_path(movies(:one).title), params: {rental: rental_data}
-    #
-    #   rental = Rental.last
-    #   rental.status.must_equal "overdue"
-    #
-    #
-    #   must_respond_with :success
-    # end
-
   end
-
 end
