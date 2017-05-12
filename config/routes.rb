@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get "/customers", to: "customers#index", as: "customers"
   get "/customers/:id", to: "customers#show", as: "customer"
 
-  post "/rentals/:title/check_out", to: "rental#create", as:"rental"
-  patch "/rentals/:title/check_in", to: "rental#update", as:"check_in"
+  post "/rentals/:title/check_out", to: "rentals#checkout", as:"checkout"
+  patch "/rentals/:title/check_in", to: "rentals#checkin", as:"checkin"
 
   get "/zomg", to: "tests#bla"
 
