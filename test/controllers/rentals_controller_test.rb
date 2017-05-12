@@ -66,12 +66,59 @@ describe RentalsController do
     end
   end
 
-  it "should get update" do
-    skip
-    get rentals_update_url
-    value(response).must_be :success?
-  end
 
+  describe "update (check in a movie)" do
+    it "should change returned field to true when a movie is checked in" do
+
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      must_respond_with :success
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body.must_include "movie_returned"
+    end
+
+    it "checking in a movie should increase its available inventory by one" do
+      available_inventory = movies(:one).available_inventory
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      movies(:one).available_inventory.must_equal (available_inventory + 1)
+    end
+
+    it "checking in a movie decreases the customer's movies_checked_out_count" do
+      movies_checked_out = customers(:one).movies_checked_out_count
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      customers(:one).movies_checked_out_count.must_equal (movies_checked_out + 1)
+    end
+
+    it "returns an error if the movie has already been checked in" do
+
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      must_respond_with :success
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body.must_include "movie_returned"
+
+
+      available_inventory = movies(:one).available_inventory
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      must_respond_with :bad_request
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body.must_equal "errors" => {"check-in" => ["Customer has already checked in this movie"]}
+      available_inventory = movies(:one).available_inventory
+
+    end
+
+    it "returns an error if the customer has not checked out the movie" do
+      movie_count = customers(:one).movies_checked_out_count
+      post check_in_path(movies(:two).title), params: { rental: {customer_id: customers(:one)} }
+      must_respond_with :bad_request
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body.must_equal "errors" => {"check-in" => ["Customer has not checked out this movie"]}
+      customers(:one).movies_checked_out_count.must_equal movie_count
+    end
+
+  end
   it "should get overdue" do
     skip
     get rentals_overdue_url
