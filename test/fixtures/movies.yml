@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+psycho:
+  title: "Psycho"
+  overview: "When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother. The place seems quirky, but fine… until Marion decides to take a shower."
+  release_date: 1960-06-16
+  inventory: 8
+
+
+bringit:
+  title: "Bring it On"
+  overview: "Cheerleading drama"
+  release_date: 1960-06-16
+  inventory: 0
+
+
+arabia:
+  title: "Lawrence of Arabia"
+  overview: "Lawrence of Arabia is the classic film from David Lean starring Peter O’Toole and based on the autobiography from Thomas Edward Lawrence who during the first World War was on assignment by the British Empire in Arabia. The film would become a cult classic and is known today as a masterpiece."
+  release_date: 1962-12-10
+  inventory: 1
