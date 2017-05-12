@@ -65,21 +65,21 @@ describe MoviesController do
 
 describe "sort method on index" do
   it "can sort by title" do
-      get '/movies?sort=title'
+      get movies_path, params: { "sort": "title"}
       must_respond_with :success
       body = JSON.parse(response.body)
       body[0]["title"].must_equal "Jaws"
   end
 
   it "can sort by release date" do
-      get '/movies?sort=release_date'
+      get movies_path, params: { "sort": "release_date"}
       must_respond_with :success
       body = JSON.parse(response.body)
       body[0]["title"].must_equal "Psycho"
   end
 
   it "still returns a list of movies if passed bad params" do
-    get '/movies?sort=waffles'
+    get movies_path, params: { "sort": "waffles"}
     must_respond_with :success
   end
 end

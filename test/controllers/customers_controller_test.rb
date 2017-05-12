@@ -23,28 +23,28 @@ describe CustomersController do
 
   describe "sort method in index" do
     it "can sort by name" do
-      get '/customers?sort=name'
+      get customers_path, params: { "sort": "name" }
       must_respond_with :success
       body = JSON.parse(response.body)
       body[0]["name"].must_equal "Curran Stout"
     end
 
     it "can sort by registered date" do
-      get '/customers?sort=registered_at'
+      get customers_path, params: { "sort": "registered_at" }
       must_respond_with :success
       body = JSON.parse(response.body)
       body[0]["registered_at"].must_equal "2014-04-16T21:40:20.000Z"
     end
 
     it "can sort by postal code" do
-      get '/customers?sort=postal_code'
+      get customers_path, params: { "sort": "postal_code" }
       must_respond_with :success
       body = JSON.parse(response.body)
       body[0]["name"].must_equal "Shelley Rocha"
     end
 
     it "returns just a regular list of people for a sort request that isn't allowed" do
-      get '/customers?sort=potatoes'
+      get customers_path, params: { "sort": "potatoes" }
       must_respond_with :success
       body = JSON.parse(response.body)
       body[0]["name"].must_equal "Shelley Rocha"
