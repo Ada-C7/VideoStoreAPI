@@ -129,6 +129,10 @@ describe RentalController do
       }.must_change 'customer.movies_checked_out_count', -1
     end
 
+    it "should respond with json" do
+      response.header['Content-Type'].must_include 'json'
+    end
+
   end
 
 end
