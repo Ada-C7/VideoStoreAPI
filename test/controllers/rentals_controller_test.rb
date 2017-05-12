@@ -8,6 +8,12 @@ describe RentalsController do
       }
     }
 
+    let(:bad_rental_data) {
+      {
+        customer_id: "bad"
+      }
+    }
+
     it "creates a new rental" do
       proc {
         post checkout_path(movies(:one).title), params: {rental: rental_data}
@@ -72,6 +78,14 @@ describe RentalsController do
 
       must_respond_with :success
 
+    end
+
+    it "handles appropriately if customer_id does not exist" do
+      post checkout_path(movies(:one).title), params: {rental: bad_rental_data}
+      must_respond_with :bad_request
+
+      body = JSON.parse(response.body)
+      body["errors"].must_equal "customer"=>["The Customer ID does not exist"]
     end
   end
 
@@ -163,7 +177,16 @@ describe RentalsController do
       body.each do |rental|
         rental.keys.sort.must_equal required_keys
       end
+    end
 
+    it "handles appropriately if no rentals are expired" do
+      Rental.destroy_all
+      get overdue_url
+
+      body = JSON.parse(response.body)
+      must_respond_with :not_found
+
+      body["errors"].must_equal "rentals"=>["No Overdue Rentals"]
     end
   end
 end

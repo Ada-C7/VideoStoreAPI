@@ -5,13 +5,14 @@ class RentalsController < ApplicationController
     movie = Movie.find_by(title: params[:title])
     rental = Rental.new(rental_params)
     rental.movie_id = movie.id
+    #need to find customer by rental id.
 
-    if rental.customer_id == nil
-      render status: :bad_request, json: { errors: rental.errors.messages }
-    end
+    customer = Customer.find_by_id(rental.customer_id)
 
-    # if available inventory > 0
-    if movie.available_inv > 0
+    if customer.nil?
+      render status: :bad_request, json: { errors: {
+        customer: ["The Customer ID does not exist"] } }
+    elsif movie.available_inv > 0
       # -1 from available inventory
       movie.available_inv -= 1
       # change rental status to "checked out "
