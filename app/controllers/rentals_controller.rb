@@ -40,7 +40,9 @@ class RentalsController < ApplicationController
         sorted_rentals = Rental.order(params[:sort].to_sym)
         render :json => sorted_rentals, status: :ok
       elsif params[:sort] == "title"
+
         sorted_rentals = Rental.joins(:movie).merge(Movie.order(:title))
+
         render :json => sorted_rentals, status: :ok
       elsif params[:sort] == "name"
         sorted_rentals = Rental.joins(:customer).merge(Customer.order(:name))
