@@ -17,18 +17,21 @@ class CustomersController < ApplicationController
       overdue_rentals << rental if rental.due_date < Time.now
     end
 
-
     customers = []
-    overdue_rentals.each do |overdue|
-      customer = Customer.find_by(id: overdue.customer_id)
-      unless customers.include?(customer)
-        customers << customer
+    if overdue_rentals.nil?
+      render json: {errors: "No Overdue Rentals"}, status: :not_found
+    else
+      overdue_rentals.each do |overdue|
+        customer = Customer.find_by(id: overdue.customer_id)
+        unless customers.include?(customer)
+          customers << customer
+        end
       end
     end
 
 
     if customers == []
-      render json: {errors: "No customers with overdue movies"}, status: :not_found
+      render json: {errors: "No Customers with Overdue Movies"}, status: :not_found
     else
       render json: customers, status: :ok
     end

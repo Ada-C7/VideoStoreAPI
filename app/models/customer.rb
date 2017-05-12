@@ -16,27 +16,30 @@ class Customer < ApplicationRecord
   end
 
   def overdue_date
-    overdue = []
-    if self.rentals != nil
-      self.rentals.each do |rental|
+    self.rentals.where("due_date < ?", Time.now)
+                .order(due_date: :asc)
+                .first.due_date
 
-        if rental.due_date < Time.now
-          overdue << rental
-        end
-
-      end
-    end
-    if overdue != []
-      puts overdue
-      oldest = Time.now
-      overdue.each do |over|
-        if over.due_date < oldest
-          oldest = over.due_date
-        end
-      end
-
-      return oldest
-    end
+    # overdue = []
+    # if self.rentals != nil
+    #   self.rentals.each do |rental|
+    #
+    #     if rental.due_date < Time.now
+    #       overdue << rental
+    #     end
+    #
+    #   end
+    # end
+    # if overdue != []
+    #   oldest = Time.now
+    #   overdue.each do |over|
+    #     if over.due_date < oldest
+    #       oldest = over.due_date
+    #     end
+    #   end
+    #
+    #   return oldest
+    # end
 
   end
 
