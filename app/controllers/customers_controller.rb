@@ -4,13 +4,13 @@ class CustomersController < ApplicationController
     render :json => customers, status: :ok
   end
 
-
-  def show
-    customer = Customer.find_by(id: params[:id])
-    if customer
-      render json: customer, status: :ok
-    else
-      render json: customer, status: :not_found
-    end
-  end
+  # No customer show per READ ME
+  # def show
+  #   customer = Customer.find_by(id: params[:id])
+  #   if customer
+  #     render json: customer, status: :ok
+  #   else
+  #     render json: customer, status: :not_found
+  #   end
+  # end
 end
