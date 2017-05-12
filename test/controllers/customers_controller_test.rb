@@ -6,7 +6,8 @@ describe CustomersController do
       Customer.destroy_all
       get customers_path
       body = JSON.parse(response.body)
-      body["message"].must_be_kind_of String
+      body.must_be_kind_of Array
+      body.must_be_empty
       must_respond_with :success
     end
 
@@ -18,6 +19,11 @@ describe CustomersController do
       must_respond_with :success
     end
   end
+
+
+
+
+
 
   describe "show" do
     it "responds with an existing customer" do
