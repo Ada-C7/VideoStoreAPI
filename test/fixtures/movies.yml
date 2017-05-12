@@ -17,3 +17,10 @@ two:
   overview: "A movie"
   inventory: 100
   available_inv: 0
+
+has_too_much_inventory:
+  title: "Fivel"
+  release_date: "1/1/90"
+  overview: "There are no cats in America"
+  inventory: 100
+  available_inv: 100

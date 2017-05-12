@@ -18,7 +18,7 @@ class RentalsController < ApplicationController
       # change rental status to "checked out "
       rental.status = "checked out"
       # set due date of 30 days after today
-      rental.due_date = Time.now + 30.days
+      rental.due_date = Date.today + 30.days #FIX TESTS!
 
       rental.save
       movie.save
@@ -28,7 +28,7 @@ class RentalsController < ApplicationController
     else
       # give error message that movie isn't available
       render status: :not_acceptable, json: {errors: {
-        movie: ["The Movie #{movie.title} is not available"] }}
+        movie: ["The Movie #{params[:title]} is not available"] }}
     end
   end
 
@@ -46,15 +46,19 @@ class RentalsController < ApplicationController
     end
 
     if movie && rental
-      movie.available_inv += 1
-      movie.save
+      if movie.available_inv < movie.inventory
+        movie.available_inv += 1
+        movie.save
 
-      rental.status = "Returned"
-      rental.save
+        rental.status = "Returned"
+        rental.save
 
-      render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
+        render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
 
-      # render status: :ok, json: { message: "Your movie has been returned."}
+        # render status: :ok, json: { message: "Your movie has been returned."}
+      else
+        render status: :not_found, json: {errors: {rental: ["This rental will over increase our inventory" ]}}
+      end
     end
 
   end

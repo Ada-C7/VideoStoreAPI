@@ -21,3 +21,9 @@ checkedout:
   customer: one
   due_date: <%= 5.day.ago %>
   status: "checked out"
+
+testing_inventory:
+  movie: has_too_much_inventory
+  customer: one
+  due_date: <%= Date.today %>
+  status: "checked out"
