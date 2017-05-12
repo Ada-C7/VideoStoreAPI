@@ -21,11 +21,11 @@ describe Customer do
 
     describe 'relations' do
       it 'a customer can have many movies' do
-        skip # Not passing, yaml files need to be fixed.
+        # skip # Not passing, yaml files need to be fixed.
         customer = customers(:one)
         customer.must_respond_to :movies
         assert_operator 0, :<, customers(:one).movies.size
-        customer.movie.each do |movie|
+        customer.movies.each do |movie|
           movie.must_be_kind_of Movie
         end
       end
