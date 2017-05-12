@@ -21,13 +21,17 @@ describe RentalController do
       value(response).must_be :success?
     end
 
+    it "returns json" do
+      response.header['Content-Type'].must_include 'json'
+    end
+
     it "returns the correct fields" do
 
     end
 
   end
 
-  describe "rentals#checkout" do
+  describe "successful rentals#checkout" do
 
     before do
       post checkout_path( title: movies(:nemo).title, rental:
@@ -71,39 +75,40 @@ describe RentalController do
     end
   end
 
+  describe "unsuccessful rentals#checkout" do
+
     it "Movie can only be checked out if one is available" do
       post checkout_path( title: movies(:bad).title, rental:
-        {
-          customer_id: rentals(:bad_rental).customer_id,
-          due_date: rentals(:bad_rental).due_date
-        }
+      {
+        customer_id: rentals(:bad_rental).customer_id,
+        due_date: rentals(:bad_rental).due_date
+      }
       )
       must_respond_with :bad_request
     end
-    #
+
     #     it "should render the correct output if checkut was unsuccessful" do skip
     #       status: :bad_request
     #       json: errors
     #     end
+  end
+
+  describe "rentals#checkin" do
+
+    before do skip
+      post checkin_path()
+    end
+
+    it "should get checkin" do skip
+      value(response).must_be :success?
+    end
+  #
+  #     it "should change the " do skip
+  #
+  #     end
+  #
+  #   end
+  #
+  end
 
 end
-
-
-#
-#   describe "rentals#checkin" do
-#
-#     before do skip
-#       post checkin_path
-#     end
-#
-#     it "should get checkin" do skip
-#       value(response).must_be :success?
-#     end
-#
-#     it "should change the " do skip
-#
-#     end
-#
-#   end
-#
-# end
