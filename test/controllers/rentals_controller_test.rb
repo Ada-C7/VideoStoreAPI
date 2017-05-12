@@ -69,7 +69,7 @@ describe RentalsController do
         }
       }
 
-      patch check_in_rental_path(title),  params: rental_params
+      post check_in_rental_path(title),  params: rental_params
       must_respond_with :success
       rental.reload
       rental.checked_out.must_equal false
@@ -84,7 +84,7 @@ describe RentalsController do
           customer_id: id
         }
       }
-      patch check_in_rental_path(title),  params: rental_params
+      post check_in_rental_path(title),  params: rental_params
       must_respond_with :bad_request
       body = JSON.parse(response.body)
       error_hash = { "error" => "Bogus Movie could not be found, so we could not check in your rental."}
@@ -98,7 +98,7 @@ describe RentalsController do
           customer_id: id
         }
       }
-      patch check_in_rental_path("Jaws"),  params: rental_params
+      post check_in_rental_path("Jaws"),  params: rental_params
       must_respond_with :bad_request
       body = JSON.parse(response.body)
       error_hash = { "error" => "There was a problem. Could not check in your movie."}
@@ -118,7 +118,7 @@ describe RentalsController do
           customer_id: id
         }
       }
-      patch check_in_rental_path(title),  params: rental_params
+      post check_in_rental_path(title),  params: rental_params
       must_respond_with :bad_request
       body = JSON.parse(response.body)
       error_hash = { "error" => "Your movie was already checked in."}
