@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+rambo:
+  title: First Blood
+  overview: Long Synopsis
+  release_date: "1982-06-19"
+  inventory: 8
+  slug: first-blood
+
+up:
+  title: Up
+  overview: Story about an older man looking for adventure.
+  release_date: "2009-06-19"
+  inventory: 5
+  slug: up
+
+jane:
+  title: Jane Eyre
+  overview: A young governess takes at post at the home of Mr. Rochester.
+  release_date: "1943-06-19"
+  inventory: 50
+  slug: jane-eyre
+
+romy:
+  title: Romy and Michele's High School Reunion
+  overview: This is a great movie about old high school friends.
+  release_date: "1943-06-19"
+  inventory: 5
+  slug: romy-and-michele-s-high-school-reunion
