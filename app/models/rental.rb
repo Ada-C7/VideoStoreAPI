@@ -18,4 +18,6 @@ class Rental < ApplicationRecord
     end
     return overdue_rentals
   end
+
+  
 end
