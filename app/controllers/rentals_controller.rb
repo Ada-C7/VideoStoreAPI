@@ -17,7 +17,7 @@ class RentalsController < ApplicationController
       # change rental status to "checked out "
       rental.status = "checked out"
       # set due date of 30 days after today
-      rental.due_date = Time.now + 30.days
+      rental.due_date = Time.now.in_time_zone("Pacific Time (US & Canada)") + 30.days
 
       rental.save
       movie.save

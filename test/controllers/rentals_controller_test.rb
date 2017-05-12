@@ -140,15 +140,15 @@ describe RentalsController do
     #   }
     # }
 
-    it "changes the status of a rental if the due date has passed" do
-      # post checkout_path(movies(:one).title), params: {rental: rental_data}
-
-      rental = Rental.last
-      rental.status.must_equal "overdue"
-
-
-      must_respond_with :success
-    end
+    # it "changes the status of a rental if the due date has passed" do
+    #   # post checkout_path(movies(:one).title), params: {rental: rental_data}
+    #
+    #   rental = Rental.last
+    #   rental.status.must_equal "overdue"
+    #
+    #
+    #   must_respond_with :success
+    # end
 
   end
 
