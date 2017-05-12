@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
   # validates :overview, presence: true
   validates :inventory, presence: true
   has_many :rentals
-  after_create :set_available_inventory
+  # after_create :set_available_inventory
 
   def available?
     if self.available_inventory == 0
@@ -12,10 +12,13 @@ class Movie < ApplicationRecord
     else
       return true
     end
-
   end
 
-  def set_available_inventory
-    self.available_inventory = self.inventory
+  def decrease_available_inventory
+    self.available_inventory = self.available_inventory - 1
   end
+
+  # def set_available_inventory
+  #   self.available_inventory = self.inventory
+  # end
 end

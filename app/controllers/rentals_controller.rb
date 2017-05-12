@@ -8,8 +8,16 @@ class RentalsController < ApplicationController
     rental.customer = Customer.find_by(id: params[:customer_id])
     rental.checkout_date = Date.today
     rental.due_date = params[:due_date]
-    rental.save
-    # must associate rental with customer
+
+    if rental.movie.available?
+
+      if rental.save
+        rental.movie.decrease_available_inventory
+        render status: :ok, json: { name: rental.customer.name, customer_id: rental.customer.id, movie: rental.movie.title, checkout_date: rental.checkout_date, due_date: rental.due_date }
+      else
+        render status: :bad_request, json: { errors: rental.errors.messages }
+      end
+    end
 
     # must decrement title inventory
 
