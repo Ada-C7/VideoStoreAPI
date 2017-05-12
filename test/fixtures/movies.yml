@@ -3,13 +3,13 @@
 jaws:
   title: "Jaws"
   overview: "Shark does things"
-  release_date: "uh idk the 80s"
+  release_date: "1960"
   inventory: 10000
 
 starwars:
   title: "Star Wars"
   overview: "Why don't you go see one of those star war you like"
-  release_date: "197something"
+  release_date: "1972"
   inventory: 5
 
 no_title:
@@ -30,22 +30,22 @@ no_date:
 no_inv:
   title: "Some movie"
   overview: "some movie"
-  release_date: "sometime"
+  release_date: "1999"
 
 neg_inv:
   title: "Another movie"
   overview: "Yes i am movie"
-  release_date: "cool"
+  release_date: "1999"
   inventory: -1
 
 rep_title:
   title: "Title"
   overview: "overview"
-  release_date: "date"
+  release_date: "1999"
   inventory: 1
 
 test_title:
   title: "Title"
   overview: "overview"
-  release_date: "date"
+  release_date: "1999"
   inventory: 1
