@@ -34,6 +34,15 @@ describe MoviesController do
         movie.keys.sort.must_equal keys
       end
     end
+
+    it "returns empty array if no movies" do
+      Movie.destroy_all
+      get movies_url
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Array
+      body.must_be_empty
+    end
+    
   end
 
   describe "show" do
