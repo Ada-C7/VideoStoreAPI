@@ -5,6 +5,10 @@ class CustomersController < ApplicationController
   end
   def overdue
     rentals = Rental.where('due_date <= ?', Time.now)
-    render :json => rentals, status: :ok
+    if rentals.empty?
+      render 'plain text' => "There are no customers with overdue items", status: :no_content
+    else
+      render :json => rentals, status: :ok
+    end
   end
 end

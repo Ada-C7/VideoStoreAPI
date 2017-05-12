@@ -54,8 +54,13 @@ describe CustomersController do
       body = JSON.parse(response.body)
       body.length.must_equal Rental.where('due_date <= ?', Time.now).length
     end
+    it "returns 204 error if there are no customers with overdue items" do
+      Rental.delete_all
+      get overdue_path
+      must_respond_with :no_content
+    end
     it "returns required fields" do
-      keys = %w(postal_code customer_id checkout_date due_date title name )
+      keys = %w(postal_code customer_id checkout_date due_date title name)
       get overdue_path
       body = JSON.parse(response.body)
       body.each do |customer|
