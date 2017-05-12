@@ -46,14 +46,6 @@ class RentalsController < ApplicationController
         render status: :bad_request, json: { errors: "This customer does not have this movie checked out." }
       end
     end
-    #  params[:customer_id]
-    #
-    # movie = Movie.find_by_title(params[:title])
-
-
-    #update rental model check_in column
-
-    #find rental where customer_id = params and movie = movies
   end
 
   def overdue
@@ -67,7 +59,7 @@ class RentalsController < ApplicationController
       postal_code: rental.customer.postal_code,
       due_date: rental.due_date }
 
-    end 
+    end
 
     render status: :ok,  json: rentals.as_json
 
