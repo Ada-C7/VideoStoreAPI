@@ -52,7 +52,7 @@ class RentalController < ApplicationController
   end
 
   def checkin_params
-    params.require(:checkin).permit(:customer_id)
+    params.permit(:customer_id)
   end
 
   def get_movie_id(title)

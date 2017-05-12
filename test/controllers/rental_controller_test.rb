@@ -112,9 +112,7 @@ describe RentalController do
 
     before do
       post checkin_path( title: movies(:nemo).title), params: {
-        checkin: {
-          customer_id: rentals(:rental_one).customer_id
-        }
+        customer_id: rentals(:rental_one).customer_id
       }
     end
 
@@ -126,9 +124,7 @@ describe RentalController do
       customer = Customer.find(rentals(:rental_three).customer_id)
       proc {
         post checkin_path( title: movies(:nemo).title), params: {
-          checkin: {
-            customer_id: rentals(:rental_three).customer_id
-          }
+          customer_id: rentals(:rental_three).customer_id
         }
       }.must_change 'customer.movies_checked_out_count', -1
     end
