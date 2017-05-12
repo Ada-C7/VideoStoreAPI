@@ -4,7 +4,7 @@ describe RentalsController do
   describe "checkout" do
 
     it "returns a json object" do
-        post checkout_path(params: { rental: {customer_id: 1}, title: "Doctor Strange" } )
+        post checkout_path("Doctor Strange"), params: { rental: {customer_id: 1} } 
         response.header['Content-Type'].must_include 'json'
     end
     # rental with id of rental
