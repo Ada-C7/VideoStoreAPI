@@ -58,4 +58,34 @@ describe Rental do
       end
     end
   end
+
+  # does this need its own describ block
+  describe 'check_inventory' do
+    before do
+      @movie_one_copy = movies(:movie_one_copy).id
+      @rental_info = {
+                      movie_id: nil,
+                      customer_id: customers(:good_customer2).id,
+                      check_out_date: Date.today,
+                      due_date: Date.today + 3,
+                      status: "checked out"
+                     }
+    end
+
+    # edge case 1 inventory and 1 available
+    it "will validate a rental if there is enough inventory" do
+      @rental_info[:movie_id] = @movie_one_copy
+      rental = Rental.new(@rental_info)
+      rental.valid?
+      # p rental.errors
+      rental.valid?.must_equal true
+    end
+
+    it "wont validate a rental if there is not enough inventory" do
+      @rental_info[:movie_id] = movies(:movie_not_available).id
+      rental = Rental.new(@bad_rental)
+      rental.valid?.must_equal false
+      rental.errors.messages[:movie_id][0].must_equal "no available inventory"
+    end
+  end
 end

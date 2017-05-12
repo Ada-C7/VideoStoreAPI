@@ -2,9 +2,11 @@ require 'date'
 class Rental < ApplicationRecord
   belongs_to :movie
   belongs_to :customer
+
   validates :check_out_date, presence: true
   validates :due_date, presence: true
-  validates :status , presence: true, inclusion: { in: [ "checked out", "checked in", "overdue" ] }
+  validates :status, inclusion: { in: [ "checked out", "checked in", "overdue" ] }
+  validate :movie_id, :check_inventory
   # this validation also ran on overdue_movies - not just controller update
   # validates :return_date, presence: true, on: :update
 
@@ -17,7 +19,9 @@ class Rental < ApplicationRecord
     rental.check_out_date = Date.today
     rental.due_date = Date.today + 3
     rental.status = "checked out"
-    # rental.check_inventory
+    rental.movie.decrease_inventory
+    # would it be better to know customer exists before this method?
+    rental.customer.increase_checkout_count if rental.customer
     rental.valid? # can add validation to check inventory
     return rental
   end
@@ -34,4 +38,13 @@ class Rental < ApplicationRecord
     end
     return array_of_overdues
   end
+
+  def check_inventory
+    movie = self.movie
+    if movie.nil? || movie.available_inventory == 0 || movie.available_inventory.nil?
+      errors.add(:movie_id, "no available inventory")
+    end
+  end
+
+
 end

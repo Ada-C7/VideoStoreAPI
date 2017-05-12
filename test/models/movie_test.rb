@@ -7,7 +7,9 @@ describe Movie do
       @input = { title: "Harry Potter",
                  overview: "Boy learns he is a wizard",
                  release_date: "11-23-2001",
-                 inventory: 10
+                 inventory: 10,
+                 available_inventory: 10
+
                }
     end
 
