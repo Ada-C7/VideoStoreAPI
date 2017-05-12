@@ -2,7 +2,7 @@
 
 nemo:
   id: 1
-  title: "Psycho"
+  title: "Not Nemo"
   overview: "A Great Movie"
   release_date: "12-03-17"
   inventory: 500
@@ -13,3 +13,10 @@ movie:
   overview: "MyString"
   release_date: "12-03-17"
   inventory: 20
+
+bad:
+  id: 3
+  title: "Zero Inventory"
+  overview: "kjkl"
+  release_date: "12-12-12"
+  inventory: 0

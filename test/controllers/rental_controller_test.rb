@@ -69,24 +69,23 @@ describe RentalController do
         movie.keys.sort.must_equal CHECKOUT_FIELDS
       end
     end
+  end
 
-    # it "Movie can only be checked out if one is available" do
-    #   proc {
-    #     post checkout_path( title: movies(:nemo).title, rental:
-    #       {
-    #         customer_id: rentals(:rental_one).customer_id,
-    #         due_date: rentals(:rental_one).due_date
-    #       }
-    #     )
-    #   }
-    # end
+    it "Movie can only be checked out if one is available" do
+      post checkout_path( title: movies(:bad).title, rental:
+        {
+          customer_id: rentals(:bad_rental).customer_id,
+          due_date: rentals(:bad_rental).due_date
+        }
+      )
+      must_respond_with :bad_request
+    end
     #
     #     it "should render the correct output if checkut was unsuccessful" do skip
     #       status: :bad_request
     #       json: errors
     #     end
 
-  end
 end
 
 

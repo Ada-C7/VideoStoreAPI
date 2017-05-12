@@ -11,3 +11,10 @@ rental_two:
   movie_id: 2
   customer_id: 2
   due_date: "02/04/12"
+
+bad_rental :
+  id: 3
+  movie_id: 3
+  customer_id: 2
+  due_date: "12/12/12"
+  

@@ -21,7 +21,6 @@ class RentalController < ApplicationController
         render status: :bad_request, json: { errors: rental.errors.messages }
       end
     else
-      print rental.errors.messages
       render status: :bad_request, json: { errors: "Movie unavailable" }
     end
   end
@@ -55,6 +54,6 @@ class RentalController < ApplicationController
 
   def movie_available?(movie_id)
     movie = Movie.find(movie_id)
-    movie.available_inventory >= 1 ? true : false
+    return movie.available_inventory >= 1 ? true : false
   end
 end
