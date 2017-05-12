@@ -58,7 +58,6 @@ class RentalsController < ApplicationController
   end
 
   def find_movie
-    movie = Movie.find_by(title: params[:title])
-    return movie
+    Movie.find_by(title: params[:title])
   end
 end
