@@ -10,7 +10,6 @@ describe Customer do
     postal_code: "68116",
     phone: "555-555-5555",
     account_credit: 9.99,
-    movies_checked_out: 12
     )
   }
 
@@ -28,7 +27,7 @@ describe Customer do
     end
   end
 
-  NUMERICALITY_FIELDS = %w(account_credit movies_checked_out)
+  NUMERICALITY_FIELDS = %w(account_credit)
 
   NUMERICALITY_FIELDS.each do | field |
     it "Customer #{field} must be a number" do
