@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   post "/rentals/:title/check-in", to: "rentals#update", as: "checkin"
   # [post customer_id]
   #
-  # get "/rentals/overdue", to: "rentals#overdue"
+  get "/rentals/overdue", to: "rentals#overdue", as: "overdue"
 end

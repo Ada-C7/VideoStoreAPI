@@ -68,4 +68,21 @@ describe MoviesController do
     end
   end
 
+  describe "overdue" do
+    let(:arabia) { movies(:arabia) }
+
+    it "should list customers given a movie with overdue inventory" do
+      get overdue(arabia.title)
+      must_respond_with :success
+
+    end
+
+    it "should return no movies given a title with no overdue inventory" do skip
+    end
+
+    it "should return an error when an invalid movie is given" do skip
+    end
+
+  end
+
 end

@@ -28,4 +28,18 @@ class Rental < ApplicationRecord
     self.due_date ||= Chronic.parse('two weeks from today')
   end
 
+  def over_due_rentals #returns array of Customer objects
+    movie_rentals = Rental.find_by_movie_id(movie.id)
+    over_due_rentals = movie_rentals.where('due_date > Today.date')
+
+    customers_with_overdue = []
+    over_due_rentals.each do |rental|
+      customers_with_overdue << Customer.find_by_customer_id(rental.customer_id)
+    end
+    return customers_with_overdue
+  end
+
+
+
+
 end
