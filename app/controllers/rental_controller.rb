@@ -29,13 +29,10 @@ class RentalController < ApplicationController
   def checkin
     movie_id = get_movie_id(params[:title])
     customer_id = checkin_params[:customer_id]
-    print "====================="
-    print customer_id
-    print "======================"
     rental = Rental.find_by(customer_id: customer_id, movie_id: movie_id)
     rental.returned = true
     if rental.save
-      render json: rental.as_json(only: ["custoer_id", "movie_id", "returned"]),
+      render json: rental.as_json(only: ["customer_id", "movie_id", "returned"]),
       status: :ok
     else
       render status: :bad_request, json: { errors: rental.errors.messages}
