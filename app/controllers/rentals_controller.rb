@@ -30,8 +30,6 @@ class RentalsController < ApplicationController
 
             if rental.save && rental.movie.save
                 render json: { id: rental.id, checked_out: rental.checked_out }, status: :ok
-            else
-                render json: { errors: rental.errors.messages }, status: :bad_request
             end
         else
             render json: { errors: "could not find rental" }, status: :bad_request
@@ -39,10 +37,8 @@ class RentalsController < ApplicationController
     end
 
     def overdue
-        # return list of rentals
-        rentals = Rental.overdue?
-        render json: rentals.as_json()
-        # return title, customer_id, name, postal_code, checkout_date, due_date
+        rentals = Rental.overdue
+        render json: rentals.as_json(only: [:customer_id, :checkout_date, :due_date], methods: [:title, :name, :postal_code]), status: :ok
     end
 
 end

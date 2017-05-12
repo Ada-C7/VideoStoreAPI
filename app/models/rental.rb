@@ -17,6 +17,21 @@ class Rental < ApplicationRecord
       end
     end
 
-    def self.overdue?
+    def title
+      movie.title
+    end
+
+    def name
+      customer.name
+    end
+
+    def postal_code
+      customer.postal_code
+    end
+
+    def self.overdue
+      Rental.all.each do |rental|
+        return rental if rental.due_date.past?
+      end
     end
 end
