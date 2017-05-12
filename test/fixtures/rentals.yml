@@ -17,3 +17,10 @@ rental2:
   check_out_date: 2017-05-07
   due_date: 2017-05-10
   status: checked out
+
+rental3:
+  customer: good_customer2
+  movie: movie1
+  check_out_date: 2017-05-05
+  due_date: 2017-05-08
+  status: overdue

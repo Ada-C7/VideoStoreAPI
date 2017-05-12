@@ -24,7 +24,18 @@ describe RentalsController do
       must_respond_with :success
       post create_rental_path(@movie.title), params: { rental: rental_data }
       must_respond_with :bad_request
-      reponse.parsed_body.must_include "errors"
+      response.parsed_body.must_include "error"
+    end
+
+    it 'allows a customre to checkout out a movie again, if repeat rentals status is checked in' do
+      post create_rental_path(@movie.title), params: { rental: rental_data }
+      must_respond_with :success
+      patch update_rental_path(@movie.title), params: { rental: rental_data }
+      must_respond_with :success
+      post create_rental_path(@movie.title), params: { rental: rental_data }
+      must_respond_with :success
+      # repeat_rentals = @customer.rentals.where(movie_id: @movie.id)
+      # repeat_rentals.each {|rental| rental.}
     end
 
     it 'returns bad request if given customer id DNE' do
@@ -48,15 +59,12 @@ describe RentalsController do
     end
 
     it 'returns json' do
-      # rental_data = {"customer_id"=>1}
-      # post create_rental_path(movies(:one).title), params: {rental: rental_data }
-      # patch update_rental_path(movies(:one).title), params: {rental: rental_data }
       get overdue_rentals_path
       response.header['Content-Type'].must_include 'json'
     end
 
     it 'returns an array of hashes' do
-      skip
+      # skip
       get overdue_rentals_path
       response.parsed_body.must_be_instance_of Array
       response.parsed_body.each do |overdue_rentals_hash|
@@ -65,9 +73,9 @@ describe RentalsController do
     end
 
     it 'returns the correct amount of overdue rentals' do
-      skip
       get overdue_rentals_path
-      response.parsed_body.length.must_equal Rental.where(status: "overdue").count
+      overdue_rentals = Rental.where(status: "overdue")
+      response.parsed_body.length.must_equal overdue_rentals.length
     end
 
     it 'returns overdue rentals with the expected fields' do
@@ -78,12 +86,15 @@ describe RentalsController do
       end
     end
 
-    # it 'returns json message if there are no overdue movies' do
-    #   Rental.destroy_all
-    #   get overdue_rentals_path
-    #   response.status.must_equal :no_content
-    #   response.parsed_body.must_include "error"
-    # end
+    it 'returns json message if there are no overdue movies' do
+      Rental.destroy_all
+      get overdue_rentals_path
+      # learning note: status will return the HTTP status code
+      # response.status.must_equal 200
+      # learning note: must_respond_with lets you test to the HTTP  status message
+      must_respond_with :success
+      response.parsed_body.must_include "message"
+    end
   end
 
   describe "update" do
@@ -93,7 +104,7 @@ describe RentalsController do
       @movie = movies(:movie1)
       # create a rental for this customer and movie
       post create_rental_path(@movie.title), params: { rental: @rental_data }
-      rental_id = response.parsed_body["id"]
+      rental_id = response.parsed_body["rental_id"]
       @rental = Rental.find_by(id: rental_id)
 
     end
