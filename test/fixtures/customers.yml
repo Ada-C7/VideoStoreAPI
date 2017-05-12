@@ -19,3 +19,13 @@ two:
   postal_code: 03450
   phone: (555)-555-5555
   account_credit: 1.5
+
+three:
+  name: Jim Henson
+  registered_at: Thu, 30 Apr 2015 07:54:14 -0700
+  address: Sesame Street
+  city: New York
+  state: NY
+  postal_code: 03450
+  phone: (666)-555-5555
+  account_credit: 6

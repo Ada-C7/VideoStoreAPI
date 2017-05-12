@@ -4,6 +4,7 @@ class Rental < ApplicationRecord
 
   validates :due_date, presence: true
   validate :valid_due_date
+  validate :check_inventory
 
   def initialize rental_params
     converted_date = convert_date(rental_params[:due_date])
@@ -14,6 +15,14 @@ class Rental < ApplicationRecord
     end
     rental_params.delete(:title)
     super(rental_params)
+  end
+
+  def check_inventory
+    if movie
+      if movie.available_inventory <= 0
+        errors.add(:availability, "Sorry, this movie is out of stock")
+      end
+    end
   end
 
   def convert_date date

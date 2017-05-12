@@ -80,11 +80,24 @@ describe Movie do
 
   describe "custom methods" do
     #need to update when we add rentals
-    it "available_inventory returns inventory" do
+    it "available_inventory returns an Integer " do
+      # has two rentals
       movie = movies(:one)
-      movie.available_inventory.must_equal movie.inventory
+      movie.available_inventory.must_equal 18
 
+      #has one rental
+      guardians = movies(:two)
+      guardians.available_inventory.must_equal 0
+
+      #has no inventory and no rentals
+      psycho = movies(:three)
+      psycho.available_inventory.must_equal 0
+
+      #has inventory and no rentals
+      toy_story = movies(:four)
+      toy_story.available_inventory.must_equal 6
     end
+
   end
 
 end

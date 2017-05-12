@@ -11,4 +11,17 @@ two:
   title: Guardians of the Galaxy 2
   overview: space
   release_date: 2017-05-04
-  inventory: 4
+  inventory: 1
+
+
+three:
+  title: Psycho
+  overview: weird mom-son issues
+  release_date: 1970-01-01
+  inventory: 0
+
+four:
+  title: Toy Story
+  overview: spaceman and cowboy become friends
+  release_date: 2000-05-05
+  inventory: 6
