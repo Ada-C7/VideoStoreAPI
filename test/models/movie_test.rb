@@ -2,14 +2,14 @@ require "test_helper"
 
 describe Movie do
 
-  hash = {
+  MOVIE_HASH = {
     title: "test_title",
     overview: "Long Synopsis",
     release_date: "1975-06-19",
     inventory: 8
   }
 
-  let(:movie) { Movie.new(hash) }
+  let(:movie) { Movie.new(MOVIE_HASH) }
 
   it "must be valid" do
     value(movie).must_be :valid?
@@ -94,5 +94,27 @@ describe Movie do
     movie.must_be :invalid?
   end
 
+  it "requires an inventory to be an integer" do
+    bad_movie_inventory_int = {
+    title: "test_title",
+    overview: "Long Synopsis",
+    release_date: "1975-06-19",
+    inventory: -10
+  }
 
+    movie = Movie.new(bad_movie_inventory_int)
+    movie.must_be :invalid?
+  end
+
+  describe "check_inventory" do
+    it "returns the current inventory of a particular movie" do
+      rambo = movies(:rambo)
+      current_inventory = rambo.check_inventory
+      current_inventory.must_equal 8
+    end
+  end
 end
+
+#relationship testing
+#ASSUMING A MOVIE HAS CUSTOMERS MOVIE.CUSTOMER
+# must.be.instance_of Array

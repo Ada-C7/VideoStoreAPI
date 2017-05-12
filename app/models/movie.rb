@@ -6,7 +6,6 @@ class Movie < ApplicationRecord
   validates :release_date, presence: true
   validates :inventory, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0}
 
-
 #write test for check_inventory returns inventory
 
 def check_inventory
