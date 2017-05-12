@@ -31,13 +31,23 @@ class Rental < ApplicationRecord
   def self.over_due_rentals #returns array of Customer objects
     rentals = Rental.where("due_date < ?", Date.today)
     overdue_rentals = rentals.where('checkin_date': nil)
+    return overdue_rentals
 
-    customers_with_overdue = []
-    overdue_rentals.each do |rental|
-      customers_with_overdue << Customer.find_by_id(rental.customer_id)
-    end
-    return customers_with_overdue
   end
+
+  def customer_name
+    return self.customer.name
+  end
+
+  def customer_postal_code
+    return self.customer.postal_code
+  end
+
+  def movie_title
+    return self.movie.title
+  end
+
+
 
 
 

@@ -1,6 +1,5 @@
 class RentalsController < ApplicationController
 
-
   def create
     movie = Movie.find_by_title(params[:title])
 
@@ -49,16 +48,14 @@ class RentalsController < ApplicationController
   end
 
 
-    def overdue
-      overdue_customers = Rental.over_due_rentals
-      if overdue_customers.length == 0
-        render json: { overdue: "none" }, status: :ok
-      else
-        render json: overdue_customers.as_json(only: [:title, :customer_id, :name, :postal_code, :checkout_date, :due_date], status: :ok)
-      end
+  def overdue
+    overdue_rentals = Rental.over_due_rentals
+    if overdue_rentals.length == 0
+      render json: { overdue: "none" }, status: :ok
+    else
+      render json: overdue_rentals.as_json(only: [:customer_id, :checkout_date, :due_date], methods: [:customer_name, :customer_postal_code, :movie_title]), status: :ok
     end
-
-
+  end
 
   private
 
