@@ -2,6 +2,9 @@ class CustomersController < ApplicationController
 
   def index
     customers = Customer.all
+    if params[:sort] == "name"
+      customers.sort_by {|customer| customer.name}
+    end
     render json: customers.as_json(except: [:created_at, :updated_at]), status: :ok
   end
 
