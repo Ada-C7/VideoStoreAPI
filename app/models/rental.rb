@@ -18,9 +18,9 @@ class Rental < ApplicationRecord
   end
 
   # def check_inventory
-  #   call movie.available_inventory and update numbers as appropriate
-  #   add error message if there is not a movie available
-  #if number returned by available_inventory > 0 make the rental, if 0 or less, do not make the rental
+  #   call movie.available_inventory --> this will return a value
+  #   if > 0 make the rental
+  #   if 0 or less, do not make the rental, add error message
   # end
 
   def convert_date date
