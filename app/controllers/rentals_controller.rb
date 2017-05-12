@@ -37,12 +37,12 @@ class RentalsController < ApplicationController
   def update
     movie = Movie.find_by(title: params[:title])
     rental = Rental.find_by(movie_id: movie.id, customer_id: params["rental"]["customer_id"])
-    if rental.status = "checked in"
+    if rental.status == "checked in"
       render status: :ok, json: { error: "Movie is already checked in" }
     else
       rental.return_date = Date.today
       rental.status = "checked in"
-      
+
       rental.customer.movies_checked_out_count -= 1
       rental.customer.save
       rental.movie.available_inventory += 1
