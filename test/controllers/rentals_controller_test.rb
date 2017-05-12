@@ -13,7 +13,7 @@ describe RentalsController do
         }
       }
       post new_rental_path(movie_title), params: rental_params
-      # byebug
+
       must_respond_with :success
 
       last_count = Rental.count
@@ -34,7 +34,6 @@ describe RentalsController do
       must_respond_with :bad_request
       last_count = Rental.count
       first_count.must_equal last_count
-    end
     end
 
 
@@ -58,14 +57,15 @@ describe RentalsController do
 
   describe "checkin method" do
     it "can check in a checked_out rental" do
-      title = rentals(:one).movie.title
-      id = customers(:shelley).id
       rental = rentals(:one)
+      title = rental.movie.title
+      id = customers(:shelley).id
+
       rental.checked_out.must_equal true
 
       rental_params = {
         rental: {
-          customer_id: id,
+          customer_id: id
         }
       }
 
@@ -75,21 +75,76 @@ describe RentalsController do
       rental.checked_out.must_equal false
     end
 
-      it "gives an approriate error message and status bad request if given bad information" do
-      #Given bad movie title
-      title = 'bogus movie'
+    it "gives an approriate error message and status bad request if given a bogus movie title" do
+
+      title = 'Bogus Movie'
       id = customers(:shelley).id
+      rental_params = {
+        rental: {
+          customer_id: id
+        }
+      }
+      patch check_in_rental_path(title),  params: rental_params
+      must_respond_with :bad_request
+      body = JSON.parse(response.body)
+      error_hash = { "error" => "Bogus Movie could not be found, so we could not check in your rental."}
+      body.must_equal error_hash
+    end
+
+    it "gives an approriate error message and status bad request if given a bogus customer id" do
+      id = Customer.first.id + 1
+      rental_params = {
+        rental: {
+          customer_id: id
+        }
+      }
+      patch check_in_rental_path("Jaws"),  params: rental_params
+      must_respond_with :bad_request
+      body = JSON.parse(response.body)
+      error_hash = { "error" => "There was a problem. Could not check in your movie."}
+      body.must_equal error_hash
+    end
+
+    it "gives an approriate  message and status bad request if given a rental is already checked in" do
+      rental = rentals(:one)
+      title = rental.movie.title
+      id = customers(:shelley).id
+
+      rental.checked_out = false
+      rental.save
 
       rental_params = {
         rental: {
-          customer_id: id,
+          customer_id: id
         }
       }
-
       patch check_in_rental_path(title),  params: rental_params
       must_respond_with :bad_request
-
-
-
+      body = JSON.parse(response.body)
+      error_hash = { "error" => "Your movie was already checked in."}
+      body.must_equal error_hash
+    end
   end
+
+  describe "overdue method" do
+    it "succeeds and returns a list of overdue rentals" do
+    get overdue_path
+    must_respond_with :success
+    overdue_item_info = [{"title"=>"Psycho", "customer_id"=>888622154, "name"=>"Shelley Rocha", "postal_code"=>"24309", "due_date"=>"2017-05-09", "checkout_date"=>"2017-05-12"}]
+    body = JSON.parse(response.body)
+    body.must_equal overdue_item_info
+    end
+
+    it "gives and appropriate message and status not found if there are no overdue rentals" do
+      rental = rentals(:one)
+      rental.checked_out = false
+      rental.save
+      get overdue_path
+      must_respond_with :not_found
+      body = JSON.parse(response.body)
+      error_hash = { "no_overdue_rentals" => "There are no overdue rentals."}
+      body.must_equal error_hash
+    end
+  end
+
 end

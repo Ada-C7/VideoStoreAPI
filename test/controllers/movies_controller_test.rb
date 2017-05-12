@@ -39,7 +39,7 @@ describe MoviesController do
 
   describe "show" do
     it "can get a movie that exists" do
-      get movie_path('psycho')
+      get movie_path('Psycho')
       must_respond_with :success
 
     end
