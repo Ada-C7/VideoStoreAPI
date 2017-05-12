@@ -73,6 +73,19 @@ describe RentalController do
         movie.keys.sort.must_equal CHECKOUT_FIELDS
       end
     end
+
+    it "should change customer's movies_checked_out_count" do
+      customer = Customer.find(rentals(:rental_one).customer_id)
+      proc {
+        post checkout_path( title: movies(:nemo).title, rental:
+          {
+            customer_id: rentals(:rental_one).customer_id,
+            due_date: rentals(:rental_one).due_date
+          }
+        )
+      }.must_change 'customer.movies_checked_out_count', 1
+    end
+
   end
 
   describe "unsuccessful rentals#checkout" do
