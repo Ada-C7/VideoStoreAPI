@@ -34,28 +34,13 @@ describe CustomersController do
         customer.keys.sort.must_equal keys
       end
     end
+
+    it "returns empty array when there are no customers" do
+      Customer.destroy_all
+      get customers_url
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Array
+      body.must_be_empty
+    end
   end
 end
-
-    # T_T: this belongs in Movies Controller (after we make one)
-    #
-    # describe 'Movies#all' do
-    #   it "must return a collection of Movies" do
-    #   end
-    #
-    #   it "returns empty Array when no movies exist" do
-    #   end
-    # end
-    #
-    # describe 'Movies#create' do
-    #   it "adds a movie to our active record" do
-    #   end
-    # end
-    #
-    # describe 'Movies#find' do
-    #   it "finds one Movie with a valid title" do
-    #   end
-    #
-    #   it "find an empty array with a nonexistant title" do
-    #   end
-    # end
