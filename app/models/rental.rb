@@ -20,7 +20,7 @@ class Rental < ApplicationRecord
   def check_inventory
     if movie
       if movie.available_inventory <= 0
-        errors.add(:availability, "Sorry, this movie is out of stock")
+        errors.add(:availability, "Sorry, this movie is not in stock")
       end
     end
   end

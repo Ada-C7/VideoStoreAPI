@@ -26,7 +26,7 @@ describe MoviesController do
     it "returns all of the movies" do
       get movies_path
       body = JSON.parse(response.body)
-      body.length.must_equal Customer.count
+      body.length.must_equal Movie.count
     end
 
     it "returns movie with exactly the required fields" do

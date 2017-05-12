@@ -25,7 +25,7 @@ describe RentalsController do
     end
 
     # may need more tests for cases: missing customer, missing duedate
-    it "Returns an error for an invalid rental" do
+    it "Returns an error for an incorrect title" do
       proc {
         post check_out_path("jaws"), params: { rental: rental_data }
       }.wont_change 'Rental.count'
@@ -36,6 +36,33 @@ describe RentalsController do
       body.must_include "errors"
       body["errors"].must_include "movie"
       body.must_equal "errors" => {"movie" => ["must exist"]}
+    end
+
+    it "Returns an error for a missing customer" do
+      bad_data = rental_data.clone()
+      bad_data.delete(:customer_id)
+      proc {
+        post check_out_path(movies(:one).title), params: { rental: bad_data }
+      }.wont_change 'Rental.count'
+      must_respond_with :bad_request
+
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body.must_include "errors"
+      body["errors"].must_include "customer"
+      body.must_equal "errors" => {"customer" => ["must exist"]}
+    end
+
+    it "returns an error if there is not enough inventory" do
+      proc {
+        post check_out_path(movies(:three).title), params: { rental: rental_data }
+      }.wont_change 'Rental.count'
+
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body.must_include "errors"
+      body["errors"].must_include "availability"
+      body.must_equal "errors" => {"availability" => ["Sorry, this movie is not in stock"]}
     end
   end
 
