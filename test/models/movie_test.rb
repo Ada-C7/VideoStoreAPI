@@ -49,4 +49,13 @@ describe Movie do
       movies(:z_inv_float).inventory.must_equal 1
     end
   end
+
+  describe "set_available_inventory" do
+
+    it "sets the available_inventory" do
+      movie = movies(:best_case)
+      movie.available_inventory.must_equal movie.inventory
+    end
+
+  end 
 end
