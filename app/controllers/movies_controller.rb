@@ -6,12 +6,10 @@ class MoviesController < ApplicationController
 
   def show
     movie = Movie.where(title: params[:title])
-
     if movie.empty?
-      error = "Movie '#{params[:title]}' not found"
-      render json: { errors: {title: "Movie '#{params[:title]}'' not found"}}.to_json, status: :not_found
+      render json: { errors: [{title: "Movie '#{params[:title]}' not found"}]}.to_json, status: :not_found
     else
-      render json: movie, status: :ok, each_serializer: DetailedMovieSerializer
+      render json: movie.first, status: :ok, serializer: DetailedMovieSerializer
     end
   end
 
@@ -27,7 +25,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  
+
   def checkin
     movie = Movie.find_by(title: params[:title].capitalize)
     rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id])

@@ -2,15 +2,18 @@ rental_one:
   customer: one
   movie: tusk
   due_date: May 20, 2017
+  returned_date: June 25, 2017
 
 
 rental_two:
   customer: two
   movie: mermaid
   due_date: June 1, 2017
+  returned_date: nil
 
 
 rental_three:
   customer: one
   movie: mermaid
   due_date: June 1, 2017
+  returned_date: nil
