@@ -61,7 +61,7 @@ describe MoviesController do
     end
 
     it "returns 204 no content if movie does not exist" do
-      get movie_path(Movie.last.id + 1)
+      get movie_path("Bogus title")
       must_respond_with :no_content
     end
 
