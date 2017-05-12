@@ -5,7 +5,7 @@ class CreateMovies < ActiveRecord::Migration[5.0]
       t.string :overview
       t.string :release_date
       t.integer :inventory
-      t.integer :available_inventory, default: 0
+      t.integer :available_inventory
       t.timestamps
     end
   end

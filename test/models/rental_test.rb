@@ -58,4 +58,24 @@ describe Rental do
       end
     end
   end
+
+  describe 'check_inventory' do
+    before do
+      @movie = movies(:movie_not_available)
+      @customer = customers(:good_customer2)
+      @rental_data = {
+                      customer_id: @customer.id,
+                      movie_id: @movie.id,
+                      check_out_date: Date.today,
+                      due_date: Date.today + 3
+                     }
+
+    end
+
+    it "wont validate a rental if there is not enough inventory" do
+      rental = Rental.new(@rental_data)
+      rental.valid?.must_equal false
+      rental.errors.messages.must_include :movie_id
+    end
+  end
 end

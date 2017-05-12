@@ -11,6 +11,7 @@ raw_data = File.read(Rails.root.join("db", "seeds", "movies.json"))
 movies = JSON.parse(raw_data)
 
 movies.each do |movie|
+  movie["available_inventory"] = movie["inventory"]
   Movie.create(movie)
 end
 

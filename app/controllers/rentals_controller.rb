@@ -55,7 +55,6 @@ class RentalsController < ApplicationController
     end
   end
 
-
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
     if overdue_rentals.empty?
@@ -64,8 +63,6 @@ class RentalsController < ApplicationController
       render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
     end
   end
-
-
 
   private
   def rental_params
