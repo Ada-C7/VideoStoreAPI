@@ -41,5 +41,31 @@ describe Rental do
       rental = rentals(:rental_overdue)
       rental.overdue?.must_equal true
     end
+
+    it "returns false if rental is not overdue" do
+      rental = rentals(:rental_one)
+      rental.overdue?.must_equal false
+    end
+  end
+
+  describe "self.list_of_overdue" do
+    it "returns an array" do
+      Rental.list_of_overdue.must_be_kind_of Array
+    end
+
+    it "all objects in array are Rentals & overdue" do
+      list = Rental.list_of_overdue
+      list.each do |rental|
+        rental.must_be_kind_of Rental
+        rental.overdue?.must_equal true
+      end
+    end
+
+    it "if no overdue rentals returns empty array" do
+      Rental.destroy_all
+      Rental.list_of_overdue.must_equal []
+    end
+
+
   end
 end

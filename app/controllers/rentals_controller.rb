@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
   def index
-    overdue_customers = getList
+    overdue_customers = overdueCustomersRentals
     final_product = []
     overdue_customers.each do |customer,rentals|
       cust = {}
@@ -39,7 +39,7 @@ class RentalsController < ApplicationController
 
   private
 
-  def getList
+  def overdueCustomersRentals
     overdue_rentals = Rental.list_of_overdue
     return overdue_rentals.group_by { |overdue_rental| overdue_rental.customer }
   end
