@@ -14,8 +14,8 @@ class MoviesController < ApplicationController
       ), status: :ok #in parens (after created at) add any special methods like `methods: :calculate_age`
 
     else #return this status hash so the other machine doesn't send freak out
-      render json: { nothing: true },
-      status: :not_found
+      
+      render status: :not_found, json: { errors: { title: "#{params[:title]} not found" } }
     end
   end
 

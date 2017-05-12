@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
     if customer
       render json: customer.as_json(only: [:id, :name, :registered_at, :postal_code, :phone]), status: :ok
     else
-      render json: {}, status: :not_found
+      render json: { errors: "customer does not exist" }, status: :not_found
     end
   end
 
