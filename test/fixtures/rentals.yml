@@ -9,3 +9,9 @@ two:
   movie: arabia
   customer: good_data
   checkout_date: 2017-05-09 13:34:33
+
+three:
+  movie: arabia
+  customer: good_data
+  checkout_date: 2017-05-09 13:34:33
+  due_date: 2017-05-09 13:34:33
