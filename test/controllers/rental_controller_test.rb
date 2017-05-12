@@ -77,10 +77,12 @@ describe RentalController do
     it "should change customer's movies_checked_out_count" do
       customer = Customer.find(rentals(:rental_one).customer_id)
       proc {
-        post checkout_path( title: movies(:nemo).title, rental:
-          {
-            customer_id: rentals(:rental_one).customer_id,
-            due_date: rentals(:rental_one).due_date
+        post checkout_path( title: movies(:nemo).title, params: {
+          rental:
+            {
+              customer_id: rentals(:rental_one).customer_id,
+              due_date: rentals(:rental_one).due_date
+            }
           }
         )
       }.must_change 'customer.movies_checked_out_count', 1
@@ -109,22 +111,25 @@ describe RentalController do
   describe "rentals#checkin" do
 
     before do
-      post checkin_path()
+      post checkin_path( title: movies(:nemo).title), params: {
+        checkin: {
+          customer_id: rentals(:rental_one).customer_id
+        }
+      }
     end
 
     it "should get checkin" do
       value(response).must_be :success?
     end
 
-    it "should change the customer's checked out count" do skip
-      customer = Customer.find(rentals(:rental_one).customer_id)
+    it "should change the customer's checked out count" do
+      customer = Customer.find(rentals(:rental_three).customer_id)
       proc {
-        post checkin_path( title: movies(:nemo).title, rental:
-        {
-          customer_id: rentals(:rental_one).customer_id,
-          due_date: rentals(:rental_one).due_date
+        post checkin_path( title: movies(:nemo).title), params: {
+          checkin: {
+            customer_id: rentals(:rental_three).customer_id
+          }
         }
-        )
       }.must_change 'customer.movies_checked_out_count', -1
     end
 

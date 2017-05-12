@@ -12,6 +12,6 @@ class Customer < ApplicationRecord
   has_many :movies, :through => :rentals
 
   def movies_checked_out_count
-    return Rental.where(customer_id: self.id).count
+    return Rental.where(customer_id: self.id, returned: false).count
   end
 end
