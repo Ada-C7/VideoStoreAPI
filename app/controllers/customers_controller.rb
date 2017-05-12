@@ -2,7 +2,11 @@ class CustomersController < ApplicationController
 
   def index
     customers = Customer.all
-    render json: customers, status: :ok
+    if customers == []
+      render json: customers, status: :ok
+    else
+      render json: customers, status: :ok
+    end
 
   end
 
