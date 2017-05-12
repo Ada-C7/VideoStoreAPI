@@ -10,9 +10,8 @@ class RentalsController < ApplicationController
     if rental.save
       render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
     else
-      render status: :bad_request, json: { errors: "mmm" }
+      render status: :bad_request, json: { errors: rental.errors.messages }
     end
-
 
 
    end
