@@ -19,14 +19,4 @@ class CustomersController < ApplicationController
     end
   end
 
-  # def create
-  #   customer = Customer.new(customer_params)
-  #   customer.save!
-  #   render status: :ok, json: { id: customer.id }
-  # end
-
-  private
-  def customer_params
-    params.require(:customer).permit(:name, :registered_at, :address, :city, :state, :postal_code, :phone, :account_credit, :movies_checked_out_count)
-  end
 end
