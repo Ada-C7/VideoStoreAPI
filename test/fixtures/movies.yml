@@ -38,6 +38,12 @@ neg_inv:
   release_date: "1999"
   inventory: -1
 
+invalid_date:
+  title: "This movie yes"
+  overview: "cool beans"
+  release_date: "cool"
+  inventory: 2
+
 rep_title:
   title: "Title"
   overview: "overview"
