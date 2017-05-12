@@ -129,6 +129,16 @@ describe RentalsController do
       updated.available_inv.must_equal (checkedout.available_inv + 1)
     end
 
+    it "updates movies_checked_out_count for that customer" do
+      id = customers(:one).id
+
+      checked_out = customers(:one).movies_checked_out_count
+      post checkin_path(movies(:one).title), params: {rental: rental_data}
+
+      customer = Customer.find_by_id(id)
+      customer.movies_checked_out_count.must_equal (checked_out - 1)
+    end
+
     it "should update the status of that rental" do
       rental = rentals(:checkedout)
 

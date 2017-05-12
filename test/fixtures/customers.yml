@@ -12,7 +12,7 @@ one:
   state: "WA"
   postal_code: "98125"
   phone: "206-123-4567"
-  movies_checked_out_count: 0
+  movies_checked_out_count: 1
 # column: value
 #
 two:

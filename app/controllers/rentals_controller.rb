@@ -33,8 +33,11 @@ class RentalsController < ApplicationController
       if !rental
         render status: :not_found, json: {errors: {rental: ["Rental not found" ]}}
       elsif movie.available_inv < movie.inventory
+        customer = Customer.find_by_id(rental.customer_id)
         movie.available_inv += 1
+        customer.movies_checked_out_count -= 1
         movie.save
+        customer.save
         rental.status = "Returned"
         rental.save
         render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
