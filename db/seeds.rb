@@ -11,3 +11,12 @@ Rental.create (
       movie: Movie.first,
       customer: Customer.first
   })
+
+Rental.create (
+  {
+      movie: Movie.first,
+      customer: Customer.last,
+      due_date: Chronic.parse('yesterday')
+
+  }
+)
