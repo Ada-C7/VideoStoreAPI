@@ -5,6 +5,7 @@ describe Customer do
 
   describe "Customer validations" do
     it "Customer must have a name and phone number" do
+      # go through a loop that will check that everything is present
       customer = customers(:one)
       customer.valid?.must_equal true
     end
@@ -21,4 +22,17 @@ describe Customer do
       customer.valid?.must_equal false
     end
   end
+  describe "Customer relationships" do
+    it "Customer can have many rentals" do
+      customer = customers(:two)
+      #rental one must have customer two
+      customer.rentals.must_include rentals(:one)
+    end
+  end
 end
+# customer = Customer.new
+# customer.validate .... this probably isn't right
+# Create keys that we are requiring for customers
+# customer.each.keys do |key|
+#
+# end
