@@ -38,6 +38,8 @@ class RentalsController < ApplicationController
       if rental
         rental.checkin_date = Date.today
         rental.save
+        movie.inventory += 1
+        movie.save
         render status: :ok, json: { nothing: true }
       else
         # if rental doesn't exist (customer id and movie id valid but movie never checked out)

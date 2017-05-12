@@ -129,11 +129,29 @@ describe RentalsController do
         }.must_change rental.checkin_date
       end
 
+      it "decreases the customer's movies_checked_out_count by 1" do
+        proc {
+          post checkin_path(movie.title), params: { customer_id: customer.id }
+        }.must_change 'customer.movies_checked_out_count', -1
+      end
+
+      it "increases the movie's inventory count by 1" do
+        proc {
+          post checkin_path(movie.title), params: { customer_id: customer.id }
+        }.must_change 'Movie.find_by_title("Psycho").inventory', 1
+      end
+
       it "renders bad request for invalid customer id data" do
         post checkin_path(movie.title), params: { customer_id: (Customer.last.id + 1)}
         must_respond_with :bad_request
         body = JSON.parse(response.body)
         body["error"].must_include "customer"
+      end
+
+      it "does not change the customer's movies_checked_out_count with invalid data" do
+        proc {
+          post checkin_path(movie.title), params: { customer_id: (Customer.last.id + 1)}
+        }.must_change 'customer.movies_checked_out_count', 0
       end
 
       it "renders bad request if movie not found" do
@@ -150,6 +168,8 @@ describe RentalsController do
         body = JSON.parse(response.body)
         body["error"].must_include "not checked out"
       end
+
+
 
 
     end
