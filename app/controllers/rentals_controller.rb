@@ -57,6 +57,20 @@ class RentalsController < ApplicationController
   end
 
   def overdue
+
+    rentals = []
+    Rental.overdue.each do |rental|
+
+      rentals << { title: rental.movie.title,
+      customer_id:rental.customer_id,
+      name: rental.customer.name,
+      postal_code: rental.customer.postal_code,
+      due_date: rental.due_date }
+
+    end 
+
+    render status: :ok,  json: rentals.as_json
+
   end
 
   private
