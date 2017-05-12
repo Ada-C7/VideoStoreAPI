@@ -30,8 +30,12 @@ class Rental < ApplicationRecord
     end
 
     def self.overdue
+      overdue_rentals = []
       Rental.all.each do |rental|
-        return rental if rental.due_date.past?
+        if Date.strptime(rental.due_date, "%Y-%m-%d").past?
+          overdue_rentals << rental
+        end
       end
+      overdue_rentals
     end
 end
