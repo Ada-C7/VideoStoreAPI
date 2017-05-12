@@ -6,7 +6,7 @@ describe Rental do
   before do
     @customer_id = customers(:good_customer).id
     @rental_info = {
-                      movie_id: movies(:movie1).id,
+                      movie_id: movies(:movie3).id,
                       customer_id: @customer_id,
                       check_out_date: Date.today,
                       due_date: Date.today + 3,
@@ -31,9 +31,6 @@ describe Rental do
     end
   end
 
-
-
-
   describe "self.overdue_movies" do
     it "returns instance of Array" do
       rental1 = Rental.new(@rental_info)
@@ -56,8 +53,5 @@ describe Rental do
         movie.due_date.must_be :<, Date.today
       end
     end
-
-
-
   end
 end

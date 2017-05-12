@@ -11,7 +11,7 @@ movie1:
   inventory: 8
 
 movie2:
-  title: Psycho
+  title: Psycho2
   overview: When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother. The place seems quirky, but fine… until Marion decides to take a shower.
   release_date: 1960-06-16
   inventory: 8
@@ -21,3 +21,9 @@ movie3:
   overview: An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.
   release_date: 1975-06-19
   inventory: 6
+
+movie4:
+  title: Gaslight
+  overview: In the late 19th century, Paula Alquist is studying music in Italy, but ends up abandoning her classes because she's fallen in love with the gallant Gregory Anton. The couple marries and moves to England to live in a home inherited by Paula from her aunt, herself a famous singer, who was mysteriously murdered in the house ten years before. Once they have moved in, Gregory, who is in reality a jewel thief and the murderer of Paula's aunt, launches a campaign of terror designed to drive his new bride insane. Though Paula is certain that she sees the house's gaslights dim every evening and that there are strange noises coming from the attic, Gregory convinces Paula that she's imagining things. Gregory's efforts to make Paula unstable are aided by an impertinent maid, Nancy. Meanwhile, a Scotland Yard inspector, Brian Cameron, becomes suspicious of Gregory and sympathetic to Paula's plight.
+  release_date: 1944-05-04
+  inventory: 8
