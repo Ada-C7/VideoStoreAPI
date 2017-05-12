@@ -43,10 +43,10 @@ describe MoviesController do
       must_respond_with :success
     end
 
-    it "returns 204 no_content if movie does not exist" do
+    it "returns 404 not_found if movie does not exist" do
       ng_title = "dkjfsdkj7765%$"
       get movie_path(ng_title)
-      must_respond_with :no_content
+      must_respond_with :not_found
     end
   end
 end

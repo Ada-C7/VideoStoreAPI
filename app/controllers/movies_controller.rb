@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   def index
     movies = Movie.all
     if movies.empty?
-      render :text => "204 No Content", status: :no_content
+      render :text => "404 No Content", status: :not_found
     else
       render :json => movies.as_json(only: [:title, :release_date]), status: :ok
     end
@@ -12,9 +12,10 @@ class MoviesController < ApplicationController
   def show
     movie = Movie.find_by(title: params[:title])
     if movie.nil?
-      render :text => "204 No content", status: :no_content
+      render :json => "404 Not found", status: :not_found
     else
-      render :json => movie.as_json(only: [:available_inventory, :inventory, :overview, :release_date, :title]), status: :ok
+      # render :json => movie.as_json(only: [:available_inventory, :inventory, :overview, :release_date, :title]), status: :ok
+      render :json => movie, status: :ok
     end
   end
 
