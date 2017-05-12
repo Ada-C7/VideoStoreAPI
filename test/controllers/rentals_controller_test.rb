@@ -105,25 +105,6 @@ describe RentalsController do
       body.must_equal error_hash
     end
 
-    it "gives an approriate  message and status bad request if given a rental is already checked in" do
-      rental = rentals(:one)
-      title = rental.movie.title
-      id = customers(:shelley).id
-
-      rental.checked_out = false
-      rental.save
-
-      rental_params = {
-        rental: {
-          customer_id: id
-        }
-      }
-      post check_in_rental_path(title),  params: rental_params
-      must_respond_with :bad_request
-      body = JSON.parse(response.body)
-      error_hash = { "error" => "Your movie was already checked in."}
-      body.must_equal error_hash
-    end
   end
 
   describe "overdue method" do
