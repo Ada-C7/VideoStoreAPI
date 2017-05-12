@@ -29,7 +29,7 @@ describe Rental do
     end
 
     it "returned is set as a default value to false" do
-      rental = rentals(:two)
+      rental = rentals(:one)
       rental.valid?.must_equal true
       rental.returned.must_equal false
     end
