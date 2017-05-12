@@ -28,7 +28,23 @@ class RentalsController < ApplicationController
   end
 
   def check_in
+    movie = Movie.find_by_title(params[:title])
+    if !movie
+      render status: :bad_request, json: { errors: "Sorry we do not currently carry #{params[:title]}"}
+    else
+      rentals = Rental.checked_out_by_customer(params[:rental][:customer_id])
+      rental = rentals.find_by(movie_id: movie.id)
 
+      if rental
+        rental.check_in = DateTime.now
+        render status: :ok,  json: {
+          id: rental.id,
+          check_in: rental.check_in
+        }
+      else
+        render status: :bad_request, json: { error: "This customer does not have this movie checked out." }
+      end
+    end
     #  params[:customer_id]
     #
     # movie = Movie.find_by_title(params[:title])
