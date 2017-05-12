@@ -35,11 +35,15 @@ describe CustomersController do
     end
   end
   describe 'overdue' do
+    before do
+      Rental.create(movie_id:3, customer_id:3, checkout_date:Time.now, due_date:Time.now+2.days)
+
+      Rental.create(movie_id:1, customer_id:1, checkout_date:Time.now-3, due_date:Time.now+1)
+    end
     it "gets overdue path" do
       get overdue_path
       must_respond_with :success
     end
-
     it "returns json" do
       get overdue_path
       response.header['Content-Type'].must_include 'json'
@@ -52,13 +56,9 @@ describe CustomersController do
     it "returns all customers with overdue items" do
       get overdue_path
       body = JSON.parse(response.body)
-      body.length.must_equal Rental.where('due_date <= ?', Time.now).length
+      body.length.must_equal Rental.where("due_date <= ?", Time.now).length
     end
-    it "returns 204 error if there are no customers with overdue items" do
-      Rental.delete_all
-      get overdue_path
-      must_respond_with :no_content
-    end
+
     it "returns required fields" do
       keys = %w(postal_code customer_id checkout_date due_date title name)
       get overdue_path
@@ -66,6 +66,13 @@ describe CustomersController do
       body.each do |customer|
         customer.keys.sort.must_equal keys
       end
+    end
+    it "returns 204 error if there are no customers with overdue items" do
+      Rental.delete_all
+      get overdue_path
+      body = JSON.parse(response.body)
+      body.must_be_empty
+
     end
   end
 end
