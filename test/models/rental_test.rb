@@ -52,4 +52,18 @@ describe Rental do
 
   end
 
+  describe "overdue" do
+
+    it "Will return true if movie is overdue" do
+      rental = rentals(:rental_two)
+      rental.overdue.must_equal true
+    end
+
+    it "Will return false if movie is not overdue" do
+      rental = rentals(:rental_one)
+      rental.overdue.must_equal false
+    end
+
+  end
+
 end

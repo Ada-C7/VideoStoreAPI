@@ -483,6 +483,20 @@
         null,
         null,
         null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/kelseymcalpine/projects/ada-c7/api/video-store-api/app/models/rental.rb": [
@@ -496,11 +510,16 @@
         null,
         1,
         null,
-        0,
+        2,
+        2,
+        2,
+        2,
+        null,
+        2,
         null,
         null
       ]
     },
-    "timestamp": 1494622459
+    "timestamp": 1494623025
   }
 }
