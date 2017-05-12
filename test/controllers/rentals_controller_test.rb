@@ -8,6 +8,22 @@ describe RentalsController do
     # each rental in the rentals key/value pair (value is an array of rentals) has these three keys
     RENTAL_KEYS = %w( created_at duedate title )
 
+    it "is a real working route" do
+      get overdue_path
+      must_respond_with :success
+    end
+
+    it "returns a json" do
+      get overdue_path
+      response.header['Content-Type'].must_include 'json'
+    end
+
+    it "returns an array" do
+      get overdue_path
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Array
+    end
+
     it "can get a list of customers" do
 
     end
