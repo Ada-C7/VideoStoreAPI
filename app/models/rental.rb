@@ -19,7 +19,7 @@ class Rental < ApplicationRecord
     rental.check_out_date = Date.today
     rental.due_date = Date.today + 3
     rental.status = "checked out"
-    rental.manage_inventory
+    # rental.manage_inventory
     rental.valid? # can add validation to check inventory
     return rental
   end

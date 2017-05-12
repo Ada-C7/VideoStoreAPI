@@ -38,3 +38,10 @@ movie_not_available:
   release_date: 1972-04-22
   inventory: 2
   available_inventory: 0
+
+movie_one_copy:
+  title: Jaws3
+  overview: Jaws comes back again again
+  release_date: 1982-04-22
+  inventory: 1
+  available_inventory: 1
