@@ -14,4 +14,17 @@ class MoviesController < ApplicationController
     end
   end
 
+  def checkout
+    movie = Movie.find_by(title: params[:title])
+    movie.available_inventory -= 1
+    movie.save
+
+    customer = Customer.find_by(id: params[:customer_id])
+    customer.movies_checked_out_count += 1
+    customer.save
+    
+    rental = Rental.create(customer_id: customer.id, due_date: params[:due_date], movie_id: movie.id)
+    render :json => rental, status: :ok
+  end
+
 end

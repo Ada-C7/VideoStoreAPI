@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   # RENTALS:
   # (optional)
-
+  post "/rentals/:title/check-out", to: "movies#checkout", as: "checkout"
 end

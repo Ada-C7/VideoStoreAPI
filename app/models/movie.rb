@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   validates :inventory, numericality: { only_integer: true, greater_than_or_equal_to: 0 }# by default does not allow nil
 
   def set_available_inventory
-    self.available_inventory = self.inventory
+    self.available_inventory ||= self.inventory
   end
-  
+
 end
