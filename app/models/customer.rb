@@ -15,7 +15,9 @@ class Customer < ApplicationRecord
   validates :name, uniqueness: { scope: [:address, :city, :state, :postal_code, :phone] }
 
   def movies_checked_out_count
-    return 0
+    #rentals with this customer id and checkin_date = nil
+    rentals = Rental.where(customer_id: self.id, checkin_date: nil)
+    return rentals.size
   end
 
 end

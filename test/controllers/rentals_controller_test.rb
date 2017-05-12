@@ -3,6 +3,8 @@ require "test_helper"
 describe RentalsController do
 
   describe "Create (checkout)" do
+    let(:customer) { customers(:good_data) }
+    let(:movie) { movies(:psycho) }
 
     it "given valid customer id and movie title, can checkout movie (increase rental record by 1)" do
       proc {
@@ -90,6 +92,15 @@ describe RentalsController do
           }
         }.must_change 'Movie.find_by_title("Psycho").inventory', -1
 
+    end
+
+    it "increases the customer's movies_checked_out_count by 1" do
+      proc {
+        post checkout_path(movie.title), params: {
+          customer_id: customer.id,
+          due_date: Chronic.parse("two weeks from today")
+        }
+      }.must_change 'customer.movies_checked_out_count', 1
     end
 
   end

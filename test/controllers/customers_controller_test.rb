@@ -2,7 +2,6 @@ require "test_helper"
 
 describe "CustomersController" do
 CUSTOMER_KEYS = %w(id movies_checked_out_count name phone postal_code registered_at)
-# need to eventually include movies_checked_out_count
 
   describe "index" do
     before do
