@@ -76,7 +76,8 @@ describe Rental do
                       customer_id: @customer.id,
                       movie_id: movies(:movie_one_copy).id,
                       check_out_date: Date.today,
-                      due_date: Date.today + 3
+                      due_date: Date.today + 3,
+                      status: "checked out"
                      }
     end
 
