@@ -139,7 +139,21 @@ describe RentalsController do
     #     customer_id: customers(:one).id
     #   }
     # }
+    it "is a working route" do
+      
+    end
 
+    it "returns an array of JSON objects" do
+
+    end
+
+    it "returns all movies that are overdue" do
+
+    end
+
+    it "returns required fields" do
+
+    end
     # it "changes the status of a rental if the due date has passed" do
     #   # post checkout_path(movies(:one).title), params: {rental: rental_data}
     #
