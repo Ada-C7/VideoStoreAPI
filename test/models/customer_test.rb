@@ -35,8 +35,7 @@ describe Customer do
     #need to update when we add rentals
     it "movies_checked_out_count returns the number of rentals belonging to the customer" do
       customer = customers(:one)
-      customer.movies_checked_out_count.must_equal 0
-
+      customer.movies_checked_out_count.must_equal Rental.where(customer: customers(:one), returned: false).length
     end
   end
 end
