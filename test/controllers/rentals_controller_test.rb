@@ -52,6 +52,16 @@ describe RentalsController do
 
     end
 
+    it "updates movies_checked_out_count for that customer" do
+      id = customers(:one).id
+
+      checked_out = customers(:one).movies_checked_out_count
+      post checkout_path(movies(:one).title), params: {rental: rental_data}
+
+      customer = Customer.find_by_id(id)
+      customer.movies_checked_out_count.must_equal (checked_out + 1)
+    end
+
     it "gives error message if movie isn't available" do
 
       post checkout_path(movies(:two).title), params: {rental: rental_data}

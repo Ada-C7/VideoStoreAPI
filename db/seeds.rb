@@ -7,6 +7,7 @@ JSON.parse(File.read('db/seeds/customers.json')).each do |customer|
    c.state = customer["state"]
    c.postal_code = customer["postal_code"]
    c.phone = customer["phone"]
+   c.movies_checked_out_count = 0
    c.save
 end
 

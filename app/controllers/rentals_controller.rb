@@ -11,10 +11,12 @@ class RentalsController < ApplicationController
         customer: ["The Customer ID does not exist"] } }
     elsif movie.available_inv > 0
       movie.available_inv -= 1
+      customer.movies_checked_out_count += 1
       rental.status = "checked out"
       rental.due_date = Date.today + 30.days
       rental.save
       movie.save
+      customer.save
       render json: rental.as_json(except: [:created_at, :updated_at]), status: :ok
     else
       render status: :not_acceptable, json: {errors: {
