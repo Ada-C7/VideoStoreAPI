@@ -26,4 +26,10 @@ class RentalsController < ApplicationController
       render json: { errors: ["Rental not found"] }, status: :not_found
     end
   end
+  
+  def overdue
+    overdue_rentals = Rental.overdue
+
+    render status: :ok, json: overdue_rentals.as_json(except: [:updated_at, :created_at])
+  end
 end

@@ -68,4 +68,10 @@ describe RentalsController do
     end
   end
 
+  describe "overdue" do
+    it "routes successfully" do
+      get overdue_path
+      must_respond_with :success
+    end
+  end
 end

@@ -38,6 +38,12 @@ describe Rental do
       rentals(:overdue).delete
       Rental.overdue.must_be :empty?
     end
+
+    it "returns an empty array when there are no rentals at all" do
+      rentals(:overdue).delete
+      rentals(:one).delete
+      Rental.overdue.must_be :empty?
+    end
   end
 
 end
