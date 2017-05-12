@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
   has_many :rentals
   has_many :movies, :through => :rentals
 
-  def movies_checked_out
+  def movies_checked_out_count
     return Rental.where(customer_id: self.id).count
   end
 end
