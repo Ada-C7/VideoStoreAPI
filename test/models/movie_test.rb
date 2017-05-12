@@ -14,4 +14,9 @@ describe Movie do
     movies(:starwars).valid?.must_equal true
     movies(:neg_inv).valid?.must_equal false
   end
+
+  it "must have a unique title" do
+    movies(:jaws).valid?.must_equal true
+    movies(:rep_title).valid?.must_equal false
+  end
 end
