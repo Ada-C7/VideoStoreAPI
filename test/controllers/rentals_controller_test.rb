@@ -69,29 +69,44 @@ describe RentalsController do
 
   describe "update (check in a movie)" do
     it "should change returned field to true when a movie is checked in" do
+      rental = Rental.create(movie_id: movies(:one).id, customer_id: customers(:three).id, due_date: "2018-10-10")
 
-      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      rental.returned.must_equal false
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:three).id} }
       must_respond_with :success
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
       body.must_include "movie_returned"
+      rental.reload
+      rental.returned.must_equal true
+
     end
 
     it "checking in a movie should increase its available inventory by one" do
-      available_inventory = movies(:one).available_inventory
-      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
-      movies(:one).available_inventory.must_equal (available_inventory + 1)
+      #working
+      proc { post check_in_path(movies(:one).title), params:
+        { rental: {customer_id: customers(:one).id} }
+      }.must_change 'movies(:one).available_inventory', 1
+
     end
 
     it "checking in a movie decreases the customer's movies_checked_out_count" do
-      movies_checked_out = customers(:one).movies_checked_out_count
-      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
-      customers(:one).movies_checked_out_count.must_equal (movies_checked_out + 1)
+      ada = Customer.create(name: "Ada Ada", phone: "617-6176-6170")
+
+      Rental.create(movie_id: movies(:one).id, customer_id: ada.id, due_date: "2018-10-10")
+
+      movies_checked_out = ada.movies_checked_out_count
+
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: ada.id}}
+
+      ada.reload
+      ada.movies_checked_out_count.must_equal movies_checked_out - 1
+
     end
 
     it "returns an error if the movie has already been checked in" do
 
-      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one).id} }
       must_respond_with :success
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
@@ -99,23 +114,26 @@ describe RentalsController do
 
 
       available_inventory = movies(:one).available_inventory
-      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one)} }
+      post check_in_path(movies(:one).title), params: { rental: {customer_id: customers(:one).id} }
       must_respond_with :bad_request
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
-      body.must_equal "errors" => {"check-in" => ["Customer has already checked in this movie"]}
+      body.must_equal "errors" => {"check_in" => "Customer has already checked in this movie"}
       available_inventory = movies(:one).available_inventory
+
 
     end
 
     it "returns an error if the customer has not checked out the movie" do
+      proc {
       movie_count = customers(:one).movies_checked_out_count
       post check_in_path(movies(:two).title), params: { rental: {customer_id: customers(:one)} }
       must_respond_with :bad_request
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
-      body.must_equal "errors" => {"check-in" => ["Customer has not checked out this movie"]}
+      body.must_equal "errors" => {"check_in" => "Cannot find this rental"}
       customers(:one).movies_checked_out_count.must_equal movie_count
+      }
     end
 
   end
