@@ -77,10 +77,16 @@ describe RentalsController do
       movie = movies(:two)
       title = movie.title
 
+      original_checked_out = customers(:one).movies_checked_out_count
+      id = customers(:one).id
+
       post checkout_path(title), params: {rental: rental_data}
 
       updated = Movie.find_by_title(title)
       updated.available_inv.must_equal movie.available_inv
+
+      customer = Customer.find_by_id(id)
+      customer.movies_checked_out_count.must_equal (original_checked_out)
     end
 
     it "handles appropriately if customer_id does not exist" do

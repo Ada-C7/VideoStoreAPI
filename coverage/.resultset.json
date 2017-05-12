@@ -1,7 +1,7 @@
 {
   "MiniTest": {
     "coverage": {
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/controllers/customers_controller.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/controllers/customers_controller.rb": [
         1,
         null,
         1,
@@ -26,11 +26,11 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/controllers/application_controller.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/controllers/application_controller.rb": [
         1,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/test/controllers/movies_controller_test.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/test/controllers/movies_controller_test.rb": [
         1,
         null,
         1,
@@ -96,7 +96,7 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/controllers/movies_controller.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/controllers/movies_controller.rb": [
         1,
         null,
         1,
@@ -118,7 +118,7 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/test/controllers/rentals_controller_test.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/test/controllers/rentals_controller_test.rb": [
         1,
         null,
         1,
@@ -199,6 +199,12 @@
         1,
         null,
         1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
         null,
         1,
         1,
@@ -352,7 +358,7 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/controllers/rentals_controller.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/controllers/rentals_controller.rb": [
         1,
         null,
         1,
@@ -422,7 +428,7 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/test/models/customer_test.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/test/models/customer_test.rb": [
         1,
         null,
         1,
@@ -453,19 +459,19 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/models/customer.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/models/customer.rb": [
         1,
         1,
         1,
         1,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/models/application_record.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/test/models/movie_test.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/test/models/movie_test.rb": [
         1,
         null,
         1,
@@ -495,13 +501,13 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/models/movie.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/models/movie.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/test/models/rental_test.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/test/models/rental_test.rb": [
         1,
         null,
         1,
@@ -579,7 +585,7 @@
         null,
         null
       ],
-      "/Users/chantalr/Documents/ada/api/VideoStoreAPI/app/models/rental.rb": [
+      "/Users/lynntrickey/Documents/ada/c7-stacks/api/VideoStoreAPI/app/models/rental.rb": [
         1,
         1,
         1,
@@ -611,6 +617,6 @@
         null
       ]
     },
-    "timestamp": 1494627934
+    "timestamp": 1494629121
   }
 }
