@@ -47,6 +47,12 @@ describe MoviesController do
 
   describe "show" do
 
+    it "returns JSON" do
+      movie = movies(:best_case)
+      get movies_url(movie.title)
+      response.header['Content-Type'].must_include 'json'
+    end
+
     it "can get a movie" do
       movie = movies(:best_case)
       get movie_path(movie.title)
@@ -58,6 +64,14 @@ describe MoviesController do
       get movie_path(movie.title)
       body = JSON.parse(response.body)
       body["title"].must_equal movie.title
+    end
+
+    it "returns a movie with exactly the required fields" do
+      keys = ["available_inventory", "inventory", "overview", "release_date", "title"]
+      movie = movies(:best_case)
+      get movie_path(movie.title)
+      body = JSON.parse(response.body)
+      body.keys.sort.must_equal keys
     end
 
     it "returns 204 no content if movie does not exist" do
