@@ -20,7 +20,7 @@ describe CustomersController do
     end
 
     it "returns all of the customers" do
-      keys = %w(account_credit address city id name phone postal_code registered_at state)
+      keys = %w(id movies_checked_out_count name phone postal_code registered_at)
       get customers_url
       body = JSON.parse(response.body)
       body.each do |customer|
