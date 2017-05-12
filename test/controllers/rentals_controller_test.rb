@@ -83,17 +83,22 @@ describe RentalsController do
 
 
   describe "create" do
-    # it "must have title" do
+    let(:rental_data) {
+      {
+        # title: movies(:heat).title,
+        future_due_date: "2018-01-01",
+        customer_id: customers(:has_all).id
+      } }
+
+
+    it "can create rental" do
+      proc {
+        post checkout_path(movies(:heat).title), params: { rental: rental_data }
+      }.must_change 'Rental.count', 1
+      must_respond_with :success
+    end
     #
-    # end
-    #
-    # it "must have customer_id" do
-    #
-    # end
-    #
-    # it "must have duedate" do
-    #
-    # end
+
     #
     # it "updates the available inventory for the assoc. movie" do
     #
@@ -106,6 +111,15 @@ describe RentalsController do
     # it "failure to checkout movie returns an appropriate error" do
     #   # what should this be?
     # end
+
+    it "increases db by 1 if successful" do
+
+    end
+
+    it "does not increase db if fails" do
+    end
+
+
 
   end
 

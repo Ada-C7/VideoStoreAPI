@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get '/movies', to: 'movies#index', as: 'movies' ## no further params needed
   get '/movies/:title', to: 'movies#show', as: 'movie' ## must provide movie title
 
-  post '/rentals/:title/check-out', to: 'rentals#create', as: 'check-out'
-  post '/rentals/:title/check-in', to: 'rentals#update', as: 'check-in'
+  post '/rentals/:title/check-out', to: 'rentals#create', as: 'checkout'
+  post '/rentals/:title/check-in', to: 'rentals#update', as: 'checkin'
   get '/rentals/overdue', to: 'rentals#index', as: 'overdue'
 
 end

@@ -1,3 +1,6 @@
+require 'pry-rails'
+
+
 class RentalsController < ApplicationController
   def index
     overdue_customers = overdueCustomersRentals
@@ -23,15 +26,10 @@ class RentalsController < ApplicationController
   end
 
   def create
-    # must be given title, customer_id, duedate
-    # returns confirmation
-    # returned is false (default)
-    # set the duedate
-    # updates movies available inventory
     rental = Rental.new
-    rental.duedate = params[:future_due_date]
-    rental.customer_id = params[:customer_id]
-    movie = Movie.find_by(title: params[:title])
+    rental.duedate = params[:rental][:future_due_date]
+    rental.customer_id = params[:rental][:customer_id]
+    movie = Movie.find_by_title(params[:title])
     if movie
       rental.movie = movie
     else
@@ -39,7 +37,9 @@ class RentalsController < ApplicationController
     end
 
     rental.movie.available_inventory -= 1
+
     if rental.movie.save
+      # binding.pry
       if rental.save
         render json: {id: rental.id}, status: :ok
       else
@@ -48,9 +48,6 @@ class RentalsController < ApplicationController
     else
       render json: { errors: rental.movie.errors.messages }, status: :bad_request
     end
-
-
-
   end
 
   def update
@@ -67,7 +64,9 @@ class RentalsController < ApplicationController
     return overdue_rentals.group_by { |overdue_rental| overdue_rental.customer }
   end
 
+
+
   def params_rental
-      params.require(:rental).permit(:future_due_date, :customer_id)
+      params.require(:rental).permit(:future_due_date, :customer_id, :title)
   end
 end

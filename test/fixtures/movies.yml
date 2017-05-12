@@ -8,14 +8,20 @@ dumbo:
   title: "Dumbo"
   overview: "cute baby elephant"
   release_date: "1980"
-  inventory: 0
-  available_inventory: 0
+  inventory: 6
+  available_inventory: 6
 
 
 heat:
   title: "Heat"
   overview: "Al Pacino being hot"
   release_date: "1995"
-  inventory: 0
+  inventory: 5
+  available_inventory: 5
+
+unavailable:
+  title: "unavailable"
+  overview: "it's not available!"
+  release_date: "1995"
+  inventory: 4
   available_inventory: 0
-  

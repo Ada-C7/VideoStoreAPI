@@ -1,3 +1,4 @@
+
 class Rental < ApplicationRecord
   belongs_to :movie
   belongs_to :customer, counter_cache: true
@@ -6,8 +7,9 @@ class Rental < ApplicationRecord
   validate :duedate_not_in_the_past
 
 
-def duedate_not_in_the_past 
-  if duedate <= Date.today
+def duedate_not_in_the_past
+  # binding.pry
+  if self.duedate <= Date.today
     errors.add(:duedate, "can't be in the past")
   end
 end
