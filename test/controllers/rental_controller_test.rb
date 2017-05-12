@@ -108,20 +108,26 @@ describe RentalController do
 
   describe "rentals#checkin" do
 
-    before do skip
+    before do
       post checkin_path()
     end
 
-    it "should get checkin" do skip
+    it "should get checkin" do
       value(response).must_be :success?
     end
-  #
-  #     it "should change the " do skip
-  #
-  #     end
-  #
-  #   end
-  #
+
+    it "should change the customer's checked out count" do skip
+      customer = Customer.find(rentals(:rental_one).customer_id)
+      proc {
+        post checkin_path( title: movies(:nemo).title, rental:
+        {
+          customer_id: rentals(:rental_one).customer_id,
+          due_date: rentals(:rental_one).due_date
+        }
+        )
+      }.must_change 'customer.movies_checked_out_count', -1
+    end
+
   end
 
 end
