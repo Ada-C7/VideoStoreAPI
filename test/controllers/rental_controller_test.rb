@@ -29,12 +29,12 @@ describe RentalController do
 
   describe "rentals#checkout" do
 
-
     before do
-      post checkout_path(
-        rentals[:rental_one].movie_id,
-        rentals[:rental_one].customer_id,
-        rentals[:rental_one].due_date,
+      post checkout_path( title: movies(:nemo).title, rental:
+        {
+          customer_id: rentals(:rental_one).customer_id,
+          due_date: rentals(:rental_one).due_date
+        }
       )
     end
 
@@ -42,17 +42,43 @@ describe RentalController do
       must_respond_with :success
     end
 
-    #
-    #     it "should create a new rental instance" do skip
-    #       affect Rental model, change by 1
-    #     end
-    #
-    #     it "should render the correct output if checkout was successful" do skip
-    #       status: :ok
-    #       render_json display customer_id due_date movie_id
-    #     end
+    it "should create a new rental instance" do
+      proc {
+        post checkout_path( title: movies(:nemo).title, rental:
+          {
+            customer_id: rentals(:rental_one).customer_id,
+            due_date: rentals(:rental_one).due_date
+          }
+        )
+      }.must_change 'Rental.count', 1
+    end
+
+    it "should render json if checkout was successful" do
+      response.header['Content-Type'].must_include 'json'
+    end
+
+    it "should return a hash" do
+      body = JSON.parse(response.body)
+      body.must_be_instance_of Hash
+    end
+
+    CHECKOUT_FIELDS = %w(customer_id due_date movie_id)
+    it "returns the correct fields" do
+      body = JSON.parse(response.body)
+      body.each do | movie |
+        movie.keys.sort.must_equal CHECKOUT_FIELDS
+      end
+    end
 
     # it "Movie can only be checked out if one is available" do
+    #   proc {
+    #     post checkout_path( title: movies(:nemo).title, rental:
+    #       {
+    #         customer_id: rentals(:rental_one).customer_id,
+    #         due_date: rentals(:rental_one).due_date
+    #       }
+    #     )
+    #   }
     # end
     #
     #     it "should render the correct output if checkut was unsuccessful" do skip

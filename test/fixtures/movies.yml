@@ -2,14 +2,14 @@
 
 nemo:
   id: 1
-  title: "Finding Nemo"
+  title: "Psycho"
   overview: "A Great Movie"
   release_date: "12-03-17"
-  inventory: 5
+  inventory: 500
 
-two:
+movie:
   id: 2
-  title: MyString
-  overview: MyString
-  release_date: MyString
-  inventory: 1
+  title: "Another Movie"
+  overview: "MyString"
+  release_date: "12-03-17"
+  inventory: 20

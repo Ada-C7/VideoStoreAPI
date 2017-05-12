@@ -18,7 +18,7 @@ describe Customer do
     new_customer.must_be :valid?
   end
 
-  REQUIRED_FIELDS = %w(name registered_at address city state postal_code phone account_credit movies_checked_out)
+  REQUIRED_FIELDS = %w(name registered_at address city state postal_code phone account_credit)
 
   REQUIRED_FIELDS.each do | field |
     it "Customer must have a #{field}" do
