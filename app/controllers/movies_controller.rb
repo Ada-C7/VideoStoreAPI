@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
     end
   end
 
+
   def show
     movie = Movie.find_by(title: params[:title])
     if movie
