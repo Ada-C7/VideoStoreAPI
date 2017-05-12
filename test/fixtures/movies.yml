@@ -8,6 +8,7 @@ psycho:
 jaws:
   title: Jaws
   overview: An insatiable great white shark
+  release_date: 2017-08-31
   inventory: 6
 
 exorcist:

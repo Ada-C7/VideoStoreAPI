@@ -147,4 +147,39 @@ describe RentalsController do
     end
   end
 
+  describe "sort overdue method" do
+    it "can sort by movie title" do
+      get '/rentals/overdue?sort=title'
+      # get overdue_path, params: { "sort": "title"}
+      must_respond_with :success
+      body = JSON.parse(response.body)
+
+      body[0]["title"].must_equal ""
+    end
+
+    it "can sort by checkout date" do
+      get '/rentals/overdue?sort=checkout_date'
+      must_respond_with :success
+      body = JSON.parse(response.body)
+
+      body[0]["title"].must_equal ""
+    end
+
+    it "can sort by customer name" do
+      get '/rentals/overdue?sort=name'
+      must_respond_with :success
+      body = JSON.parse(response.body)
+
+      body[0]["title"].must_equal ""
+    end
+
+    it "can sort by due_date" do
+      get '/rentals/overdue?sort=due_date'
+      must_respond_with :success
+      body = JSON.parse(response.body)
+
+      body[0]["title"].must_equal ""
+    end
+  end
+
 end
