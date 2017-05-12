@@ -29,7 +29,7 @@ class RentalsController < ApplicationController
     rental.return_date = Date.today
     rental.status = "checked in"
 
-    rental.customer.movies_checked_out_count -= 1
+    # rental.customer.movies_checked_out_count -= 1
     # rental.movie.available_inventory += 1 # ??????????
     if rental.save
       render status: :ok, json: { status: rental.status }
@@ -41,7 +41,7 @@ class RentalsController < ApplicationController
 
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
-    if !overdue_rentals.empty?
+    if overdue_rentals.empty?
       render json: {error:  "No overdue rentals was found" }, status: :ok
     else
       render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
