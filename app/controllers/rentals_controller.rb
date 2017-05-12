@@ -1,16 +1,16 @@
 class RentalsController < ApplicationController
 
     def checkout
-      movie_id = Movie.find_by_title(params[:title]).id
-      rental_params[:movie_id] = movie_id
-      rental_params[:checkout_date] = Date.today
-      rental_params[:due_date] = rental_params[:checkout_date] + 7
-      rental = Rental.new(rental_params)
+      rental = Rental.new
+      rental.movie = Movie.find_by_title(params[:title])
+      rental.customer = Customer.find_by_id(params[:rental][:customer_id])
+      rental.checkout_date = Date.today
+      rental.due_date = Date.today + 7
 
       if rental.save
-
+        render json: { id: rental.id }, status: :ok
       else
-        
+        render json: { errors: rental.errors.messages }, status: :bad_request
       end
 
     end
@@ -23,13 +23,9 @@ class RentalsController < ApplicationController
 
     def overdue
       # return list of rentals
+      rentals = Rental.overdue?
+      render json: rentals.as_json()
       # return title, customer_id, name, postal_code, checkout_date, due_date
-    end
-
-    private
-
-    def rental_params
-      params.require(:rental).permit(:customer_id)
     end
 
 end

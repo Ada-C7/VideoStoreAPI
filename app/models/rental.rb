@@ -16,4 +16,7 @@ class Rental < ApplicationRecord
         return false
       end
     end
+
+    def self.overdue?
+    end
 end
