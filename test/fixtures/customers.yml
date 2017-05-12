@@ -4,7 +4,7 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+fannie:
   name: Fannie Mae
   registered_at: Fri, 29 Apr 2013 07:74:14 -0700
   address: 5216 Ipsum St.
@@ -15,7 +15,7 @@ one:
   account_credit: 2.10
   movies_checked_out_count: 1
 
-two:
+freddie:
   name: Freddie Mac
   registered_at: Sat, 29 Apr 2013 07:74:14 -0700
   address: 292-5216 Ipsum Rd.
