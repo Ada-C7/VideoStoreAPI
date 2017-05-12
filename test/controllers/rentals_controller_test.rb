@@ -84,19 +84,19 @@ describe RentalsController do
 
         end
 
-        it "returns error when due date is in the past" do
-          proc {
-            post checkout_path("Psycho"), params: {
-              customer_id: Customer.all.first.id,
-              due_date: Chronic.parse("yesterday")
-            }
-          }.must_change 'Rental.count', 0
-          must_respond_with 500
-
-          body = JSON.parse(response.body)
-          body.must_be_kind_of Hash
-          body.must_include "error"
-        end
+        # it "returns error when due date is in the past" do
+        #   proc {
+        #     post checkout_path("Psycho"), params: {
+        #       customer_id: Customer.all.first.id,
+        #       due_date: Chronic.parse("yesterday")
+        #     }
+        #   }.must_change 'Rental.count', 0
+        #   must_respond_with 500
+        #
+        #   body = JSON.parse(response.body)
+        #   body.must_be_kind_of Hash
+        #   body.must_include "error"
+        # end
 
         it "decreases inventory of movie by 1" do
           proc {
@@ -217,7 +217,9 @@ describe RentalsController do
           must_respond_with :success
         end
 
-        it "response  should be in json" do skip
+        it "response  should be in json" do
+          get rentals_overdue_path
+          response.header['Content-Type'].must_include 'json'
         end
 
 
