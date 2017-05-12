@@ -10,7 +10,7 @@ describe RentalsController do
 
     let(:bad_rental_data) {
       {
-        customer_id: "bad"
+        customer_id: (Customer.last.id + 1)
       }
     }
 
@@ -54,10 +54,6 @@ describe RentalsController do
     it "gives error message if movie isn't available" do
 
       post checkout_path(movies(:two).title), params: {rental: rental_data}
-      #
-      # movie = Movie.last
-      # movie.available_inv = 0
-      # movie.save
 
       body = JSON.parse(response.body)
       body["errors"].must_include "movie"
@@ -65,7 +61,6 @@ describe RentalsController do
     post checkout_path(movies(:two).title), params: {rental: rental_data}
 
       must_respond_with :not_acceptable
-
 
     end
 
@@ -102,6 +97,20 @@ describe RentalsController do
       must_respond_with :success
     end
 
+    it "should only check in a rental one time" do
+      Rental.destroy_all
+
+      #checkout one movie, check that back in. Won't chekin again.
+      post checkout_path(movies(:one).title), params: {rental: rental_data}
+      post checkin_path(movies(:one).title), params: {rental: rental_data}
+
+      post checkin_path(movies(:one).title), params: {rental: rental_data}
+
+      must_respond_with :not_found
+      body = JSON.parse(response.body)
+      body["errors"].must_equal "rental"=>["Rental not found"]
+    end
+
     it "should update the available inventory for that movie" do
       checkedout = movies(:one)
       title = checkedout.title
@@ -113,12 +122,15 @@ describe RentalsController do
     end
 
     it "should update the status of that rental" do
+      rental = rentals(:checkedout)
+
+      old_status = rental.status
+
       post checkin_path(movies(:one).title), params: {rental: rental_data}
 
-      #gets last updated rental from test db?
-      updated_rental = Rental.last
+      new_status = Rental.last.status
 
-      updated_rental.status.must_equal "Returned"
+      old_status.wont_equal new_status
     end
 
     it "if Movie not found, return appropriate error & message" do
