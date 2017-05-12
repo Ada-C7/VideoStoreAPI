@@ -5,7 +5,8 @@ class Rental < ApplicationRecord
   validates :check_out_date, presence: true
   validates :due_date, presence: true
   validates :status , presence: true, inclusion: { in: [ "checked out", "checked in", "overdue" ] }
-  validates :return_date, presence: true, on: :update
+  # this validation also ran on overdue_movies - not just controller update
+  # validates :return_date, presence: true, on: :update
 
 
   # {"rental"=>{"customer_id"=>1, "date"=>"2017-05-10"}, "title"=>"Psycho"}
@@ -17,7 +18,8 @@ class Rental < ApplicationRecord
     rental.check_out_date = Date.today
     rental.due_date = Date.today + 3
     rental.status = "checked out"
-    rental.valid?
+    # rental.check_inventory
+    rental.valid? # can add validation to check inventory
     return rental
   end
 

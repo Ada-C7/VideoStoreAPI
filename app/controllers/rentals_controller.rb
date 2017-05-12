@@ -58,7 +58,11 @@ class RentalsController < ApplicationController
 
   def overdue_rentals
     overdue_rentals = Rental.overdue_movies
-    render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
+    if overdue_rentals.empty?
+      render json: { message:  "No overdue rentals was found" }, status: :ok
+    else
+      render json: overdue_rentals, each_serializer: OverdueListSerializer, status: :ok
+    end
   end
 
 
