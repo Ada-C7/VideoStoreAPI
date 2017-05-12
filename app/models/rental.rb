@@ -5,10 +5,8 @@ class Rental < ApplicationRecord
   validates :due_date, presence: true
 
   def self.overdue
-    #get all of the rentals w/ a status that is NOT "returned"
     rentals = Rental.all
     overdues = []
-    #iterate through and check if due_date is past
 
     rentals.each do |rental|
       due = Date.parse (rental.due_date)
@@ -16,8 +14,6 @@ class Rental < ApplicationRecord
         overdues << rental
       end
     end
-    #if rental.due_date.past?
-    #returns an array of rental objects that are overdue.
     return overdues
   end
 
