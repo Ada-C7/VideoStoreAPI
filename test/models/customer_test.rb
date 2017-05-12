@@ -19,6 +19,12 @@ describe Customer do
       end
     end
 
+    describe 'validations' do
+      it "customer with correct validations is valid" do
+        customer(:one).must_be :valid?
+      end
+    end
+
     describe 'relations' do
       it 'a customer can have many movies' do
         # skip # Not passing, yaml files need to be fixed.
