@@ -21,3 +21,9 @@ three:
   overview: "Bye, bye, Birdie. I'm gonna miss you so. Bye, bye, Birdie. Why'd ya have to go?"
   release_date: "1963-04-04"
   inventory: 7
+
+four:
+  title: "War Games"
+  overview: " Keep Humans in the Loop, please"
+  release_date: "1983-06-03"
+  inventory: 0
