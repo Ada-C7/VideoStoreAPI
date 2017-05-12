@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
 
-  before_action :find_movie, :only => [:show]
+  # before_action :find_movie, :only => [:show]
 
   def index
     movies = Movie.all
@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    movie = Movie.find_by(title: params[:title])
     if movie.nil?
       render json: { nothing: true }, status: :not_found
     else
@@ -17,9 +18,9 @@ class MoviesController < ApplicationController
   end
 end
 
-private
-
-def find_movie
-  movie = Movie.find_by(title: params[:title])
-  return movie
-end
+# private
+#
+# def find_movie
+#   movie = Movie.find_by(title: params[:title])
+#   return movie
+# end

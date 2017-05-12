@@ -47,15 +47,11 @@ class RentalsController < ApplicationController
 
 
     def overdue
-      movie = Movie.find_by_title(params[:title])
-      if movie
-        if customers_with_overdue.length != 0
-          render json: over_due_rentals.as_json(only: [:title, :customer_id, :name, :postal_code, :checkout_date, :due_date], status: :ok)
-        else
-          render json: { overdue: "none" }, status: :ok
-        end
+      overdue_customers = Rental.over_due_rentals
+      if overdue_customers.nil?
+        render json: { overdue: "none" }, status: :ok
       else
-        render json: { movie: "not found" }, status: :error
+        render json: overdue_customers.as_json(only: [:title, :customer_id, :name, :postal_code, :checkout_date, :due_date], status: :ok)
       end
     end
 
