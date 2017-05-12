@@ -2,7 +2,7 @@ require "test_helper"
 
 describe MoviesController do
   ALL_MOVIES = %w(release_date title)
-  ONE_MOVIE = %w(id inventory overview release_date title)
+  ONE_MOVIE = %w(available_inventory id inventory overview release_date title)
 
   describe "index" do
     it "is a real working route" do

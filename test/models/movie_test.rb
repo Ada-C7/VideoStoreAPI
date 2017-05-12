@@ -5,9 +5,8 @@ describe Movie do
 
   describe "Movie relationships" do
     it "Movies can have many rentals" do
-      movie = movies(:one)
-      # rental two must include movie :one in yml
-      movie.rentals.must_include rentals(:two)
+      movie = movies(:two)
+      movie.rentals.must_include rentals(:one)
     end
   end
 
