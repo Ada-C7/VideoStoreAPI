@@ -58,6 +58,17 @@ describe MoviesController do
       body["title"].must_equal m.title
     end
 
+
+    it "can load a page for a specific movie with spaces in title" do
+      get movie_path("First Blood")
+      must_respond_with :success
+    end
+
+    it "can load a page for a specific movie with special characters in title" do
+      get movie_path("Romy and Michele's High School Reunion")
+      must_respond_with :success
+    end
+
     it "returns 404 not_found if movie does not exist" do
       ng_title = "dkjfsdkj7765%$"
       get movie_path(ng_title)

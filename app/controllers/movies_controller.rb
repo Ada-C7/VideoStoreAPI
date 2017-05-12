@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
   def index
     movies = Movie.all
     if movies.empty?
+      # render :json => [], status: :ok
       render :json => { "message" => "We have no customers :("},status: :ok
       # render :text => "404 No Content", status: :not_found
     else

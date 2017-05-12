@@ -24,3 +24,10 @@ jane:
   release_date: "1943-06-19"
   inventory: 50
   slug: jane-eyre
+
+romy:
+  title: Romy and Michele's High School Reunion
+  overview: This is a great movie about old high school friends.
+  release_date: "1943-06-19"
+  inventory: 5
+  slug: romy-and-michele-s-high-school-reunion
