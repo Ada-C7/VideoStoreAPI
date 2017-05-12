@@ -115,6 +115,6 @@ describe Movie do
   end
 end
 
-#relationship testing
-#ASSUMING A MOVIE HAS CUSTOMERS MOVIE.CUSTOMER
+#relationship testing when we have them
+#assuming a movie has customers movie.customer/s
 # must.be.instance_of Array

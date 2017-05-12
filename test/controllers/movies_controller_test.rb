@@ -35,11 +35,13 @@ describe MoviesController do
       end
     end
 
-    it "it repsonds if no movies exist" do
+    it "it responds if no movies exist" do
       Movie.destroy_all
       get movies_path
       body = JSON.parse(response.body)
-      body["message"].must_be_kind_of String
+      # body["message"].must_be_kind_of String
+      body.must_be_kind_of Array
+      body.must_be_empty
       must_respond_with :success
     end
 
