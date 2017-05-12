@@ -21,4 +21,9 @@ private
       return nil
     end
   end
+
+  def self.overdue
+    rentals = self.where(check_in: nil)
+    return rentals.where("due_date < ?", DateTime.now)
+  end
 end

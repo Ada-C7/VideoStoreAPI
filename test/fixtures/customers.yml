@@ -33,3 +33,13 @@ three:
   postal_code: "11111"
   phone: "555-555-1111"
   account_credit: 0
+
+four:
+  name: "Not Ada"
+  registered_at: "2010-03-21"
+  address: "111 Ada Street"
+  city: "Ada Town"
+  state: "OR"
+  postal_code: "11111"
+  phone: "555-555-1111"
+  account_credit: 0

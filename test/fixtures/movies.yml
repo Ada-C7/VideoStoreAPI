@@ -27,3 +27,9 @@ four:
   overview: " Keep Humans in the Loop, please"
   release_date: "1983-06-03"
   inventory: 0
+
+five:
+  title: "Sleepless in Seattle"
+  overview: " Rain and Love"
+  release_date: "1993-06-25"
+  inventory: 3

@@ -84,4 +84,37 @@ describe Rental do
       Rental.checked_out_by_customer(Customer.last.id + 1).must_equal nil
     end
    end
+
+   describe " Overdue" do
+
+     it " Returns a collection of overdue rental objects " do
+
+       Rental.overdue.each do |rental|
+         rental.must_be_instance_of Rental
+         rental.due_date.must_be :<, DateTime.now
+       end
+
+     end
+
+     it " Does not return rental object that is not overdue  " do
+
+       Rental.overdue.wont_include rentals(:five)
+     end
+
+     it " Does not return rental object that has been checked in " do
+
+       Rental.overdue.wont_include rentals(:three)
+     end
+
+     it "Does something if now rentals are overdue" do
+       Rental.all.each do |rental|
+         if rental.check_in.nil?
+           rental.check_in = DateTime.yesterday
+           rental.save
+         end
+       end
+
+       Rental.overdue.must_equal []
+     end
+   end
 end
