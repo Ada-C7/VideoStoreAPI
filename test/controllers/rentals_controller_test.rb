@@ -125,4 +125,26 @@ describe RentalsController do
       body.must_equal error_hash
     end
   end
+
+  describe "overdue method" do
+    it "succeeds and returns a list of overdue rentals" do
+    get overdue_path
+    must_respond_with :success
+    overdue_item_info = [{"title"=>"Psycho", "customer_id"=>888622154, "name"=>"Shelley Rocha", "postal_code"=>"24309", "due_date"=>"2017-05-09", "checkout_date"=>"2017-05-12"}]
+    body = JSON.parse(response.body)
+    body.must_equal overdue_item_info
+    end
+
+    it "gives and appropriate message and status not found if there are no overdue rentals" do
+      rental = rentals(:one)
+      rental.checked_out = false
+      rental.save
+      get overdue_path
+      must_respond_with :not_found
+      body = JSON.parse(response.body)
+      error_hash = { "no_overdue_rentals" => "There are no overdue rentals."}
+      body.must_equal error_hash
+    end
+  end
+
 end
