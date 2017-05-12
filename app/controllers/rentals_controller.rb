@@ -5,7 +5,7 @@ class RentalsController < ApplicationController
     # must associate title with rental
     rental = Rental.new
     rental.movie = Movie.find_by(title: params[:title])
-    rental.customer = Customer.find_by(customer_id: params[:customer_id])
+    rental.customer = Customer.find_by(id: params[:customer_id])
     rental.checkout_date = Date.today
     rental.due_date = params[:due_date]
     rental.save
