@@ -96,45 +96,4 @@ describe RentalsController do
       response.parsed_body.must_include "message"
     end
   end
-
-  describe "update" do
-    before do
-      customer = customers(:good_customer)
-      @rental_data = { "customer_id": customer.id  }
-      @movie = movies(:movie1)
-      # create a rental for this customer and movie
-      post create_rental_path(@movie.title), params: { rental: @rental_data }
-      rental_id = response.parsed_body["rental_id"]
-      @rental = Rental.find_by(id: rental_id)
-
-    end
-
-    it "a working api route" do
-      patch update_rental_path(@movie.title), params: { rental: @rental_data }
-      must_respond_with :success
-    end
-
-    it 'returns json' do
-      patch update_rental_path(@movie.title), params: { rental: @rental_data }
-      response.header['Content-Type'].must_include 'json'
-    end
-
-    it "changes rental status" do
-      puts "rental before"
-      p @rental
-
-      patch update_rental_path(@movie.title), params: { rental: @rental_data }
-      # p response.parsed_body
-      response.parsed_body.must_include "status"
-      rental = @rental.reload
-      # p Rental.all
-
-      rental = Rental.find(rental.id)
-      puts "rental after"
-      p rental
-      puts "print all"
-      p Rental.all
-      rental.status.must_equal "checked in"
-    end
-  end
 end
