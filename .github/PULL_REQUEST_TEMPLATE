@@ -5,12 +5,16 @@ If you didn't get to the functionality the question is asking about, reply with 
 ## Comprehension Questions
 | Question | Answer    |
 | :------------- | :------------- |
-| Explain how you came up with the design of your ERD, based on the seed data. |  |
-| List all the completed endpoints of your application. |  |
-| Describe a set of positive and negative test cases you implemented for a model.  |  |
-| Describe a set of positive and negative test cases you implemented for a controller.  |  |
-| How does your API respond when bad data is sent to it? |  |
-| Describe one of your custom model methods and why you chose to wrap that functionality into a method. |  |
-| Do you have any recommendations on how we could improve this project for the next cohort? |  |
-| Link to Trello |  |
-| Link to ERD |  |
+| Explain how you came up with the design of your ERD, based on the seed data. | We knew we needed a model for both the movies & the customers because we had seed data for both of those groups of data. We decided on the model attributes based on the columns from the seed data and we created a rentals join table with foreign keys for movies and customer to track rentals.|
+| List all the completed endpoints of your application. | Our applications endpoints are /customers, /movies, /movies/:title |
+| Describe a set of positive and negative test cases you implemented for a model.  |
+Positive Test Case: For the movie model we tested to ensure that the title was required. We did that by passing in a hash with a valid title and then called "movie.title.must_equal "title_value_from_hash"
+Negative Test Case: We passed in a hash with a nil value as the title and tested to ensure the resulting movie was invalid.|
+| Describe a set of positive and negative test cases you implemented for a controller.  |
+Positive Test Case: For the customer controller we tested that the show method was working properly by finding the first customer, passing in their ID through "get customer_path(ID)" and then rendering the JSON and confirming the ID param matched the first customer we started with, and that it resulted in success.
+Negative Test Case:  For the customer controller we tested that the show method was responded with "not found" if we passed in an invalid ID.|
+| How does your API respond when bad data is sent to it? | Requests for all movies & all customers will return an empty array and a status of "ok" to the user when there are no results. If a request is sent to show an individual move that doesn't exist, the method will render a status "404 not_found" and display and error message that includes the string " Movie 'title unavailable' not found". |
+| Describe one of your custom model methods and why you chose to wrap that functionality into a method. | In the movie model we wrote a method called "check_inventory" to calculate the number of copies of a movie available. We opted to use the custom method over inserting a column because we felt this qualified as business logic and was subject to change.  |
+| Do you have any recommendations on how we could improve this project for the next cohort? | we think it was a great project and we appreciated the emphasis on tests and the time allotted . |
+| Link to Trello | https://trello.com/b/RldNqGsD/elizabeth-lisy-video-store-api |
+| Link to ERD | https://www.lucidchart.com/documents/edit/74a0751a-9df4-42fb-b100-e5f7c7312d1d# |

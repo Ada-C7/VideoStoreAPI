@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
     customers = Customer.all
     if customers.empty?
       render :json => { "message" => "We have no customers :("},status: :ok
-      # zomg rendering !
+      # zomg rendering works yaya!
       # render :text => "IT WORKS!", status: :ok
     else
       render :json => customers , status: :ok
@@ -18,5 +18,4 @@ class CustomersController < ApplicationController
       render :json => customer, status: :not_found
     end
   end
-
 end
