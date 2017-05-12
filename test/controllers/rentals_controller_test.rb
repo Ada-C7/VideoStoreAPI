@@ -5,6 +5,7 @@ describe RentalsController do
   describe "Create (checkout)" do
     let(:customer) { customers(:good_data) }
     let(:movie) { movies(:psycho) }
+    let(:customer2) { customers(:no_rentals)}
 
     it "given valid customer id and movie title, can checkout movie (increase rental record by 1)" do
       proc {
@@ -67,6 +68,19 @@ describe RentalsController do
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
       body.must_include "error"
+    end
+
+    it "cannot checkout movie with no available inventory" do
+      post checkout_path("Lawrence of Arabia"), params: {
+        customer_id: customer.id,
+        due_date: Chronic.parse("two weeks from today")}
+      proc {
+        post checkout_path("Lawrence of Arabia"), params: {
+            customer_id: customer.id,
+            due_date: Chronic.parse("two weeks from today")}
+        }.must_change 'Rental.count', 0
+      must_respond_with 500
+
 
     end
 
@@ -90,7 +104,7 @@ describe RentalsController do
           customer_id: Customer.all.first.id,
           due_date: Chronic.parse("two weeks from today")
           }
-        }.must_change 'Movie.find_by_title("Psycho").inventory', -1
+        }.must_change 'Movie.find_by_title("Psycho").available_inventory', -1
 
     end
 
@@ -135,10 +149,10 @@ describe RentalsController do
         }.must_change 'customer.movies_checked_out_count', -1
       end
 
-      it "increases the movie's inventory count by 1" do
+      it "increases the movie's available inventory count by 1" do
         proc {
           post checkin_path(movie.title), params: { customer_id: customer.id }
-        }.must_change 'Movie.find_by_title("Psycho").inventory', 1
+        }.must_change 'Movie.find_by_title("Psycho").available_inventory', 1
       end
 
       it "renders bad request for invalid customer id data" do

@@ -4,7 +4,7 @@ class RentalsController < ApplicationController
   def create
     movie = Movie.find_by_title(params[:title])
 
-    if movie.nil? || movie.inventory < 1
+    if movie.nil? || movie.available_inventory < 1
       id = 0
     else
       id = movie.id
@@ -13,8 +13,8 @@ class RentalsController < ApplicationController
     @rental = Rental.new(movie_id: id, customer_id: rental_params[:customer_id], due_date: rental_params[:due_date] )
 
     if @rental.save
-      movie.inventory -= 1
-      movie.save
+      # movie.inventory -= 1
+      # movie.save
       render status: :ok, json: @rental.as_json
     else
       render status: :error, json: { error: @rental.errors.full_messages }
@@ -38,8 +38,8 @@ class RentalsController < ApplicationController
       if rental
         rental.checkin_date = Date.today
         rental.save
-        movie.inventory += 1
-        movie.save
+        # movie.inventory += 1
+        # movie.save
         render status: :ok, json: { nothing: true }
       else
         # if rental doesn't exist (customer id and movie id valid but movie never checked out)

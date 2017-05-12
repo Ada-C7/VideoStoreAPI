@@ -7,7 +7,9 @@ class Movie < ApplicationRecord
   has_many :rentals
 
   def available_inventory
-    return 0
+    #should subtract from the inventory the number of copies out in active rentals (checkin_date = nil)
+    rentals = Rental.where(movie_id: self.id, checkin_date: nil)
+    return self.inventory - rentals.size
   end
-  
+
 end
