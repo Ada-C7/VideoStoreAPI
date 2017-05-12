@@ -7,7 +7,22 @@ class Rental < ApplicationRecord
   validates :customer_id, presence: true, numericality: true
 
   def overdue
-    # check if due_date is before current due_date and rental's returned status is false
     Date.parse(self.due_date).past? && self.returned == false ? true : false
+  end
+
+  def title
+    self.movie.title
+  end
+
+  def name
+    self.customer.name
+  end
+
+  def postal_code
+    self.customer.postal_code
+  end
+
+  def checkout_date
+    self.created_at
   end
 end

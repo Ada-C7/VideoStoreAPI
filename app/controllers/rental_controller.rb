@@ -11,13 +11,12 @@ class RentalController < ApplicationController
     end
 
     render json: rentals.as_json(only:
-    ["title", "customer_id", "name", "postal_code", "checkout_date", "due_date"]
+    ["customer_id", "due_date"],
+      methods: [:title, :name, :postal_code, :checkout_date]
     ), status: :ok
   end
 
   def checkout
-    # should check if there is a customer associated with customer_id
-    # and a movie associated with movie_id
     rental = Rental.new(checkout_params)
     rental.movie_id = get_movie_id(params[:title])
     if movie_available?(rental.movie.id)
