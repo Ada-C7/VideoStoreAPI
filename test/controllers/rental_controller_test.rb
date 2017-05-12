@@ -41,6 +41,7 @@ describe RentalController do
     it "should get checkout" do
       must_respond_with :success
     end
+
     #
     #     it "should create a new rental instance" do skip
     #       affect Rental model, change by 1
@@ -50,6 +51,9 @@ describe RentalController do
     #       status: :ok
     #       render_json display customer_id due_date movie_id
     #     end
+
+    # it "Movie can only be checked out if one is available" do
+    # end
     #
     #     it "should render the correct output if checkut was unsuccessful" do skip
     #       status: :bad_request
