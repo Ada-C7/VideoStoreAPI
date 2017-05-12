@@ -106,14 +106,14 @@ describe Rental do
        Rental.overdue.wont_include rentals(:three)
      end
 
-     it "Does something if no rentals are overdue" do
+     it "Retuns status ok and empty array if if no rentals are overdue" do
        Rental.all.each do |rental|
          if rental.check_in.nil?
            rental.check_in = DateTime.yesterday
            rental.save
          end
        end
-
+       must_respond_with :success
        Rental.overdue.must_equal []
      end
    end
