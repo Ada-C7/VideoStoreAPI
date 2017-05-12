@@ -43,6 +43,13 @@ describe MoviesController do
       must_respond_with :success
     end
 
+    it "can get a specific movie" do
+      m = Movie.first
+      get movie_path(m.title)
+      body = JSON.parse(response.body)
+      body["title"].must_equal m.title
+    end
+
     it "returns 404 not_found if movie does not exist" do
       ng_title = "dkjfsdkj7765%$"
       get movie_path(ng_title)

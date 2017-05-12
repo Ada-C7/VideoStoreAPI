@@ -9,15 +9,18 @@ rambo:
   overview: Long Synopsis
   release_date: "1982-06-19"
   inventory: 8
+  slug: first-blood
 
 up:
   title: Up
   overview: Story about an older man looking for adventure.
   release_date: "2009-06-19"
   inventory: 5
+  slug: up
 
 jane:
   title: Jane Eyre
   overview: A young governess takes at post at the home of Mr. Rochester.
   release_date: "1943-06-19"
   inventory: 50
+  slug: jane-eyre
