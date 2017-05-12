@@ -7,7 +7,7 @@ one:
   checkin_date: 2017-05-12 14:27:50
 
 two:
-  movie_id: one
-  customer_id: two
+  movie: one
+  customer: two
   due_date: 2017-6-15 14:27:50
   checkin_date: 2017-05-15 14:27:50
