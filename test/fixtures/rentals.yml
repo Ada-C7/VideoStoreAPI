@@ -9,9 +9,11 @@ one:
     movie_id: 1
     checkout_date: 2017-05-02
     due_date: 2017-05-09
+    checked_out: true
 
 two:
     customer_id: 2
     movie_id: 2
     checkout_date: 2017-05-01
     due_date: 2017-05-08
+    checked_out: true
