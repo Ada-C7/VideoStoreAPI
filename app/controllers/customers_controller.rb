@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
     if customers != []
       render json: customers, status: :ok
     else
-      render json: customers, status: :not_found
+      render json: {errors: "There are No Customers"}, status: :not_found
     end
 
   end
@@ -16,21 +16,19 @@ class CustomersController < ApplicationController
     rentals.each do |rental|
       overdue_rentals << rental if rental.due_date < Time.now
     end
-    puts ">>>>>>>>>>>>>"
-    puts overdue_rentals
-    puts ">>>>>>>>>>>>>"
+
 
     customers = []
     overdue_rentals.each do |overdue|
-      customers << Customer.find_by(id: overdue.customer_id)
+      customer = Customer.find_by(id: overdue.customer_id)
+      unless customers.include?(customer)
+        customers << customer
+      end
     end
-    puts ">>>>>>>>>>>>>"
-    puts customers
-    puts ">>>>>>>>>>>>>"
 
 
-    if customers.nil?
-      render json: customers, status: :not_found
+    if customers == []
+      render json: {errors: "No customers with overdue movies"}, status: :not_found
     else
       render json: customers, status: :ok
     end

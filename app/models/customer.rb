@@ -22,14 +22,8 @@ class Customer < ApplicationRecord
 
         if rental.due_date < Time.now
           overdue << rental
-          puts ">>>>>>>>"
-          puts rental.due_date
-          puts ">>>>>>>>"
-
         end
-        # puts ">>>>>>>>"
-        # puts overdue
-        # puts ">>>>>>>>"
+
       end
     end
     if overdue != []

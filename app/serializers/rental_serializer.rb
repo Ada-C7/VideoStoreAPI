@@ -6,6 +6,6 @@ class RentalSerializer < ActiveModel::Serializer
   end
 
   def customer_name
-    return Customer.find_by(id: object.customer_id).name
+    return Customer.find_by(id: object.customer_id).name if object.customer_id != nil
   end
 end
