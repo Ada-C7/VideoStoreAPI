@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+alison:
+  id: 1
+  name: Alison Zerbe
+  registered_at: "2017-05-09"
+  address: 111 Alison St
+  city: Seattle
+  state: WA
+  postal_code: "99999"
+  phone: 999-999-9999
+  account_credit: 1.00
+
+brenna:
+  id: 2
+  name: Brenna Darroch
+  registered_at: "2017-05-09"
+  address: 1234 My Town
+  city: Seattle
+  state: WA
+  postal_code: "11111"
+  phone: 111-111-1111
+  account_credit: 3.00
