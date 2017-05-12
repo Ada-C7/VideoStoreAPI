@@ -38,15 +38,15 @@ describe Customer do
     describe " Custom Methods" do
 
       it " Returns number of movies checked out by customer instance" do
-        customers(:one).movie_checked_out_count.must_equal 2
+        customers(:one).movies_checked_out_count.must_equal 2
       end
 
       it " Returns 0 if customer has not checked out any movies" do
-        customers(:three).movie_checked_out_count.must_equal 0
+        customers(:three).movies_checked_out_count.must_equal 0
       end
 
       it " Retuns correct number when customer has checked in rentals " do
-        customers(:two).movie_checked_out_count.must_equal 1
+        customers(:two).movies_checked_out_count.must_equal 1
       end
 
     end

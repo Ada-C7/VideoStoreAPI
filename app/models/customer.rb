@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
   validates_numericality_of :account_credit
 
 
-  def movie_checked_out_count
+  def movies_checked_out_count
     # TODO: Fix this
     rentals = Rental.checked_out_by_customer(id)
     return rentals.count
