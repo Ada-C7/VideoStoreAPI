@@ -7,4 +7,5 @@ class Rental < ApplicationRecord
   def overdue?
     Date.parse(self.duedate.to_s) < Date.today
   end
+
 end
