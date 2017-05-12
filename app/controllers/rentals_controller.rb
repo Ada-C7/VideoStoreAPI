@@ -31,17 +31,25 @@ class RentalsController < ApplicationController
     rental = Rental.new
     rental.duedate = params[:future_due_date]
     rental.customer_id = params[:customer_id]
-    rental.movie = Movie.find_by(title: params[:title])
+    movie = Movie.find_by(title: params[:title])
+    if movie
+      rental.movie = movie
+    else
+      return render json: { errors: "Movie not found" }, status: :bad_request
+    end
+
     rental.movie.available_inventory -= 1
-    if !rental.movie.save
+    if rental.movie.save
+      if rental.save
+        render json: {id: rental.id}, status: :ok
+      else
+        render json: { errors: rental.errors.messages }, status: :bad_request
+      end
+    else
       render json: { errors: rental.movie.errors.messages }, status: :bad_request
     end
 
-    if rental.save
-      render json: {id: rental.id}, status: :ok
-    else
-      render json: { errors: rental.errors.messages }, status: :bad_request
-    end
+
 
   end
 
