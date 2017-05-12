@@ -25,12 +25,11 @@ describe CustomersController do
     end
 
     it "returns alphebetized list if params contain sort" do
-      all_customers = Customer.all
-
-      sorted_list = all_customers.sort_by {|customer| customer.name}
-
-      get customers_url, params: {sort: name}
+      get customers_url, params: {sort: "name"}
       body = JSON.parse(response.body)
+
+      all_customers = Customer.all
+      sorted_list = all_customers.sort_by {|customer| customer.name}
 
       body.first["name"].must_equal sorted_list.first.name
     end

@@ -138,10 +138,10 @@
 							"tests[\"Movie has overview\"] = \"overview\" in movie;",
 							"tests[\"Movie has release_date\"] = \"release_date\" in movie;",
 							"tests[\"Movie has inventory\"] = \"inventory\" in movie;",
-							"tests[\"Movie has available_inventory\"] = \"available_inventory\" in movie;",
+							"tests[\"Movie has available_inv\"] = \"available_inv\" in movie;",
 							"",
 							"// Save available inventory for later",
-							"postman.setEnvironmentVariable(\"movie_ai\", movie.available_inventory);"
+							"postman.setEnvironmentVariable(\"movie_ai\", movie.available_inv);"
 						]
 					}
 				}
@@ -184,7 +184,7 @@
 				}
 			],
 			"request": {
-				"url": "{{url}}/rentals/{{movie_title}}/check-out",
+				"url": "{{url}}/rentals/{{movie_title}}/checkout",
 				"method": "POST",
 				"header": [
 					{
@@ -262,7 +262,7 @@
 							"tests[\"Data is not an array\"] = !Array.isArray(movie);",
 							"",
 							"var expected = Number(postman.getEnvironmentVariable(\"movie_ai\")) - 1;",
-							"tests[\"Movie available_inventory decreased\"] = movie.available_inventory === expected;"
+							"tests[\"Movie available_inv decreased\"] = movie.available_inv === expected;"
 						]
 					}
 				}
@@ -305,7 +305,7 @@
 				}
 			],
 			"request": {
-				"url": "{{url}}/rentals/{{movie_title}}/check-in",
+				"url": "{{url}}/rentals/{{movie_title}}/checkin",
 				"method": "POST",
 				"header": [
 					{
@@ -383,7 +383,7 @@
 							"tests[\"Data is not an array\"] = !Array.isArray(movie);",
 							"",
 							"var expected = Number(postman.getEnvironmentVariable(\"movie_ai\"));",
-							"tests[\"Movie available_inventory decreased\"] = movie.available_inventory === expected;"
+							"tests[\"Movie available_inv decreased\"] = movie.available_inv === expected;"
 						]
 					}
 				}
