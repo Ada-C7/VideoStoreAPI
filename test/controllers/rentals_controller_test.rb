@@ -72,11 +72,10 @@ describe RentalsController do
       movies_count_before = @customer.movies_checked_out_count
       inventory_count_before = movie.available_inventory
       post create_rental_path(movie.title), params: { rental: rental_data }
-      movie.reload
       inventory_count_after =  movie.available_inventory
-      movies_count_after= @customer.movies_checked_out_count
+      movies_count_after = @customer.movies_checked_out_count
       (inventory_count_after - inventory_count_before).must_equal 0
-      (movies_count_after - inventory_count_before).must_equal 0
+      (movies_count_before - movies_count_after).must_equal 0
     end
 
 
@@ -136,6 +135,8 @@ describe RentalsController do
       post create_rental_path(@movie.title), params: { rental: @rental_data }
       rental_id = response.parsed_body["rental_id"]
       @rental = Rental.find_by(id: rental_id)
+      @bad_customer_id = Customer.all.last.id + 1
+      @bad_rental_data = { customer_id: @bad_customer_id}
 
     end
 
@@ -185,6 +186,15 @@ describe RentalsController do
       movie.reload
       count_after = movie.available_inventory
       (count_before - count_after).must_equal -1
+    end
+
+    it 'does not updates available inventory if given bad data' do
+      movie = movies(:movie1)
+      count_before = movie.available_inventory
+      patch update_rental_path(movie.title), params: { rental: @bad_rental_data }
+      movie.reload
+      count_after = movie.available_inventory
+      (count_before - count_after).must_equal 0
     end
 
   end
