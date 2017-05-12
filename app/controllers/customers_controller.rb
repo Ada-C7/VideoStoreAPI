@@ -4,8 +4,8 @@ class CustomersController < ApplicationController
     customers = Customer.all
     if params[:sort] == "name"
       customers.sort_by {|customer| customer.name}
-      render json: customers.as_json(except: [:created_at, :updated_at]), status: :ok
     end
+    render json: customers.as_json(except: [:created_at, :updated_at]), status: :ok
   end
 
   def show
