@@ -33,7 +33,7 @@ class RentalsController < ApplicationController
 
 
 def overdue
-  overdue_rentals = Rental.overdue
+overdue_rentals = Rental.overdue
 
   if overdue_rentals.length > 0
     render :json => overdue_rentals, status: :ok
