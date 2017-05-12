@@ -1,15 +1,23 @@
 class RentalController < ApplicationController
 
   def overdue
-    # title
-    # customer_id
-    # name
-    # postal_code
-    # checkout_date
-    # due_date
+    rentals = Rental.where(returned: false)
+    overdue = []
+
+    rentals.each do | rental |
+      if rental.overdue
+        overdue << rental
+      end
+    end
+
+    render json: rentals.as_json(only:
+    ["title", "customer_id", "name", "postal_code", "checkout_date", "due_date"]
+    ), status: :ok
   end
 
   def checkout
+    # should check if there is a customer associated with customer_id
+    # and a movie associated with movie_id
     rental = Rental.new(checkout_params)
     rental.movie_id = get_movie_id(params[:title])
     if movie_available?(rental.movie.id)
