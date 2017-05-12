@@ -25,7 +25,7 @@ describe Customer do
   describe "Customer relationships" do
     it "Customer can have many rentals" do
       customer = customers(:two)
-      #rental one must have customer two
+      # rental one must have customer two
       customer.rentals.must_include rentals(:one)
     end
   end

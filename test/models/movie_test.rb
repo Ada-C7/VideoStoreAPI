@@ -4,13 +4,11 @@ describe Movie do
   let(:movie) { Movie.new }
 
   describe "Movie relationships" do
-    #####
-    # Need to change relationships
-    #####
-    # it "A movies belongs to a customer" do
-    #   movie = movies(:one)
-    #   movie.must_respond_to :customer
-    # end
+    it "Movies can have many rentals" do
+      movie = movies(:one)
+      # rental two must include movie :one in yml
+      movie.rentals.must_include rentals(:two)
+    end
   end
 
   describe "Movie validations" do
