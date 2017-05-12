@@ -3,8 +3,6 @@
 class RentalsController < ApplicationController
 
   def create
-    # example of params
-    # {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
     movie = Movie.find_by(title: params[:title])
     if movie
       rental_info = {
@@ -12,10 +10,24 @@ class RentalsController < ApplicationController
         movie_id: movie.id
       }
       rental = Rental.create_rental(rental_info)
-      if rental.save
-        render status: :ok, json: { id: rental.id }
+
+      if Rental.where(movie_id: movie.id, status: "checked out").length == 0
+        rental.movie.available_inventory = rental.movie.inventory
+        rental.movie.save
+      end
+
+      if rental.movie.available_inventory > 0
+        rental.movie.available_inventory -= 1
+        rental.movie.save
+        rental.customer.movies_checked_out_count += 1
+        rental.customer.save
+        if rental.save
+          render status: :ok, json: { id: rental.id }
+        else
+          render status: :bad_request, json: { errors: rental.errors.messages }
+        end
       else
-        render status: :bad_request, json: { errors: rental.errors.messages }
+          render status: :ok, json: { error: "Movie is not available for checkout"}
       end
     else
       render status: :bad_request, json: { errors: "movie does not exist" }
@@ -25,16 +37,21 @@ class RentalsController < ApplicationController
   def update
     movie = Movie.find_by(title: params[:title])
     rental = Rental.find_by(movie_id: movie.id, customer_id: params["rental"]["customer_id"])
-
-    rental.return_date = Date.today
-    rental.status = "checked in"
-
-    # rental.customer.movies_checked_out_count -= 1
-    # rental.movie.available_inventory += 1 # ??????????
-    if rental.save
-      render status: :ok, json: { status: rental.status }
+    if rental.status = "checked in"
+      render status: :ok, json: { error: "Movie is already checked in" }
     else
-      render status: :bad_request, json: { errors: rental.errors.messages }
+      rental.return_date = Date.today
+      rental.status = "checked in"
+      rental.customer.movies_checked_out_count -= 1
+      rental.customer.save
+      rental.movie.available_inventory += 1
+      rental.movie.save
+
+      if rental.save
+        render status: :ok, json: { status: rental.status }
+      else
+        render status: :bad_request, json: { errors: rental.errors.messages }
+      end
     end
   end
 
@@ -54,7 +71,6 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:customer_id, :title, :check_out_date,
     :return_date, :due_date, :status)
   end
-
 
 
 end
