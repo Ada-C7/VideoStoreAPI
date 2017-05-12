@@ -11,12 +11,12 @@ get 'movies/:title', to:'movies#show', as: 'movie'
 # GET /movies/:title #show
 # params: title
 
-post 'rentals/:title/check_out', to: 'rentals#checkout', as: 'new_rental'
+post 'rentals/:title/check-out', to: 'rentals#checkout', as: 'new_rental'
 # POST /rentals/:title/check-out
 # params: title
 # request_body: customer_id, due_date
 
-patch 'rentals/:title/check_in', to: 'rentals#checkin', as: 'check_in_rental'
+post 'rentals/:title/check-in', to: 'rentals#checkin', as: 'check_in_rental'
 # POST /rentals/:title/check-in
 # params: title
 # request_body: customer_id
