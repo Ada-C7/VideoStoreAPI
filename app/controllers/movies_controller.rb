@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movie = Movie.find_by(title: params[:title])
+    movie = Movie.find_by(slug: params[:title].parameterize)
     if movie.nil?
       render :json => "404 Not found", status: :not_found
     else

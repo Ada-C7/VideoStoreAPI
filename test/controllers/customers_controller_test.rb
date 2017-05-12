@@ -40,5 +40,3 @@ describe CustomersController do
       must_respond_with :no_content
     end
 end
-
-end

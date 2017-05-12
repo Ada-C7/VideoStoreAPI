@@ -22,8 +22,6 @@ describe Customer do
     end
   end
 
-
-
   it "does not save an invalid customer" do
     customer.wont_be :valid?
   end
