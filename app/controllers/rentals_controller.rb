@@ -1,55 +1,18 @@
-
-# class RentalsController < ApplicationController
-#
-#   def create
-#     movie = Movie.find_by(title: params[:title])
-#     if movie
-#       rental_info = { customer_id: params["rental"]["customer_id"],
-#         movie_id: movie.id
-#       }
-#       if Customer.find_by(id: params["rental"]["customer_id"]) != nil
-#         if Rental.where(status: "checked out", movie_id: movie.id,
-#           customer_id: params["rental"]["customer_id"]).length > 0
-#           render status: :bad_request, json: { error: "Customer already checked out this movie."}
-#         else
-#           rental = Rental.create_rental(rental_info)
-#           set_up_available_inventory(rental, movie)
-#           if rental.movie.available_inventory > 0
-#             rental.movie.available_inventory -= 1
-#             rental.movie.save
-#             rental.customer.movies_checked_out_count += 1
-#             rental.customer.save
-#             if rental.save
-#               render status: :ok, json: { rental_id: rental.id }
-#             else
-#               render status: :bad_request, json: { errors: rental.errors.messages }
-#             end
-#           else
-#             render status: :bad_request, json: { error: "Movie is not available for checkout. Available inventory = 0"}
-#           end
-#         end
-#       else
-#         render status: :bad_request, json: { error: "Customer with id #{params["rental"]["customer_id"]} does not exist"}
-#       end
-#     else
-#       render status: :bad_request, json: { errors: "Movie does not exist" }
-#     end
-#   end
-#
-#
-
 class RentalsController < ApplicationController
+
+  # example of params: {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
   def create
-    # example of params
-    # {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
     movie = Movie.find_by(title: params[:title])
-    if movie
-      rental_info = { customer_id: params["rental"]["customer_id"],
-        movie_id: movie.id
-      }
+    customer = Customer.find_by(id: params["rental"]["customer_id"])
+
+    if !movie.nil? && !customer.nil?
+      rental_info = { customer_id: customer.id,
+                      movie_id: movie.id
+                    }
       if Rental.where(status: "checked out",
-        movie_id: movie.id,
-        customer_id: params["rental"]["customer_id"]).length > 0
+                      movie_id: movie.id,
+                      customer_id: params["rental"]["customer_id"]).length > 0
+
         render status: :bad_request, json: { error: "Customer has this movie currently checked out" }
       else
         rental = Rental.create_rental(rental_info)
@@ -60,8 +23,9 @@ class RentalsController < ApplicationController
           render status: :bad_request, json: { errors: rental.errors.messages }
         end
       end
+
     else
-      render status: :bad_request, json: { errors: "movie does not exist" }
+      render status: :bad_request, json: { errors: "movie and/or customer does not exist" }
     end
   end
 

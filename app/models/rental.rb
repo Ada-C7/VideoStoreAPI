@@ -20,9 +20,8 @@ class Rental < ApplicationRecord
     rental.due_date = Date.today + 3
     rental.status = "checked out"
     rental.movie.decrease_inventory
-    # would it be better to know customer exists before this method?
-    rental.customer.increase_checkout_count if rental.customer
-    rental.valid? # can add validation to check inventory
+    rental.customer.increase_checkout_count
+    rental.valid?
     return rental
   end
 

@@ -27,15 +27,13 @@ describe RentalsController do
       response.parsed_body.must_include "error"
     end
 
-    it 'allows a customre to checkout out a movie again, if repeat rentals status is checked in' do
+    it 'allows a customer to checkout out a movie again, as long as all past rentals, same movie, have status checked in' do
       post create_rental_path(@movie.title), params: { rental: rental_data }
       must_respond_with :success
       patch update_rental_path(@movie.title), params: { rental: rental_data }
       must_respond_with :success
       post create_rental_path(@movie.title), params: { rental: rental_data }
       must_respond_with :success
-      # repeat_rentals = @customer.rentals.where(movie_id: @movie.id)
-      # repeat_rentals.each {|rental| rental.}
     end
 
     it 'returns bad request if given customer id DNE' do
@@ -77,8 +75,6 @@ describe RentalsController do
       (inventory_count_after - inventory_count_before).must_equal 0
       (movies_count_before - movies_count_after).must_equal 0
     end
-
-
   end
 
   describe "overdue_rentals" do
@@ -196,6 +192,5 @@ describe RentalsController do
       count_after = movie.available_inventory
       (count_before - count_after).must_equal 0
     end
-
   end
 end
