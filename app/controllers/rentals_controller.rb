@@ -44,18 +44,19 @@ class RentalsController < ApplicationController
         render status: :bad_request, json: { error: "that movie is not checked out to that customer"}
       end
     end
+  end
 
 
     def overdue
       overdue_customers = Rental.over_due_rentals
-      if overdue_customers.nil?
+      if overdue_customers.length == 0
         render json: { overdue: "none" }, status: :ok
       else
         render json: overdue_customers.as_json(only: [:title, :customer_id, :name, :postal_code, :checkout_date, :due_date], status: :ok)
       end
     end
 
-  end
+
 
   private
 
