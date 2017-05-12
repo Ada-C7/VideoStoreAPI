@@ -42,14 +42,22 @@ describe MoviesController do
       body.must_be_kind_of Array
       body.must_be_empty
     end
-    
+
   end
 
   describe "show" do
 
     it "can get a movie" do
-      get movie_path(movies(:best_case).id)
+      movie = movies(:best_case)
+      get movie_path(movie.title)
       must_respond_with :success
+    end
+
+    it "gets the right movie" do
+      movie = movies(:best_case)
+      get movie_path(movie.title)
+      body = JSON.parse(response.body)
+      body["title"].must_equal movie.title
     end
 
     it "returns 204 no content if movie does not exist" do
