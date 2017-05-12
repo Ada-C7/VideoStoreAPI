@@ -3,10 +3,11 @@ Rails.application.routes.draw do
 
   # CUSTOMERS:
   # /customers #all  for returning all customers
-  get "customers", to: "customers#index", as: "customers" 
+  get "/customers", to: "customers#index", as: "customers"
 
   # MOVIES:
   # /movies #all  for returning all ovies
+  get "/movies", to: "movies#index", as: "movies"
   # /movie #find(title)  for a movie by title
 
   # RENTALS:
