@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
-  def zomg
-    render json: "it works!"
-  end
+  # def zomg
+  #   render json: "it works!"
+  # end
 
   def index
     movies = Movie.all
