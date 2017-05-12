@@ -101,10 +101,42 @@ describe RentalsController do
   end
 
   describe "overdue" do
-    # gets overdue rentals
+    KEYS = %w(checkout_date customer_id due_date name postal_code title)
 
-    # works if no overdue rentals
+    it "returns array of overdue rentals" do
+      get overdue_path
+      must_respond_with :success
+    end
 
-    # all rentals in list are past due
+    it "works if no overdue rentals" do
+      Rental.all.each { |rental| rental.destroy }
+      get overdue_path
+      must_respond_with :success
+    end
+
+    it "returns JSON" do
+      get overdue_path
+      response.header['Content-Type'].must_include 'json'
+    end
+
+    it "returns correct fields in JSON" do
+      get overdue_path
+
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Array
+      body.each do |rental|
+        rental.keys.sort.must_equal KEYS
+      end
+    end
+
+    it "all rentals in list are past due" do
+      # could not figure out how to write this test
+      skip
+      get overdue_path
+      body = JSON.parse(response.body)
+      body.each do |rental|
+        Date.strptime(rental[:due_date], "%Y-%m-%d").past?.must_equal true
+      end
+    end
   end
 end
