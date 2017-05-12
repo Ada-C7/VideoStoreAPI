@@ -35,4 +35,18 @@ describe MoviesController do
       end
     end
   end
+
+  describe "show" do
+
+    it "can get a movie" do
+      get movie_path(movies(:best_case).id)
+      must_respond_with :success
+    end
+
+    it "returns 204 no content if movie does not exist" do
+      get movie_path(Movie.last.id + 1)
+      must_respond_with :no_content
+    end
+
+  end
 end

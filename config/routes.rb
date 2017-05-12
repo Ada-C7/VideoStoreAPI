@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # MOVIES:
   # /movies #all  for returning all ovies
   get "/movies", to: "movies#index", as: "movies"
+  get "/movies/:title", to: "movies#show", as: "movie"
   # /movie #find(title)  for a movie by title
 
   # RENTALS:
