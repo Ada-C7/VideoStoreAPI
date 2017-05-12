@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   def index
     customers = Customer.all
     if customers.empty?
-      render :text => "404 no content",status: :not_found
+      render :json => { "message" => "We have no customers :("},status: :ok
       # zomg rendering !
       # render :text => "IT WORKS!", status: :ok
     else
@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
     if customer
       render :json => customer, status: :ok
     else
-      render :json => customer, status: :no_content
+      render :json => customer, status: :not_found
     end
   end
 
