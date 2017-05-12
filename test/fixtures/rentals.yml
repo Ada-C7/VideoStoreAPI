@@ -4,10 +4,10 @@ one:
   movie_id: 1
   customer_id: 1
   due_date: MyString
-  check_in: 2017-05-10 14:27:50
+  checkin_date: 2017-05-10 14:27:50
 
 two:
   movie_id: 1
   customer_id: 1
   due_date: MyString
-  check_in: 2017-05-10 14:27:50
+  checkin_date: 2017-05-10 14:27:50
