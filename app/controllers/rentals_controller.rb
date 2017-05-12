@@ -42,6 +42,7 @@ class RentalsController < ApplicationController
     else
       rental.return_date = Date.today
       rental.status = "checked in"
+      
       rental.customer.movies_checked_out_count -= 1
       rental.customer.save
       rental.movie.available_inventory += 1
