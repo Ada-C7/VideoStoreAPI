@@ -5,5 +5,5 @@ one:
   customer_id: 1
 
 two:
-  movie_id: 1
+  movie_id: 2
   customer_id: 1
