@@ -6,11 +6,11 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movie = Movie.find_by(id: params[:id])
+    movie = Movie.find_by(title: params[:title])
     if movie
-      render json: movie, status: :ok
+      render :json => movie, status: :ok
     else
-      render json: movie, status: :not_found
+      render :json => "404 Not Found", status: :not_found
     end
   end
 end
