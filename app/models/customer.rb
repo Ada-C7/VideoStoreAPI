@@ -7,4 +7,7 @@ class Customer < ApplicationRecord
     self.rentals.select {|rental| rental.checked_out == true}.count
   end
 
+  # def sort_api_call(criteria)
+  #
+  # end
 end
