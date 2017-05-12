@@ -18,19 +18,16 @@ class MoviesController < ApplicationController
         @movie = Movie.find_by(title: params[:title])
         @customer = Customer.find_by(id: params[:customer_id])
 
-        if Rental.find_by(movie_id: @movie.id, customer_id: @customer.id)
+        if Rental.find_by(movie_id: @movie.id, customer_id: @customer.id) || @movie.available_inventory == 0
             render status: :bad_request
         else
 
             new_availability = @movie.available_inventory -= 1
-            @movie.update_attribute(:available_inventory, new_availability)
+            customer_movie_count = @customer.movies_checked_out_count += 1
 
             @rental = Rental.new(movie_id: @movie.id, customer_id: @customer.id, checkout_date: Time.now, due_date: Time.now + 3.days)
 
-            if @rental.save
-                customer_movie_count = @customer.movies.count
-                @customer.update_attribute(:movies_checked_out_count, customer_movie_count)
-
+            if @rental.save && @movie.update_attribute(:available_inventory, new_availability) && @customer.update_column(:movies_checked_out_count, customer_movie_count)
                 render json: @rental.as_json(only: [:customer_id, :due_date]), status: :ok
             else
                 render status: :bad_request

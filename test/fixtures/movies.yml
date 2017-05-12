@@ -13,3 +13,10 @@ two:
   overview: She's back, and she's FLUFFIER
   inventory: 5
   available_inventory: 1
+
+three:
+    title: Tofu and Toffee
+    release_date: 2017-01-05
+    overview: Woof Woof Wooof wooooooooooooo
+    inventory: 1
+    available_inventory: 1

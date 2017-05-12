@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170512180334) do
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.string   "movie_id"
+    t.integer  "movie_id"
     t.integer  "customer_id"
     t.datetime "checkout_date"
     t.datetime "due_date"
