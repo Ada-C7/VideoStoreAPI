@@ -14,7 +14,8 @@ good_customer:
   postal_code: 12345
   phone: (234) 837-2886
 
-bad_customer1:
+good_customer2:
+  name: cyn bin
   registered_at: August 11 2014
   address: 123 Fake street
   city: Bellevue

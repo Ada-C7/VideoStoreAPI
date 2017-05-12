@@ -5,8 +5,8 @@ describe RentalsController do
   describe 'create' do
     before do
       @bad_customer_id = Customer.all.last.id + 1
-      @customer = customers(:good_customer)
-      @movie = movies(:movie1)
+      @customer = customers(:good_customer2)
+      @movie = movies(:movie3)
     end
 
     let(:rental_data) { { customer_id: @customer.id } }
@@ -14,9 +14,17 @@ describe RentalsController do
     it 'creates a new rental' do
       post create_rental_path(@movie.title), params: { rental: rental_data }
       must_respond_with :success
-      response.parsed_body.must_include "id"
-      Rental.find(response.parsed_body["id"]).movie_id.must_equal @movie.id
-      Rental.find(response.parsed_body["id"]).customer_id.must_equal @customer.id
+      response.parsed_body.must_include "rental_id"
+      Rental.find(response.parsed_body["rental_id"]).movie_id.must_equal @movie.id
+      Rental.find(response.parsed_body["rental_id"]).customer_id.must_equal @customer.id
+    end
+
+    it 'wont create a rental if customer already has that movie checked out' do
+      post create_rental_path(@movie.title), params: { rental: rental_data }
+      must_respond_with :success
+      post create_rental_path(@movie.title), params: { rental: rental_data }
+      must_respond_with :bad_request
+      reponse.parsed_body.must_include "errors"
     end
 
     it 'returns bad request if given customer id DNE' do
@@ -48,14 +56,16 @@ describe RentalsController do
     end
 
     it 'returns an array of hashes' do
+      skip
       get overdue_rentals_path
       response.parsed_body.must_be_instance_of Array
       response.parsed_body.each do |overdue_rentals_hash|
-        movie_hash.must_be_instance_of Hash
+        overdue_rentals_hash.must_be_instance_of Hash
       end
     end
 
     it 'returns the correct amount of overdue rentals' do
+      skip
       get overdue_rentals_path
       response.parsed_body.length.must_equal Rental.where(status: "overdue").count
     end

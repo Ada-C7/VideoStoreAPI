@@ -7,25 +7,28 @@ class RentalsController < ApplicationController
     # {"rental"=>{ "customer_id"=>1 }, "title"=>"Psycho"}
     movie = Movie.find_by(title: params[:title])
     if movie
+
+
       rental_info = { customer_id: params["rental"]["customer_id"],
                       movie_id: movie.id
                     }
+
+      if Rental.where(status: "checked out",
+                      movie_id: movie.id,
+                      customer_id: params["rental"]["customer_id"]).length > 0
+        render status: :bad_request, json: { error: "Customer has this movie currently checked out" }
+      else
+        rental = Rental.create_rental(rental_info)
+        if rental.errors.empty?
+          rental.save
+          render status: :ok, json: { rental_id: rental.id }
+        else
+          render status: :bad_request, json: { errors: rental.errors.messages }
+        end
+      end
+
     else
       render status: :bad_request, json: { errors: "movie does not exist" }
-    end
-
-    if Rental.where(status: "checked out",
-                    movie_id: movie.id,
-                    customer_id: params["rental"]["customer_id"]).length > 0
-      render status: :bad_request, json: { error: "Customer has this movie currently checked out" }
-    else
-      rental = Rental.create_rental(rental_info)
-      if rental.errors.empty?
-        rental.save
-        render status: :ok, json: { rental_id: rental.id }
-      else
-        render status: :bad_request, json: { errors: rental.errors.messages }
-      end
     end
   end
 
@@ -36,7 +39,7 @@ class RentalsController < ApplicationController
     rental.return_date = Date.today
     rental.status = "checked in"
     rental.customer.movies_checked_out_count -= 1
-    
+
     if rental.save
       render status: :ok, json: { status: rental.status }
     else
@@ -54,7 +57,4 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:customer_id, :title, :check_out_date,
     :return_date, :due_date, :status)
   end
-
-
-
 end

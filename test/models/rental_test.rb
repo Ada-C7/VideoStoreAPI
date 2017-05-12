@@ -6,7 +6,7 @@ describe Rental do
   before do
     @customer_id = customers(:good_customer).id
     @rental_info = {
-                      movie_id: movies(:movie1).id,
+                      movie_id: movies(:movie3).id,
                       customer_id: @customer_id,
                       check_out_date: Date.today,
                       due_date: Date.today + 3,
