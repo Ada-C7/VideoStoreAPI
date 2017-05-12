@@ -5,8 +5,10 @@ class RentalsController < ApplicationController
     rental = Rental.new
     rental.movie = Movie.find_by_title(params[:title])
     rental.customer = Customer.find_by_id(params[:rental][:customer_id])
-    rental.checkout_date = Date.today + 7
-    rental.due_date = Date.today + 14
+
+    # we decided to automatically set the checkout date to the day the request is posted
+    rental.checkout_date = Date.today
+    rental.due_date = Date.today + 7
     rental.checked_out = true
     rental.movie.available_inventory -= 1
 
