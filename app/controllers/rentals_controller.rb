@@ -2,33 +2,30 @@ class RentalsController < ApplicationController
 # before_action :find_movie, only: [:create, :update]
   def create
     movie = Movie.find_by(title: params[:title])
-
     if movie
       rental_info = {
         customer_id: params["rental"]["customer_id"],
         movie_id: movie.id
       }
-      if Customer.find_by(id:  params["rental"]["customer_id"]) != nil
+      if Customer.find_by(id: params["rental"]["customer_id"]) != nil
         if Rental.where(status: "checked out", movie_id: movie.id,
           customer_id: params["rental"]["customer_id"]).length > 0
           render status: :bad_request, json: { error: "Customer already checked out this movie."}
         else
           rental = Rental.create_rental(rental_info)
           set_up_available_inventory(rental, movie)
-
           if rental.movie.available_inventory > 0
             rental.movie.available_inventory -= 1
             rental.movie.save
             rental.customer.movies_checked_out_count += 1
             rental.customer.save
             if rental.save
-
               render status: :ok, json: { id: rental.id }
             else
               render status: :bad_request, json: { errors: rental.errors.messages }
             end
           else
-              render status: :ok, json: { error: "Movie is not available for checkout. Available inventory = 0"}
+            render status: :bad_request, json: { error: "Movie is not available for checkout. Available inventory = 0"}
           end
         end
       else
@@ -38,6 +35,7 @@ class RentalsController < ApplicationController
       render status: :bad_request, json: { errors: "Movie does not exist" }
     end
   end
+
 
 
   def update

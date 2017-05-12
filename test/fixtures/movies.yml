@@ -24,3 +24,10 @@ movie3:
   release_date: 1975-06-19
   inventory: 6
   available_inventory: 8
+
+movie4:
+  title: Jaws
+  overview: An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.
+  release_date: 1975-06-19
+  inventory: 6
+  available_inventory: 0

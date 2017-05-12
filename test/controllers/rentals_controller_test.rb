@@ -23,7 +23,7 @@ describe RentalsController do
     it 'returns bad request if given customer id DNE' do
       post create_rental_path(@movie.title), params: { rental: { customer_id: @bad_customer_id } }
       must_respond_with :bad_request
-      response.parsed_body.must_include "errors"
+      response.parsed_body.must_include "error"
     end
 
     it 'returns bad request if given movie title DNE' do
@@ -31,6 +31,9 @@ describe RentalsController do
       must_respond_with :bad_request
       response.parsed_body.must_include "errors"
     end
+
+
+
   end
 
   describe "overdue_rentals" do
@@ -84,6 +87,11 @@ describe RentalsController do
       response.status.must_equal 200
       response.parsed_body.must_include "error"
     end
+
+
+
+
+
   end
 
 end
