@@ -10,17 +10,12 @@ class MovieSerializer < ActiveModel::Serializer
     end
   end
 
-
   def no_rentals?(object)
     object.rentals.each do |rental|
-      if rental.status == "checked out"
-        return false
-      end
+      return false if rental.status == "checked out"
     end
     return true
   end
 
-
-
-
+  
 end
