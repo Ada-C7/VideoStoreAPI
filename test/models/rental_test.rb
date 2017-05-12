@@ -48,4 +48,23 @@ describe Rental do
       overdues.wont_include (rentals(:one))
     end
   end
+
+  describe "Rental#info_for_overdues" do
+    let(:rental) {rentals(:one)}
+    let(:customer) {customers(:one)}
+    let(:movie) {movies(:one)}
+
+    it "returns a hash of rental info" do
+      rental.info_for_overdues.must_be_instance_of Hash
+    end
+
+    it "returns correct info for rental" do
+      rental_info_hash = rental.info_for_overdues
+
+      rental_info_hash["title"].must_equal movie.title
+      rental_info_hash["name"].must_equal customer.name
+      rental_info_hash["postal_code"].must_equal customer.postal_code
+      rental_info_hash["checkout_date"].must_equal rental.created_at
+    end
+  end
 end
