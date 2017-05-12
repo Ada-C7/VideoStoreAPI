@@ -6,9 +6,13 @@ class MoviesController < ApplicationController
 
   def index
     movies = Movie.all
-
     if movies.length > 0
+      if params[:sort] == "title" || params[:sort] == "release_date"
+          sorted_movies = Movie.order(params[:sort].to_sym)
+          render :json => sorted_movies, status: :ok
+      else
       render json: movies, fields: [:title, :release_date], status: :ok
+      end
     else
       render json: {error: "We have no movies at this time"}, status: 404
     end
