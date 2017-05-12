@@ -145,4 +145,47 @@ describe RentalsController do
     end
   end
 
+  describe "overdue" do
+
+    OVERDUE_KEYS = %w(customer_id due_date name postal_code title)
+
+    it " Gets list of Overdue Rentals " do
+      get overdue_path
+      must_respond_with :success
+      response.header['Content-Type'].must_include 'json'
+
+    end
+
+    it " Returns the correct type of information" do
+      get overdue_path
+      body = JSON.parse(response.body)
+
+      body.each do | rental |
+        rental.keys.sort.must_equal OVERDUE_KEYS
+      end
+    end
+
+    it " Retuns the correct amount of overdue rentals" do
+      get overdue_path
+      body = JSON.parse(response.body)
+
+      body.count.must_equal Rental.overdue.count
+    end
+
+    it " Does something if there are no overdue rentals " do
+      Rental.all.each do |rental|
+        if rental.check_in.nil?
+          rental.check_in = DateTime.yesterday
+          rental.save
+        end
+      end
+
+      get overdue_path
+
+      must_respond_with :success
+      body = JSON.parse(response.body)
+      body.must_equal []
+    end
+  end
+
 end

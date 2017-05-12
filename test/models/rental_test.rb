@@ -106,7 +106,7 @@ describe Rental do
        Rental.overdue.wont_include rentals(:three)
      end
 
-     it "Does something if now rentals are overdue" do
+     it "Does something if no rentals are overdue" do
        Rental.all.each do |rental|
          if rental.check_in.nil?
            rental.check_in = DateTime.yesterday
