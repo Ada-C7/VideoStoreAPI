@@ -8,10 +8,6 @@ class Rental < ApplicationRecord
 
   def overdue
     # check if due_date is before current due_date and rental's returned status is false
-    if Date.parse(self.due_date).past? && self.returned == false
-      return true
-    else
-      return false
-    end
+    Date.parse(self.due_date).past? && self.returned == false ? true : false
   end
 end
