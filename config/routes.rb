@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get 'movies', to: 'movies#index', as: 'movies'
   get 'movies/:title', to: 'movies#show', as: 'movie'
 
-  post '/rentals/:title/checkout', to: 'customermovies#checkout', as: 'checkout'
+  post '/rentals/:title/checkout', to: 'customer_movies#checkout', as: 'checkout'
 end
