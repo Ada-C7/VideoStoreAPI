@@ -37,12 +37,13 @@ class RentalsController < ApplicationController
 
       if rental
         rental.check_in = DateTime.now
+        rental.save
         render status: :ok,  json: {
           id: rental.id,
           check_in: rental.check_in
         }
       else
-        render status: :bad_request, json: { error: "This customer does not have this movie checked out." }
+        render status: :bad_request, json: { errors: "This customer does not have this movie checked out." }
       end
     end
     #  params[:customer_id]
