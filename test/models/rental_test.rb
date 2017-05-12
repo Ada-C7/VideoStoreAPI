@@ -45,7 +45,13 @@ describe Rental do
     end
 
     it "If a rental's due date is today, should not be returned" do
-      overdues.wont_include (rentals(:one))
+      #deleted all from test database
+      Rental.destroy_all
+
+      #created one future due rental
+      rental_hash = {customer_id: 1, movie_id: 1, due_date: Time.now}
+      today_rental = Rental.create(rental_hash)
+      overdues.wont_include (today_rental)
     end
   end
 
