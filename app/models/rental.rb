@@ -12,9 +12,7 @@ class Rental < ApplicationRecord
     if movie
       rental_params[:movie_id] = movie.id
     end
-
     rental_params.delete(:title)
-    puts rental_params.keys
     super(rental_params)
   end
 
