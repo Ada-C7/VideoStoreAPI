@@ -1,8 +1,5 @@
 class RentalsController < ApplicationController
   def index
-    # lists all customers with overdue movies
-    # returns title, customer_id, name, post_code, checkout date, duedate
-    # it will check the returned column to get the list
     overdue_customers = getList
     final_product = []
     overdue_customers.each do |customer,rentals|

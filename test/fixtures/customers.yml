@@ -5,14 +5,14 @@
 # below each fixture, per the syntax in the comments below
 #
 bare_minimum:
-  name: "Jou-Jou"
+  name: "Aurora"
   registered_at: "June 10th, 2015"
   postal_code: 98136
   phone: "555-555-5555"
   rentals_count: 0
 
 has_all:
-  name: "Jou-Jou"
+  name: "Alena"
   registered_at: "June 10th, 2015"
   address: "555 Some Street"
   city: "Seattle"
