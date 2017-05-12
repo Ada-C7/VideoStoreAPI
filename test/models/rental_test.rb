@@ -43,11 +43,11 @@ describe Rental do
       it "returns an error message if available inventory is less than 1" do
         psycho = Rental.new(customer: customers(:three), movie: movies(:three), due_date: "2017-08-01")
         psycho.valid?.must_equal false
-        psycho.errors.messages[:availability].must_include "Sorry, this movie is out of stock"
+        psycho.errors.messages[:availability].must_include "Sorry, this movie is not in stock"
 
         guardians = Rental.new(customer: customers(:three), movie: movies(:two), due_date: "2018-10-10" )
         guardians.valid?.must_equal false
-        guardians.errors.messages[:availability].must_include "Sorry, this movie is out of stock"
+        guardians.errors.messages[:availability].must_include "Sorry, this movie is not in stock"
       end
     end
 
