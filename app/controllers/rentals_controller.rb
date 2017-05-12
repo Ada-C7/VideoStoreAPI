@@ -36,25 +36,22 @@ class RentalsController < ApplicationController
     overdue_rentals = Rental.overdue
 
     if overdue_rentals.length > 0
+
       if  params[:sort] == "due_date"
-        sorted_rentals = Rental.order(params[:sort].to_sym)
-        render :json => sorted_rentals, status: :ok
+        overdue_rentals = Rental.order(params[:sort].to_sym).overdue
       elsif params[:sort] == "title"
-
-        sorted_rentals = Rental.joins(:movie).merge(Movie.order(:title))
-
-        render :json => sorted_rentals, status: :ok
+        overdue_rentals = Rental.joins(:movie).merge(Movie.order(:title)).overdue
       elsif params[:sort] == "name"
-        sorted_rentals = Rental.joins(:customer).merge(Customer.order(:name))
-        render :json => sorted_rentals, status: :ok
+        overdue_rentals = Rental.joins(:customer).merge(Customer.order(:name)).overdue
       elsif params[:sort] == "checkout_date"
-        sorted_rentals = Rental.order(:created_at)
-        render :json => sorted_rentals, status: :ok
-      else
-        render :json => overdue_rentals, status: :ok
+        overdue_rentals = Rental.order(:created_at).overdue
       end
+
+      render :json => overdue_rentals, status: :ok
+
     else
       render :json => {no_overdue_rentals: "There are no overdue rentals."}, status: :not_found
+
     end
   end
 

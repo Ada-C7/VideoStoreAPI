@@ -135,7 +135,7 @@ describe RentalsController do
       must_respond_with :success
       body = JSON.parse(response.body)
 
-      body[0]["title"].must_equal "Jaws"
+      body[0]["title"].must_equal "Psycho"
     end
 
     it "can sort by checkout date" do
