@@ -1,14 +1,19 @@
 class RentalController < ApplicationController
 
   def overdue
-
+    title
+customer_id
+name
+postal_code
+checkout_date
+due_date
   end
 
   def checkout
     rental = Rental.new(rental_params)
     rental.movie_id = Movie.find_by(title: params[:title]).id
 
-    if movie_available(rental.movie.id)
+    if movie_available?(rental.movie.id)
       if rental.save
         render json: rental.as_json(only: ["customer_id", "due_date", "movie_id"]
         ),
@@ -31,12 +36,8 @@ class RentalController < ApplicationController
     params.require(:rental).permit(:customer_id, :due_date)
   end
 
-  def movie_available(movie_id)
+  def movie_available?(movie_id)
     movie = Movie.find(movie_id)
-    if movie.available_inventory >= 1
-      return true
-    else
-      return false
-    end
+    movie.available_inventory >= 1 ? true : false
   end
 end
