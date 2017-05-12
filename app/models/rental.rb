@@ -4,6 +4,9 @@ class Rental < ApplicationRecord
   belongs_to :customer
   belongs_to :movie
 
+  def create
+  end
+
 
   def check_out
     must associate title with rental
