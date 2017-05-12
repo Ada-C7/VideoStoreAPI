@@ -15,9 +15,9 @@ describe Customer do
     end
   end
 
-  describe "movies_checked_out" do
+  describe "movies_checked_out_count" do
     it "returns the number of movies checkout out to a customer" do
-      number = customer.movies_checked_out
+      number = customer.movies_checked_out_count
       number.must_equal 1
     end
 
@@ -25,7 +25,7 @@ describe Customer do
       rental = rentals(:one)
       rental.checked_out = false
       rental.save
-      number = customer.movies_checked_out
+      number = customer.movies_checked_out_count
       number.must_equal 0
     end
   end

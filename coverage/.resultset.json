@@ -517,12 +517,6 @@
         null,
         null
       ],
-      "/Users/janicelichtman/Desktop/ADA/class/projects/VideoStoreAPI/app/serializers/movie_serializer.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
       "/Users/janicelichtman/Desktop/ADA/class/projects/VideoStoreAPI/app/serializers/rental_serializer.rb": [
         1,
         1,
@@ -550,8 +544,14 @@
         1,
         null,
         null
+      ],
+      "/Users/janicelichtman/Desktop/ADA/class/projects/VideoStoreAPI/app/serializers/movie_serializer.rb": [
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1494574331
+    "timestamp": 1494607679
   }
 }
