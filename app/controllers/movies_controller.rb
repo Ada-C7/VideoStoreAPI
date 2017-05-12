@@ -3,7 +3,8 @@ class MoviesController < ApplicationController
   def index
     movies = Movie.all
     if movies.empty?
-      render :text => "404 No Content", status: :not_found
+      render :json => { "message" => "We have no customers :("},status: :ok
+      # render :text => "404 No Content", status: :not_found
     else
       render :json => movies.as_json(only: [:title, :release_date]), status: :ok
     end
@@ -19,8 +20,8 @@ class MoviesController < ApplicationController
     end
   end
 
-  private
-    def movie_params
-      params.require(:movie).permit(:title, :overview, :release_date, :inventory)
-    end
+  # private
+  #   def movie_params
+  #     params.require(:movie).permit(:title, :overview, :release_date, :inventory)
+  #   end
 end
