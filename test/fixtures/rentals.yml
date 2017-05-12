@@ -5,11 +5,13 @@ rental_one:
   returned_date: May 23, 2017
 
 
+
 rental_two:
   customer: two
   movie: mermaid
   due_date: June 1, 2017
   returned_date:
+
 
 rental_three:
   customer: one

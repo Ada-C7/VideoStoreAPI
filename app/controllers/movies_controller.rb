@@ -11,10 +11,9 @@ class MoviesController < ApplicationController
 
 
     if movie.empty?
-      error = "Movie '#{params[:title]}' not found"
-      render json: { errors: {title: "Movie '#{params[:title]}'' not found"}}.to_json, status: :not_found
+      render json: { errors: [{title: "Movie '#{params[:title]}' not found"}]}.to_json, status: :not_found
     else
-      render json: movie, status: :ok, each_serializer: DetailedMovieSerializer
+      render json: movie.first, status: :ok, serializer: DetailedMovieSerializer
     end
   end
 

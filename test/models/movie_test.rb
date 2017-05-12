@@ -52,10 +52,21 @@ describe Movie do
       movie.rentals.must_equal []
     end
 
-    it "returns an empty rentals array if it has not been rented" do
+    it "returns an empty customer array if it has not been rented" do
       movie = movies(:dark)
       movie.customers.count.must_equal 0
       movie.customers.must_equal []
+    end
+  end
+
+  describe "get_available_inventory" do
+    it "returns the original inventory if no copies are rented checkouts" do
+      movies(:dark).get_available_inventory.must_equal 10
+    end
+
+    it "returns the original inventory minus number that are checked out if the number is zero" do
+      available = movies(:mermaid).inventory - rentals.movies.where()
+      movies(:).get_available_inventory.must_equal 10
     end
   end
 end

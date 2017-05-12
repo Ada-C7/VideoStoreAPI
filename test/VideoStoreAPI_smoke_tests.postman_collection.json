@@ -133,27 +133,4 @@
 							"var movie = JSON.parse(responseBody);",
 							"tests[\"Data is not an array\"] = !Array.isArray(movie);",
 							"",
-							"// Check required fields",
-							"tests[\"Movie has title\"] = \"title\" in movie;",
-							"tests[\"Movie has overview\"] = \"overview\" in movie;",
-							"tests[\"Movie has release_date\"] = \"release_date\" in movie;",
-							"tests[\"Movie has inventory\"] = \"inventory\" in movie;",
-							"tests[\"Movie has available_inventory\"] = \"available_inventory\" in movie;",
-							"",
-							"// Save available inventory for later",
-							"postman.setEnvironmentVariable(\"movie_ai\", movie.available_inventory);"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "{{url}}/movies/{{movie_title}}",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		}
-	]
-}
+ 
