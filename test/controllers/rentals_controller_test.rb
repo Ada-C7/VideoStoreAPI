@@ -7,7 +7,6 @@ describe RentalsController do
     due_date: '2017-05-06'
   }
   }
-
   describe "Checkout" do
     it "Creates a new rental record" do
       # binding.pry
@@ -32,12 +31,12 @@ describe RentalsController do
     end
 
     it "Gives error message if due_date was missing" do
+      # binding.pry
       proc{
-        post checkout_path(movies(:one).title), params: {customer_id: customers(:three).id, movie_id: movies(:two).id }
-
+        post checkout_path(movies(:one).title), params: {customer_id: customers(:three).id, movie_id: movies(:two).id, due_date: nil}
       }.must_change "Rental.count", 0
+      # binding.pry
       must_respond_with :bad_request
-
       body = JSON.parse(response.body)
       body.must_equal "errors" => {"due_date" => ["can't be blank"]}
     end
@@ -55,9 +54,9 @@ describe RentalsController do
 
     it "Updates available inventory when movie is rented" do
       movie = movies(:one)
-      post checkout_path(movie.title), params: { rental: rental_data }
-      updated = Movie.find_by_title(movie.title)
-      updated.available_inventory.must_equal (movie.available_inventory - 1)
+      post checkout_path(movie.title), params: rental_data
+      update = Movie.find_by_title(movie.title)
+      update.available_inventory.must_equal (movie.available_inventory - 1)
     end
 
     it "Due date must be an actual date" do

@@ -5,17 +5,18 @@ class RentalsController < ApplicationController
   def checkout
     # movie = find_movie #change from private method
     # customer = find_customer #from private
-
-    rental = Rental.new(due_date: params[:due_date], customer_id: @customer.id, movie_id: @movie.id, returned: false)
+    due_date = params[:due_date]
+    rental = Rental.new(due_date: due_date, customer_id: @customer.id, movie_id: @movie.id, returned: false)
 
     if @movie.available_inventory > 0
       @movie.available_inventory -= 1
       # rental.due_date =  Date.today + 14.days #params[:due_date]
-      rental.save
       @movie.save
-      render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
-    else
-      render status: :bad_request, json: { errors: rental.errors.messages }
+      if rental.save
+        render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
+      else
+        render status: :bad_request, json: { errors: rental.errors.messages }
+      end
     end
   end
 
