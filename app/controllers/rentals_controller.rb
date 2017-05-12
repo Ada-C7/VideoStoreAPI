@@ -28,6 +28,21 @@ class RentalsController < ApplicationController
     # returned is false (default)
     # set the duedate
     # updates movies available inventory
+    rental = Rental.new
+    rental.duedate = params[:future_due_date]
+    rental.customer_id = params[:customer_id]
+    rental.movie = Movie.find_by(title: params[:title])
+    rental.movie.available_inventory -= 1
+    if !rental.movie.save
+      render json: { errors: rental.movie.errors.messages }, status: :bad_request
+    end
+
+    if rental.save
+      render json: {id: rental.id}, status: :ok
+    else
+      render json: { errors: rental.errors.messages }, status: :bad_request
+    end
+
   end
 
   def update
@@ -42,5 +57,9 @@ class RentalsController < ApplicationController
   def overdueCustomersRentals
     overdue_rentals = Rental.list_of_overdue
     return overdue_rentals.group_by { |overdue_rental| overdue_rental.customer }
+  end
+
+  def params_rental
+      params.require(:rental).permit(:future_due_date, :customer_id)
   end
 end

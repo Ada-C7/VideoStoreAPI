@@ -3,6 +3,15 @@ class Rental < ApplicationRecord
   belongs_to :customer, counter_cache: true
 
   validates :duedate, presence: true
+  validate :duedate_not_in_the_past
+
+
+def duedate_not_in_the_past 
+  if duedate <= Date.today
+    errors.add(:duedate, "can't be in the past")
+  end
+end
+
 
   def overdue?
     Date.parse(self.duedate.to_s) < Date.today
@@ -19,5 +28,5 @@ class Rental < ApplicationRecord
     return overdue_rentals
   end
 
-  
+
 end
