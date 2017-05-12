@@ -46,7 +46,7 @@ describe Rental do
       end
     end
 
-    it "False is the default value for a new Rental's returned status" do
+    it "False is the default value for returned" do
       new_rental.returned.must_equal false
     end
 
