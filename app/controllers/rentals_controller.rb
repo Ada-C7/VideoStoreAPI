@@ -38,7 +38,7 @@ class RentalsController < ApplicationController
       if rental
         rental.check_in = DateTime.now
         rental.save
-        render status: :ok,  json: {
+        render status: :ok, json: {
           id: rental.id,
           check_in: rental.check_in
         }
