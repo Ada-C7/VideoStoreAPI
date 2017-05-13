@@ -13,4 +13,5 @@ describe Customer do
     customers(:no_phone).valid?.must_equal false
     customers(:no_credit).valid?.must_equal false
   end
+
 end

@@ -81,3 +81,13 @@ no_credit:
   state: "MyString"
   postal_code: "MyString"
   phone: "MyString"
+
+not_num:
+  name: "MyString"
+  registered_at: "MyString"
+  address: "MyString"
+  city: "MyString"
+  state: "MyString"
+  postal_code: "MyString"
+  phone: "MyString"
+  account_credit: "string"
