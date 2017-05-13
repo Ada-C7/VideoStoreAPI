@@ -20,8 +20,4 @@ describe Movie do
     movies(:rep_title).valid?.must_equal false
   end
 
-  it "must have a valid year format" do
-    movies(:starwars).valid?.must_equal true
-    movies(:invalid_date).valid?.must_equal false
-  end
 end

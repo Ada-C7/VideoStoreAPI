@@ -5,6 +5,6 @@ class Customer < ApplicationRecord
   validates :city, presence: true
   validates :postal_code, presence: true
   validates :phone, presence: true
-  validates :account_credit, presence: true
+  validates :account_credit, presence: true, numericality: true
 
 end
