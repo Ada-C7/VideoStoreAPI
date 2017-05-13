@@ -1,6 +1,10 @@
 class MoviesController < ApplicationController
   def index
     movies = Movie.all
+    sort_list = ["title", "release_date"]
+    if sort_list.include?(params[:sort])
+      movies = movies.sort_by{|movie| movie[params[:sort]]}
+    end
     render json: movies, status: :ok
   end
 
