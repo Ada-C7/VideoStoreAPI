@@ -90,5 +90,31 @@ describe MoviesController do
 
   describe "checkout" do
 
+    it "decreases movie available_inventory by 1" do
+      customer = customers(:perfect)
+      due_date = "2017-06-01"
+      movie = movies(:best_case)
+      start_inventory = movie.available_inventory
+
+      post checkout_path(movie.title), params:{customer_id: customer.id, due_date: due_date}
+      movie.reload
+
+      end_inventory = movie.available_inventory
+      start_inventory.must_equal end_inventory + 1
+    end
+
+    it "increases customer movies_checked_out_count by 1" do
+      customer = customers(:perfect)
+      due_date = "2017-06-01"
+      movie = movies(:best_case)
+      start_count = customer.movies_checked_out_count
+
+      post checkout_path(movie.title), params:{customer_id: customer.id, due_date: due_date}
+      customer.reload
+
+      end_count = customer.movies_checked_out_count
+      start_count.must_equal end_count - 1
+    end
+
   end
 end
