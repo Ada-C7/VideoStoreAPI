@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+best_case:
+  title: "Best Movie"
+  overview: "best movie"
+  release_date: "01-01-2000"
+  inventory: 1
+
+z_missing_title:
+  overview: "great movie"
+  release_date: "01-01-2000"
+  inventory: 1
+
+same_title:
+  title: "Same Title"
+  overview: "great movie"
+  release_date: "01-01-2000"
+  inventory: 1
+
+inv_zero:
+  title: "test1"
+  overview: "great movie"
+  release_date: "01-01-2000"
+  inventory: 0
+
+z_inv_negative:
+  title: "test2"
+  overview: "great movie"
+  release_date: "01-01-2000"
+  inventory: -1g
+
+z_inv_float:
+  title: "test3"
+  overview: "great movie"
+  release_date: "01-01-2000"
+  inventory: 1.5
