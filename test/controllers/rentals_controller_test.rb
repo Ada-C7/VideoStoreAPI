@@ -102,20 +102,46 @@ describe RentalsController do
       Rental.last.movie.available_inventory.must_equal 4
     end
 
-    #
-    # it "returns a confirmation hash" do
-    #   # what should this look like?
-    # end
-    #
-    # it "failure to checkout movie returns an appropriate error" do
-    #   # what should this be?
-    # end
 
-    it "increases db by 1 if successful" do
+    it "returns a confirmation hash" do
+      post checkout_path(movies(:heat).title), params: {rental: rental_data}
+      body = JSON.parse(response.body)
+      body["id"].must_equal Rental.last.id
+    end
 
+    it "if movie not found, returns error" do
+      post checkout_path("sdlfkjlk"), params: {rental: rental_data}
+      body = JSON.parse(response.body)
+      must_respond_with :bad_request
+      body["errors"].must_equal "Movie not found"
+    end
+
+    it "if duedate is bad will return an error" do
+      post checkout_path(movies(:heat).title), params: {rental: {future_due_date: "2016-01-01", customer_id: 1}}
+      body = JSON.parse(response.body)
+      must_respond_with :bad_request
+      body["errors"].keys.must_include "duedate"
+    end
+
+    it "if customer_id is bad will return an error" do
+      post checkout_path(movies(:heat).title), params: {rental: {future_due_date: "2018-01-01", customer_id: -1}}
+      body = JSON.parse(response.body)
+      must_respond_with :bad_request
+      body["errors"].keys.must_include "customer"
+    end
+
+    it "won't let you check out if not enough inv" do
+      post checkout_path(movies(:unavailable).title), params: {rental: rental_data}
+      body = JSON.parse(response.body)
+      must_respond_with :bad_request
+      body["errors"].keys.must_include "available_inventory"
     end
 
     it "does not increase db if fails" do
+      proc {
+        post checkout_path("wlsdkjflskdj"), params: {rental: rental_data}
+      }.must_change 'Rental.count', 0
+      must_respond_with :bad_request
     end
 
 

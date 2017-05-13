@@ -66,7 +66,7 @@ class RentalsController < ApplicationController
 
 
 
-  def params_rental
-      params.require(:rental).permit(:future_due_date, :customer_id)
-  end
+  # def rental_params
+  #     params.require(:rental).permit(:future_due_date, :customer_id)
+  # end
 end
