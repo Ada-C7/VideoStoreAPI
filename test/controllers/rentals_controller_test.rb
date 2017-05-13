@@ -91,18 +91,17 @@ describe RentalsController do
       } }
 
 
-    it "can create rental" do
+    it "can create rental & update inventory" do
+      movies(:heat).available_inventory.must_equal 5
       proc {
-        post checkout_path(movies(:heat).title), params: { rental: rental_data }
+        post checkout_path(movies(:heat).title), params: {rental: rental_data}
       }.must_change 'Rental.count', 1
       must_respond_with :success
+      Rental.last.movie.must_equal movies(:heat)
+      Rental.last.customer.must_equal customers(:has_all)
+      Rental.last.movie.available_inventory.must_equal 4
     end
-    #
 
-    #
-    # it "updates the available inventory for the assoc. movie" do
-    #
-    # end
     #
     # it "returns a confirmation hash" do
     #   # what should this look like?

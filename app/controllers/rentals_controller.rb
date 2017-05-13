@@ -27,8 +27,8 @@ class RentalsController < ApplicationController
 
   def create
     rental = Rental.new
-    rental.duedate = params[:rental][:future_due_date]
-    rental.customer_id = params[:rental][:customer_id]
+    rental.duedate = params["rental"]["future_due_date"]
+    rental.customer_id = params["rental"]["customer_id"]
     movie = Movie.find_by_title(params[:title])
     if movie
       rental.movie = movie
@@ -36,10 +36,10 @@ class RentalsController < ApplicationController
       return render json: { errors: "Movie not found" }, status: :bad_request
     end
 
+    # binding.pry
     rental.movie.available_inventory -= 1
 
     if rental.movie.save
-      # binding.pry
       if rental.save
         render json: {id: rental.id}, status: :ok
       else
@@ -67,6 +67,6 @@ class RentalsController < ApplicationController
 
 
   def params_rental
-      params.require(:rental).permit(:future_due_date, :customer_id, :title)
+      params.require(:rental).permit(:future_due_date, :customer_id)
   end
 end
