@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
   validates :phone, presence: true
   validates :account_credit, presence: true
 
+  has_many :rentals
+
 end
