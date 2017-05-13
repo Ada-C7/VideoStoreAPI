@@ -10,8 +10,7 @@ sam:
   phone: "MyString"
   account_credit: 1.5
 
-two:
-  name: "MyString"
+no_name:
   registered_at: "MyString"
   address: "MyString"
   city: "MyString"
@@ -19,3 +18,66 @@ two:
   postal_code: "MyString"
   phone: "MyString"
   account_credit: 1.5
+
+no_reg:
+  name: "MyString"
+  address: "MyString"
+  city: "MyString"
+  state: "MyString"
+  postal_code: "MyString"
+  phone: "MyString"
+  account_credit: 1.5
+
+no_add:
+  name: "MyString"
+  registered_at: "MyString"
+  city: "MyString"
+  state: "MyString"
+  postal_code: "MyString"
+  phone: "MyString"
+  account_credit: 1.5
+
+no_city:
+  name: "MyString"
+  registered_at: "MyString"
+  address: "MyString"
+  state: "MyString"
+  postal_code: "MyString"
+  phone: "MyString"
+  account_credit: 1.5
+
+no_state:
+  name: "MyString"
+  registered_at: "MyString"
+  address: "MyString"
+  city: "MyString"
+  postal_code: "MyString"
+  phone: "MyString"
+  account_credit: 1.5
+
+no_code:
+  name: "MyString"
+  registered_at: "MyString"
+  address: "MyString"
+  city: "MyString"
+  state: "MyString"
+  phone: "MyString"
+  account_credit: 1.5
+
+no_phone:
+  name: "MyString"
+  registered_at: "MyString"
+  address: "MyString"
+  city: "MyString"
+  state: "MyString"
+  postal_code: "MyString"
+  account_credit: 1.5
+
+no_credit:
+  name: "MyString"
+  registered_at: "MyString"
+  address: "MyString"
+  city: "MyString"
+  state: "MyString"
+  postal_code: "MyString"
+  phone: "MyString"
