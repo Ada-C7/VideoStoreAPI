@@ -20,7 +20,9 @@ class Rental < ApplicationRecord
   def check_inventory
     if movie
       if movie.available_inventory <= 0
-        errors.add(:availability, "Sorry, this movie is not in stock")
+        rentals = Rental.where(movie_id: movie.id)
+        earliest = rentals.min_by { |rental| rental.due_date}
+        errors.add(:availability, "Sorry, this movie is not in stock. One is due back on #{earliest.due_date}")
       end
     end
   end
