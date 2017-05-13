@@ -26,15 +26,36 @@ class RentalsController < ApplicationController
   end
 
   def overdue
-
     #what is the syntax for a conditional for due date?
-    rentals = Rental.where("returned = ? AND due_date <= ?", false, Date.current-1)
+    rentals = Rental.where("returned = ? AND due_date <= ?", false, Date.current)
+    if rentals
+      #array of customer ids for customers who have overdue rentals
+      customer_ids = rentals.map { |rental| rental.customer_id }
 
+      overdue_rentals = []
+      customer_ids.each do |id|
+        customer = Customer.find_by_id(id)
+        hash = Hash.new
+        hash[:name] = customer.name
+        hash[:customer_id]  = id
+        hash[:postal_code] = customer.postal_code
 
+        rentals = []
+        customer.rentals.each do |rental|
+          rental_hash = Hash.new
+          rental_hash[:title] = Movie.find_by_id(rental.movie_id).title
+          rental_hash[:checkout_date] = rental.created_at.to_date
+          rental_hash[:due_date] = rental.due_date
+          rentals << rental_hash
+        end
+        hash[:rentals] = rentals
+        overdue_rentals << hash
+      end
+      render status: :ok, json: overdue_rentals.as_json
+    else
+      render status: :bad_request, json: { overdue: "There are no overdue rentals" }
+    end
 
-    rentals.group_by { |rental| rental.customer_id }
-
-    render json: rentals.as_json
   end
 
   private
