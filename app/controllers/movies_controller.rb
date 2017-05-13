@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     if movie
       render :json => movie, status: :ok
     else
-      render :json => movie, status: :no_content
+      render :json => movie, status: :not_found
     end
   end
 
@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
     customer = Customer.find_by(id: params[:customer_id])
     customer.movies_checked_out_count += 1
     customer.save
-    
+
     rental = Rental.create(customer_id: customer.id, due_date: params[:due_date], movie_id: movie.id)
     render :json => rental, status: :ok
   end

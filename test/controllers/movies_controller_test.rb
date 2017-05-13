@@ -74,10 +74,21 @@ describe MoviesController do
       body.keys.sort.must_equal keys
     end
 
-    it "returns 204 no content if movie does not exist" do
-      get movie_path("Bogus title")
-      must_respond_with :no_content
+    it "returns a single JSON object" do
+      movie = movies(:best_case)
+      get movie_path(movie.title)
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
     end
+
+    it "returns 404 not found if movie does not exist" do
+      get movie_path("Bogus title")
+      must_respond_with :not_found
+    end
+
+  end
+
+  describe "checkout" do
 
   end
 end

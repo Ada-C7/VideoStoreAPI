@@ -57,5 +57,8 @@ describe Movie do
       movie.available_inventory.must_equal movie.inventory
     end
 
-  end 
+    it "allows the available_inventory to change if a movie has been rented" do
+      # movie = movies(:best_case)
+      # Rental.create(customer_id: 1, )
+  end
 end
