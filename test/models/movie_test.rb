@@ -37,7 +37,7 @@ describe "validates type" do
   end
 
   it "requires overview to be a string" do
-    integer_overview.valid?.wont_equal true
+    integer_overview.valid?.must_equal false
   end
 
   it "requires inventory to be an integer" do
@@ -45,11 +45,11 @@ describe "validates type" do
   end
 
   it "requires release_date to be in YYYY/MM/DD format" do
-    bad_release.valid_date?(bad_release.release_date).wont_equal true
+    bad_release.valid?(bad_release.release_date).wont_equal true
   end
 
   it "accepts a release_date  in YYYY/MM/DD format" do
-    good_release.valid_date?(good_release.release_date).must_equal true
+    good_release.valid?.must_equal true
     puts good_release.release_date.class
 
 
