@@ -16,6 +16,7 @@ class Movie < ApplicationRecord
 
   def decrease_available_inventory
     self.available_inventory = self.available_inventory - 1
+    self.save
   end
 
   # def set_available_inventory
