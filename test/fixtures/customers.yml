@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "Jay"
+  address: "1233 colde street"
+  city: "Seattle"
+  state: "Washington"
+  postal_code: "98100"
+  phone: "8765667767"
+
+two:
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  phone: MyString

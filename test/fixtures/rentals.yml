@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: "A new movie"
+  customer: one
+  due_date: "20170601"
+
+two:
+  movie: two
+  customer: two
+  due_date: MyString
