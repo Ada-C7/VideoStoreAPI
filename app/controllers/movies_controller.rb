@@ -47,19 +47,16 @@ class MoviesController < ApplicationController
     title = params[:title]
     movie = Movie.find_by('lower(title) = ?', title.downcase)
     rentals = Rental.where(movie_id: movie.id, customer_id: params[:customer_id])
-    puts rentals
 
     if rentals == []
       render json: {errors: "Cannot Find the Rental Records"}, status: :not_found
     else
-      not_returned = []
-      rentals.each do |rental|
-        not_returned << rental if rental.returned_date == nil
-      end
+      not_returned = rentals.where(returned_date: nil)
 
       if not_returned == []
         render json: {errors: "All movies are already returned"}, status: :not_found
       else
+        #if the customer has checked out mutiple copies of the same movie, check in the movie with the earliest checkout date first.
         oldest = "3000-05-14 20:19:19 -0700"
         not_returned.each do |rental|
           oldest = rental.due_date if rental.due_date < oldest
@@ -68,7 +65,6 @@ class MoviesController < ApplicationController
         rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id], due_date: oldest)
         rental.returned_date = Time.now
         rental.save
-        movie.available_inventory
         render json: rental, status: :ok
       end
     end

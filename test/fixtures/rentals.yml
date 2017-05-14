@@ -5,6 +5,7 @@ rental_one:
   returned_date: May 20, 2017
   created_at: 01/12/16
 
+
 rental_two:
   customer: two
   movie: mermaid
