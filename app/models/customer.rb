@@ -16,9 +16,9 @@ class Customer < ApplicationRecord
   end
 
   def overdue_date
-    self.rentals.where("due_date < ?", Time.now)
-                .order(due_date: :asc)
-                .first.due_date
+    # self.rentals.where("due_date < ?", Time.now)
+    #             .order(due_date: :asc)
+    #             .first.due_date
 
     # overdue = []
     # if self.rentals != nil

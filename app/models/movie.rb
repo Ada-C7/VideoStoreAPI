@@ -1,16 +1,12 @@
 class Movie < ApplicationRecord
-  before_create :default_available_inventory
   has_many :rentals
   has_many :customers, through: :rentals
   validates :title, presence: true, uniqueness: true,  uniqueness: {case_sensitive: false}
   validates :inventory, numericality: { greater_than: 0, only_integer: true }
 
-  def get_available_inventory
-    self.inventory - self.rentals.length
-  end
+  def available_inventory
+    Rails.logger.debug "rentals for #{self.title} #{self.rentals.where("returned_date = null").inspect}"
 
-  private
-  def default_available_inventory
-    self.available_inventory||= self.inventory
+    self.inventory - self.rentals.where(returned_date = nil).length
   end
 end
