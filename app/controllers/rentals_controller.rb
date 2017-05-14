@@ -10,7 +10,6 @@ class RentalsController < ApplicationController
 
     if @movie.available_inventory > 0
       @movie.available_inventory -= 1
-      # rental.due_date =  Date.today + 14.days #params[:due_date]
       @movie.save
       if rental.save
         render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
