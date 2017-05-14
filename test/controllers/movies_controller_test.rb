@@ -26,7 +26,7 @@ describe MoviesController do
     end
 
     it "Returns movies with all required fields" do
-      keys = %w(available_inventory release_date title)
+      keys = %w(release_date title)
       get movies_url
 
       body = JSON.parse(response.body)

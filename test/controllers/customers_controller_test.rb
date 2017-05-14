@@ -26,7 +26,7 @@ describe CustomersController do
     end
 
     it 'returns customers with all required fields' do
-      keys = %w(account_credit address city name phone postal_code registered_at state)
+      keys = %w(id movies_checked_out_count name phone postal_code registered_at)
       get customers_url
 
 
