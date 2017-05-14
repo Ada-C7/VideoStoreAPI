@@ -10,7 +10,7 @@ describe Movie do
       end
     end
 
-    it "all movies must be an object" do
+    it "all movies must be a Movie object" do
       movies = Movie.all
       movies.each do |movie|
         movie.must_be_kind_of Movie

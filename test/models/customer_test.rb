@@ -11,7 +11,7 @@ describe Customer do
       end
     end
 
-    it "all customers in database are correct object" do
+    it "all customers must be a Customer object" do
       customers = Customer.all
       customers.each do |customer|
         customer.must_be_kind_of Customer
@@ -63,13 +63,10 @@ describe Customer do
         #
         # customer.wont_be :valid?
       end
-
-      #  movies_checked_out_count
     end
 
     describe 'relations' do
       it 'a customer can have many movies' do
-        # skip # Not passing, yaml files need to be fixed.
         customer = customers(:one)
         customer.must_respond_to :movies
         assert_operator 0, :<, customers(:one).movies.size
