@@ -8,18 +8,18 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movie = Movie.find_by(title: params[:title].capitalize)
-    if movie == []
-      render :json=> movie.as_json(only:[:id, :title, :overview, :release_date, :inventory], methods: :available_inventory), status: :ok
+    @movie = Movie.find_by(title: params[:title])
+    if @movie == {}
+      render :json=> @movie.as_json(only:[:id, :title, :overview, :release_date, :inventory], methods: :available_inventory), :status => :ok
     else
-      render :json=> movie.as_json, status: :not_found
+      render :json=> @movie.as_json, status: :not_found
     end
   end
 
 
   def create
 
-    movie = Movie.new(
+    @movie = Movie.new(
     title: params[:movie][:title],
     overview: params[:movie][:overview],
     release_date:params[:movie][:release_date],
@@ -27,12 +27,15 @@ class MoviesController < ApplicationController
     params[:movie][:inventory]
     )
 
-    if movie.save
-      render :json => movie.to_json,  :status => :ok
+    if @movie.save
+      render :json => @movie.to_json,  :status => :ok
     else
-      render :json => {errors: movie.errors.messages}, :status => :bad_request
+      render :json => {errors: @movie.errors.messages}, :status => :bad_request
+
     end
   end
+
+
 
 
 end

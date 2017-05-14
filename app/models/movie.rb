@@ -10,7 +10,7 @@ class Movie < ApplicationRecord
   validates :release_date, format: {with: /\d{4}\/\d{2}\/\d{2}/, message: "Not a valid date"}
   validates :overview, presence:true
   validates :overview, format:{ with: /([a-z]{1,})/,  message: "Must be a string" }
-
+#
   validates :inventory, presence:true
   validates :inventory, numericality:true
 

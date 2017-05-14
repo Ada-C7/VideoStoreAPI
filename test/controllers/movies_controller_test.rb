@@ -38,10 +38,21 @@ describe MoviesController do
 
   describe "show" do
     it "can get a movie" do
-    params = {}
-      params[:title]="Pycho"
-      get movie_path(params[:title])
+
+      get movie_path("Psycho")
       must_respond_with :success
+    end
+
+    it "returns movie details" do
+      get movie_path("Psycho")
+      response.body.present?.wont_equal false
+
+    end
+
+    it "returns bad request for failed requests" do
+      get movie_path("halloween 3")
+      must_respond_with :not_found
+
     end
   end
 
@@ -50,7 +61,7 @@ describe MoviesController do
       @movie_data =
       {  "title"=> "Troy",
         "overview"=> "Prince Paris steals Agamemnon's wife bloodbath ensues",
-        "release_date"=> "2012",
+        "release_date"=> "2012/05/02",
         "inventory"=> 30
       }
       @bad_data =
