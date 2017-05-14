@@ -3,8 +3,6 @@ class RentalsController < ApplicationController
   before_action :find_customer
 
   def checkout
-    # movie = find_movie #change from private method
-    # customer = find_customer #from private
     due_date = params[:due_date]
     rental = Rental.new(due_date: due_date, customer_id: @customer.id, movie_id: @movie.id, returned: false)
 
@@ -20,17 +18,17 @@ class RentalsController < ApplicationController
   end
 
   def checkin
-    # movie = Movie.find_by(title: params[:title])
-    # customer = Customer.find_by_id(params[:customer_id])
 
     rental = Rental.find_by(customer_id: @customer.id, movie_id: @movie.id, returned: false)
 
-    rental.checkin_date = DateTime.now
-    rental.returned = true
 
      if @movie.available_inventory < @movie.inventory
       @movie.available_inventory += 1
       @movie.save
+
+      rental.checkin_date = DateTime.now
+      rental.returned = true
+
 
       if rental.save
         render status: :ok, json: rental.as_json(except: [:updated_at, :created_at])
@@ -54,15 +52,11 @@ class RentalsController < ApplicationController
     if rentals_overdue.length > 0
       render status: :ok, json: rentals_overdue
     else
-      # render status: :not_found, json: {errors: {rentals: ["There is No Overdue" ]}}
       render json: { nothing: true }, status: :not_found
     end
   end
 
   private
-  # def rental_params
-  #   params.require(:rental).permit(:due_date, :customer_id, :movie_id, :returned, :checkin_date)
-  # end
 
   def find_movie
     @movie = Movie.find_by(title: params[:title])

@@ -1,13 +1,14 @@
 require "test_helper"
 
 describe RentalsController do
-  describe "Checkout" do
     let(:rental_data) {
   { movie_id: movies(:one),
     customer_id: customers(:three).id,
     due_date: '2017-05-06'
   }
   }
+
+  describe "Checkout" do
 
     it "Creates a new rental record" do
       # binding.pry
@@ -95,11 +96,12 @@ describe RentalsController do
 
     it "Updates available inventory when movie is returned" do
       movie = movies(:one)
+      post checkout_path(movie.title), params: rental_data
 
-      post checkin_path(movie.title), params: rental_data
+      post checkin_path(movie.title)
       update = Movie.find_by_title(movie.title)
-      checkin_date = DateTime.now
-      update.available_inventory.must_equal (movie.available_inventory + 1)
+
+      update.available_inventory.must_equal 4
     end
 
     it "Won't check in a movie that doesn't exist" do
