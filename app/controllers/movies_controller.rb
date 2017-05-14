@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
 
 
   def show
-    # movie = Movie.where(title: params[:title])
     title = params[:title]
     movie = Movie.where('lower(title) = ?', title.downcase)
 
