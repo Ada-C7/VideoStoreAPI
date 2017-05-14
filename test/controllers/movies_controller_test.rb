@@ -36,11 +36,17 @@ describe MoviesController do
       end
     end
 
-    it "Renders 204 for when no movies in data base" do
+    it "Renders 404 for when no movies in data base" do
       Movie.destroy_all
 
       get movies_url
-      assert_response :no_content
+      assert_response :not_found
+
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body["error"].must_include "List not found"
+      body["status"].must_equal 404
+
     end
   end
 
@@ -55,9 +61,14 @@ describe MoviesController do
       # movies(:one).available_inventory.must_equal 1
     end
 
-    it 'returns 204 if movies does not exist' do
+    it 'returns 404 if movies does not exist' do
       get movie_path(Movie.last.title + "random_bug")
-      must_respond_with :no_content
+      must_respond_with :not_found
+
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body["error"].must_include "Movie not found"
+      body["status"].must_equal 404
     end
   end
 end
