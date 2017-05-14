@@ -22,7 +22,8 @@ class Customer < ApplicationRecord
     #             .first.due_date
   # end
   def number_of_overdues
-    rentals = self.rentals.where("due_date < ?", Time.now)
+    current_rentals = self.rentals.where(returned_date: nil)
+    rentals = current_rentals.where("due_date < ?", Time.now)
     return rentals.count
   end
 

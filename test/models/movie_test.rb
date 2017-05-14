@@ -71,13 +71,6 @@ describe Movie do
       movie.available_inventory.must_equal  0
     end
 
-    it "returns the original inventory minus number that are checked" do
-      movie = movies(:mermaid)
-      available = movie.inventory - movie.rentals.where(returned_date = nil).length
-      movie.available_inventory.must_equal  available
-      movie.available_inventory.must_equal  0
-    end
-
     it "does not subtract movies that have been checked in" do
       tusk = movies(:tusk)
       puts  tusk.rentals

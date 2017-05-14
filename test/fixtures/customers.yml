@@ -18,3 +18,13 @@ two:
   postal_code: 97611
   phone: 234-345-5678
   account_credit: 10.00
+
+three:
+  name: three
+  registered_at: Feb 23,2016
+  address: 1222 4th Ave.
+  city: Seattle
+  state: WA
+  postal_code: 96610
+  phone: 204-365-5278
+  account_credit: 15.00

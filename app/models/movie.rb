@@ -7,6 +7,6 @@ class Movie < ApplicationRecord
   def available_inventory
     Rails.logger.debug "rentals for #{self.title} #{self.rentals.where("returned_date = null").inspect}"
 
-    self.inventory - self.rentals.where(returned_date = nil).length
+    self.inventory - self.rentals.where(returned_date: nil).length
   end
 end

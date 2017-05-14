@@ -40,4 +40,32 @@ describe Rental do
     end
   end
 
+  describe "checkout_date" do
+    it "returns overdue movie's checkout date" do
+      rental = rentals(:rental_two)
+      rental.checkout_date.must_equal "05/23/16"
+    end
+  end
+
+  describe "title" do
+    it "returns overdue movie's title" do
+      rental = rentals(:rental_two)
+      rental.title.must_equal "Little Mermaid"
+    end
+  end
+
+  describe "name" do
+    it "returns the customer's name with the overdue movie" do
+    rental = rentals(:rental_two)
+    rental.name.must_equal "two"
+    end
+  end
+  #
+  describe "postal_code" do
+    it "returns the overdue customer's postal code" do
+    rental = rentals(:rental_two)
+    rental.postal_code.must_equal "97611"
+    end
+  end
+
 end

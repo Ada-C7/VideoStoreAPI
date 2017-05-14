@@ -6,7 +6,7 @@ describe Customer do
   describe "relationships" do
     it "can have many rentals" do
       customer = customers(:one)
-      customer.rentals.count.must_equal 2
+      customer.rentals.count.must_equal 3
     end
 
     it "returns an empty array if there are no rentals created under this customer" do
@@ -23,7 +23,7 @@ describe Customer do
 
     it "can have many movies" do
       customer = customers(:one)
-      customer.movies.count.must_equal 2
+      customer.movies.count.must_equal 3
     end
 
     it "can access movies" do
@@ -58,5 +58,27 @@ describe Customer do
        Customer.all.length.must_equal start_count
     end
   end
+
+  describe "movies_checked_out_count" do
+    it "returns the number of movies that're currently checked out by this customer" do
+      customer = customers(:one)
+      customer.movies_checked_out_count.must_equal 2
+    end
+
+    it "returns 0 if there are no movies currently checked out by this customer" do
+      customer = customers(:three)
+      customer.movies_checked_out_count.must_equal 0
+    end
+  end
+
+  # describe "number_of_overdues" do
+  #   it "returns the number of overdue movies this customer currently has" do
+  #     customer = customers(:two)
+  #     puts "<<<<<<<"
+  #     puts customer.rentals.count
+  #     puts "<<<<<<<"
+  #     customer.number_of_overdues.must_equal 1
+  #   end
+  # end
 
 end
