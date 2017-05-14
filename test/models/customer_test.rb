@@ -1,7 +1,6 @@
 require 'test_helper'
 
 describe Customer do
-  let(:customer) { Customer.new }
 
   describe 'customer' do
 
@@ -21,7 +20,39 @@ describe Customer do
 
     describe 'validations' do
       it "customer with correct validations is valid" do
-        customer(:one).must_be :valid?
+        customers(:one).must_be :valid?
+      end
+
+      it "customer is invalid without a name" do
+        customer = customers(:one)
+        customer[:name] = nil
+        customer.save
+
+        customer.wont_be :valid?
+      end
+
+      it "customer is invalid without registration date" do
+        customer = customers(:one)
+        customer[:registered_at] = nil
+        customer.save
+
+        customer.wont_be :valid?
+      end
+
+      it "customer is invalid without postal code" do
+        customer = customers(:one)
+        customer[:postal_code] = nil
+        customer.save
+
+        customer.wont_be :valid?
+      end
+
+      it "customer is invalid without phone" do
+        customer = customers(:one)
+        customer[:phone] = nil
+        customer.save
+
+        customer.wont_be :valid?
       end
     end
 
@@ -36,18 +67,5 @@ describe Customer do
         end
       end
     end
-    # assert_equal 2, users(:user1).reviews.size
-    # it "has a list of votes" do
-    #   dan = users(:dan)
-    #   dan.must_respond_to :votes
-    #   dan.votes.each do |vote|
-    #     vote.must_be_kind_of Vote
-    #   end
-
-
-    # Unnecessary
-    # it 'customer can not be created without required attributes' do
-    #   proc { Customer.new }.must_raise ArgumentError
-    # end
   end
 end

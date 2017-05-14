@@ -10,6 +10,7 @@ one:
   postal_code: MyString
   phone: MyString
   account_credit: 1.5
+  # movies_checked_out_count: 5
 
 two:
   id: 2
@@ -21,3 +22,4 @@ two:
   postal_code: MyString
   phone: MyString
   account_credit: 1.5
+  # movies_checked_out_count: 3
