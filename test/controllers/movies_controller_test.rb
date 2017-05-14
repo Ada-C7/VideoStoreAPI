@@ -8,6 +8,12 @@ describe MoviesController do
 
   it "index must return outputted json" do
     get movies_path
-    response.header['Content-Type'].must_include "json"    
+    response.header['Content-Type'].must_include "json"
+  end
+
+  it "returns the correct amount of movies" do
+    get movies_path
+    r = JSON.parse(response.body)
+    r.length.must_equal Movie.count
   end
 end
