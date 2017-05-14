@@ -5,7 +5,7 @@ class Movie < ApplicationRecord
   validates :inventory, numericality: { greater_than: 0, only_integer: true }
 
   def available_inventory
-    Rails.logger.debug "rentals for #{self.title} #{self.rentals.where("returned_date = null").inspect}"
+    Rails.logger.debug "ERICA rentals for #{self.title} #{self.rentals.where(returned_date = nil).inspect}"
 
     self.inventory - self.rentals.where(returned_date = nil).length
   end

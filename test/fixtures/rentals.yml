@@ -3,8 +3,9 @@ rental_one:
   movie: tusk
   due_date: May 20, 2017
 
+
 rental_two:
-  customer: two
+  customer: :two
   movie: mermaid
   due_date: June 1, 2017
 

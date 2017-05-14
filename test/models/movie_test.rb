@@ -77,13 +77,5 @@ describe Movie do
       movie.available_inventory.must_equal  available
       movie.available_inventory.must_equal  0
     end
-
-    it "does not subtract movies that have been checked in" do
-      tusk = movies(:tusk)
-      puts  tusk.rentals
-      # fixtures had one movie already checked in for tusk (rental_one) and one checked out
-      tusk.available_inventory.must_equal (tusk.inventory - 1)
-    end
-
   end
 end

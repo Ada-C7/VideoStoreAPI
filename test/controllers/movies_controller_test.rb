@@ -70,12 +70,29 @@ describe MoviesController do
     it "returns returns not found if the movie would be taken below zero" do
       pre = movies(:mermaid).available_inventory
       pre.must_equal 0
+
       post checkout_path(title: "Little Mermaid", customer_id: customers(:one).id)
       must_respond_with :not_found
+
       movie = JSON.parse(response.body)["errors"]
       movie.must_be_kind_of Hash
       movie.keys.must_include "unavailable"
+    end
+  end
 
+  describe "check-in" do
+
+    it "adds a movie to the inventory when it is checked in" do
+      pre = movies(:life).available_inventory
+      pre.must_equal movies(:life).inventory
+
+      post checkout_path(title: "Life is Beautiful", customer_id: customers(:one).id)
+      must_respond_with :success
+
+      post checkin_path(title: "Life is Beautiful", customer_id: customers(:one).id)
+      must_respond_with :success
+
+      Movie.find_by(title: movies(:life).title).available_inventory.must_equal pre
     end
   end
 end

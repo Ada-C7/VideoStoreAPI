@@ -40,7 +40,6 @@ class MoviesController < ApplicationController
     title = params[:title]
     movie = Movie.find_by('lower(title) = ?', title.downcase)
     rentals = Rental.where(movie_id: movie.id, customer_id: params[:customer_id])
-    puts rentals
 
     if rentals == []
       render json: {errors: "Cannot Find the Rental Records"}, status: :not_found
@@ -61,7 +60,6 @@ class MoviesController < ApplicationController
         rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id], due_date: oldest)
         rental.returned_date = Time.now
         rental.save
-        movie.available_inventory
         render json: rental, status: :ok
       end
     end
