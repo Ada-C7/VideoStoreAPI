@@ -7,4 +7,9 @@ Rails.application.routes.draw do
 
   post "/rentals/:title/check-out", to:"rentals#checkout", as: "checkout"
 
+  post "/rentals/:title/check-in", to: "rentals#checkin", as: "checkin"
+
+  get "/rentals/overdue", to: "rentals#overdue"
+
+
 end
