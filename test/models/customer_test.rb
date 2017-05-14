@@ -69,7 +69,7 @@ describe Customer do
       it 'a customer can have many movies' do
         customer = customers(:one)
         customer.must_respond_to :movies
-        assert_operator 0, :<, customers(:one).movies.size
+        assert_operator 0, :<, customer.movies.size
         customer.movies.each do |movie|
           movie.must_be_kind_of Movie
         end
