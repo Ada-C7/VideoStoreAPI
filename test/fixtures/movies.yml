@@ -4,7 +4,7 @@ jaws:
   title: "Jaws"
   overview: "Shark does things"
   release_date: "1960"
-  inventory: 10000
+  inventory: 1
 
 starwars:
   title: "Star Wars"
