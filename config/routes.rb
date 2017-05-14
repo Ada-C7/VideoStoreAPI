@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   get '/customers', to: 'customers#index', as: 'customers'
 
-  post '/rentals/:title/checkout', to: 'rentals#create', as: 'new_rental'
+  post '/rentals/:title/check-out', to: 'rentals#create', as: 'new_rental'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
