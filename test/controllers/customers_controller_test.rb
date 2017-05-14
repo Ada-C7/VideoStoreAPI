@@ -41,7 +41,12 @@ describe CustomersController do
 
       get customers_url
       puts "#{Customer.class}"
-      assert_response :no_content
+      assert_response :not_found
+
+      body = JSON.parse(response.body)
+      body.must_be_kind_of Hash
+      body["error"].must_include "List not found"
+      body["status"].must_equal 404
     end
   end
 end

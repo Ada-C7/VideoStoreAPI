@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
     unless customers.count == 0
       render :json => customers, status: :ok
     else
-      render :json, status: :no_content
+      render json: { error: "List not found", status: 404 }, status: :not_found
     end
   end
 end
