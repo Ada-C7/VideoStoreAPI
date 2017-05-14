@@ -16,4 +16,19 @@ describe MoviesController do
     r = JSON.parse(response.body)
     r.length.must_equal Movie.count
   end
+
+  it "can get one movie" do
+    get movie_path(movies(:starwars).title)
+    must_respond_with :success
+  end
+
+  it "show returns json" do
+    get movie_path(movies(:starwars).title)
+    response.header['Content-Type'].must_include "json"
+  end
+
+  it "returns a not found if the movie is not found" do
+    get movie_path("random movie")
+    must_respond_with :not_found
+  end
 end
