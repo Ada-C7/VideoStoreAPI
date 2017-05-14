@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jaws:
+  title: "Jaws"
+  overview: "Shark does things"
+  release_date: "1960"
+  inventory: 1
+
+starwars:
+  title: "Star Wars"
+  overview: "Why don't you go see one of those star war you like"
+  release_date: "1972"
+  inventory: 5
+
+no_title:
+  overview: "Nothing to see here"
+  release_date: "1988"
+  inventory: 1
+
+no_overview:
+  title: "This movie has no overview"
+  release_date: "1999"
+  inventory: 20
+
+no_date:
+  title: "A movie is here"
+  overview: "This movie doesn't have a release date!"
+  inventory: 5
+
+no_inv:
+  title: "Some movie"
+  overview: "some movie"
+  release_date: "1999"
+
+neg_inv:
+  title: "Another movie"
+  overview: "Yes i am movie"
+  release_date: "1999"
+  inventory: -1
+
+rep_title:
+  title: "Title"
+  overview: "overview"
+  release_date: "1999"
+  inventory: 1
+
+test_title:
+  title: "Title"
+  overview: "overview"
+  release_date: "1999"
+  inventory: 1
