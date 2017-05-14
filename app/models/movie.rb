@@ -6,4 +6,7 @@ class Movie < ApplicationRecord
 
   has_many :rentals
 
+  def available_inventory
+    return self.inventory - self.rentals.length
+  end
 end
