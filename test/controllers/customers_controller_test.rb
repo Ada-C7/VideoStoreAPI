@@ -71,8 +71,6 @@ describe CustomersController do
       rental = rentals(:rental_five)
       rental.customer = customers(:one)
       rental.save!
-      puts ">>>>>>"
-      puts rentals(:rental_five).customer.name
       get overdue_path
       body = JSON.parse(response.body)
       body.length.must_equal 1
