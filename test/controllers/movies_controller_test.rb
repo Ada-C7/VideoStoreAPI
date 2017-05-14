@@ -27,7 +27,7 @@ describe MoviesController do
     end
 
     it "returns movies with the required fields" do
-      keys = %w(title overview release_date inventory)
+      keys = ["available_inventory" , "id" ,"inventory" , "overview" , "release_date" , "title"]
       get movies_url
       body = JSON.parse(response.body)
       body.each do |movie|
@@ -38,7 +38,9 @@ describe MoviesController do
 
   describe "show" do
     it "can get a movie" do
-      get movie_path(movies(:two).id)
+    params = {}
+      params[:title]="Pycho"
+      get movie_path(params[:title])
       must_respond_with :success
     end
   end
