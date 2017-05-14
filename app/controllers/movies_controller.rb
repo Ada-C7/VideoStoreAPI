@@ -1,12 +1,19 @@
 class MoviesController < ApplicationController
   def index
-    movies = Movie.all
     sort_list = ["title", "release_date"]
     if sort_list.include?(params[:sort])
-      movies = movies.sort_by{|movie| movie[params[:sort]]}
+      movies = Movie.paginate(page: params[:p], per_page: params[:n]).order(params[:sort])
+    else
+      movies = Movie.paginate(page: params[:p], per_page: params[:n])
     end
-    render json: movies, status: :ok
+    if movies != []
+      render json: movies, status: :ok
+    else
+      render json: {errors: "There are No Movies"}, status: :not_found
+    end
+
   end
+
 
   def show
     # movie = Movie.where(title: params[:title])
