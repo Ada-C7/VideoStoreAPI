@@ -11,10 +11,15 @@ class Movie < ApplicationRecord
   end
 
   def available_inventory
-    # rentals = CustomerMovie.all
-    # quantity = rentals.where(id: params[:movie_id]).count
-    # a_i = inventory - quantity
+    # (not currently checked-out to a customer)
+    # This will be the same as inventory unless
+    # you've completed the optional endpoints.
+    inventory
   end
+
+  # rentals = CustomerMovie.all
+  # quantity = rentals.where(id: params[:movie_id]).count
+  # a_i = inventory - quantity
 
   def checkedoutmovies
 

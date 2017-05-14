@@ -23,14 +23,6 @@ describe Customer do
         customers(:one).must_be :valid?
       end
 
-      it "customer is invalid without a id" do
-        customer = customers(:one)
-        customer[:id] = nil
-        customer.save
-
-        customer.wont_be :valid?
-      end
-
       it "customer is invalid without a name" do
         customer = customers(:one)
         customer[:name] = nil
