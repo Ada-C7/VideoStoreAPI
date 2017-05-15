@@ -1,22 +1,22 @@
 class MoviesController < ApplicationController
   #List all the movies
   def index
-    movies = Movie.all
+    @movies = Movie.all
 
-    unless movies.count == 0
-      render :json => movies, status: :ok
+    unless @movies.count == 0
+      render :json => @movies, status: :ok
     else
-      render :jason, status: :no_content
+      render :json => {errors: {title: "List not found", status: "Not found"}}, status: :not_found
     end
   end
 
   def show
-    movie = Movie.find_by(title: params[:title])
+    @movie = Movie.find_by(title: params[:title])
 
-    if movie
-      render :json => movie, status: :ok
+    if @movie
+      render :json => @movie, status: :ok, more_info: :true
     else
-      render :json => movie, status: :no_content
+      render :json => {errors: {title: "Movie '#{params[:title]}' not found", status: "Not found"}}, status: :not_found
+      end
     end
   end
-end

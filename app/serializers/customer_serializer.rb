@@ -1,3 +1,3 @@
 class CustomerSerializer < ActiveModel::Serializer
-  attributes :name, :registered_at, :address, :city, :state, :postal_code, :phone, :account_credit, :movie_id, :movies_checked_out_count
+  attributes :id, :name, :registered_at, :postal_code, :phone, :movies_checked_out_count
 end

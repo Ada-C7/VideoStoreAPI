@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511163756) do
+ActiveRecord::Schema.define(version: 20170512213356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,8 @@ ActiveRecord::Schema.define(version: 20170511163756) do
     t.string   "postal_code"
     t.string   "phone"
     t.float    "account_credit"
-    t.integer  "movie_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "movies_checked_out_count"
-    t.index ["movie_id"], name: "index_customers_on_movie_id", using: :btree
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "movies", force: :cascade do |t|
@@ -47,11 +44,8 @@ ActiveRecord::Schema.define(version: 20170511163756) do
     t.string   "overview"
     t.string   "release_date"
     t.integer  "inventory"
-    t.integer  "customer_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.integer  "available_inventory"
-    t.index ["customer_id"], name: "index_movies_on_customer_id", using: :btree
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

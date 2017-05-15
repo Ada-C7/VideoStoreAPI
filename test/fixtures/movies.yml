@@ -6,7 +6,7 @@ one:
   overview: Lots of teeth
   release_date: date
   inventory: 1
-  available_inventory: 1
+  # available_inventory: 1
 
 two:
   id: 2
@@ -14,4 +14,4 @@ two:
   overview: MyString
   release_date: MyString
   inventory: 2
-  available_inventory: 1
+  # available_inventory: 1
