@@ -3,6 +3,6 @@ class Movie < ApplicationRecord
   has_many :customer_movies
 
   def availability
-    @movie.available_inventory - 1
+    # @movie.available_inventory - 1
   end
 end
