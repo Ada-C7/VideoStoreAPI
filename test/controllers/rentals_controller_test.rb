@@ -4,8 +4,7 @@ describe RentalsController do
     let(:rental_data) {
   { movie_id: movies(:one),
     customer_id: customers(:three).id,
-    due_date: '2017-05-06'
-  }
+    due_date: '2017-05-06'}
   }
 
   describe "Checkout" do
@@ -60,14 +59,6 @@ describe RentalsController do
       update = Movie.find_by_title(movie.title)
       update.available_inventory.must_equal (movie.available_inventory - 1)
     end
-
-    it "Due date must be an actual date" do
-      # due date must be a date DateTime.parse(params[:due_date])
-      # checkout_path(movies(:one).title), params: {customer_id: customers(:three).id, movie_id: movies(:two).id, due_date: '2017-05-06'}
-      #
-      #    DateTime.parse(params[:due_date].must_be_kind_of DateTime
-
-    end
   end
 
   describe "Checkin" do
@@ -117,16 +108,15 @@ describe RentalsController do
       body["errors"].must_equal "title" => ["Movie 'not_found' not found"]
     end
 
-      it "Bad request error for when a customer does not exist" do
-        proc {
-          post checkin_path(movies(:one).title), params: {customer_id: "no customer", movie_id: movies(:two).id
-          }
-        }.wont_change 'Rental.count'
-        must_respond_with :bad_request
+    it "Bad request error for when a customer does not exist" do
+      proc {
+        post checkin_path(movies(:one).title), params: {customer_id: "no customer", movie_id: movies(:two).id
+        }
+      }.wont_change 'Rental.count'
+      must_respond_with :bad_request
 
-        body = JSON.parse(response.body)
-        body.must_equal "errors" => ["Customer 'no customer' not found"]
-      end
+      body = JSON.parse(response.body)
+      body.must_equal "errors" => ["Customer 'no customer' not found"]
+    end
   end
-
 end
