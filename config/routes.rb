@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/zomg', to: 'rentals#zomg', as: 'zomg'
+
   get 'customers', to: 'customers#index', as: 'customers'
 
   get 'movies', to: 'movies#index', as: 'movies'

@@ -1,6 +1,13 @@
 require "test_helper"
 
 describe RentalsController do
+  describe "zomg" do
+    it "returns a message" do
+      get zomg_path
+      body = JSON.parse(response.body)
+      body["Message"].must_equal "it works!"
+    end
+  end
 
   describe "overdue" do
     it "returns 200 if overdue rentals exit" do

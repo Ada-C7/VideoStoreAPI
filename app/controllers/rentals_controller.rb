@@ -1,4 +1,7 @@
 class RentalsController < ApplicationController
+  def zomg
+    render json: {Message: "it works!"}, status: :ok
+  end
 
   def overdue
     if Rental.all.empty?
