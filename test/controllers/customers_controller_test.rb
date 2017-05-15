@@ -25,15 +25,6 @@ describe CustomersController do
       body.length.must_equal Customer.count
     end
 
-    # it "returns customers with exactly the required fields" do
-    #   keys = ["id", "movies_checked_out_count", "name", "phone", "postal_code", "registered_at"]
-    #   get customers_url
-    #   body = JSON.parse(response.body)
-    #   body.each do |customer|
-    #     customer.keys.sort.must_equal keys
-    #   end
-    # end              <==== doesn't work with overdue
-
     it "returns 200 if customers exist" do
       get customers_path
       must_respond_with :ok
@@ -45,35 +36,18 @@ describe CustomersController do
       must_respond_with :not_found
     end
 
-  end
-
-
-  describe "overdue" do
-    it "returns 200 if overdue rentals exit" do
-      get overdue_path
-      must_respond_with :ok
-    end
-
-    it "returns 404 if overdue rentals don't exit" do
-      rentals = Rental.where(returned_date: nil)
-      rentals.destroy_all
-      get overdue_path
-      must_respond_with :not_found
-    end
-
-    it "finds customers with overdue rentals" do
-      get overdue_path
+    it "sort the list of the customer according to the given sort parameter" do
+      get customers_url, params: { sort: "name"}
       body = JSON.parse(response.body)
-      body.length.must_equal 2
-    end
+      body.last["name"].must_equal "two"
 
-    it "returns the customer with more than 2 overdue rentals once " do
-      rental = rentals(:rental_five)
-      rental.customer = customers(:one)
-      rental.save!
-      get overdue_path
+      get customers_url, params: { sort: "postal_code"}
       body = JSON.parse(response.body)
-      body.length.must_equal 1
+      body.first["postal_code"].must_equal "96610"
+
+      get customers_url, params: { sort: "registered_at"}
+      body = JSON.parse(response.body)
+      body.last["name"].must_equal "two"
     end
 
   end

@@ -53,15 +53,16 @@ class MoviesController < ApplicationController
     else
       not_returned = rentals.where(returned_date: nil)
 
+
       if not_returned == []
         render json: {errors: "All movies are already returned"}, status: :not_found
       else
         #if the customer has checked out mutiple copies of the same movie, check in the movie with the earliest checkout date first.
-        oldest = "3000-05-14 20:19:19 -0700"
+        oldest = Time.now + 2.days
         not_returned.each do |rental|
+
           oldest = rental.due_date if rental.due_date < oldest
         end
-
         rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id], due_date: oldest)
         rental.returned_date = Time.now
         rental.save

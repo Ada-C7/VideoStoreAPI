@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   def index
-    sort_list = ["name", "registered_at", "postal_code"]
+
+    sort_list = ["name", "postal_code", "registered_at"]
     if sort_list.include?(params[:sort])
       customers = Customer.paginate(page: params[:p], per_page: params[:n]).order(params[:sort])
     else
@@ -10,9 +11,6 @@ class CustomersController < ApplicationController
     if customers != []
       render json: customers, status: :ok
     else
-      customers.map do |customer|
-        customer.registered_at = customer.registered_at.to_time
-      end
       render json: {errors: "There are No Customers"}, status: :not_found
     end
 

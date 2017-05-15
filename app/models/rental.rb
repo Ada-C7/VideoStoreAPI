@@ -6,7 +6,7 @@ class Rental < ApplicationRecord
   validates :movie_id, presence: true
 
   def checkout_date
-    return self.created_at.strftime("%D")
+    return self.created_at.to_date
   end
 
   def title

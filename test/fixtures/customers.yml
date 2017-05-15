@@ -1,6 +1,6 @@
 one:
   name: one
-  registered_at: Jan 11,2017
+  registered_at: 2014-01-01
   address: 1111 89th St.
   city: Seattle
   state: WA
@@ -11,7 +11,7 @@ one:
 
 two:
   name: two
-  registered_at: Feb 6,2016
+  registered_at: 2015-01-01
   address: 2345 8th Ave.
   city: Seattle
   state: WA
@@ -21,7 +21,7 @@ two:
 
 three:
   name: three
-  registered_at: Feb 23,2016
+  registered_at: 2013-01-01
   address: 1222 4th Ave.
   city: Seattle
   state: WA

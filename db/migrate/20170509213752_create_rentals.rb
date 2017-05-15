@@ -3,8 +3,8 @@ class CreateRentals < ActiveRecord::Migration[5.0]
     create_table :rentals do |t|
       t.belongs_to :customer, index: true
       t.belongs_to :movie, index: true
-      t.string :due_date
-      t.string :returned_date
+      t.date :due_date
+      t.date :returned_date
       t.timestamps
     end
   end

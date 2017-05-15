@@ -43,7 +43,7 @@ describe Rental do
   describe "checkout_date" do
     it "returns overdue movie's checkout date" do
       rental = rentals(:rental_two)
-      rental.checkout_date.must_equal "05/23/16"
+      rental.checkout_date.must_be_instance_of Date
     end
   end
 
