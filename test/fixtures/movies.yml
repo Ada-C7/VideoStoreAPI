@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  title: Jaws
+  overview: Lots of teeth
+  release_date: date
+  inventory: 1
+  # available_inventory: 1
+
+two:
+  id: 2
+  title: MyString
+  overview: MyString
+  release_date: MyString
+  inventory: 2
+  # available_inventory: 1
