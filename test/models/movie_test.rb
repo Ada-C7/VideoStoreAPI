@@ -16,15 +16,21 @@ describe Movie do
       movie.valid?.must_equal true
     end
 
-    it "Is not valid without a title" do
-      movie = movies(:one)
-      movie.title = nil
-      movie.valid?.must_equal false
+    REQUIRED_FIELDS = %w(title overview release_date)
+    
+    REQUIRED_FIELDS.each do |field|
+      it "Customer is not valid when #{field} is not present" do
+        movie.valid?.must_equal false
+        movie.errors.messages.must_include field.to_sym
+      end
     end
 
-    it "Is not valid with a negative inventory amount" do
+    it "Is not valid with a negative inventory amount or available_inventory" do
       movie = movies(:one)
       movie.inventory = -2
+      movie.valid?.must_equal false
+
+      movie.available_inventory = -1
       movie.valid?.must_equal false
     end
   end
