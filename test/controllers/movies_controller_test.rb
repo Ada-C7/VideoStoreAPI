@@ -44,8 +44,10 @@ describe MoviesController do
 
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
-      body["error"].must_include "List not found"
-      body["status"].must_equal 404
+      body["errors"].must_include "title"
+      body["errors"].must_include "status"
+      body["errors"]["title"].must_equal "List not found"
+      body["errors"]["status"].must_equal "Not found"
 
     end
   end
@@ -67,8 +69,10 @@ describe MoviesController do
 
       body = JSON.parse(response.body)
       body.must_be_kind_of Hash
-      body["error"].must_include "Movie not found"
-      body["status"].must_equal 404
+      body["errors"].must_include "title"
+      body["errors"].must_include "status"
+      body["errors"]["title"].must_include "Movie '#{Movie.last.title + "random_bug"}' not found"
+      body["errors"]["status"].must_equal "Not found"
     end
   end
 end
