@@ -63,7 +63,7 @@ class MoviesController < ApplicationController
 
           oldest = rental.due_date if rental.due_date < oldest
         end
-        rental = Rental.find_by(movie_id: movie.id, customer_id: params[:customer_id], due_date: oldest)
+        rental = not_returned.find_by(movie_id: movie.id, customer_id: params[:customer_id], due_date: oldest)
         rental.returned_date = Time.now
         rental.save
         render json: rental, status: :ok
