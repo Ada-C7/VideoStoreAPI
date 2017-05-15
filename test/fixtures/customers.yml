@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Theresa Manney
+  registered_at: Tue, 28 Jan 2014 22:28:45 -0800
+  address: Ap 881-3920 Malesuada Avenue
+  city: Norman
+  state: OK
+  postal_code: "36134"
+  phone: (540) 515-2339
+  account_credit: 30.14
+
+two:
+  name: Rana
+  registered_at: Tue, 18 Nov 2014 00:43:15 -0800
+  address: Ap 773-125 Nunc St.
+  city: Iowa City
+  state: Iowa
+  postal_code: "18538"
+  phone: (253) 271-5290
+  account_credit: 47.22
+
+three:
+  name: Quinlan Rich
+  registered_at: Fri, 10 Jul 2015 15:23:06 -0700
+  address: Ap 727-9607 Nibh Avenue
+  city: Hilo
+  state: HI
+  postal_code: "63747"
+  phone: (521) 124-5753
+  account_credit: 68.41
