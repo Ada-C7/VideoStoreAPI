@@ -1,0 +1,24 @@
+
+tusk:
+  title: Tusk
+  overview: Walrus Horror Film
+  release_date: January 10, 2015
+  inventory: 3
+
+mermaid:
+  title: Little Mermaid
+  overview: Beautiful mermaid wants to be where the people are.
+  release_date: January 10, 1985
+  inventory: 2
+
+dark:
+  title: Dark City
+  overview: Distopia
+  release_date: January 10, 1998
+  inventory: 10
+
+life:
+  title: Life is Beautiful
+  overview: An inventive Jewish father creates stories to preserve his son's optomism in a concentration.
+  release_date: January 10, 1998
+  inventory: 8
