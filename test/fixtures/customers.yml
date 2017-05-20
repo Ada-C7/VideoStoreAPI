@@ -4,8 +4,23 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+     name: Princess Leia
+     registered_at: 1933-3-3
+     postal_code: 33333
+     phone: 333-3333
+     movies_checked_out_count: 3
+
+two:
+     name: Han Solo
+     registered_at: 1977-7-7
+     postal_code: 77777
+     phone: 777-7777
+     movies_checked_out_count: 4
+
+three:
+     name: Darth Vadar
+     registered_at: 1911-11-1
+     postal_code: 11111
+     phone: 111-1111
+     movies_checked_out_count: 1

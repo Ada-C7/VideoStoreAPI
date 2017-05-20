@@ -73,7 +73,5 @@ describe Movie do
                movie.valid?.must_equal false
                movie.errors.messages.must_include :inventory
           end
-
-
      end
 end
