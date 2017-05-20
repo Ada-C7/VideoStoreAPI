@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+     title: Psycho
+     overview: When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother. The place seems quirky, but fine… until Marion decides to take a shower.
+     release_date: 1960-06-16
+     inventory: 8
+
+two:
+     title: Jaws
+     overview: An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.
+     release_date: 1975-06-19
+     inventory: 6
+
+three:
+      title: The Exorcist
+      overview: An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.
+      release_date: 1973-12-26
+      inventory: 7
