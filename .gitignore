@@ -15,3 +15,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore SimpleCov updates.
+coverage/
+
+# Ignore .DS_Store files.
+.DS_Store
