@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  title: "Hedwig and the Angry Inch"
+  overview: "Six inches forward and five inches back."
+  release_date: "2001-01-19"
+  inventory: 10
+
+two:
+  title: "The Graduate"
+  overview: "One word: plastics."
+  release_date: "1967-12-22"
+  inventory: 6
+
+three:
+  title: "Bye Bye Birdie"
+  overview: "Bye, bye, Birdie. I'm gonna miss you so. Bye, bye, Birdie. Why'd ya have to go?"
+  release_date: "1963-04-04"
+  inventory: 7
+
+four:
+  title: "War Games"
+  overview: " Keep Humans in the Loop, please"
+  release_date: "1983-06-03"
+  inventory: 0
+
+five:
+  title: "Sleepless in Seattle"
+  overview: " Rain and Love"
+  release_date: "1993-06-25"
+  inventory: 3

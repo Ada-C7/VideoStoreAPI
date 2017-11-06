@@ -1,4 +1,9 @@
 # Project: VideoStoreAPI
+An pair assignment completed during our time as students at Ada Developers Academy.
+
+Original Instructions:
+---
+
 The goal of this project is to create a system that a video store (remember those?) could use to track their inventory of rental videos and their list of customers.
 
 We will use Rails to construct a RESTful API. The purpose of this API is to quickly serve information about the store's video collection, customer information, and to update rental status. This repository provides two JSON datafiles to serve as the initial seeds for this system.
